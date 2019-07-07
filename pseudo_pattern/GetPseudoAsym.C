@@ -3,7 +3,7 @@
 // nPattern=4 : (1+2)-(3+4) 30 Hz Equivalent
 // nPattern=8 : (1+2+3+4)-(1+2+3+4) 15 Hz Equivalent
 
-void GetPseudoAsym(TString filename, Int_t nPattern = 16){
+void GetPseudoAsym(TString filename, Int_t nPattern = 4){
 
   TFile *japanOutput = TFile::Open(filename);
   TTree* evt_tree = (TTree*)japanOutput->Get("evt");
@@ -31,10 +31,14 @@ void GetPseudoAsym(TString filename, Int_t nPattern = 16){
   TFile *peusdoOutput = TFile::Open(filename,"RECREATE");
   
   TTree *mul_tree = new TTree("mul","pseudo Helicity Tree");
+  TTree *mulc_tree = new TTree("mulc","pseudo Helicity Combiner");
+  const Int_t ncombo = sizeof(combiner_channel)/sizeof(*combiner_channel);
+
   Double_t kErrorFlag;
   Double_t asym_value[ndet];
   Double_t yield_value[ndet];
   Double_t diff_value[nmon];
+  Double_t combo_value[ncombo];
 
   mul_tree->Branch("ErrorFlag",&kErrorFlag,"ErrorFlag/D");
   for(int idet=0;idet<ndet;idet++)
@@ -44,6 +48,10 @@ void GetPseudoAsym(TString filename, Int_t nPattern = 16){
   for(int imon=0;imon<nmon;imon++)
     mul_tree->Branch("diff_"+monitor_channel[imon],
 		     &(diff_value[imon]),"hw_sum/D");
+
+  for(int icom=0;icom<ncombo;icom++)
+    mulc_tree->Branch(combiner_channel[icom],
+		     &(combo_value[icom]),"hw_sum/D");
   
   Int_t nEntries = evt_tree->GetEntries();
   nEntries = nEntries - (nEntries%nPattern);
@@ -57,6 +65,9 @@ void GetPseudoAsym(TString filename, Int_t nPattern = 16){
     }
     for(int imon=0;imon<nmon;imon++)
       diff_value[imon] =0.0;
+
+    for(int icom=0;icom<ncombo;icom++)
+      combo_value[icom] =0.0;
 
     // Filling Pattern
     for(int ipattern=0;ipattern<nPattern;ipattern++){
@@ -81,14 +92,26 @@ void GetPseudoAsym(TString filename, Int_t nPattern = 16){
     for(int imon=0;imon<nmon;imon++)
       diff_value[imon] = diff_value[imon]/nPattern;
 
-    mul_tree->Fill();
+    // Combination of detectors
+    for(int icom=0;icom<ncombo;icom++){
+      
+      double weight_a = weight[icom][0];
+      double weight_b = weight[icom][1];
+      int det_a = det_pair[icom][0];
+      int det_b = det_pair[icom][1];
+      combo_value[icom] = weight_a*asym_value[det_a]+ weight_b*asym_value[det_b];
+    }
+
+    mul_tree->Fill();    
+    mulc_tree->Fill();
     pattern_counter++;
     if(pattern_counter%1000==0)
       cout << pattern_counter << endl;
   } // end of raw entry look
   
   mul_tree->Write();
-  
+  mulc_tree->Write();
+
   japanOutput->Close();
   peusdoOutput->Close();
   
