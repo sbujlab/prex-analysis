@@ -108,7 +108,7 @@ void GetPseudo240Hz(TString filename){
     for(int idet=0;idet<ndet;idet++)
       asym_value[idet] = asym_value[idet]/yield_value[idet];
     for(int imon=0;imon<nmon;imon++)
-      diff_value[imon] = diff_value[imon]/nPattern;
+      diff_value[imon] = diff_value[imon]/(nPattern*2);
 
     // Combination of detectors
     for(int icom=0;icom<ncombo;icom++){
