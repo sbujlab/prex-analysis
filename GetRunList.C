@@ -42,7 +42,8 @@ void GetRunList(){
 		   "( SELECT run_number, text_value ",
 		   " FROM `a-rcdb`.conditions t7 INNER JOIN `a-rcdb`.condition_types c7 on c7.id=t7.condition_type_id AND c7.name='wac_comment' ) AS tcomt ",
 		   " ON tcomt.run_number = t6.run_number ",
-  		   " WHERE t1.run_number=t3.run_number AND t1.run_number=t2.run_number AND t1.run_number=t4.run_number AND t1.run_number=t6.run_number AND t1.run_number<4981"};
+  		   " WHERE t1.run_number=t3.run_number AND t1.run_number=t2.run_number AND t1.run_number=t4.run_number AND t1.run_number=t6.run_number AND t1.run_number<4981",
+		   " ORDER BY t1.run_number ASC"};
 
   TString listName = Form("./survey.list");
   

@@ -1,12 +1,3 @@
-4690,74,Junk,IN,FLIP-LEFT,Good,0,- No comment -
-3137,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
-3138,0,Calibration,OUT,FLIP-RIGHT,NoFlag,2,- No comment -
-3139,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
-3140,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
-3289,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
-3290,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
-3291,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
-3292,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
 3130,0,Calibration,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3131,0,Production,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
 3132,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
@@ -14,6 +5,10 @@
 3134,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3135,0,Calibration,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3136,0,Production,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
+3137,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
+3138,0,Calibration,OUT,FLIP-RIGHT,NoFlag,2,- No comment -
+3139,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
+3140,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
 3141,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3142,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3143,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
@@ -89,6 +84,10 @@
 3214,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3220,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
 3288,0,Production,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3289,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3290,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3291,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3292,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
 3302,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3303,1,Test,OUT,FLIP-RIGHT,NoFlag,0,BMW ON
 3305,1,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
@@ -1322,6 +1321,7 @@
 4687,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4688,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4689,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4690,74,Junk,IN,FLIP-LEFT,Good,0,- No comment -
 4691,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
 4692,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
 4693,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
