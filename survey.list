@@ -1033,12 +1033,12 @@
 4398,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
 4399,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but has weird beam motion that messed up compliment E bpm
 4400,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but the regressed widths are ~100ppm...
-4401,59,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-4402,59,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-4403,59,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-4404,59,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4401,59,Production,IN,FLIP-RIGHT,Good,0,Good run. Beam moved which was reflected in epics and the data. The BPMs and the complements were seeing different things.
+4402,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4403,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4404,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 4405,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
-4406,59,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4406,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 4407,59,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 4408,60,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 4409,60,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
@@ -1107,7 +1107,7 @@
 4472,60,Production,IN,FLIP-LEFT,Good,0,Cameron: more beam motion, regression is fine. Applying tighter (0.2mm) burp cut to BPMs for this run as a test case and to see how the smaller burp cut changes things -> has no noticeable effect (need stability cut?)
 4473,60,Production,IN,FLIP-LEFT,Good,0,Cameron: awful trips, but cuts work, regression is OK
 4474,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks fine, BPM motion still
-4475,60,Production,IN,FLIP-LEFT,NoFlag,0,Cameron: looks good, but some noise in BPMs on a few events
+4475,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, but some noise in BPMs on a few events
 4476,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, but a bit of diff noise in some BPMs
 4477,61,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: beam looks better, looks OK;;Aq was off, needs cuts
 4478,61,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron & Ryan: looks ok, but some beam trips have restoration motion after them still;;Aq was off, needs cuts later
@@ -1134,7 +1134,7 @@
 4499,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4500,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4501,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
-4502,62,Production,IN,FLIP-LEFT,NoFlag,0,Cameron: looks OK
+4502,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4503,63,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: a strange trip midway through - trying 0.2 burp and 0.3 stability cut on BPMs - not enough, trying longer burp and ring lengths, still not enough;;Needs harder cuts -> applying bad event cut flags by hand -> looks good
 4504,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4505,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
