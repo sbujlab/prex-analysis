@@ -565,10 +565,10 @@
 3887,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3888,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3889,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
-3890,31,Production,OUT,FLIP-LEFT,NoFlag,2,- No comment -
-3891,31,Production,OUT,FLIP-LEFT,NoFlag,2,- No comment -
-3892,31,Production,OUT,FLIP-LEFT,NoFlag,2,- No comment -
-3893,31,Production,OUT,FLIP-LEFT,NoFlag,2,Cameron: LHRS only slug
+3890,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3891,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3892,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3893,31,Production,OUT,FLIP-LEFT,Good,2,Cameron: LHRS only slug
 3894,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
 3895,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
 3896,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
@@ -1147,9 +1147,9 @@
 4512,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: Gang Phase changed half way through run in order to preserve compton rates. Makes left HRS widths and BPM widths much worse (10 um -> 15um);;Complement 4e BPM sees weird glitches still;;Reprompt with 0.35 burp and stability cut to see if beam trip issue around event 200000 can be resolved - it mostly works, but needs some work later
 4513,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK. Wider post-gang-phase-change Main Det widths and BPM diff widths, but not a huge deal;;LHRS main det unregressed width ~ 1000 ppm and ~2x RHRS widths
 4514,64,Production,IN,FLIP-LEFT,Good,0,Cameron: trying simple stability and burp 0.35 cut to see if it fixes the 4eY trip recovery glitches we've seen with no other cut necessary.;-> doesn't... use bad event cuts. Looks OK
-4515,64,Production,IN,FLIP-LEFT,NoFlag,0,Cameron: looks ok
-4516,64,Production,IN,FLIP-LEFT,NoFlag,0,Cameron: looks OK
-4517,64,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4515,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4516,64,Production,IN,FLIP-LEFT,NeedCut,0,Cameron: looks OK
+4517,64,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
 4518,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
 4519,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4520,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
@@ -1170,15 +1170,15 @@
 4535,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4536,65,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: extending cut after trip to rescue data, looks
 4537,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
-4538,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4539,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4540,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4541,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4542,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4543,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4544,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4545,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4546,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4538,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4539,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4540,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4541,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4542,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4543,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4544,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4545,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4546,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4547,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
 4548,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
 4549,66,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
@@ -1226,8 +1226,8 @@
 4591,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4592,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4593,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
-4594,70,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
-4595,70,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4594,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4595,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4596,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4597,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 4598,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
@@ -1354,7 +1354,7 @@
 4720,75,Junk,OUT,FLIP-LEFT,Bad,0,- No comment -
 4721,75,Production,OUT,FLIP-LEFT,Bad,0,weibin: somehow, this run is not included in slug75, I don't know why?
 4722,76,Production,IN,FLIP-LEFT,Good,0,AJZ: Starting with this run we see large fluctuations in 4aY and 4eY. Very seldom does it;require cutting, but it's worth monitoring.
-4723,76,Production,IN,FLIP-LEFT,NoFlag,0,AJZ: Position drifts on 4aY, 4eY, consider minor eventcuts?
+4723,76,Production,IN,FLIP-LEFT,Good,0,AJZ: Position drifts on 4aY, 4eY, consider minor eventcuts?
 4724,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4725,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4726,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
