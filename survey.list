@@ -478,16 +478,16 @@
 3787,25,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3788,25,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3791,25,Production,IN,FLIP-RIGHT,Good,0,- No comment -
-3792,25,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-3793,25,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-3794,25,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-3795,25,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-3796,25,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3792,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3793,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3794,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3795,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3796,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
 3798,25,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
-3799,25,Production,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3799,25,Test,IN,FLIP-LEFT,Good,0,- No comment -
 3801,25,Harp,IN,FLIP-LEFT,NoFlag,0,- No comment -
 3802,26,Harp,OUT,FLIP-LEFT,NoFlag,0,- No comment -
-3803,26,Production,OUT,FLIP-LEFT,NeedCut,0,erratic beam current and positions for before long beam down.
+3803,26,Production,OUT,FLIP-LEFT,Good,0,erratic beam current and positions for before long beam down.
 3804,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3805,26,Production,OUT,FLIP-LEFT,NeedCut,0,Devi: Widths are jumping around minirun to minirun, need cuts;Victoria: FFB was turned OFF for ~1 minute by ops. This will be gut
 3806,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
@@ -523,11 +523,11 @@
 3836,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3837,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3838,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
-3839,28,Production,OUT,FLIP-LEFT,NeedCut,0,- No comment -
+3839,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3840,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3841,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
 3842,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
-3843,29,Production,IN,FLIP-LEFT,NeedCut,0,VO: only 200 events. beam turned off for moller
+3843,29,Production,IN,FLIP-LEFT,Bad,0,VO: only 200 events. beam turned off for moller
 3844,29,Pedestal,IN,FLIP-LEFT,NoFlag,0,- No comment -
 3853,29,Production,IN,FLIP-LEFT,Good,0,Devi: There was FFB issue during this run. Energy BPMs were saturating. MCC had problems in setting low gain for those BPMs.
 3854,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
@@ -550,7 +550,7 @@
 3871,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
 3872,30,Test,OUT,FLIP-LEFT,Bad,0,Devi: Started as a test run. Went through different phases of tests: raster, spot++, current ramp, tuning, etc
 3873,30,Test,OUT,FLIP-LEFT,Bad,0,- No comment -
-3874,30,Production,OUT,FLIP-LEFT,NeedCut,0,Devi: Too much beam excursion. BMW off.;;Cameron: The first 200k events have been cut with a bad_events map update
+3874,30,Production,OUT,FLIP-LEFT,Good,0,Devi: Too much beam excursion. BMW off.;;Cameron: The first 200k events have been cut with a bad_events map update
 3875,30,Production,OUT,FLIP-LEFT,Good,0,Devi: 0th minirun has some events to  cut out. Test of the run looks good.
 3877,30,Production,OUT,FLIP-LEFT,Good,0,Cameron: good beam at last, first 240 Hz run, looks good
 3878,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
@@ -558,8 +558,8 @@
 3880,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3881,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3882,30,Production,OUT,FLIP-LEFT,Bad,0,- No comment -
-3883,30,Production,OUT,FLIP-LEFT,Bad,0,- No comment -
-3884,31,Production,OUT,FLIP-LEFT,Bad,0,- No comment -
+3883,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3884,31,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3885,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3886,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3887,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
@@ -696,7 +696,7 @@
 4024,40,Production,IN,FLIP-LEFT,Good,0,Cameron: excursion at the end gets cut. Looks good.
 4025,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
 4026,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
-4027,40,Production,IN,FLIP-LEFT,Bad,0,- No comment -
+4027,40,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4028,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
 4029,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
 4030,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
@@ -1317,7 +1317,7 @@
 4682,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4683,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4684,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
-4685,74,Production,IN,FLIP-LEFT,Bad,2,- No comment -
+4685,74,Test,IN,FLIP-LEFT,Bad,2,- No comment -
 4687,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4688,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4689,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
