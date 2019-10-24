@@ -174,8 +174,8 @@
 3400,3,Production,OUT,FLIP-RIGHT,Good,0,BPM 4eY is showing some excess noise, but it is regressible in main detectors
 3401,3,Production,OUT,FLIP-RIGHT,Good,0,BCM an_ds and an_us are no longer in synch it appears. There is significant double peaking. BPM 4eY still has noise issues from 3400
 3402,3,Production,OUT,FLIP-RIGHT,Good,0,Still see BCM dd double peaking, noisy 4eY
-3403,3,Production,OUT,FLIP-RIGHT,Good,0,ROC disconnect; had to kcoda;;Shorter run than usual.;;Still see BPM 4eX and Y noise, and BCM DD still large (60 ppm)
-3404,4,Production,OUT,FLIP-RIGHT,Good,0,Still see BCM DD and BPM 4e noise;Minirun 6 has very large (600 ppm) RMS on US_avg corrected main detectors;This needs investication
+3403,3,Production,OUT,FLIP-RIGHT,NeedCut,0,ROC disconnect; had to kcoda;;Shorter run than usual.;;Still see BPM 4eX and Y noise, and BCM DD still large (60 ppm);;Cameron-Oct-23-2019: This run needs X and Y min/max cuts as there are uncontrolled beam excursions even after all of Sakib's cuts
+3404,4,Production,OUT,FLIP-RIGHT,NeedCut,0,Still see BCM DD and BPM 4e noise;Minirun 6 has very large (600 ppm) RMS on US_avg corrected main detectors;This needs investication;;Cameron Oct 23 2019: with the new engine the cuts miss the beam excursions now - needs a amplitude min/max cut on X and Y
 3405,4,Production,OUT,FLIP-RIGHT,Good,0,Robert Radloff: bcm asym plots show a decent size dip in the widths. it doesnt seem to show up anywhere else in the plots.;;Cameron: The BCM DD problem persists, though it is not double peaked and only 30 ppm (was 15 before BCM power supply change);BPM 4e problem persists
 3406,4,Production,OUT,FLIP-RIGHT,Good,0,RR: 25 minute beam down. Probably fine as long as error flag is doing its job.;;Cameron: The BCM DD double peaking is back, BPM issue looks less noticeable to me ...
 3407,4,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
