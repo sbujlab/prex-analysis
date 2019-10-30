@@ -363,9 +363,9 @@
 3657,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3658,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3659,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
-3660,14,Production,IN,FLIP-RIGHT,Bad,0,Devi: DAQ problem. No Event recorded.
-3661,14,Production,IN,FLIP-RIGHT,Bad,0,Devi: Test Run
-3663,14,Production,IN,FLIP-RIGHT,Bad,0,Devi: DAQ problem
+3660,14,Production,IN,FLIP-RIGHT,Good,0,Devi: DAQ problem. No Event recorded. From WAC meeting on 10/30/2019 added this to Good run.
+3661,14,Production,IN,FLIP-RIGHT,Good,0,Devi: Very short run. Large Aq.  From WAC meeting on 10/30/2019 added this to Good run.
+3663,14,Production,IN,FLIP-RIGHT,Good,0,Devi: DAQ problem. Large Aq.  From WAC meeting on 10/30/2019 added this to Good run.
 3664,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3666,14,Production,IN,FLIP-RIGHT,Good,0,Devi: Quad problem towards the end of the run. Applied bad_event_cut. Now good
 3667,14,Test,IN,FLIP-RIGHT,Bad,0,- No comment -
