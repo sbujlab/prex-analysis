@@ -1,6 +1,6 @@
-void GetRunList(){
+void GetAllInfo(){
 
-  // Survey Function to Get Run list 
+  // Survey Function to Get Run list from SQL database
   // Author : Tao Ye
 
   TSQLResult* res;
@@ -10,24 +10,8 @@ void GetRunList(){
   TSQLServer *rcdb = TSQLServer::Connect("mysql://hallcdb.jlab.org:3306/a-rcdb","rcdb","");
   cout << " -- ServerInfo: " << rcdb->ServerInfo() << endl;
   cout << " -- Host : " << rcdb->GetHost() << endl;
-  // rcdb->GetTablesList()->Print();
-  // rcdb->GetTableInfo("runs")->GetColumns()->Print();
-  // rcdb->GetTableInfo("conditions")->GetColumns()->Print();
-  // rcdb->GetTableInfo("condition_types")->GetColumns()->Print();
   cout << " -- Query DataBase " << endl;
 
-  // TString query[]={"SELECT t1.run_number,t3.int_value,t4.text_value, t1.text_value , t2.text_value, t5.text_value ",
-  // 		   " FROM `a-rcdb`.conditions as t1 INNER JOIN `a-rcdb`.condition_types c1 on c1.id= t1.condition_type_id AND c1.name='ihwp' ",
-  // 		   ", `a-rcdb`.conditions as t2 INNER JOIN `a-rcdb`.condition_types c2 on c2.id=t2.condition_type_id AND c2.name='flip_state' ",
-  // 		   ", `a-rcdb`.conditions as t3 INNER JOIN `a-rcdb`.condition_types c3 on c3.id=t3.condition_type_id AND c3.name='slug' AND t3.int_value BETWEEN 0 AND 94 ",
-  // 		   ", `a-rcdb`.conditions as t4 INNER JOIN `a-rcdb`.condition_types c4 on c4.id=t4.condition_type_id AND c4.name='run_type' ",
-  // 		   ", `a-rcdb`.conditions as t5 INNER JOIN `a-rcdb`.condition_types c5 on c5.id=t5.condition_type_id AND c5.name='run_flag' ",
-  // 		   " WHERE t1.run_number=t3.run_number AND t1.run_number=t2.run_number AND t1.run_number=t4.run_number AND t1.run_number=t5.run_number AND t1.run_number<4981 AND t4.text_value='Production' AND t1.run_number NOT IN ",
-  // 		   "(SELECT run_number FROM `a-rcdb`.conditions INNER JOIN `a-rcdb`.condition_types on condition_types.id = condition_type_id WHERE name='run_flag' AND text_value='Good' ) "};
-  // TString query[]={"SELECT t1.run_number ",
-  // 		   "FROM  `a-rcdb`.conditions as t1 INNER JOIN `a-rcdb`.condition_types c1 on c1.id= t1.condition_type_id ",
-  // 		   "WHERE t1.run_number NOT IN ",
-  // 		   "(SELECT run_number FROM `a-rcdb`.conditions INNER JOIN `a-rcdb`.condition_types on condition_types.id = condition_type_id  WHERE name='run_flag' ) "};
   TString query[]={"SELECT t1.run_number,t3.int_value,t4.text_value, t1.text_value , t2.text_value,CASE WHEN tflag.text_value is NULL THEN 'NoFlag' ELSE tflag.text_value END AS flag_res ,t6.int_value, CASE WHEN tcomt.text_value is NULL THEN '- No comment -' ELSE tcomt.text_value END",
   		   " FROM `a-rcdb`.conditions as t1 INNER JOIN `a-rcdb`.condition_types c1 on c1.id= t1.condition_type_id AND c1.name='ihwp' ",
   		   ", `a-rcdb`.conditions as t2 INNER JOIN `a-rcdb`.condition_types c2 on c2.id=t2.condition_type_id AND c2.name='flip_state' ",
