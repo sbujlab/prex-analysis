@@ -926,21 +926,21 @@
 4291,53,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok. One beam excursion, but probably doesn't need attention.;;Regression is struggling these days due to large noise in the beam (as a result of Wien flip a few days ago).
 4292,53,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
 4293,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
-4294,53,Production,IN,FLIP-RIGHT,NoFlag,0,- No comment -
-4295,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-4296,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-4297,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-4298,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-4299,54,Production,OUT,FLIP-RIGHT,NoFlag,0,Cameron: Last run with good FFB on, but the detector widths suffer from it. Looks ok
-4300,54,Production,OUT,FLIP-RIGHT,NoFlag,0,Cameron: Looks ok. FFB is off and the detector widths are better as a result
-4301,54,Production,OUT,FLIP-RIGHT,NoFlag,0,Cameron: Looks ok... FFB is off and the beam moves around some... probably fine though (makes Main Det widths better)
+4294,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4295,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4296,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4297,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4298,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4299,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Last run with good FFB on, but the detector widths suffer from it. Looks ok
+4300,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks ok. FFB is off and the detector widths are better as a result
+4301,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks ok... FFB is off and the beam moves around some... probably fine though (makes Main Det widths better)
 4302,54,Production,OUT,FLIP-RIGHT,NeedCut,0,Cameron: looks messy, but not awful. Two beam trip recoveries have bad spikes and need better cuts
 4303,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 4304,54,Junk,OUT,FLIP-RIGHT,NoFlag,0,Cameron: this run ended early, it has NO beam at all, junk
 4305,54,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 4306,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
-4307,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-4308,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4307,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4308,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
 4309,54,Calibration,OUT,FLIP-RIGHT,Suspicious,0,was mislabled as production
 4310,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 4311,55,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
