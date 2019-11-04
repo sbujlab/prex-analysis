@@ -935,7 +935,7 @@
 4300,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks ok. FFB is off and the detector widths are better as a result
 4301,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks ok... FFB is off and the beam moves around some... probably fine though (makes Main Det widths better)
 4302,54,Production,OUT,FLIP-RIGHT,NeedCut,0,Cameron: looks messy, but not awful. Two beam trip recoveries have bad spikes and need better cuts
-4303,54,Production,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4303,54,Production,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
 4304,54,Junk,OUT,FLIP-RIGHT,NoFlag,0,Cameron: this run ended early, it has NO beam at all, junk
 4305,54,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 4306,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
@@ -1240,7 +1240,7 @@
 4605,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 4606,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
 4607,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4608,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
+4608,71,Junk,OUT,FLIP-LEFT,Suspicious,0,weibin: a few seconds run, change the run type to Junk
 4609,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
 4610,71,Calibration,OUT,FLIP-LEFT,Good,0,- No comment -
 4611,71,Parityscan,OUT,FLIP-LEFT,Good,0,- No comment -
