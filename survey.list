@@ -557,9 +557,9 @@
 3879,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3880,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3881,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
-3882,30,Production,OUT,FLIP-LEFT,Bad,0,- No comment -
+3882,30,Production,OUT,FLIP-LEFT,Bad,2,- No comment -
 3883,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
-3884,31,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3884,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3885,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3886,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
 3887,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
@@ -716,7 +716,7 @@
 4044,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok, widths a bit big
 4045,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
 4046,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
-4047,42,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok. Widths are now definitely larger. (110 ppm or so)
+4047,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok. Widths are now definitely larger. (110 ppm or so)
 4048,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, still has larger widths
 4049,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
 4050,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
