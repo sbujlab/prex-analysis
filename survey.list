@@ -1,7 +1,7 @@
 3130,0,Calibration,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-3131,0,Production,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
-3132,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
-3133,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3131,0,Test,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
+3132,0,Test,OUT,FLIP-RIGHT,Good,0,- No comment -
+3133,0,Test,OUT,FLIP-RIGHT,Good,0,- No comment -
 3134,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3135,0,Calibration,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3136,0,Production,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
@@ -82,7 +82,7 @@
 3212,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3213,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3214,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
-3220,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3220,0,Junk,OUT,FLIP-RIGHT,Bad,0,- No comment -
 3288,0,Production,OUT,FLIP-RIGHT,Bad,0,- No comment -
 3289,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
 3290,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
