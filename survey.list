@@ -342,7 +342,7 @@
 3635,13,Production,OUT,FLIP-RIGHT,Good,0,Normalized detector yield is increasing over time (opposite to run3632). Regressed detectors are correlated. Regressed etector widths are larger.;;Cameron: Good - we know this is target related and its OK
 3636,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Long beam trip during the run. Normalized detector yield is decreasing again. Regressed detector widths are larger.;;Cameron: Good - we know this is target related and its OK
 3638,13,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
-3639,13,Production,OUT,FLIP-RIGHT,Bad,0,Devi: Beam current is ~3.4uA
+3639,13,Test,OUT,FLIP-RIGHT,Bad,0,Devi: Beam current is ~3.4uA
 3640,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: This run was taken for various tests after the collimator temperature increased. So bad event cuts have been applied in the required event reanges.
 3641,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: This run was taken for various tests after the collimator temperature increased. So bad event cuts have been applied in the required event reanges.
 3642,13,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
