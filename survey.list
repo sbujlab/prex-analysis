@@ -463,7 +463,7 @@
 3772,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3773,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
 3774,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
-3775,24,Production,OUT,FLIP-RIGHT,NeedCut,0,Devi: CODA crashed after ~26k events;Victoria: Charge Feeback off
+3775,24,Production,OUT,FLIP-RIGHT,Bad,0,Devi: CODA crashed after ~26k events;Victoria: Charge Feeback off
 3776,24,Production,OUT,FLIP-RIGHT,Good,0,Devi: Normalized detector yield has double peaks. Beam energy has changed. FFB was paused in the middle of the run. ;Victoria: Bpm slow drifts for first half of run.
 3777,24,Production,OUT,FLIP-RIGHT,Good,0,Devi: normalized detector yields have double peaks. Beam energy has changed in the middle of the run.
 3778,24,Production,OUT,FLIP-RIGHT,Good,0,Devi: IOC was not working properly (anlyzer was complaining about IHWP state is not well defined)
@@ -489,7 +489,7 @@
 3802,26,Harp,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 3803,26,Production,OUT,FLIP-LEFT,Good,0,erratic beam current and positions for before long beam down.
 3804,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
-3805,26,Production,OUT,FLIP-LEFT,NeedCut,0,Devi: Widths are jumping around minirun to minirun, need cuts;Victoria: FFB was turned OFF for ~1 minute by ops. This will be gut
+3805,26,Production,OUT,FLIP-LEFT,Good,0,Devi: Widths are jumping around minirun to minirun, need cuts;Victoria: FFB was turned OFF for ~1 minute by ops. This will be gut
 3806,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 3807,26,Production,OUT,FLIP-LEFT,Good,0,Devi: CODA crashed
 3808,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
@@ -1135,7 +1135,7 @@
 4500,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4501,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4502,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
-4503,63,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: a strange trip midway through - trying 0.2 burp and 0.3 stability cut on BPMs - not enough, trying longer burp and ring lengths, still not enough;;Needs harder cuts -> applying bad event cut flags by hand -> looks good
+4503,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: a strange trip midway through - trying 0.2 burp and 0.3 stability cut on BPMs - not enough, trying longer burp and ring lengths, still not enough;;Needs harder cuts -> applying bad event cut flags by hand -> looks good
 4504,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4505,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4506,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
@@ -1148,8 +1148,8 @@
 4513,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK. Wider post-gang-phase-change Main Det widths and BPM diff widths, but not a huge deal;;LHRS main det unregressed width ~ 1000 ppm and ~2x RHRS widths
 4514,64,Production,IN,FLIP-LEFT,Good,0,Cameron: trying simple stability and burp 0.35 cut to see if it fixes the 4eY trip recovery glitches we've seen with no other cut necessary.;-> doesn't... use bad event cuts. Looks OK
 4515,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
-4516,64,Production,IN,FLIP-LEFT,NeedCut,0,Cameron: looks OK
-4517,64,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4516,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4517,64,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to remove beam trip
 4518,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
 4519,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
 4520,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
@@ -1161,17 +1161,17 @@
 4526,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: finally beam trips are properly fast to recover
 4527,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
 4528,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: super trippy beam, but cuts work mostly, looks good
-4529,65,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: trips don't recover properly, needs cuts on BPM positions in Y/stability;;Burp cut didn't work, needs more:
+4529,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: trips don't recover properly, needs cuts on BPM positions in Y/stability;;Burp cut didn't work, needs more:
 4530,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: new Burp and Stability cuts in tandem basically work;;Looks OK
 4531,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
-4532,65,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: large beam movement, needs cuts - Extend 2x the trip length
+4532,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: large beam movement, needs cuts - Extend 2x the trip length
 4533,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4534,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4535,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
-4536,65,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: extending cut after trip to rescue data, looks
+4536,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: extending cut after trip to rescue data, looks
 4537,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
-4538,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
-4539,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4538,66,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to beam recovery issue
+4539,66,Production,IN,FLIP-LEFT,NeedCut,0,Ryan: Adding event cuts to remove beam trip
 4540,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4541,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
 4542,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
@@ -1195,14 +1195,14 @@
 4560,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4561,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4562,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
-4563,68,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4563,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4564,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4565,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4566,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4567,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4568,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4569,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
-4570,68,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4570,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4571,69,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: Parity Feedback died for a few minutes (all terminals crashed);;AJZ: Will need a cut on position drifts
 4572,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4573,69,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
@@ -1238,22 +1238,22 @@
 4603,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 4604,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 4605,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
-4606,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4607,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4608,71,Junk,OUT,FLIP-LEFT,Suspicious,0,weibin: a few seconds run, change the run type to Junk
-4609,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4610,71,Calibration,OUT,FLIP-LEFT,Good,0,- No comment -
+4606,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Commented on: 2019-11-11
+4607,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4608,71,Junk,OUT,FLIP-LEFT,Suspicious,0,weibin: a few seconds run, change the run type to Junk;;AJZ: Runs taken with giant raster size and bad optics tune
+4609,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster and bad optics tune;;Comment left on: 2019-11-11
+4610,71,Calibration,OUT,FLIP-LEFT,Good,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
 4611,71,Parityscan,OUT,FLIP-LEFT,Good,0,- No comment -
-4612,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Strange BPM behavior:;-Large excursion on bpm4aY and bpm4eY;-I have no idea WTF the 4e complement is doing
-4613,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4614,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4615,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4616,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4617,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4618,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4619,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4620,71,Production,OUT,FLIP-LEFT,Suspicious,0,- No comment -
-4621,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4612,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Strange BPM behavior:;-Large excursion on bpm4aY and bpm4eY;-I have no idea WTF the 4e complement is doing;;AJZ: Runs taken with giant raster size and bad optics tune
+4613,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4614,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4615,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4616,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4617,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4618,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Trouble with FFB and new optics tune;;Comment left on 2019-11-11
+4619,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Trouble with FFB and new optics tune;;Comment left on: 2019-11-11
+4620,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Trouble with FFB and new optics tune;;Comment left on: 2019-11-11
+4621,71,Production,OUT,FLIP-LEFT,Good,0,AJZ: Okay, back to normal;;Comment left on: 2019-11-11
 4622,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4623,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4624,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
@@ -1322,10 +1322,10 @@
 4688,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4689,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
 4690,74,Junk,IN,FLIP-LEFT,Good,0,- No comment -
-4691,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
-4692,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
-4693,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
-4694,74,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
+4691,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4692,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4693,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4694,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
 4695,74,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4696,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4697,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
