@@ -572,7 +572,7 @@
 3894,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
 3895,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
 3896,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
-3897,32,Production,IN,FLIP-LEFT,NeedCut,2,AJZ: Very brief 12X excursion at start of good events. Consider a tiny cut?;;AJZ: Also, only 1 minirun;;Cameron: looks good to me regardless
+3897,32,Production,IN,FLIP-LEFT,Good,2,AJZ: Very brief 12X excursion at start of good events. Consider a tiny cut?;;AJZ: Also, only 1 minirun;;Cameron: looks good to me regardless
 3898,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
 3899,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
 3900,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
@@ -583,7 +583,7 @@
 3906,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
 3907,32,Production,IN,FLIP-LEFT,Good,2,AJZ: Only 1 minirun
 3909,32,Production,IN,FLIP-LEFT,Good,2,AJZ: Only 1 minirun
-3910,32,Production,IN,FLIP-LEFT,NeedCut,2,- No comment -
+3910,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
 3911,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
 3912,32,Parityscan,IN,FLIP-LEFT,Good,2,- No comment -
 3913,32,Production,IN,FLIP-LEFT,Good,2,- No comment -
@@ -1028,7 +1028,7 @@
 4393,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
 4394,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok. One beam trip spike ~ 0.5 mm
 4395,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, a bit wide widths
-4396,59,Production,IN,FLIP-RIGHT,NeedCut,0,Cameron: looks ok, but it has some beam motion from compton tuning, and the regression gives 101 ppm combined width;;After applying BCM > 60 uA cut, there is very little improvement;;Suggest to put either a bad_events cut or do a yield cut at ~ -0.05 mm in 4eX
+4396,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but it has some beam motion from compton tuning, and the regression gives 101 ppm combined width;;After applying BCM > 60 uA cut, there is very little improvement;;Suggest to put either a bad_events cut or do a yield cut at ~ -0.05 mm in 4eX
 4397,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
 4398,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
 4399,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but has weird beam motion that messed up compliment E bpm
@@ -1171,9 +1171,9 @@
 4536,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: extending cut after trip to rescue data, looks
 4537,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
 4538,66,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to beam recovery issue
-4539,66,Production,IN,FLIP-LEFT,NeedCut,0,Ryan: Adding event cuts to remove beam trip
+4539,66,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to remove beam trip
 4540,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
-4541,66,Production,IN,FLIP-LEFT,NeedCut,0,- No comment -
+4541,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4542,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4543,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4544,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
@@ -1203,11 +1203,11 @@
 4568,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4569,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
 4570,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
-4571,69,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: Parity Feedback died for a few minutes (all terminals crashed);;AJZ: Will need a cut on position drifts
+4571,69,Production,OUT,FLIP-LEFT,Good,0,Cameron: Parity Feedback died for a few minutes (all terminals crashed);;AJZ: Will need a cut on position drifts
 4572,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4573,69,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
 4574,69,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
-4575,69,Production,OUT,FLIP-LEFT,NeedCut,0,AJZ: Run junked due to lack of parity feedback
+4575,69,Production,OUT,FLIP-LEFT,Good,0,AJZ: Run junked due to lack of parity feedback
 4576,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4577,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4578,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
@@ -1369,7 +1369,7 @@
 4735,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4736,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4737,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
-4738,77,Production,OUT,FLIP-LEFT,NeedCut,0,Devi: Long beam trip in the beginning resulting large fluctuation in y position. May need to consider event cut in the zeroth minirun
+4738,77,Production,OUT,FLIP-LEFT,Good,0,Devi: Long beam trip in the beginning resulting large fluctuation in y position. May need to consider event cut in the zeroth minirun
 4739,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4740,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
 4741,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
