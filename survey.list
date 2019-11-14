@@ -1109,8 +1109,8 @@
 4474,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks fine, BPM motion still
 4475,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, but some noise in BPMs on a few events
 4476,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, but a bit of diff noise in some BPMs
-4477,61,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: beam looks better, looks OK;;Aq was off, needs cuts
-4478,61,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron & Ryan: looks ok, but some beam trips have restoration motion after them still;;Aq was off, needs cuts later
+4477,61,Production,OUT,FLIP-LEFT,Suspicious,0,Cameron: beam looks better, looks OK;;Aq was off, needs cuts but relabeled as suspicious
+4478,61,Production,OUT,FLIP-LEFT,Suspicious,0,Cameron & Ryan: looks ok, but some beam trips have restoration motion after them still;;Aq was off, needs cuts later - relabeled as suspicious
 4479,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
 4480,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
 4481,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: X axis has excessive diff noise. Needs cuts? Regression looks OK.;;Ryan: Yes, needs position cut - 1 mm drift - tighter burp cuts not sufficient;;Cameron: adding 0.35 stability cut as well as a test;;Can't quite clear it out, but the BPM post-trip drift is not totally bad, and the diffs hairyness is going to stick around
