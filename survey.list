@@ -87,7 +87,7 @@
 3289,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
 3290,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
 3291,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
-3292,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3292,0,Production,OUT,FLIP-RIGHT,Bad,0,- No comment -
 3302,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
 3303,1,Test,OUT,FLIP-RIGHT,NoFlag,0,BMW ON
 3305,1,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
