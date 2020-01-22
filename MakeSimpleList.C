@@ -17,7 +17,8 @@ void MakeSimpleList(){
     ParseLine(sline,runinfo);
     Int_t my_slug =runinfo.slug;
     Int_t my_run =runinfo.run;
-    fSlugArray[my_slug].push_back(my_run);
+    if(runinfo.flag != "Bad")
+      fSlugArray[my_slug].push_back(my_run);
   }
   FILE* all_out = fopen("./simple_list/all.list","w");
   for(int i=0;i<=94;i++){
