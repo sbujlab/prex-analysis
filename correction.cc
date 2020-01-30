@@ -3,13 +3,18 @@
 #include "lib/TaRunInfo_v2.cc"
 #include "LoadRunInfoMap.C"
 
-void correction(Int_t slug=94){
+void correction(Int_t slug=94,Int_t kUseAvgSlope=0){
+  map<Int_t,TaRunInfo> fRunInfoMap = LoadRunInfoMap();
   TFile *cov_file = TFile::Open(Form("rootfiles/slug%d_covv.root",slug));
   TTree *cov_tree = (TTree*)cov_file->Get("covv");
   TFile *slope_file = TFile::Open(Form("slopes/slug%d_dit_slope.root",slug));
   TTree *slope_tree = (TTree*)slope_file->Get("slope");
-
-  TFile *out_file = TFile::Open(Form("rootfiles/slug%d_correct.root",slug),"RECREATE");
+  TString output_filename;
+  if(kUseAvgSlope)
+    output_filename = Form("rootfiles/slug%d_correct_avg.root",slug);
+  else
+    output_filename = Form("rootfiles/slug%d_correct.root",slug);
+  TFile *out_file = TFile::Open(output_filename,"RECREATE");
   TTree *cor_tree = new TTree("cor","correction tree");
 
   vector<TString> det_list={"asym_usl","asym_usr","asym_us_avg"};
@@ -50,18 +55,22 @@ void correction(Int_t slug=94){
   }
   
   map<Int_t, vector<Double_t> > fSlopeMap;
-  fSlopeMap = LoadSlopeMap(slope_tree, det_list, iv_list);
-  map<Int_t,TaRunInfo> fRunInfoMap = LoadRunInfoMap();
+  if(kUseAvgSlope)
+    fSlopeMap = LoadAvgSlopeMap(slug, det_list, iv_list);
+  else
+    fSlopeMap = LoadSlopeMap(slope_tree, det_list, iv_list);;
+
   Int_t run_id;
   Double_t fSamples;
   cov_tree->SetBranchAddress("run",&run_id);
   cov_tree->SetBranchAddress("num_samples",&fSamples);
-  Int_t arm_flag,ihwp,wien,sign,good;
-  // cor_tree->Branch("arm",&arm_flag);
-  // cor_tree->Branch("ihwp",&ihwp);
-  // cor_tree->Branch("wien",&wien);
-  // cor_tree->Branch("sign",&sign);
-  // cor_tree->Branch("good",&good);
+  Int_t arm_flag,ihwp,wien,sign,good,fSlug;
+  cor_tree->Branch("arm",&arm_flag);
+  cor_tree->Branch("ihwp",&ihwp);
+  cor_tree->Branch("wien",&wien);
+  cor_tree->Branch("sign",&sign);
+  cor_tree->Branch("good",&good);
+  cor_tree->Branch("slug",&fSlug);
   vector<STAT> fDitCorrection(ndet);
   for(int idet=0;idet<ndet;idet++)
     cor_tree->Branch("dit_"+get_base(det_list[idet]),&fDitCorrection[idet]);
@@ -80,7 +89,6 @@ void correction(Int_t slug=94){
   Int_t nrun  = cov_tree->GetEntries();
   for(int ievt=0;ievt<nrun;ievt++){
     cov_tree->GetEntry(ievt);
-    // cout << " -- run " << run_id;
     if(fSlopeMap.find(run_id)==fSlopeMap.end()){
       cout << " -- run " << run_id
 	   << " slope not found " << endl;
@@ -104,18 +112,29 @@ void correction(Int_t slug=94){
       fDitCorrection[idet].rms = sqrt(fDitCorrection[idet].m2/fDitCorrection[idet].num_samples);
       fDitCorrection[idet].err = fDitCorrection[idet].rms /sqrt(fDitCorrection[idet].num_samples);
     }
-    // arm_flag=-1;
-    // sign = 0.0;
-    // good = -1;
-    // if(fRunInfoMap.find(run_id)==fRunInfoMap.end())
-    //   continue;
-    // TaRunInfo myRunInfo = fRunInfoMap[run_id];
-    // arm_flag = myRunInfo.GetArmFlag();
-    // sign = myRunInfo.GetSign();
-    // if(myRunInfo.GetRunFlag()=="Good")
-    //   good=1;
-    // else
-    //   good=0;
+    arm_flag=-1;
+    sign = 0.0;
+    good = -1;
+    if(fRunInfoMap.find(run_id)==fRunInfoMap.end())
+      continue;
+    TaRunInfo myRunInfo = fRunInfoMap[run_id];
+    arm_flag = myRunInfo.GetArmFlag();
+    sign = myRunInfo.GetSign();
+    fSlug = myRunInfo.GetSlugNumber(); 
+    if(myRunInfo.GetIHWPStatus()=="IN") 
+      ihwp=1;
+    else
+      ihwp=-1;
+
+    if(myRunInfo.GetWienMode()=="FLIP-RIGHT") 
+      wien=1;
+    else
+      wien=-1;
+
+    if(myRunInfo.GetRunFlag()=="Good") 
+      good=1;
+    else
+      good=0;
     cout << run_id << endl;
     cor_tree->Fill();
   }
