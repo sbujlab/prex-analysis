@@ -1,7 +1,7 @@
 #include "function.cc"
 #include "TaAccumulator.cc"
 
-void correction(Int_t slug=1){
+void correction(Int_t slug=94){
   TFile *cov_file = TFile::Open(Form("rootfiles/slug%d_covv.root",slug));
   TTree *cov_tree = (TTree*)cov_file->Get("covv");
   TFile *slope_file = TFile::Open(Form("slopes/slug%d_dit_slope.root",slug));
@@ -10,7 +10,6 @@ void correction(Int_t slug=1){
   TFile *out_file = TFile::Open(Form("rootfiles/slug%d_correct.root",slug),"RECREATE");
   TTree *cor_tree = new TTree("cor","correction tree");
 
-  
   vector<TString> det_list={"asym_usl","asym_usr","asym_us_avg"};
   vector<TString> iv_list = {"bpm4aX","bpm4eX","bpm4aY","bpm4eY","bpm11X12X"};
   vector<TString> iv_old = {"bpm4aX","bpm4eX","bpm4aY","bpm4eY","bpm12X"};
@@ -68,6 +67,7 @@ void correction(Int_t slug=1){
   parity_unit.nm = 1e-6;
   cor_tree->Branch("unit",&parity_unit,"ppm/D:ppb:mm:um:nm");
   //FIXME raw detector and raw bpm tree for residual correlation check
+  cor_tree->Branch("run",&run_id);
 
   Int_t nrun  = cov_tree->GetEntries();
   for(int ievt=0;ievt<nrun;ievt++){
@@ -85,7 +85,7 @@ void correction(Int_t slug=1){
       for(int ibpm=0;ibpm<nbpm;ibpm++){
       	fDitCorrection[idet].mean -=my_slope[idet*nbpm+ibpm]*(fCovar_bpm[ibpm*nbpm+ibpm]->mean);
 
-      	fDitCorrection[idet].m2 += 2*my_slope[idet*nbpm+ibpm]*(fCovar_det[idet*nbpm+ibpm]->m2);
+      	fDitCorrection[idet].m2 -= 2*my_slope[idet*nbpm+ibpm]*(fCovar_det[idet*nbpm+ibpm]->m2);
 	
       	for(int jbpm=0;jbpm<nbpm;jbpm++){
       	  fDitCorrection[idet].m2 += my_slope[idet*nbpm+ibpm]*my_slope[idet*nbpm+jbpm]*(fCovar_bpm[ibpm*nbpm+jbpm]->m2);

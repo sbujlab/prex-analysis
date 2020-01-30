@@ -32,8 +32,8 @@ map<Int_t, vector<Double_t> > LoadSlopeMap(TTree *slope_tree, vector<TString> de
 	Double_t slope_val  = fSlope[idet*nbpm+ibpm] ;
 	if(detlist[idet].Contains("us_avg"))
 	  slope_val = 0.5*(fSlope[ibpm]+fSlope[nbpm+ibpm]);
-	else
-	  fMySlope.push_back(slope_val);
+
+	fMySlope.push_back(slope_val);
 	
 	if(ivlist[ibpm].Contains("11X12X"))
 	  fMySlope.push_back(0.4*slope_val);

@@ -1,9 +1,11 @@
 #include "utility.cc"
 #include "TaAccumulator.cc"
 
-void cov(Int_t slug_number=0){
-  
-  TString output_filename = "output.root";
+void cov(Int_t slug_number=94){
+
+  Int_t nthreads=7;
+  ROOT::EnableImplicitMT(nthreads);
+  TString output_filename = Form("rootfiles/slug%d_covv.root",slug_number);
   TFile* output_file = TFile::Open(output_filename,"RECREATE");
   TTree *cov_tree = new TTree("covv","Covariance / Variance Tree");
   
@@ -43,16 +45,14 @@ void cov(Int_t slug_number=0){
   
   cov_tree->Branch("run",&fRun,"run/I");
   cov_tree->Branch("nsamples",&fPatterns);
-  vector<TaAccumulator> fIVCovAcccumulator(niv*niv);
-  vector<TaAccumulator> fDVIVCovAcccumulator(ndv*niv);
-  vector<TaAccumulator> fVarAcccumulator(ndv+niv);
-  
-  vector<Int_t> fRunlist=ParseRunList("test.list");
+
+  vector<Int_t> fRunlist=ParseRunList(Form("prex-runlist/simple_list/slug%d.list",slug_number));
   auto iter = fRunlist.begin();
   while(iter!=fRunlist.end()){
+
     fRun = (*iter);
-    TString input_path = "/home/yetao/workarea/japanOutput/";
-    TString input_filename = Form("prexPrompt_pass1_%d.000.root",fRun);
+    TString input_path = getenv("QW_ROOTFILES");
+    TString input_filename = Form("/prexPrompt_pass1_%d.000.root",fRun);
     TFile *input_file=TFile::Open(input_path+input_filename);
     if(input_file==NULL){
       iter++;
@@ -63,31 +63,54 @@ void cov(Int_t slug_number=0){
     TTree *mulc_tree = (TTree*)input_file->Get("mulc");
     mul_tree->AddFriend(mulc_tree);
 
+    TStopwatch tsw;  
+    TEventList *elist = new TEventList("elist");
+    mul_tree->SetBranchStatus("*",0);
+    mul_tree->SetBranchStatus("ErrorFlag",1);
+    Int_t nevt = mul_tree->Draw(">>+elist","ErrorFlag==0");
+    cout << " -- run " << fRun << endl;
+    cout << " -- " << nevt << " good patterns. " << endl;
+    fPatterns = nevt;
+
     vector<Double_t> fdv_val(ndv);
     vector<Double_t> fiv_val(niv);
+    vector<TaAccumulator> fIVCovAcccumulator(niv*niv);
+    vector<TaAccumulator> fDVIVCovAcccumulator(ndv*niv);
+    vector<TaAccumulator> fVarAcccumulator(ndv+niv);
+    for(int i=0;i<niv;i++){
+      fVarAcccumulator[ndv+i].Zero();
+      for(int j=0;j<niv;j++){
+	fIVCovAcccumulator[i*niv+j].Zero();
+      }
+    }
+    
+    for(int i=0;i<ndv;i++){
+      fVarAcccumulator[i].Zero();
+      for(int j=0;j<niv;j++){
+	fDVIVCovAcccumulator[i*niv+j].Zero();
+      }
+    }
 
     for(int idv=0;idv<ndv;idv++){
       TBranch *branch_ptr = mul_tree->GetBranch(dv_list[idv]);
-      if(branch_ptr!=NULL)
+      if(branch_ptr!=NULL){
 	branch_ptr->GetLeaf("hw_sum")->SetAddress(&fdv_val[idv]);
-      else
+	mul_tree->SetBranchStatus(dv_list[idv],1);
+      }else
 	fdv_val[idv] = 1e6;
     }
     for(int iiv=0;iiv<niv;iiv++){
       TBranch *branch_ptr = mul_tree->GetBranch(iv_list[iiv]);
-      if(branch_ptr!=NULL)
+      if(branch_ptr!=NULL){
 	branch_ptr->GetLeaf("hw_sum")->SetAddress(&fiv_val[iiv]);
-      else
+	mul_tree->SetBranchStatus(iv_list[iiv],1);
+      }else
 	fiv_val[iiv] = 1e6;
     }
-  
-    TEventList *elist = new TEventList("elist");
-    Int_t nevt = mul_tree->Draw(">>+elist","ErrorFlag==0");
-    cout << " -- " << nevt << " good patterns. " << endl;
-    fPatterns = nevt;
+
     for(int ievt=0;ievt<nevt;ievt++){
       Int_t index = elist->GetEntry(ievt);
-      mul_tree->GetEntry(ievt);
+      mul_tree->GetEntry(index);
       for(int i=0;i<niv;i++){
       	fVarAcccumulator[ndv+i].Update(fiv_val[i]);
       	for(int j=0;j<niv;j++){
@@ -117,6 +140,8 @@ void cov(Int_t slug_number=0){
     cov_tree->Fill();
     input_file->Close();
     iter++;
+    cout <<" -- " ;
+    tsw.Print();
   }// end of loop over run;
   
   output_file->cd();
