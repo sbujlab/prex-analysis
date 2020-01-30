@@ -1,5 +1,7 @@
 #include "function.cc"
 #include "TaAccumulator.cc"
+#include "lib/TaRunInfo_v2.cc"
+#include "LoadRunInfoMap.C"
 
 void correction(Int_t slug=94){
   TFile *cov_file = TFile::Open(Form("rootfiles/slug%d_covv.root",slug));
@@ -49,11 +51,17 @@ void correction(Int_t slug=94){
   
   map<Int_t, vector<Double_t> > fSlopeMap;
   fSlopeMap = LoadSlopeMap(slope_tree, det_list, iv_list);
-  
+  map<Int_t,TaRunInfo> fRunInfoMap = LoadRunInfoMap();
   Int_t run_id;
-  cov_tree->SetBranchAddress("run",&run_id);
   Double_t fSamples;
+  cov_tree->SetBranchAddress("run",&run_id);
   cov_tree->SetBranchAddress("num_samples",&fSamples);
+  Int_t arm_flag,ihwp,wien,sign,good;
+  // cor_tree->Branch("arm",&arm_flag);
+  // cor_tree->Branch("ihwp",&ihwp);
+  // cor_tree->Branch("wien",&wien);
+  // cor_tree->Branch("sign",&sign);
+  // cor_tree->Branch("good",&good);
   vector<STAT> fDitCorrection(ndet);
   for(int idet=0;idet<ndet;idet++)
     cor_tree->Branch("dit_"+get_base(det_list[idet]),&fDitCorrection[idet]);
@@ -72,6 +80,7 @@ void correction(Int_t slug=94){
   Int_t nrun  = cov_tree->GetEntries();
   for(int ievt=0;ievt<nrun;ievt++){
     cov_tree->GetEntry(ievt);
+    // cout << " -- run " << run_id;
     if(fSlopeMap.find(run_id)==fSlopeMap.end()){
       cout << " -- run " << run_id
 	   << " slope not found " << endl;
@@ -95,11 +104,24 @@ void correction(Int_t slug=94){
       fDitCorrection[idet].rms = sqrt(fDitCorrection[idet].m2/fDitCorrection[idet].num_samples);
       fDitCorrection[idet].err = fDitCorrection[idet].rms /sqrt(fDitCorrection[idet].num_samples);
     }
-    
+    // arm_flag=-1;
+    // sign = 0.0;
+    // good = -1;
+    // if(fRunInfoMap.find(run_id)==fRunInfoMap.end())
+    //   continue;
+    // TaRunInfo myRunInfo = fRunInfoMap[run_id];
+    // arm_flag = myRunInfo.GetArmFlag();
+    // sign = myRunInfo.GetSign();
+    // if(myRunInfo.GetRunFlag()=="Good")
+    //   good=1;
+    // else
+    //   good=0;
+    cout << run_id << endl;
     cor_tree->Fill();
   }
   out_file->cd();
   cor_tree->Write();
+  cout << " -- Closing " << endl;
   out_file->Close();
 }
 
