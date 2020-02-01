@@ -15,7 +15,10 @@ void correction(Int_t slug=94,Int_t kUseAvgSlope=0){
   else
     output_filename = Form("rootfiles/slug%d_correct.root",slug);
   TFile *out_file = TFile::Open(output_filename,"RECREATE");
-  TTree *cor_tree = new TTree("cor","correction tree");
+  TString tree_name = "cor";
+  if(kUseAvgSlope)
+    tree_name = "cor_avg";
+  TTree *cor_tree = new TTree(tree_name,"correction tree");
 
   vector<TString> det_list={"asym_usl","asym_usr","asym_us_avg"};
   vector<TString> iv_list = {"bpm4aX","bpm4eX","bpm4aY","bpm4eY","bpm11X12X"};
