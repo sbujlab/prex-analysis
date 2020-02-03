@@ -18,8 +18,6 @@ void regression(Int_t slug=94){
   TTree *cor_tree = new TTree(tree_name,"correction tree");
 
   vector<TString> det_list={"asym_usl","asym_usr","asym_us_avg"};
-  vector<TString> iv_list = {"bpm4aX","bpm4eX","bpm4aY","bpm4eY","bpm11X12X"};
-  vector<TString> iv_old = {"bpm4aX","bpm4eX","bpm4aY","bpm4eY","bpm12X"};
   vector<TString> bpm_list;
   vector<TString> bpm_set1={"diff_bpm4aX","diff_bpm4eX","diff_bpm4aY","diff_bpm4eY",
 			    "diff_bpm11X","diff_bpm12X"};
@@ -29,7 +27,6 @@ void regression(Int_t slug=94){
     bpm_list = bpm_set1;
   else{
     bpm_list = bpm_set2;
-    iv_list = iv_old;
   }
   int ndet = det_list.size();
   int nbpm = bpm_list.size();
@@ -125,34 +122,78 @@ vector<STAT> solve(vector<STAT*> fVar_det,
 
   Int_t ndet = fVar_det.size();
   Int_t nbpm = fCovar_det.size() / ndet;
+  Bool_t kUsedCombined=kFALSE;
+  if(nbpm==6){
+    nbpm = 5; // forced to 11X+0.4*12X
+    kUsedCombined=kTRUE;
+    cout << " -- Using Combo BPM for regression " << endl;
+  }
   vector<STAT> fRegDet(ndet);  
   TMatrixD m_cov(nbpm,nbpm);
   TMatrixD d_cov(ndet,nbpm);
   TMatrixD d_cov_trans(nbpm,ndet);
-  
-  for(int ibpm=0;ibpm<nbpm;ibpm++)
-    for(int jbpm=0;jbpm<nbpm;jbpm++)
-      m_cov[ibpm][jbpm] = fCovar_bpm[ibpm*nbpm+jbpm]->m2;
 
-  for(int idet=0;idet<ndet;idet++){
+  if(kUsedCombined){
     for(int ibpm=0;ibpm<nbpm;ibpm++){
-      d_cov[idet][ibpm] = fCovar_det[idet*nbpm+ibpm]->m2;
-      d_cov_trans[ibpm][idet] = d_cov[idet][ibpm];
+      for(int jbpm=0;jbpm<nbpm;jbpm++){
+	m_cov[ibpm][jbpm] = fCovar_bpm[ibpm*6+jbpm]->m2;
+	if(ibpm==4 && ibpm==jbpm)
+	  m_cov[ibpm][jbpm] += 2*0.4*(fCovar_bpm[4*6+5]->m2) + 0.16*(fCovar_bpm[5*6+5]->m2);
+	else if (ibpm==4)
+	  m_cov[ibpm][jbpm]+=0.4*(fCovar_bpm[5*6+jbpm]->m2);
+	else if (jbpm==4)
+	  m_cov[ibpm][jbpm]+=0.4*(fCovar_bpm[ibpm*6+5]->m2);
+
+      }
+    }
+    for(int idet=0;idet<ndet;idet++){
+      for(int ibpm=0;ibpm<nbpm;ibpm++){
+	d_cov[idet][ibpm] = fCovar_det[idet*6+ibpm]->m2;
+	if(ibpm==4)
+	  d_cov[idet][ibpm]+= 0.4*(fCovar_det[idet*6+5]->m2);
+
+	d_cov_trans[ibpm][idet] = d_cov[idet][ibpm];
+      }
+    }
+  }else{
+    for(int ibpm=0;ibpm<nbpm;ibpm++)
+      for(int jbpm=0;jbpm<nbpm;jbpm++)
+	m_cov[ibpm][jbpm] = fCovar_bpm[ibpm*nbpm+jbpm]->m2;
+
+    for(int idet=0;idet<ndet;idet++){
+      for(int ibpm=0;ibpm<nbpm;ibpm++){
+	d_cov[idet][ibpm] = fCovar_det[idet*nbpm+ibpm]->m2;
+	d_cov_trans[ibpm][idet] = d_cov[idet][ibpm];
+      }
     }
   }
 
   m_cov.Invert();
-
   TMatrixD sol = d_cov*m_cov;
+  // sol.Print();
   for(int idet=0;idet<ndet;idet++){
     fRegDet[idet].mean = fVar_det[idet]->mean;
     fRegDet[idet].m2= fVar_det[idet]->m2;
-    for(int ibpm=0;ibpm<nbpm;ibpm++){
-      fRegDet[idet].mean -= sol[idet][ibpm]*fCovar_bpm[ibpm*nbpm+ibpm]->mean;
-      fRegDet[idet].m2 -= 2*sol[idet][ibpm]*fCovar_det[idet*nbpm+ibpm]->m2;
+    if(kUsedCombined){
+      for(int ibpm=0;ibpm<nbpm;ibpm++){
+	fRegDet[idet].mean -= sol[idet][ibpm]*fCovar_bpm[ibpm*6+ibpm]->mean;
+	fRegDet[idet].m2 -= 2*sol[idet][ibpm]*fCovar_det[idet*6+ibpm]->m2;
+	for(int jbpm=0;jbpm<nbpm;jbpm++)
+	  fRegDet[idet].m2 += sol[idet][ibpm]*sol[idet][jbpm]*fCovar_bpm[ibpm*6+jbpm]->m2;
+      }
+      fRegDet[idet].mean -= 0.4*sol[idet][4]*fCovar_bpm[35]->mean;
+      fRegDet[idet].m2 -= 2*0.4*sol[idet][4]*fCovar_det[idet*6+5]->m2;
       for(int jbpm=0;jbpm<nbpm;jbpm++)
-	fRegDet[idet].m2 += sol[idet][ibpm]*sol[idet][jbpm]*fCovar_bpm[ibpm*nbpm+jbpm]->m2;
+	fRegDet[idet].m2 += 2*0.4*sol[idet][jbpm]*sol[idet][4]*fCovar_bpm[jbpm*6+5]->m2;
+      fRegDet[idet].m2 += 0.16*sol[idet][4]*sol[idet][4]*fCovar_bpm[35]->m2;
 
+    }else{ // else if not use combo BPM
+      for(int ibpm=0;ibpm<nbpm;ibpm++){
+	fRegDet[idet].mean -= sol[idet][ibpm]*fCovar_bpm[ibpm*nbpm+ibpm]->mean;
+	fRegDet[idet].m2 -= 2*sol[idet][ibpm]*fCovar_det[idet*nbpm+ibpm]->m2;
+	for(int jbpm=0;jbpm<nbpm;jbpm++)
+	  fRegDet[idet].m2 += sol[idet][ibpm]*sol[idet][jbpm]*fCovar_bpm[ibpm*nbpm+jbpm]->m2;
+      }
     }
 
     fRegDet[idet].rms= sqrt(fRegDet[idet].m2/fVar_det[idet]->num_samples);
