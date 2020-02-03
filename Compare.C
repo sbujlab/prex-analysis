@@ -15,7 +15,7 @@ void Compare(){
   TGraph* g_dit;
   TGraph* g_reg;
   Int_t npt;
-  npt =dit_tree->Draw("dit_us_avg.rms/ppm:run","arm==0 && good","goff");
+  npt =dit_tree->Draw("dit_us_avg.rms/ppm:run","arm==0 && good && slug==26","goff");
   Double_t* y_ptr = dit_tree->GetV1();
   Double_t* x_ptr= dit_tree->GetV2();
   Double_t* y_dit = new Double_t[npt];
@@ -40,7 +40,7 @@ void Compare(){
   g_dit->SetMarkerColor(kBlue);
   g_dit->SetLineColor(kBlue);
 
-  npt=reg_tree->Draw("reg_us_avg.rms/ppm:run","arm==0 && good","goff");
+  npt=reg_tree->Draw("reg_us_avg.rms/ppm:run","arm==0 && good && slug==26","goff");
   Double_t* y_ptr1 = (Double_t*)reg_tree->GetV1();
   Double_t* x_ptr1=(Double_t*)reg_tree->GetV2();
   Double_t* y_reg = new Double_t[npt];
@@ -74,6 +74,12 @@ void Compare(){
   mg->Add(g_dit,"lp");
   mg->Add(g_reg,"lp");
   mg->Draw("A");
+  mg->GetYaxis()->SetTitle("Us Avg Width(ppm)");
+  mg->GetXaxis()->SetTitle("run number");
+  TLegend *leg = new TLegend(0.7,0.7,0.9,0.9);
+  leg->AddEntry(g_dit,"Dit. Corrected","lp");
+  leg->AddEntry(g_reg,"Regression Floor","lpf");
+  leg->Draw("same");
 }
 
 
