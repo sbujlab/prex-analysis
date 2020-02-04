@@ -70,13 +70,14 @@ map<Int_t, vector<Double_t> > LoadAvgSlopeMap(Int_t slug_number, vector<TString>
 
   TFile *slope_rf;
   if(slug_number>=4)
-    slope_rf = TFile::Open("./slopes/dit_averaged_slope.root");
+    slope_rf = TFile::Open("./slopes/ditcoeff_slope_averaged.root");
   else
-    slope_rf = TFile::Open("./slopes/dit_averaged_slope12X.root");
+    slope_rf = TFile::Open("./slopes/ditcoeff_slope_averaged12X.root");
   if(slope_rf==NULL){
     cerr << " -- Dit Slope rootfile not found " << endl;
     return fSlopeMap;
   }
+
   TString runlist = Form("./prex-runlist/simple_list/slug%d.list",slug_number);
   vector<Int_t> fRunList = ParseRunList(runlist);
 
@@ -106,10 +107,10 @@ map<Int_t, vector<Double_t> > LoadAvgSlopeMap(Int_t slug_number, vector<TString>
 	if(detlist[idet].Contains("us_avg"))
 	  slope_val = 0.5*(fSlope[ibpm]+fSlope[nbpm+ibpm]);
 
-	fMySlope.push_back(-1*slope_val);
+	fMySlope.push_back(slope_val);
 	
 	if(ivlist[ibpm].Contains("11X12X"))
-	  fMySlope.push_back(-0.4*slope_val);
+	  fMySlope.push_back(0.4*slope_val);
       }
     }
     fSlopeMap[myRun]=fMySlope;

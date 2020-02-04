@@ -2,12 +2,19 @@
 #include "TaAccumulator.cc"
 #include "lib/TaRunInfo_v2.cc"
 #include "LoadRunInfoMap.C"
+void correction(Int_t slug,Int_t kUseAvgSlope);
+void correction(Int_t kUseAvgSlope=1);
 
-void correction(Int_t slug=94,Int_t kUseAvgSlope=0){
+void correction(Int_t kUseAvgSlope=1){
+  for(int i=1;i<=94;i++)
+    correction(i,kUseAvgSlope);
+}
+
+void correction(Int_t slug,Int_t kUseAvgSlope){
   map<Int_t,TaRunInfo> fRunInfoMap = LoadRunInfoMap();
   TFile *cov_file = TFile::Open(Form("rootfiles/slug%d_covv.root",slug));
   TTree *cov_tree = (TTree*)cov_file->Get("covv");
-  TFile *slope_file = TFile::Open(Form("slopes/slug%d_dit_slope.root",slug));
+  TFile *slope_file = TFile::Open(Form("slopes/slug%d_dit_slope_run.root",slug)); // run averaged overconstraint slopes
   TTree *slope_tree;
   if(slope_file!=NULL || slug!=7)
     slope_tree= (TTree*)slope_file->Get("slope");

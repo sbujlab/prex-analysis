@@ -20,9 +20,11 @@ void Compare(){
 
 void Compare(TString user_cut){
   TFile *dit_file = TFile::Open("merged_dit_avg.root");
+  // TFile *dit_file = TFile::Open("merged_dit.root");
   TFile *reg_file = TFile::Open("merged_reg.root");
 
   TTree* dit_tree = (TTree*)dit_file->Get("cor_avg");
+  // TTree* dit_tree = (TTree*)dit_file->Get("cor");
   TTree* reg_tree = (TTree*)reg_file->Get("reg");
 
   TGraph* g_dit;
