@@ -8,7 +8,9 @@ void correction(Int_t slug=94,Int_t kUseAvgSlope=0){
   TFile *cov_file = TFile::Open(Form("rootfiles/slug%d_covv.root",slug));
   TTree *cov_tree = (TTree*)cov_file->Get("covv");
   TFile *slope_file = TFile::Open(Form("slopes/slug%d_dit_slope.root",slug));
-  TTree *slope_tree = (TTree*)slope_file->Get("slope");
+  TTree *slope_tree;
+  if(slope_file!=NULL || slug!=7)
+    slope_tree= (TTree*)slope_file->Get("slope");
   TString output_filename;
   if(kUseAvgSlope)
     output_filename = Form("rootfiles/slug%d_correct_avg.root",slug);

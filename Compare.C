@@ -2,20 +2,33 @@ using namespace std;
 bool compare_pair(const pair<int,int> &a, const pair<int,int> &b){
   return (a.first <  b.first);
 }
+void Compare(TString user_cut);
+void Compare();
 
 void Compare(){
-  TFile *dit_file = TFile::Open("merged_dit_run.root");
+  TCanvas *c1 = new TCanvas("c1","c1",900,600);
+  c1->cd();
+  for(int i=1;i<=94;i++){
+    TString cut = Form("&& slug==%d",i);
+    Compare(cut);
+    c1->SaveAs(Form("us_avg_width_slug%d.png",i));
+  }
+
+  Compare(" && (slug==38  || slug==39)");
+  c1->SaveAs("us_avg_width_slug38_39.png");
+}
+
+void Compare(TString user_cut){
+  TFile *dit_file = TFile::Open("merged_dit_avg.root");
   TFile *reg_file = TFile::Open("merged_reg.root");
 
-  TTree* dit_tree = (TTree*)dit_file->Get("cor");
+  TTree* dit_tree = (TTree*)dit_file->Get("cor_avg");
   TTree* reg_tree = (TTree*)reg_file->Get("reg");
 
-  TCanvas *c1 = new TCanvas("c1","c1",1200,600);
-  c1->cd();
   TGraph* g_dit;
   TGraph* g_reg;
   Int_t npt;
-  npt =dit_tree->Draw("dit_us_avg.rms/ppm:run","arm==0 && good && slug==26","goff");
+  npt =dit_tree->Draw("dit_us_avg.rms/ppm:run","arm==0 && good"+user_cut,"goff");
   Double_t* y_ptr = dit_tree->GetV1();
   Double_t* x_ptr= dit_tree->GetV2();
   Double_t* y_dit = new Double_t[npt];
@@ -40,7 +53,7 @@ void Compare(){
   g_dit->SetMarkerColor(kBlue);
   g_dit->SetLineColor(kBlue);
 
-  npt=reg_tree->Draw("reg_us_avg.rms/ppm:run","arm==0 && good && slug==26","goff");
+  npt=reg_tree->Draw("reg_us_avg.rms/ppm:run","arm==0 && good"+user_cut,"goff");
   Double_t* y_ptr1 = (Double_t*)reg_tree->GetV1();
   Double_t* x_ptr1=(Double_t*)reg_tree->GetV2();
   Double_t* y_reg = new Double_t[npt];
@@ -62,12 +75,12 @@ void Compare(){
     count++;
   }
   g_reg = new TGraph(npt,x_reg,y_reg);
-  g_reg->SetMarkerStyle(22);
+  g_reg->SetMarkerStyle(20);
   g_reg->SetMarkerSize(1.1);
-  g_reg->SetMarkerColor(kOrange);
+  g_reg->SetMarkerColor(28);
   g_reg->SetLineColor(kOrange);
   g_reg->SetFillColor(kOrange);
-  g_reg->SetFillStyle(3004);
+  g_reg->SetFillStyle(3354);
   g_reg->SetLineWidth(-9903);
   g_reg->SetLineStyle(9);
   TMultiGraph *mg = new TMultiGraph();
@@ -76,7 +89,7 @@ void Compare(){
   mg->Draw("A");
   mg->GetYaxis()->SetTitle("Us Avg Width(ppm)");
   mg->GetXaxis()->SetTitle("run number");
-  TLegend *leg = new TLegend(0.7,0.7,0.9,0.9);
+  TLegend *leg = new TLegend(0.8,0.85,1.0,1.0);
   leg->AddEntry(g_dit,"Dit. Corrected","lp");
   leg->AddEntry(g_reg,"Regression Floor","lpf");
   leg->Draw("same");
