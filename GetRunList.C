@@ -18,7 +18,7 @@ void GetRunList(Int_t run_number=4040){
   TString select_q ="SELECT run_number,int_value "; 
   TString from_q =  "FROM `a-rcdb`.conditions INNER JOIN `a-rcdb`.condition_types on  condition_types.id=condition_type_id ";
   TString order_q = "ORDER BY run_number ASC ";
-  TString where_q =  "WHERE run_number in (SELECT run_number FROM `a-rcdb`.conditions INNER JOIN `a-rcdb`.condition_types on condition_types.id=condition_type_id and text_value='Production' and name='run_type' ) and int_value between 1 and 94 and name='slug' ";
+  TString where_q =  "WHERE run_number in (SELECT run_number FROM `a-rcdb`.conditions INNER JOIN `a-rcdb`.condition_types on condition_types.id=condition_type_id and text_value='Production' and name='run_type' ) and int_value between 0 and 94 and name='slug' ";
 
   res = rcdb->Query(select_q + from_q + where_q + order_q);
 

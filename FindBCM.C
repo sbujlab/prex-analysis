@@ -5,7 +5,7 @@ TString device_list[]={"bcm_an_us","bcm_an_ds",
 		       "bcm_an_ds3","bcm_an_ds10",
 		       "bcm_dg_us","bcm_dg_ds",
 		       "unser"};
-void FindBCM(TString listname="slug_vs_run.list"){
+void FindBCM(TString listname="all_production.list"){
   TStopwatch tsw;
   Int_t nthreads=10;
   ROOT::EnableImplicitMT(nthreads);
@@ -37,7 +37,7 @@ void FindBCM(TString listname="slug_vs_run.list"){
   error_log.open("find_bcm.error");
   while(!feof(runlist)){
     TStopwatch tsw_run;
-    fscanf(runlist,"%d\t%d\n",&slug_number,&run_number);
+    fscanf(runlist,"%d\t%d\n",&run_number,&slug_number);
     TFile *input_rf = TFile::Open(Form("$QW_ROOTFILES/prexPrompt_pass1_%d.000.root",run_number));
     if(input_rf==NULL){
       error_log << " -- skip " << run_number  << endl;
