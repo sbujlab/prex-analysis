@@ -9,7 +9,15 @@ TaAccumulator::TaAccumulator(){
   n=0;
 }
 
-TaAccumulator::~TaAccumulator(){
+void TaAccumulator::DeAccumulate(Double_t s, Double_t t){
+  n--;
+  M2 -= (n+1)/n*(s-mu1)*(t-mu2);
+  mu1 -= (s-mu1)/n;
+  mu2 -= (t-mu2)/n;
+}
+
+void TaAccumulator::DeAccumulate(Double_t f1){
+  DeAccumulate(f1,f1);
 }
 
 void TaAccumulator::Update(Double_t s, Double_t t){

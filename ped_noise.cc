@@ -1,6 +1,6 @@
 #include "src/TaAccumulator.cc"
-// #include "src/TaEventRing.cc"
-void ped_noise(Int_t run_number){
+#include "src/TaEventRing.cc"
+void ped_noise(Int_t run_number=5488){
   TStopwatch *tsw = new TStopwatch();
   TString filename = Form("prexPrompt_pass1_%d.000.root",run_number);
   TFile* input = TFile::Open("$QW_ROOTFILEs/"+filename);
@@ -25,39 +25,54 @@ void ped_noise(Int_t run_number){
   }
 
   Int_t pat_counter=0;
-  TaEventRing fEventRing;
-  vector<TaAccumulator> fGoodAvg(nDet);
-  vector<TaAccumulator> fPedestalAvg(nDet);
+  TaEventRing* fEventRing = new TaEventRing();
+  vector<Double_t> fDetData(nDet);
+  TaAccumulator aProtoAccumualtor;
+  vector<TaAccumulator> fGoodAvg(nDet,aProtoAccumualtor);
+  vector<TaAccumulator> fPedestalAvg(nDet,aProtoAccumualtor);
+  vector<TH1D*>  fh1dArray(nDet);
+  gStyle->SetStatH(0.3);
+  gStyle->SetStatW(0.3);
+  for(int idet=0;idet<nDet;idet++)
+    fh1dArray[idet] = new TH1D("",Form("SAM%d",idet+1),100,-500,500);
   while(myReader.Next()){
     if(*fBCMValue<5.0){
-      fEventRing.PushBeamCurrent(*fBCMValue);
-      fEventRing.Push(fYield);
-      if( fEventRing.isReady() ){
-	vector<Double_t> fPopback = fEventRing.Pop();
+      fEventRing->PushBeamCurrent(*fBCMValue);
+      for(int idet=0;idet<nDet;idet++){
+	fDetData[idet]= (*fYield[idet])*(*fAsym[idet]);
+      }
+      fEventRing->PushDetector(fDetData);
+      if( fEventRing->isReady() ){
+	// cout << " Ring is Ready " << endl;
+	// cout << pat_counter << ":" << *fBCMValue << endl;
+	vector<Double_t> fPopback = fEventRing->Pop();
 	for(int idet=0;idet<nDet;idet++){
-	  fPedestalAvg[idet].Update(fPopback(idet));
+	  fPedestalAvg[idet].Update(fPopback[idet]);
+	  // cout << fPopback[idet]*1e6 << endl;
+	  fh1dArray[idet]->Fill(fPopback[idet]*1e6);
 	}
-      }else
-	fEventRing.Pop();
-
+      }
     }else if(*fErrorFlag==0){
       for(int idet=0;idet<nDet;idet++){
-	fRunningAvg[idet].Update((*fYield[idet])*(*fBCMValue));
+	fGoodAvg[idet].Update((*fYield[idet])*(*fBCMValue));
       }
     }
     pat_counter++;
   }
 
-  // if(input==NULL)
-  //   break;
-  // TTree *mul_tree = input->Get("mul");
-  // TEventList *elist = new TEventList("elist");
-  // mul_tree->Draw(">>elist","yield_bcm_an_us<5.0");
   cout << " ======== Beam-ON Yield ========== " << endl;
   for(int idet=0;idet<nDet;idet++){
-    cout << fRunningAvg[idet].GetMean1() << endl;
+    cout << fGoodAvg[idet].GetMean1() << " Volt ";
+    cout << fPedestalAvg[idet].GetRMS()*1e6 << " uV ";
+    cout << fPedestalAvg[idet].GetRMS()/fGoodAvg[idet].GetMean1()*1e6 << " ppm "
+	 << endl;;
   }
-  
+  TCanvas *c1 = new TCanvas("c1","c1",1000,600);
+  c1->Divide(4,2);
+  for(int idet=0;idet<nDet;idet++){
+    c1->cd(idet+1);
+    fh1dArray[idet]->Draw();
+  }
   cout << pat_counter << " patterns in " ;
   tsw->Print();
 }

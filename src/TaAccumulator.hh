@@ -7,9 +7,11 @@ typedef struct{Double_t mean,err,rms,m2,num_samples;} STAT;
 class TaAccumulator{
 public:
   TaAccumulator();
-  virtual ~TaAccumulator();
+  virtual ~TaAccumulator(){};
   void Update(Double_t s, Double_t t);
   void Update(Double_t ss);
+  void DeAccumulate(Double_t s, Double_t t);
+  void DeAccumulate(Double_t ss);
   void UpdateStat(STAT &input);
   void Merge( TaAccumulator);
   void Zero();

@@ -6,23 +6,25 @@
 class TaAccumulator;
 class TaEventRing{
 public:
-  TaEventRing(){};
+  TaEventRing();
   virtual ~TaEventRing(){};
-  oid PushBeamCurrent(Double_t input);
-  Double_t Pop(Int_t i);
-  Double_t Pop();
-  Double_t Push(vector< Double_t> >);
+  void PushBeamCurrent(Double_t input);
+  vector<Double_t> Pop();
+  void PushDetector(vector< Double_t>);
   Bool_t isReady();
 
 private:
   TaAccumulator fBeamCurrent;
-  vector< vector<Double_t>  > 
-  fRING_SIZE;
-  fThreshold;
-  fCountDowns;
-  fHoldOff;
-  fNumberOfEvent;
+  vector< vector<Double_t>  > fDataArray; // [ievt][idet]
+  vector<Double_t> fBCMdata;
+  Double_t fThreshold;
   
+  Int_t fRING_SIZE;
+  Int_t fCountDowns;
+  Int_t fHoldOff;
+  Int_t fNextToBeFilled;
+  Int_t fNextToRead;
+  Int_t fNumberOfEvent;
   ClassDef(TaEventRing,0);
 };
 
