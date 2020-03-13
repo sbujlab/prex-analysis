@@ -1,7 +1,7 @@
 #include "TaEventRing.hh"
 TaEventRing::TaEventRing(){
   fRING_SIZE = 50;
-  fHoldOff = fRING_SIZE;
+  fHoldOff = 1000;
   fThreshold = 0.1;
 
   fNextToBeFilled=0;
@@ -26,7 +26,7 @@ Bool_t TaEventRing::isReady(){
     return kFALSE;
   }
   
-  if(fBeamCurrent.GetRMS()>fThreshold){
+  if(fBeamCurrent.GetRMS()>fThreshold || fBeamCurrent.GetMean1()>5.0 ){
     // cout << " Not Stable "  << endl;
     Pop();
     fCountDowns=fHoldOff;
@@ -44,14 +44,14 @@ void TaEventRing::PushBeamCurrent(Double_t input){
 
 void TaEventRing::PushDetector(vector<Double_t> input){
   fDataArray[fNextToBeFilled] = input;
-  cout << "NTF: " << fNextToBeFilled ;  
+  // cout << "NTF: " << fNextToBeFilled ;  
   fNextToBeFilled++;
   fNextToBeFilled = fNextToBeFilled%fRING_SIZE;
 
 }
 
 vector<Double_t> TaEventRing::Pop(){
-  cout << " and NTR: " << fNextToRead << endl;  
+  // cout << " and NTR: " << fNextToRead << endl;  
   vector<Double_t> fRet = fDataArray[fNextToRead];
   fBeamCurrent.DeAccumulate(fBCMdata[fNextToRead]);
   fNextToRead++;

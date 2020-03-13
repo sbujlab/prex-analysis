@@ -1,5 +1,6 @@
 #include "src/TaAccumulator.cc"
 #include "src/TaEventRing.cc"
+
 void ped_noise(Int_t run_number=5488){
   TStopwatch *tsw = new TStopwatch();
   TString filename = Form("prexPrompt_pass1_%d.000.root",run_number);
@@ -36,23 +37,22 @@ void ped_noise(Int_t run_number=5488){
   for(int idet=0;idet<nDet;idet++)
     fh1dArray[idet] = new TH1D("",Form("SAM%d",idet+1),100,-500,500);
   while(myReader.Next()){
-    if(*fBCMValue<5.0){
-      fEventRing->PushBeamCurrent(*fBCMValue);
+    fEventRing->PushBeamCurrent(*fBCMValue);
+    for(int idet=0;idet<nDet;idet++){
+      fDetData[idet]= (*fYield[idet])*(*fAsym[idet]);
+    }
+    fEventRing->PushDetector(fDetData);
+    if( fEventRing->isReady() ){
+      // cout << " Ring is Ready " << endl;
+      // cout << pat_counter << ":" << *fBCMValue << endl;
+      vector<Double_t> fPopback = fEventRing->Pop();
       for(int idet=0;idet<nDet;idet++){
-	fDetData[idet]= (*fYield[idet])*(*fAsym[idet]);
+	fPedestalAvg[idet].Update(fPopback[idet]);
+	// cout << fPopback[idet]*1e6 << endl;
+	fh1dArray[idet]->Fill(fPopback[idet]*1e6);
       }
-      fEventRing->PushDetector(fDetData);
-      if( fEventRing->isReady() ){
-	// cout << " Ring is Ready " << endl;
-	// cout << pat_counter << ":" << *fBCMValue << endl;
-	vector<Double_t> fPopback = fEventRing->Pop();
-	for(int idet=0;idet<nDet;idet++){
-	  fPedestalAvg[idet].Update(fPopback[idet]);
-	  // cout << fPopback[idet]*1e6 << endl;
-	  fh1dArray[idet]->Fill(fPopback[idet]*1e6);
-	}
-      }
-    }else if(*fErrorFlag==0){
+    }
+    if(*fErrorFlag==0){
       for(int idet=0;idet<nDet;idet++){
 	fGoodAvg[idet].Update((*fYield[idet])*(*fBCMValue));
       }
