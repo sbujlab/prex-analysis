@@ -26,7 +26,7 @@ Bool_t TaEventRing::isReady(){
     return kFALSE;
   }
   
-  if(fBeamCurrent.GetRMS()>fThreshold || fBeamCurrent.GetMean1()>5.0 ){
+  if(fBeamCurrent.GetRMS()>fThreshold || fBeamCurrent.GetMean1()>3.0 ){
     // cout << " Not Stable "  << endl;
     Pop();
     fCountDowns=fHoldOff;
