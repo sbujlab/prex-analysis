@@ -1,39 +1,27 @@
 #include "TaEventRing.hh"
 TaEventRing::TaEventRing(){
-  fRING_SIZE = 50;
-  fHoldOff = 1000;
-  fThreshold = 0.01;
+  fRING_SIZE = 200;
+  
+  fHoldOff = 2000; // for SAM cooling down
+  
+  fThreshold = 0.05;
+  fBeamOffLimit = 2.5; // default;
+  
   fNextToBeFilled=0;
   fNextToRead=0;
   fNumberOfEvent=0;
-  fBeamOffLimit = 2.5;
 
   vector<Double_t> fDataElement; // [idet]
   for(int i =0; i<fRING_SIZE;i++){
     fDataArray.push_back(fDataElement);
     fBCMdata.push_back(0);
+    fFlag.push_back(kTRUE);
   }
 }
 
 Bool_t TaEventRing::isReady(){
   if(fNumberOfEvent<fRING_SIZE)
     return kFALSE;
-  
-  if(fCountDowns>0){
-    Pop();
-    // cout << " count down:" << fCountDowns << endl;
-    fCountDowns--;
-    return kFALSE;
-  }
-  
-  if(fBeamCurrent.GetMean1()>fBeamOffLimit ||
-     fBCMdata[fNextToBeFilled-1]>fBeamOffLimit ||
-     fabs(fBCMdata[fNextToBeFilled-1]-fBeamCurrent.GetMean1())>fThreshold){
-    Pop();
-    fCountDowns=fHoldOff;
-    return kFALSE;
-  }
-  
   return kTRUE;
 }
 
@@ -41,6 +29,30 @@ void TaEventRing::PushBeamCurrent(Double_t input){
   fNumberOfEvent++;
   fBeamCurrent.Update(input);
   fBCMdata[fNextToBeFilled] = input;
+  fFlag[fNextToBeFilled] = kTRUE;
+  
+  if(fCountDowns>0){
+    fCountDowns--;
+    for(int i=0;i<fRING_SIZE;i++)
+      fFlag[i] = kFALSE;
+  }
+
+  if(input-fBeamCurrent.GetMean1()>fThreshold ||
+     fBeamCurrent.GetMean1()>fBeamOffLimit ||
+     fBeamCurrent.GetRMS()>fThreshold){
+    
+    for(int i=0;i<fRING_SIZE;i++)
+      fFlag[i] = kFALSE;
+
+    // for(int i=0;i<fPreCut;i++){
+    //   Int_t iprev = fNextToBeFilled-i;
+    //   iprev = iprev*fRING_SIZE;
+    //   fFlag[iprev] = kFALSE;
+    // }
+    
+    fCountDowns=fHoldOff;
+  }
+  
 }
 
 void TaEventRing::PushDetector(vector<Double_t> input){
@@ -51,12 +63,14 @@ void TaEventRing::PushDetector(vector<Double_t> input){
 
 }
 
-vector<Double_t> TaEventRing::Pop(){
+Bool_t TaEventRing::Pop(vector<Double_t> &fOutput){
   // cout << " and NTR: " << fNextToRead << endl;  
-  vector<Double_t> fRet = fDataArray[fNextToRead];
+  fOutput = fDataArray[fNextToRead];
+  Bool_t fret = fFlag[fNextToRead];
   fBeamCurrent.DeAccumulate(fBCMdata[fNextToRead]);
+  
   fNextToRead++;
   fNextToRead = (fNextToRead%fRING_SIZE);
 
-  return fRet;
+  return fret;
 }

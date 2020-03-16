@@ -9,7 +9,7 @@ public:
   TaEventRing();
   virtual ~TaEventRing(){};
   void PushBeamCurrent(Double_t input);
-  vector<Double_t> Pop();
+  Bool_t Pop(vector<Double_t> &);
   void PushDetector(vector< Double_t>);
   Bool_t isReady();
   inline void SetBeamOffLimit(double limit){ fBeamOffLimit = limit;};
@@ -17,6 +17,8 @@ private:
   TaAccumulator fBeamCurrent;
   vector< vector<Double_t>  > fDataArray; // [ievt][idet]
   vector<Double_t> fBCMdata;
+  vector<Bool_t> fFlag; // [ievt]
+  
   Double_t fThreshold;
   Double_t fBeamOffLimit;
 

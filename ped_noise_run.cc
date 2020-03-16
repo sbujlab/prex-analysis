@@ -13,6 +13,8 @@ void ped_noise_run(Int_t run_number){
   TTreeReaderValue<Double_t> fErrorFlag(myReader,"ErrorFlag");
   vector< TTreeReaderValue<Double_t> > fAsym;
   vector< TTreeReaderValue<Double_t> > fYield;
+  vector<Double_t> fbcm_data;
+  vector<Double_t> fevt_data;
   Int_t nDet=fDetList.size();
   for(int idet=0;idet<nDet;idet++){
     TString chname=Form("yield_%s.hw_sum",
@@ -58,7 +60,7 @@ void ped_noise_run(Int_t run_number){
   double beam_off_adc = -346.7;
   double beam_off_uA = (beam_off_adc-pedestal)*scale;
   cout << "beam off uA " << beam_off_uA << endl;
-  fEventRing->SetBeamOffLimit(beam_off_uA+0.05);
+  fEventRing->SetBeamOffLimit(beam_off_uA+1.0);
   // ================ 
   while(myReader.Next()){
     fEventRing->PushBeamCurrent(*fBCMValue);
@@ -67,13 +69,14 @@ void ped_noise_run(Int_t run_number){
     }
     fEventRing->PushDetector(fDetData);
     if( fEventRing->isReady() ){
-      // cout << " Ring is Ready " << endl;
-      // cout << pat_counter << ":" << *fBCMValue << endl;
-      vector<Double_t> fPopback = fEventRing->Pop();
-      for(int idet=0;idet<nDet;idet++){
-	fPedestalAvg[idet].Update(fPopback[idet]);
-	// cout << fPopback[idet]*1e6 << endl;
-	fh1dArray[idet]->Fill(fPopback[idet]*1e6);
+      vector<Double_t> fPopback;
+      if( fEventRing->Pop(fPopback) ){
+	fbcm_data.push_back(*fBCMValue);
+	fevt_data.push_back(pat_counter);
+	for(int idet=0;idet<nDet;idet++){
+	  fPedestalAvg[idet].Update(fPopback[idet]);
+	  fh1dArray[idet]->Fill(fPopback[idet]*1e6);
+	}
       }
     }
     if(*fErrorFlag==0){
@@ -89,7 +92,7 @@ void ped_noise_run(Int_t run_number){
     cout << fGoodAvg[idet].GetMean1() << " Volt ";
     cout << fPedestalAvg[idet].GetRMS()*1e6 << " uV ";
     cout << fPedestalAvg[idet].GetRMS()/fGoodAvg[idet].GetMean1()*1e6 << " ppm "
-	 << endl;;
+	 << endl;
   }
   TCanvas *c1 = new TCanvas("c1","c1",1000,600);
   c1->Divide(4,2);
@@ -99,5 +102,15 @@ void ped_noise_run(Int_t run_number){
   }
   cout << pat_counter << " patterns in " ;
   tsw->Print();
-
+  TCanvas *c2 =new TCanvas("c2","c2",800,600);
+  c2->cd();
+  Int_t npt = fbcm_data.size();
+  Double_t* y_val = new Double_t[npt];
+  Double_t* x_val = new Double_t[npt];
+  for(int i=0;i<npt;i++){
+    y_val[i] = fbcm_data[i];
+    x_val[i] = fevt_data[i];
+  }
+  TGraph *g1 = new TGraph(npt,x_val,y_val);
+  g1->Draw("AP");
 }
