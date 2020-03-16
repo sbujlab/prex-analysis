@@ -13,6 +13,7 @@ void ped_noise_run(Int_t run_number){
   TTreeReaderValue<Double_t> fErrorFlag(myReader,"ErrorFlag");
   vector< TTreeReaderValue<Double_t> > fAsym;
   vector< TTreeReaderValue<Double_t> > fYield;
+  vector< TTreeReaderValue<Double_t> > fDEC;
   vector<Double_t> fbcm_data;
   vector<Double_t> fevt_data;
   Int_t nDet=fDetList.size();
@@ -60,7 +61,7 @@ void ped_noise_run(Int_t run_number){
   double beam_off_adc = -346.7;
   double beam_off_uA = (beam_off_adc-pedestal)*scale;
   cout << "beam off uA " << beam_off_uA << endl;
-  fEventRing->SetBeamOffLimit(beam_off_uA+1.0);
+  fEventRing->SetBeamOffLimit(beam_off_uA+0.1);
   // ================ 
   while(myReader.Next()){
     fEventRing->PushBeamCurrent(*fBCMValue);
@@ -71,11 +72,14 @@ void ped_noise_run(Int_t run_number){
     if( fEventRing->isReady() ){
       vector<Double_t> fPopback;
       if( fEventRing->Pop(fPopback) ){
-	fbcm_data.push_back(*fBCMValue);
+	// fbcm_data.push_back(*fBCMValue);
+	fbcm_data.push_back(fPopback[1]);
 	fevt_data.push_back(pat_counter);
 	for(int idet=0;idet<nDet;idet++){
-	  fPedestalAvg[idet].Update(fPopback[idet]);
-	  fh1dArray[idet]->Fill(fPopback[idet]*1e6);
+	  if((fPopback[idet] - fPedestalAvg[idet].GetMean1())<5*fPedestalAvg[idet].GetRMS() || fPedestalAvg[idet].GetN()<=2){
+	    fPedestalAvg[idet].Update(fPopback[idet]);
+	    fh1dArray[idet]->Fill(fPopback[idet]*1e6);
+	  }
 	}
       }
     }

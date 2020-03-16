@@ -6,7 +6,7 @@ void ped_noise(){
     ped_noise(i);
 }
 void ped_noise(Int_t slug){
-  
+  ROOT::EnableImplicitMT(8);
   TFile* slug_file = TFile::Open(Form("ped_rootfiles/slug%d.root",slug),"RECREATE");
   TTree *ped_tree = new TTree("ped","ped noise");
   ped_tree->SetMarkerStyle(20);
@@ -57,8 +57,12 @@ void ped_noise(Int_t slug){
     vector<TH1D*>  fh1dArray(nDet);
     gStyle->SetStatH(0.3);
     gStyle->SetStatW(0.3);
-    for(int idet=0;idet<nDet;idet++)
-      fh1dArray[idet] = new TH1D("",Form("SAM%d",idet+1),100,-500,500);
+    for(int idet=0;idet<nDet;idet++){
+      if(idet==1)
+	fh1dArray[idet] = new TH1D("",Form("SAM%d",idet+1),100,-800,800);
+      else
+	fh1dArray[idet] = new TH1D("",Form("SAM%d",idet+1),100,-300,300);
+    }
 
     // ================ Determine beam off readout in uA
     TTreeReaderValue<Double_t> fBCMraw(myReader_evt,"bcm_an_us.hw_sum_raw");
@@ -79,7 +83,7 @@ void ped_noise(Int_t slug){
     double beam_off_adc = -346.7;
     double beam_off_uA = (beam_off_adc-pedestal)*scale;
     cout << "beam off uA " << beam_off_uA << endl;
-    fEventRing->SetBeamOffLimit(beam_off_uA+0.05);
+    fEventRing->SetBeamOffLimit(beam_off_uA+0.10);
     // ================ 
 
     while(myReader.Next()){
@@ -91,11 +95,12 @@ void ped_noise(Int_t slug){
       if( fEventRing->isReady() ){
 	// cout << " Ring is Ready " << endl;
 	// cout << pat_counter << ":" << *fBCMValue << endl;
-	vector<Double_t> fPopback = fEventRing->Pop();
-	for(int idet=0;idet<nDet;idet++){
-	  fPedestalAvg[idet].Update(fPopback[idet]);
-	  // cout << fPopback[idet]*1e6 << endl;
-	  fh1dArray[idet]->Fill(fPopback[idet]*1e6);
+	vector<Double_t> fPopback ;
+	if(fEventRing->Pop(fPopback)){
+	  for(int idet=0;idet<nDet;idet++){
+	    fPedestalAvg[idet].Update(fPopback[idet]);
+	    fh1dArray[idet]->Fill(fPopback[idet]*1e6);
+	  }
 	}
       }
       if(*fErrorFlag==0){
@@ -105,22 +110,29 @@ void ped_noise(Int_t slug){
       }
       pat_counter++;
     }
-    if(fGoodAvg[0].GetMean1()==0)
+    if(fGoodAvg[0].GetN()==0)
       continue;
-    if(fPedestalAvg[0].GetRMS()==0)
+    if(fPedestalAvg[0].GetN()==0)
       continue;
 
     for(int idet=0;idet<nDet;idet++){
       fSamYield_ptr[idet] = fGoodAvg[idet].GetMean1();
-      fSamNoise_ptr[idet] = fPedestalAvg[idet].GetRMS()/fGoodAvg[idet].GetMean1()*1e6; // in ppm;
+      // fSamNoise_ptr[idet] = fPedestalAvg[idet].GetRMS()/fGoodAvg[idet].GetMean1()*1e6; // in ppm;
+      fSamNoise_ptr[idet] = fh1dArray[idet]->GetRMS()/fGoodAvg[idet].GetMean1(); // in ppm;
+
     }
     ped_tree->Fill();
+    cout << " **** run " << run_number << endl;
     cout << " ======== Beam-ON Yield ========== " << endl;
     for(int idet=0;idet<nDet;idet++){
       cout << fGoodAvg[idet].GetMean1() << " Volt ";
-      cout << fPedestalAvg[idet].GetRMS()*1e6 << " uV ";
-      cout << fPedestalAvg[idet].GetRMS()/fGoodAvg[idet].GetMean1()*1e6 << " ppm "
+      // cout << fPedestalAvg[idet].GetRMS()*1e6 << " uV ";
+      // cout << fPedestalAvg[idet].GetRMS()/fGoodAvg[idet].GetMean1()*1e6 << " ppm "
+      // 	   << endl;
+      cout << fh1dArray[idet]->GetRMS() << " uV ";
+      cout << fh1dArray[idet]->GetRMS()/fGoodAvg[idet].GetMean1() << " ppm "
 	   << endl;;
+
     }
     TCanvas *c1 = new TCanvas("c1","c1",1000,600);
     c1->Divide(4,2);

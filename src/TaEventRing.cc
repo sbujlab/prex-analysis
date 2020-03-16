@@ -1,10 +1,9 @@
 #include "TaEventRing.hh"
 TaEventRing::TaEventRing(){
-  fRING_SIZE = 200;
+  fRING_SIZE = 100;
+  fHoldOff = 1800; // for SAM cooling down
   
-  fHoldOff = 2000; // for SAM cooling down
-  
-  fThreshold = 0.05;
+  fThreshold = 0.03;
   fBeamOffLimit = 2.5; // default;
   
   fNextToBeFilled=0;
@@ -27,9 +26,22 @@ Bool_t TaEventRing::isReady(){
 
 void TaEventRing::PushBeamCurrent(Double_t input){
   fNumberOfEvent++;
+
+  if(input>fBeamOffLimit || 
+     fBeamCurrent.GetMean1()>fBeamOffLimit){
+    fCountDowns=fHoldOff;
+  }
+
   fBeamCurrent.Update(input);
   fBCMdata[fNextToBeFilled] = input;
   fFlag[fNextToBeFilled] = kTRUE;
+
+  if(input-fBeamCurrent.GetMean1()>fThreshold ||
+     fBeamCurrent.GetRMS()>fThreshold){
+
+    for(int i=0;i<fRING_SIZE;i++)
+      fFlag[i] = kFALSE;
+  }
   
   if(fCountDowns>0){
     fCountDowns--;
@@ -37,21 +49,6 @@ void TaEventRing::PushBeamCurrent(Double_t input){
       fFlag[i] = kFALSE;
   }
 
-  if(input-fBeamCurrent.GetMean1()>fThreshold ||
-     fBeamCurrent.GetMean1()>fBeamOffLimit ||
-     fBeamCurrent.GetRMS()>fThreshold){
-    
-    for(int i=0;i<fRING_SIZE;i++)
-      fFlag[i] = kFALSE;
-
-    // for(int i=0;i<fPreCut;i++){
-    //   Int_t iprev = fNextToBeFilled-i;
-    //   iprev = iprev*fRING_SIZE;
-    //   fFlag[iprev] = kFALSE;
-    // }
-    
-    fCountDowns=fHoldOff;
-  }
   
 }
 
