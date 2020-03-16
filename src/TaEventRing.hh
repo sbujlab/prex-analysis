@@ -12,13 +12,14 @@ public:
   vector<Double_t> Pop();
   void PushDetector(vector< Double_t>);
   Bool_t isReady();
-
+  inline void SetBeamOffLimit(double limit){ fBeamOffLimit = limit;};
 private:
   TaAccumulator fBeamCurrent;
   vector< vector<Double_t>  > fDataArray; // [ievt][idet]
   vector<Double_t> fBCMdata;
   Double_t fThreshold;
-  
+  Double_t fBeamOffLimit;
+
   Int_t fRING_SIZE;
   Int_t fCountDowns;
   Int_t fHoldOff;

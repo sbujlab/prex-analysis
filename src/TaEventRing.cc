@@ -2,12 +2,12 @@
 TaEventRing::TaEventRing(){
   fRING_SIZE = 50;
   fHoldOff = 1000;
-  fThreshold = 0.1;
-
+  fThreshold = 0.01;
   fNextToBeFilled=0;
   fNextToRead=0;
   fNumberOfEvent=0;
-  
+  fBeamOffLimit = 2.5;
+
   vector<Double_t> fDataElement; // [idet]
   for(int i =0; i<fRING_SIZE;i++){
     fDataArray.push_back(fDataElement);
@@ -26,8 +26,9 @@ Bool_t TaEventRing::isReady(){
     return kFALSE;
   }
   
-  if(fBeamCurrent.GetRMS()>fThreshold || fBeamCurrent.GetMean1()>3.0 ){
-    // cout << " Not Stable "  << endl;
+  if(fBeamCurrent.GetMean1()>fBeamOffLimit ||
+     fBCMdata[fNextToBeFilled-1]>fBeamOffLimit ||
+     fabs(fBCMdata[fNextToBeFilled-1]-fBeamCurrent.GetMean1())>fThreshold){
     Pop();
     fCountDowns=fHoldOff;
     return kFALSE;

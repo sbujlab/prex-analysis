@@ -1,4 +1,4 @@
-du_humanread_data_4501_4980.list#include "src/TaAccumulator.cc"
+#include "src/TaAccumulator.cc"
 #include "src/TaEventRing.cc"
 void ped_noise_run(Int_t run_number){
   TStopwatch *tsw = new TStopwatch();
@@ -7,6 +7,7 @@ void ped_noise_run(Int_t run_number){
   if(input==NULL)
     return;
   TTreeReader myReader("mul",input);
+  TTreeReader myReader_evt("evt",input);
   vector< TString > fDetList={"sam1","sam2","sam3","sam4","sam5","sam6","sam7","sam8"};
   TTreeReaderValue<Double_t> fBCMValue(myReader,"yield_bcm_an_us.hw_sum");
   TTreeReaderValue<Double_t> fErrorFlag(myReader,"ErrorFlag");
@@ -37,6 +38,28 @@ void ped_noise_run(Int_t run_number){
   gStyle->SetStatW(0.3);
   for(int idet=0;idet<nDet;idet++)
     fh1dArray[idet] = new TH1D("",Form("SAM%d",idet+1),100,-500,500);
+
+  // ================ Determine beam off readout in uA
+  TTreeReaderValue<Double_t> fBCMraw(myReader_evt,"bcm_an_us.hw_sum_raw");
+  TTreeReaderValue<Double_t> fBCMnsamp(myReader_evt,"bcm_an_us.num_samples");
+  TTreeReaderValue<Double_t> fBCMuA(myReader_evt,"bcm_an_us.hw_sum");
+  double bcm_adc[2];
+  double bcm_uA[2];
+  for(int i=0;i<20;i++) myReader_evt.Next();
+  myReader_evt.Next();
+  bcm_adc[0]=(*fBCMraw)/(*fBCMnsamp);
+  bcm_uA[0]=(*fBCMuA);
+  myReader_evt.Next();
+  bcm_adc[1]=(*fBCMraw)/(*fBCMnsamp);
+  bcm_uA[1]=(*fBCMuA);
+  
+  double scale = (bcm_uA[1]-bcm_uA[0])/(bcm_adc[1]- bcm_adc[0]);
+  double pedestal = bcm_adc[1]-bcm_uA[1]/scale ;  
+  double beam_off_adc = -346.7;
+  double beam_off_uA = (beam_off_adc-pedestal)*scale;
+  cout << "beam off uA " << beam_off_uA << endl;
+  fEventRing->SetBeamOffLimit(beam_off_uA+0.05);
+  // ================ 
   while(myReader.Next()){
     fEventRing->PushBeamCurrent(*fBCMValue);
     for(int idet=0;idet<nDet;idet++){
