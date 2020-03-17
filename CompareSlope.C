@@ -39,15 +39,12 @@ void CompareSlope(Int_t slug){
       Double_t *fRun = reg->GetV3();
       TString chname;
       if(bpm_name[ibpm]=="E")
-	chname= Form("%s_11X12X",det_name[idet].Data());
+	chname= Form("%s_bpm11X12X",det_name[idet].Data());
       else
-	chname= Form("%s_%s",det_name[idet].Data(),bpm_name[ibpm].Data());
+	chname= Form("%s_bpm%s",det_name[idet].Data(),bpm_name[ibpm].Data());
       
       TMultiGraph *g_dit;
-      if(slug>=4)
-	g_dit= GraphDitheringSlope(fRun,npt,chname);
-      else
-	g_dit= GraphDitheringSlope12X(fRun,npt,chname);
+      g_dit= GraphDitheringSlope(fRun,npt,slug,chname);
       mg->Add(g_reg,"p");
       mg->Add(g_dit,"l");
       mg->Draw("AP");

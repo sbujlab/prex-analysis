@@ -1,13 +1,14 @@
-TMultiGraph* GraphDitheringSlope(Double_t *fRun,Int_t npt, TString chname){
+TMultiGraph* GraphDitheringSlope(Double_t *fRun,Int_t npt, Int_t slug,
+				 TString chname){
+  TFile *slope_file= TFile::Open(Form("./averaged_slopes/slug%d_dit_slope_cyclewise_average.root",slug));
 
-  TFile *slope_file= TFile::Open("dit_averaged_slope.root");
   TTree *dit_tree = (TTree*)slope_file->Get("dit");
   Double_t *fSlopeVal  = new Double_t[npt];
   Double_t *fXcord  = new Double_t[npt];
   Double_t slope;
-  Double_t run;
-  Double_t range;
-  Double_t prev_range=-1;
+  Int_t run;
+  Int_t range;
+  Int_t prev_range=-1;
   vector<Int_t> start_pt;
   dit_tree->SetBranchAddress(chname,&slope);
   dit_tree->SetBranchAddress("run",&run);
@@ -18,7 +19,7 @@ TMultiGraph* GraphDitheringSlope(Double_t *fRun,Int_t npt, TString chname){
     for(int ipt=0;ipt<npt;ipt++){
       fXcord[ipt]=ipt;
       if(run ==fRun[ipt] ) {
-	fSlopeVal[ipt] = -slope*1e3; // old convention ,a minus sign
+	fSlopeVal[ipt] = slope*1e3; // old convention ,a minus sign
 	if(range!=prev_range){
 	  prev_range = range;
 	  start_pt.push_back(ipt);
