@@ -21,7 +21,7 @@ void CompareSlope2D(Int_t slug=90){
 				     
   TCanvas *c1 =new TCanvas("c1","c1",1300,600);
   c1->Divide(2,1);
-  c1->Print(Form("slug%d_compare_slope2d.pdf[",slug),"pdf");
+  c1->Print(Form("./plots/slug%d_compare_slope2d.pdf[",slug),"pdf");
   for(int idet=0;idet<2;idet++){
     for(int iset=0;iset<4;iset++){
       TString bpm1 = fBPMPair[iset].first;
@@ -61,10 +61,10 @@ void CompareSlope2D(Int_t slug=90){
       mg->SetTitle(Form("%s  vs %s; (ppm/um) ; (ppm/um)",
 			ch1.Data(),ch2.Data()));
       leg->Draw("same");
-      c1->Print(Form("slug%d_compare_slope2d.pdf",slug));
+      c1->Print(Form("./plots/slug%d_compare_slope2d.pdf",slug));
     }
   }
-  c1->Print(Form("slug%d_compare_slope2d.pdf]",slug));
+  c1->Print(Form("./plots/slug%d_compare_slope2d.pdf]",slug));
 }
 
 

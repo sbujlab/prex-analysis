@@ -23,7 +23,7 @@ void CompareSlope(Int_t slug){
   TCanvas *c1 = new TCanvas("c1","c1",1200,500);
   c1->SetGridx();
   c1->cd();
-  c1->Print(Form("slug%d_compare_slope.pdf[",slug),"pdf");
+  c1->Print(Form("./plots/slug%d_compare_slope.pdf[",slug),"pdf");
   for(int idet=0;idet<2;idet++){
     for(int ibpm=0;ibpm<5;ibpm++){
       c1->Clear("D");
@@ -71,10 +71,10 @@ void CompareSlope(Int_t slug){
       leg->AddEntry((TGraph*)next(),"dithering 5x5 slug average","l");
       leg->Draw("same");
 
-      c1->Print(Form("slug%d_compare_slope.pdf",slug));
+      c1->Print(Form("./plots/slug%d_compare_slope.pdf",slug));
     }
   }
-  c1->Print(Form("slug%d_compare_slope.pdf]",slug));
+  c1->Print(Form("./plots/slug%d_compare_slope.pdf]",slug));
 }
 
 
