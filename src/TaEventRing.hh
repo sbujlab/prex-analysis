@@ -3,21 +3,29 @@
 
 #include "TaAccumulator.hh"
 #include "Rtypes.h"
+#include "TaEventTypes.hh"
 class TaAccumulator;
 class TaEventRing{
 public:
   TaEventRing();
   virtual ~TaEventRing(){};
   void PushBeamCurrent(Double_t input);
-  Bool_t Pop(vector<Double_t> &);
-  void PushDetector(vector< Double_t>);
+  // Bool_t Pop(vector<Double_t> &);
+  // void PushDetector(vector< Double_t>);
+  void PushEventCounter(Double_t);
+  Int_t PopEventCounter(Double_t &);
   Bool_t isReady();
+  
   inline void SetBeamOffLimit(double limit){ fBeamOffLimit = limit;};
+  inline void SetRingSize(Int_t ring_size){ fRING_SIZE = ring_size;};
+  inline void SetHoldOff(Int_t hold_off){ fHoldOff = hold_off;};
+  
 private:
   TaAccumulator fBeamCurrent;
-  vector< vector<Double_t>  > fDataArray; // [ievt][idet]
+  // vector< vector<Double_t>  > fDataArray; // [ievt][idet]
+  vector<Double_t> fEventCounterArray;
   vector<Double_t> fBCMdata;
-  vector<Bool_t> fFlag; // [ievt]
+  vector<Int_t> fFlag; // [ievt]
   
   Double_t fThreshold;
   Double_t fBeamOffLimit;
