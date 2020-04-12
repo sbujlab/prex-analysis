@@ -72,8 +72,8 @@ void ped_noise_run(Int_t run_number){
     if( fEventRing->isReady() ){
       vector<Double_t> fPopback;
       if( fEventRing->Pop(fPopback) ){
-	// fbcm_data.push_back(*fBCMValue);
-	fbcm_data.push_back(fPopback[1]);
+	fbcm_data.push_back(*fBCMValue);
+	// fbcm_data.push_back(fPopback[1]);
 	fevt_data.push_back(pat_counter);
 	for(int idet=0;idet<nDet;idet++){
 	  if((fPopback[idet] - fPedestalAvg[idet].GetMean1())<5*fPedestalAvg[idet].GetRMS() || fPedestalAvg[idet].GetN()<=2){
