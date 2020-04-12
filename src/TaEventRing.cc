@@ -32,19 +32,18 @@ void TaEventRing::PushBeamCurrent(Double_t input){
   Int_t fRingErrorFlag=0;
   for(int i=0;i<fRING_SIZE;i++)
     fRingErrorFlag |=fFlag[i];
-  
+
+  if(fabs(input-fBeamCurrent.GetMean1())>fThreshold){
+    kErrorFlag |= kBurpCut;
+  }
+
+  fBeamCurrent.Update(input);
+  fBCMdata[fNextToBeFilled] = input;
   if(input>fBeamOffLimit || 
      fBeamCurrent.GetMean1()>fBeamOffLimit){
     fCountDowns=fHoldOff;
     kErrorFlag |=kAboveThreshold;
   }
-
-  if(fabs(input-fBeamCurrent.GetMean1())>fThreshold){
-    kErrorFlag |= kBurpCut;
-  }
-  
-  fBeamCurrent.Update(input);
-  fBCMdata[fNextToBeFilled] = input;
   
   if(fBeamCurrent.GetRMS()>fThreshold){
     kErrorFlag |=kStabitlityError;
