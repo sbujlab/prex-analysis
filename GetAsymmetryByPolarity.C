@@ -20,19 +20,28 @@ void GetAsymmetryByPolarity(Int_t slug){
 
   
   vector<TString> device_list={"reg_asym_us_avg","reg_asym_us_dd","reg_asym_usl","reg_asym_usr",
+			       "dit_asym_us_avg","dit_asym_us_dd","dit_asym_usl","dit_asym_usr",
   			       "asym_us_avg","asym_us_dd","asym_usl","asym_usr",
 			       "reg_asym_ds_avg","reg_asym_ds_dd","reg_asym_dsl","reg_asym_dsr",
+			       "dit_asym_ds_avg","dit_asym_ds_dd","dit_asym_dsl","dit_asym_dsr",
   			       "asym_ds_avg","asym_ds_dd","asym_dsl","asym_dsr",
 			       "diff_bpm4aX","diff_bpm4eX","diff_bpm4aY","diff_bpm4eY",
+			       "diff_bpm1X","diff_bpm1Y",
 			       "diff_bpm11X","diff_bpm12X","diff_bpmE",
+			       "diff_bpm4acX","diff_bpm4ecX","diff_bpm4acY","diff_bpm4ecY",
+			       "diff_bpm4aX_unrotated","diff_bpm4eX_unrotated","diff_bpm4aY_unrotated","diff_bpm4eY_unrotated",
+			       "diff_bpm1X_unrotated","diff_bpm1Y_unrotated",
+			       "diff_bpm11X_unrotated","diff_bpm12X_unrotated",
+			       "diff_bpm4acX_unrotated","diff_bpm4ecX_unrotated","diff_bpm4acY_unrotated","diff_bpm4ecY_unrotated",
+			       "asym_bpm4aWS","asym_bpm4eWS",
+			       "asym_bpm11WS","asym_bpm12WS","asym_bpm1WS",
+			       "asym_bpm4acWS","asym_bpm4ecWS",
   			       "asym_bcm_an_us","asym_bcm_an_ds","asym_bcm_dg_us","asym_bcm_dg_ds",
+			       "asym_bcm_an_ds3","asym_cav4cQ",
   			       "asym_battery1l","asym_battery2l","asym_battery1r","asym_battery2r",
   			       "asym_ch_battery_1","asym_ch_battery_2",
 			       "diff_battery1l","diff_battery2l","diff_battery1r","diff_battery2r",
   			       "diff_ch_battery_1","diff_ch_battery_2" };
-
-  // vector<TString> device_list={"asym_battery1l","asym_battery2l","asym_battery1r","asym_battery2r",
-  // 			       "asym_ch_battery_1","asym_ch_battery_2"};
 
   Int_t ndev = device_list.size();
   Int_t run_number = 0;  
@@ -72,8 +81,14 @@ void GetAsymmetryByPolarity(Int_t slug){
     if(input==NULL || redfile==NULL)
       continue;
     TTree *mul_tree = (TTree*)input->Get("mul");
+    TTree *mulc_tree = (TTree*)input->Get("mulc");
+    TTree *mulc_dit_tree = (TTree*)input->Get("mulc_dit");
+    TTree *mulc_dit_combo_tree = (TTree*)input->Get("mulc_dit_combo");
     TTree *reg_tree = (TTree*)redfile->Get("reg");
     mul_tree->AddFriend(reg_tree);
+    mul_tree->AddFriend(mulc_tree);
+    mul_tree->AddFriend(mulc_dit_tree);
+    mul_tree->AddFriend(mulc_dit_combo_tree);
     
     vector<TString> user_define={"battery1l","battery2l","battery1r","battery2r",
 				 "ch_battery_1","ch_battery_2"};
@@ -81,6 +96,19 @@ void GetAsymmetryByPolarity(Int_t slug){
     for(int i=0;i<nDefine;i++){
       mul_tree->SetAlias("diff_"+user_define[i],
 			 "asym_"+user_define[i]+"*yield_"+user_define[i]);
+    }
+    
+    vector<TString> bpm_list={"diff_bpm4a","diff_bpm4e","diff_bpm1","diff_bpm4ac","diff_bpm4ec",
+			      "diff_bpm11","diff_bpm12"};
+    Int_t nbpm = bpm_list.size();
+    for(int i=0;i<nbpm;i++){
+      if(mul_tree->GetBranch(bpm_list[i]+"X")==NULL)
+	continue;
+      
+      mul_tree->SetAlias(bpm_list[i]+"X_unrotated",
+			 Form("sqrt(2)/2*(%sX +%sY)",bpm_list[i].Data(),bpm_list[i].Data()));
+      mul_tree->SetAlias(bpm_list[i]+"Y_unrotated",
+			 Form("sqrt(2)/2*(%sY -%sX)",bpm_list[i].Data(),bpm_list[i].Data()));
     }
     
     if(mul_tree->GetBranch("diff_bpm11X")!=NULL && slug>3)
