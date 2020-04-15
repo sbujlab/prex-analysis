@@ -26,7 +26,7 @@ void find_beamoff(Int_t slug){
     fscanf(runlist,"%d/n",&run_number);
     if(run_number==0)
       continue;
-    
+    cout << "run " << run_number << endl;
     TString filename = Form("prexPrompt_pass1_%d.000.root",run_number);
     // TFile* input = TFile::Open("$QW_ROOTFILEs/"+filename);
     TFile* input = TFile::Open("/media/yetao/prex/PREXII-respin1/"+filename);
@@ -46,18 +46,19 @@ void find_beamoff(Int_t slug){
     Int_t pat_counter=0;
     TaEventRing* fEventRing = new TaEventRing();
     // ================ Determine beam off readout in uA
-    TH1D h_bcm("h_bcm","h_bcm",2100,-10,200);
+    TH1D h_bcm("h_bcm","h_bcm",21000,-10.5,199.5);
     TTree *mul_tree = (TTree*)input->Get("mul");
     mul_tree->Draw(bcm_name+">>h_bcm","","goff");
     Int_t bin_counter = h_bcm.FindFirstBinAbove(0.0);
     Double_t bin_center = h_bcm.GetBinCenter(bin_counter) ;
     if(bin_center>2.5){
-      cerr << "-- Error: lowest current readback is higher than 2.5 uA  "<< endl;
+      cerr << "-- Error: lowest current readback is "
+	   << bin_center << " higher than 2.5 uA  "<< endl;
       continue;
     }
     Double_t beam_off_uA = bin_center;
     cout << "beam off uA " << beam_off_uA << endl;
-    Double_t bumper = 0.1;
+    Double_t bumper = 0.03;
     fEventRing->SetBeamOffLimit(beam_off_uA+bumper);
     cout << "Set beam-off Limit(uA) " << beam_off_uA+bumper << endl;
   
@@ -83,7 +84,7 @@ void find_beamoff(Int_t slug){
       input->Close();
       continue;
     }
-    fprintf(output_pedcut,"%d:%s\n",run_number,beamoff_cut.Data());
+    fprintf(output_pedcut,"%d:(%s)\n",run_number,beamoff_cut.Data());
     
     vector<TString> device_list={"yield_bcm_an_us","yield_bcm_an_ds","yield_bcm_dg_us","yield_bcm_dg_ds",
 				 "diff_bcm_an_us","diff_bcm_an_ds","diff_bcm_dg_us","diff_bcm_dg_ds",
@@ -156,11 +157,18 @@ void find_beamoff(Int_t slug){
 	rescale = 76e-6*1e6;
 	unit = " (uV) ";
       }
-
-      mul_tree->Draw(Form("%s*%f",device_list[idev].Data(),rescale),beamoff_cut);
+      TString asym_chname = device_list[idev];
+      asym_chname.ReplaceAll("diff_","asym_");
+      asym_chname.ReplaceAll("yield_","asym_");
+      TString not_blinder = Form("&&((%s.Device_Error_Code&512)!=512)",asym_chname.Data());
+      mul_tree->Draw(Form("%s*%f",device_list[idev].Data(),rescale),
+		     "("+beamoff_cut+")"+not_blinder);
+      
       TH1D *hptr = (TH1D*)gPad->FindObject("htemp");
-      hptr->SetTitle(device_list[idev]+unit);
-      hptr->SetName(Form("h%d",plot_counter++));
+      if(hptr!=NULL){
+	hptr->SetTitle(device_list[idev]+unit);
+	hptr->SetName(Form("h%d",plot_counter++));
+      }
       if( idev%4==3 || idev==ndev){
 	c1->Print(Form("./plots/run%d_beam_off.pdf",run_number));
 	c1->Clear("D");

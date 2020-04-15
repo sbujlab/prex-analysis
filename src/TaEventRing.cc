@@ -1,10 +1,9 @@
 #include "TaEventRing.hh"
 TaEventRing::TaEventRing(){
   fRING_SIZE = 30;
-  // fHoldOff = 1800; // for SAM cooling down
-  fHoldOff = 300;
+  fHoldOff = 270;
   
-  fThreshold = 0.05;
+  fThreshold = 0.03;
   fBeamOffLimit = 2.5; // default;
   
   fNextToBeFilled=0;
