@@ -67,6 +67,7 @@ void GetAsymmetryByPolarityFromCut(Int_t slug){
     run_number = ((TString)line_string(0,first_col)).Atoi();
     cout << run_number << endl;
     TString ped_cut = line_string(first_col+1,line_string.Length()-first_col-1);
+    ped_cut = "("+ped_cut+")";
     TFile *input = TFile::Open(qwrootfile_path+Form("prexPrompt_pass1_%d.000.root",run_number));
     if(input==NULL)
       continue;
@@ -86,6 +87,10 @@ void GetAsymmetryByPolarityFromCut(Int_t slug){
     TH1D *htemp;
     for(int idev=0;idev<ndev;idev++){
       device_name = device_list[idev];
+      TString asym_name = device_name;
+      asym_name.ReplaceAll("diff_","asym_");
+      asym_name.ReplaceAll("yield_","asym_");
+      TString not_blinder = Form("&&((%s.Device_Error_Code & 512)!=512)",asym_name.Data());
       if(mul_tree->GetBranch(device_name)==NULL
 	 && mul_tree->GetAlias(device_name)==NULL){
 	fStat_pos[idev] = fStat_zero;
@@ -94,28 +99,28 @@ void GetAsymmetryByPolarityFromCut(Int_t slug){
 	fStat_norm[idev] = fStat_zero;
 	continue;
       }
-      mul_tree->Draw(device_name,"actual_pattern_polarity==1 && "+ped_cut,"goff");
+      mul_tree->Draw(device_name,"actual_pattern_polarity==1 && "+ped_cut+not_blinder,"goff");
       htemp  = (TH1D*)gDirectory->FindObject("htemp");
       htemp->SetName(Form("htemp%d",counts++));
       fStat_pos[idev].mean = htemp->GetMean();
       fStat_pos[idev].error = htemp->GetMeanError();
       fStat_pos[idev].rms = htemp->GetRMS();
 	
-      mul_tree->Draw(device_name,"actual_pattern_polarity==0 && "+ped_cut,"goff");
+      mul_tree->Draw(device_name,"actual_pattern_polarity==0 && "+ped_cut+not_blinder,"goff");
       htemp  = (TH1D*)gDirectory->FindObject("htemp");
       htemp->SetName(Form("htemp%d",counts++));
       fStat_neg[idev].mean = htemp->GetMean();
       fStat_neg[idev].error = htemp->GetMeanError();
       fStat_neg[idev].rms = htemp->GetRMS();
 
-      mul_tree->Draw("2*(actual_pattern_polarity-0.5)*"+device_name,ped_cut,"goff");
+      mul_tree->Draw("2*(actual_pattern_polarity-0.5)*"+device_name,ped_cut+not_blinder,"goff");
       htemp  = (TH1D*)gDirectory->FindObject("htemp");
       htemp->SetName(Form("htemp%d",counts++));
       fStat_null[idev].mean = htemp->GetMean();
       fStat_null[idev].error = htemp->GetMeanError();
       fStat_null[idev].rms = htemp->GetRMS();
       
-      mul_tree->Draw(device_name,ped_cut,"goff");
+      mul_tree->Draw(device_name,ped_cut+not_blinder,"goff");
       htemp  = (TH1D*)gDirectory->FindObject("htemp");
       htemp->SetName(Form("htemp%d",counts++));
       fStat_norm[idev].mean = htemp->GetMean();
