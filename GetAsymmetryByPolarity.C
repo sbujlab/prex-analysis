@@ -6,10 +6,10 @@ void GetAsymmetryByPolarity(){
     GetAsymmetryByPolarity(i);
 }
 void GetAsymmetryByPolarity(Int_t slug){
-  TString qwrootfile_path = "/media/yetao/prex/PREXII-respin1/";
-  TString postpan_path = "/media/yetao/prex/postpan_respin/";
+  TString qwrootfile_path = "/lustre/expphy/volatile/halla/parity/japanOutput/";
+  TString postpan_path = " /lustre/expphy/volatile/halla/parity/postpan_respin/";
 
-  TString list_name = Form("/home/yetao/workarea/prex-runlist/good_list/slug%d.list",slug);
+  TString list_name = Form("./prex-runlist/good_list/slug%d.list",slug);
   FILE* prex_runlist = fopen(list_name.Data(),"r");
   if(prex_runlist==NULL)
     return;

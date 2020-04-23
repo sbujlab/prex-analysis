@@ -1,21 +1,38 @@
 #include "device_list.hh"
-void GetAsymmetryByBlock(Int_t slug);
-void GetAsymmetryByBlock();
-void GetAsymmetryByBlock(){
+void GetAsymmetryByBlockFromCut_new(Int_t slug,Int_t user_switch);
+void GetAsymmetryByBlockFromCut_new(Int_t slug);
+void GetAsymmetryByBlockFromCut_new();
+
+void GetAsymmetryByBlockFromCut_new(){
   for(int i=1;i<=94;i++)
-    GetAsymmetryByBlock(i);
+    GetAsymmetryByBlockFromCut_new(i);
 }
-void GetAsymmetryByBlock(Int_t slug){
+
+void GetAsymmetryByBlockFromCut_new(Int_t slug){
+  GetAsymmetryByBlockFromCut_new(slug,0); // neutral
+  GetAsymmetryByBlockFromCut_new(slug,-1); // negative pattern polarity
+  GetAsymmetryByBlockFromCut_new(slug,1); // positive pattern polarity
+}
+void GetAsymmetryByBlockFromCut_new(Int_t slug, Int_t user_switch){
   TString qwrootfile_path = "$QW_ROOTFILES/";
-  TString postpan_path = " /lustre/expphy/volatile/halla/parity/postpan_respin/";
+  TString postpan_path = "/lustre/expphy/volatile/halla/parity/LagrangeOutput/rootfiles/";
 
   TString list_name = Form("./prex-runlist/simple_list/slug%d.list",slug);
   FILE* prex_runlist = fopen(list_name.Data(),"r");
   if(prex_runlist==NULL)
     return;
-  TString output_filename = Form("./rootfiles/slug%d_by_block.root",slug);
+  TString output_suffix="normal";
+  if(user_switch==1)
+    output_suffix = "pos";
+  if(user_switch==-1)
+    output_suffix = "neg";
+  if(user_switch==1)
+    output_suffix = "neutral";
+
+  TString output_filename = Form("./rootfiles/slug%d_by_block_%s_new.root",
+				 slug,output_suffix.Data());
   TFile *output = TFile::Open(output_filename,"RECREATE");
-  TTree *mini_tree = new TTree("T","");
+  TTree *mini_tree = new TTree(output_suffix,"");
   
   Int_t ndev = device_list.size(); // >> "device_list.hh"
   Int_t run_number = 0;  
@@ -41,23 +58,23 @@ void GetAsymmetryByBlock(Int_t slug){
     fscanf(prex_runlist,"%d\n",&run_number);
     cout << run_number << endl;
     TFile *input = TFile::Open(qwrootfile_path+Form("prexPrompt_pass1_%d.000.root",run_number));
-    TFile *redfile;
-    if(slug<=3)
-      redfile = TFile::Open(postpan_path+Form("prexPrompt_%d_000_regress_postpan.root",run_number));
-    else
-      redfile = TFile::Open(postpan_path+Form("prexPrompt_%d_000_regress_comboBPM.root",run_number));
+    TFile *redfile=TFile::Open(postpan_path+Form("prexPrompt_regress_%d.000.root",run_number));
     
-    if(input==NULL)
+    if(input==NULL || redfile==NULL)
       continue;
     TTree *mul_tree = (TTree*)input->Get("mul");
     TTree *mulc_tree = (TTree*)input->Get("mulc");
     TTree *mulc_dit_tree = (TTree*)input->Get("mulc_dit");
     TTree *mulc_dit_combo_tree = (TTree*)input->Get("mulc_dit_combo");
-    TTree *reg_tree = (TTree*)redfile->Get("reg"); // needed for minirun counter
+    TTree *regmul_tree = (TTree*)redfile->Get("mul"); // needed for minirun counter
+    TTree *reg_tree = (TTree*)redfile->Get("reg"); 
+
     mul_tree->AddFriend(mulc_tree);
     mul_tree->AddFriend(mulc_dit_tree);
     mul_tree->AddFriend(mulc_dit_combo_tree);
     mul_tree->AddFriend(reg_tree);
+    mul_tree->AddFriend(regmul_tree);
+
     // ==== Set Up Alias for new combination 
     vector<TString> user_define={"battery1l","battery2l","battery1r","battery2r",
 				 "ch_battery_1","ch_battery_2"};
@@ -90,13 +107,13 @@ void GetAsymmetryByBlock(Int_t slug){
 	cout << "SetAlias(): " <<det_list[idet] << " is not found in mul tree " << endl;
 	continue;
       }
-      // FIXME : uncomment later
-      // if(mul_tree->GetBranch("reg_"+det_list[idet])!=NULL){
-      // 	for(int iblk=0;iblk<4;iblk++)
-      // 	  mul_tree->SetAlias("reg_corr_"+det_list[idet]+block_format[iblk],
-      // 			     Form("%s-reg_%s",(det_list[idet]+block_format[iblk]).Data(),
-      // 				  (det_list[idet]+block_format[iblk]).Data()));
-      // }
+
+      if(mul_tree->GetBranch("reg_"+det_list[idet])!=NULL){
+      	for(int iblk=0;iblk<4;iblk++)
+      	  mul_tree->SetAlias("reg_corr_"+det_list[idet]+block_format[iblk],
+      			     Form("%s-reg_%s",(det_list[idet]+block_format[iblk]).Data(),
+      				  (det_list[idet]+block_format[iblk]).Data()));
+      }
 
       if(mul_tree->GetBranch("dit_"+det_list[idet])!=NULL){
       // FIXME: remove this part after respin2
@@ -262,17 +279,10 @@ void GetAsymmetryByBlock(Int_t slug){
     TH1D *htemp;
     TString mini_cut;
     for(int imini=0;imini<nMini;imini++){
-      mini_cut = Form("&& minirun==%d",imini);
+      // mini_cut = Form("&& minirun==%d",imini);
+      mini_cut = Form("&& mini==%d",imini);
       for(int idev=0;idev<ndev;idev++){
 	device_name = device_list[idev];
-
-	// FIXME: Skip postpan block output at this point 
-	if(device_name.Contains("reg")){
-	  for(int iblk=0;iblk<4;iblk++)
-	    fStat_mini[4*idev+iblk] = fStat_zero;
-	  // cout << " -- Warning: " << device_name << " is not found " <<endl;
-	  continue;
-	}
 
 	if(mul_tree->GetBranch(device_name)==NULL
 	  && mul_tree->GetAlias(device_name)==NULL
@@ -283,38 +293,41 @@ void GetAsymmetryByBlock(Int_t slug){
 	  continue;
 	}
 	
-	// mul_tree->Draw(device_name,"ok_cut && actual_pattern_polarity==1"+mini_cut,"goff");
-	// htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	// htemp->SetName(Form("htemp%d",counts++));
-	// fStat_pos[idev].mean = htemp->GetMean();
-	// fStat_pos[idev].error = htemp->GetMeanError();
-	// fStat_pos[idev].rms = htemp->GetRMS();
-	
-	// mul_tree->Draw(device_name,"ok_cut && actual_pattern_polarity==0"+mini_cut,"goff");
-	// htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	// htemp->SetName(Form("htemp%d",counts++));
-	// fStat_neg[idev].mean = htemp->GetMean();
-	// fStat_neg[idev].error = htemp->GetMeanError();
-	// fStat_neg[idev].rms = htemp->GetRMS();
-
-	// mul_tree->Draw("2*(actual_pattern_polarity-0.5)*"+device_name,"ok_cut"+mini_cut,"goff");
-	// htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	// htemp->SetName(Form("htemp%d",counts++));
-	// fStat_null[idev].mean = htemp->GetMean();
-	// fStat_null[idev].error = htemp->GetMeanError();
-	// fStat_null[idev].rms = htemp->GetRMS();
-	
-	for(int iblk=0;iblk<4;iblk++){
-	  mul_tree->Draw(device_name+block_format[iblk],"ok_cut"+mini_cut,"goff");
-	  htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	  htemp->SetName(Form("htemp%d",counts++));
-	  fStat_mini[4*idev+iblk].mean = htemp->GetMean();
-	  fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
-	  fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	if(user_switch==1){
+	  for(int iblk=0;iblk<4;iblk++){
+	    mul_tree->Draw(device_name+block_format[iblk],
+			   "ok_cut && actual_pattern_polarity==1"+mini_cut,"goff");
+	    htemp  = (TH1D*)gDirectory->FindObject("htemp");
+	    htemp->SetName(Form("htemp%d",counts++));
+	    fStat_mini[4*idev+iblk].mean = htemp->GetMean();
+	    fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
+	    fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	  }
 	}
 
-      }
-      
+	if(user_switch==-1){
+	  for(int iblk=0;iblk<4;iblk++){
+	    mul_tree->Draw(device_name+block_format[iblk],
+			   "ok_cut && actual_pattern_polarity==0"+mini_cut,"goff");
+	    htemp  = (TH1D*)gDirectory->FindObject("htemp");
+	    htemp->SetName(Form("htemp%d",counts++));
+	    fStat_mini[4*idev+iblk].mean = htemp->GetMean();
+	    fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
+	    fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	  }
+	}
+	if(user_switch==0){
+	  for(int iblk=0;iblk<4;iblk++){
+	    mul_tree->Draw("2*(actual_pattern_polarity-0.5)*"+device_name+block_format[iblk],
+			   "ok_cut"+mini_cut,"goff");
+	    htemp  = (TH1D*)gDirectory->FindObject("htemp");
+	    htemp->SetName(Form("htemp%d",counts++));
+	    fStat_mini[4*idev+iblk].mean = htemp->GetMean();
+	    fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
+	    fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	  }
+	}
+      } // end of channel loops;
       mini_id = imini;
       mini_tree->Fill();
     }

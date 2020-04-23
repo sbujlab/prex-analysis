@@ -1,11 +1,19 @@
 #include "device_list.hh"
-void GetAsymmetryByBlock(Int_t slug);
-void GetAsymmetryByBlock();
-void GetAsymmetryByBlock(){
+void GetAsymmetryByBlockFromCut(Int_t slug,Int_t user_switch);
+void GetAsymmetryByBlockFromCut(Int_t slug);
+void GetAsymmetryByBlockFromCut();
+
+void GetAsymmetryByBlockFromCut(){
   for(int i=1;i<=94;i++)
-    GetAsymmetryByBlock(i);
+    GetAsymmetryByBlockFromCut(i);
 }
-void GetAsymmetryByBlock(Int_t slug){
+
+void GetAsymmetryByBlockFromCut(Int_t slug){
+  GetAsymmetryByBlockFromCut(slug,0); // neutral
+  GetAsymmetryByBlockFromCut(slug,-1); // negative pattern polarity
+  GetAsymmetryByBlockFromCut(slug,1); // positive pattern polarity
+}
+void GetAsymmetryByBlockFromCut(Int_t slug, Int_t user_switch){
   TString qwrootfile_path = "$QW_ROOTFILES/";
   TString postpan_path = " /lustre/expphy/volatile/halla/parity/postpan_respin/";
 
@@ -13,9 +21,18 @@ void GetAsymmetryByBlock(Int_t slug){
   FILE* prex_runlist = fopen(list_name.Data(),"r");
   if(prex_runlist==NULL)
     return;
-  TString output_filename = Form("./rootfiles/slug%d_by_block.root",slug);
+  TString output_suffix="normal";
+  if(user_switch==1)
+    output_suffix = "pos";
+  if(user_switch==-1)
+    output_suffix = "neg";
+  if(user_switch==1)
+    output_suffix = "neutral";
+
+  TString output_filename = Form("./rootfiles/slug%d_by_block_%s.root",
+				 slug,output_suffix.Data());
   TFile *output = TFile::Open(output_filename,"RECREATE");
-  TTree *mini_tree = new TTree("T","");
+  TTree *mini_tree = new TTree(output_suffix,"");
   
   Int_t ndev = device_list.size(); // >> "device_list.hh"
   Int_t run_number = 0;  
@@ -283,38 +300,41 @@ void GetAsymmetryByBlock(Int_t slug){
 	  continue;
 	}
 	
-	// mul_tree->Draw(device_name,"ok_cut && actual_pattern_polarity==1"+mini_cut,"goff");
-	// htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	// htemp->SetName(Form("htemp%d",counts++));
-	// fStat_pos[idev].mean = htemp->GetMean();
-	// fStat_pos[idev].error = htemp->GetMeanError();
-	// fStat_pos[idev].rms = htemp->GetRMS();
-	
-	// mul_tree->Draw(device_name,"ok_cut && actual_pattern_polarity==0"+mini_cut,"goff");
-	// htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	// htemp->SetName(Form("htemp%d",counts++));
-	// fStat_neg[idev].mean = htemp->GetMean();
-	// fStat_neg[idev].error = htemp->GetMeanError();
-	// fStat_neg[idev].rms = htemp->GetRMS();
-
-	// mul_tree->Draw("2*(actual_pattern_polarity-0.5)*"+device_name,"ok_cut"+mini_cut,"goff");
-	// htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	// htemp->SetName(Form("htemp%d",counts++));
-	// fStat_null[idev].mean = htemp->GetMean();
-	// fStat_null[idev].error = htemp->GetMeanError();
-	// fStat_null[idev].rms = htemp->GetRMS();
-	
-	for(int iblk=0;iblk<4;iblk++){
-	  mul_tree->Draw(device_name+block_format[iblk],"ok_cut"+mini_cut,"goff");
-	  htemp  = (TH1D*)gDirectory->FindObject("htemp");
-	  htemp->SetName(Form("htemp%d",counts++));
-	  fStat_mini[4*idev+iblk].mean = htemp->GetMean();
-	  fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
-	  fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	if(user_switch==1){
+	  for(int iblk=0;iblk<4;iblk++){
+	    mul_tree->Draw(device_name+block_format[iblk],
+			   "ok_cut && actual_pattern_polarity==1"+mini_cut,"goff");
+	    htemp  = (TH1D*)gDirectory->FindObject("htemp");
+	    htemp->SetName(Form("htemp%d",counts++));
+	    fStat_mini[4*idev+iblk].mean = htemp->GetMean();
+	    fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
+	    fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	  }
 	}
 
-      }
-      
+	if(user_switch==-1){
+	  for(int iblk=0;iblk<4;iblk++){
+	    mul_tree->Draw(device_name+block_format[iblk],
+			   "ok_cut && actual_pattern_polarity==0"+mini_cut,"goff");
+	    htemp  = (TH1D*)gDirectory->FindObject("htemp");
+	    htemp->SetName(Form("htemp%d",counts++));
+	    fStat_mini[4*idev+iblk].mean = htemp->GetMean();
+	    fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
+	    fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	  }
+	}
+	if(user_switch==0){
+	  for(int iblk=0;iblk<4;iblk++){
+	    mul_tree->Draw("2*(actual_pattern_polarity-0.5)*"+device_name+block_format[iblk],
+			   "ok_cut"+mini_cut,"goff");
+	    htemp  = (TH1D*)gDirectory->FindObject("htemp");
+	    htemp->SetName(Form("htemp%d",counts++));
+	    fStat_mini[4*idev+iblk].mean = htemp->GetMean();
+	    fStat_mini[4*idev+iblk].error = htemp->GetMeanError();
+	    fStat_mini[4*idev+iblk].rms = htemp->GetRMS();
+	  }
+	}
+      } // end of channel loops;
       mini_id = imini;
       mini_tree->Fill();
     }
