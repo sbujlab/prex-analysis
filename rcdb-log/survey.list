@@ -1,0 +1,1612 @@
+3130,0,Calibration,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3131,0,Test,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
+3132,0,Test,OUT,FLIP-RIGHT,Good,0,- No comment -
+3133,0,Test,OUT,FLIP-RIGHT,Good,0,- No comment -
+3134,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3135,0,Calibration,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3136,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3137,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
+3138,0,Calibration,OUT,FLIP-RIGHT,NoFlag,2,- No comment -
+3139,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
+3140,0,Production,OUT,FLIP-RIGHT,Good,2,- No comment -
+3141,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3142,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3143,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3145,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3146,0,Production,OUT,FLIP-RIGHT,Bad,0,There are about 20000 events starting at event 200000 that look good. A very trippy and noisy run.
+3147,0,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3148,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3149,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3150,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3151,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3152,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3153,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3154,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3155,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3156,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3157,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3158,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3159,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3160,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3161,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3162,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3163,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3164,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3165,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3166,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3167,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3168,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3169,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3170,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3171,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3172,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3173,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3174,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3175,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3176,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3177,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3178,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3179,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3180,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3181,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3182,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3183,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3184,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3185,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3186,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3187,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3188,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3189,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3190,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3191,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3192,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3193,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3194,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3195,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3196,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3197,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3198,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3199,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3200,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3201,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3202,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3203,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3204,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3205,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3206,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3207,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3208,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3209,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3210,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3211,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3212,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3213,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3214,0,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3220,0,Junk,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3288,0,Production,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3289,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3290,0,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3291,0,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3292,0,Production,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3302,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3303,1,Test,OUT,FLIP-RIGHT,NoFlag,0,BMW ON
+3305,1,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3307,1,Production,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3308,1,Production,OUT,FLIP-RIGHT,Good,0,BMW ON
+3310,1,Production,OUT,FLIP-RIGHT,Good,0,CODA disconnected during run. BMW ON
+3311,1,Production,OUT,FLIP-RIGHT,Good,0,BMW ON
+3314,1,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3316,1,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3318,1,Production,OUT,FLIP-RIGHT,Good,0,BMW OFF
+3319,1,Production,OUT,FLIP-RIGHT,Good,0,Although shift crew comment says bmod off, bmw is actually on. Please correct it. BMW ON
+3320,1,Production,OUT,FLIP-RIGHT,Good,0,BMW actually on.
+3321,1,Production,OUT,FLIP-RIGHT,Good,0,BMW actually on.
+3322,1,Production,OUT,FLIP-RIGHT,Good,0,BMW was actually on.
+3323,1,Production,OUT,FLIP-RIGHT,Good,0,BMW was actually on.
+3324,1,Production,OUT,FLIP-RIGHT,Good,0,BMW was actually on.
+3327,1,Production,OUT,FLIP-RIGHT,Good,0,Unstable beam current accompanied by increased regressed detector widths. BMW actually on.
+3328,1,Production,OUT,FLIP-RIGHT,Good,0,BMW was ON
+3329,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3330,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3331,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3332,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3333,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3334,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3335,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3336,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3337,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3338,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3339,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3340,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3341,1,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3342,1,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3343,1,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3344,1,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3346,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3347,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3348,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3349,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3350,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3351,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3352,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3353,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3354,2,Production,IN,FLIP-RIGHT,Good,0,https://hallaweb.jlab.org/parity/prex/onlinePlots/summary/2019-07-15/run3354_000/run3354_000_summary_bcm.pdf;;The ErrorFlag==0 cut is not doing a very good job at removing the noise from beam trips especially in the bcm's. It is evident in the bpm's too, its just more obvious in the bcm's
+3355,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3356,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3357,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3358,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3363,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3364,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3365,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3366,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3368,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3369,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3370,2,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3371,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3372,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3373,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3374,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3375,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3376,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3377,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3378,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3379,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3380,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3381,2,Production,IN,FLIP-RIGHT,Good,0,Added event cut .conf file with :430000 cut
+3382,2,Test,IN,FLIP-RIGHT,Bad,0,- No comment -
+3383,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3384,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3385,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3386,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3387,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3388,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3389,2,Test,IN,FLIP-RIGHT,NoFlag,0,Beam Off run used to verify the quality of new BCM power supply - looking at pedestals
+3390,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3391,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3392,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3393,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3394,2,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3395,3,Pedestal,OUT,FLIP-RIGHT,NoFlag,0,This run is a calibration of the BCMs (after having their power supply replaced: https://logbooks.jlab.org/entry/3705100)
+3396,3,Calibration,OUT,FLIP-RIGHT,NoFlag,0,This is a BPM calibration at 50+-10uA in iocse 9 and 10: https://logbooks.jlab.org/entry/3705264
+3397,3,Calibration,OUT,FLIP-RIGHT,NoFlag,0,See: https://logbooks.jlab.org/entry/3705329;;Entry 10-40k: Run starts at end of current scan, 40uA beam, no target in.;Entry 40-80k: Target is masked and target moved to 208Pb. 50uA requested.;Entry 80-90k: 50uA requested, only 40uA received.;Entry 90k-100k: call MCC and request 50uA. 50uA received.;End of run: ready for production running . stop run 3397
+3398,3,Production,OUT,FLIP-RIGHT,Good,0,bpm's weird for the first 10 minutes of run;;FFB was on, starting at 00:30 and ending at 00:47, this data is tainted, but still interesting for some;;Putting a first 30k events cut out fixes this data
+3399,3,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3400,3,Production,OUT,FLIP-RIGHT,Good,0,BPM 4eY is showing some excess noise, but it is regressible in main detectors
+3401,3,Production,OUT,FLIP-RIGHT,Good,0,BCM an_ds and an_us are no longer in synch it appears. There is significant double peaking. BPM 4eY still has noise issues from 3400
+3402,3,Production,OUT,FLIP-RIGHT,Good,0,Still see BCM dd double peaking, noisy 4eY
+3403,3,Production,OUT,FLIP-RIGHT,NeedCut,0,ROC disconnect; had to kcoda;;Shorter run than usual.;;Still see BPM 4eX and Y noise, and BCM DD still large (60 ppm);;Cameron-Oct-23-2019: This run needs X and Y min/max cuts as there are uncontrolled beam excursions even after all of Sakib's cuts
+3404,4,Production,OUT,FLIP-RIGHT,NeedCut,0,Still see BCM DD and BPM 4e noise;Minirun 6 has very large (600 ppm) RMS on US_avg corrected main detectors;This needs investication;;Cameron Oct 23 2019: with the new engine the cuts miss the beam excursions now - needs a amplitude min/max cut on X and Y
+3405,4,Production,OUT,FLIP-RIGHT,Good,0,Robert Radloff: bcm asym plots show a decent size dip in the widths. it doesnt seem to show up anywhere else in the plots.;;Cameron: The BCM DD problem persists, though it is not double peaked and only 30 ppm (was 15 before BCM power supply change);BPM 4e problem persists
+3406,4,Production,OUT,FLIP-RIGHT,Good,0,RR: 25 minute beam down. Probably fine as long as error flag is doing its job.;;Cameron: The BCM DD double peaking is back, BPM issue looks less noticeable to me ...
+3407,4,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3416,4,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3417,4,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3418,4,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3419,4,Production,OUT,FLIP-RIGHT,Suspicious,0,This run was a reinitializing beam run and had no charge feedback running. The charge asymmetry is large, and it swamps other runs in a slug. Marking as suspicious and needs cuts if anyone wants to salvage it.
+3420,4,Production,OUT,FLIP-RIGHT,Good,0,Cameron: ;* first 40k events had beam excursion, need to set a event cut on this run.;* BCMs start off noisier (120ppm instead of 80ppm...) but DD is smaller (24 ppm, instead of 45 or 60 from this morning, but not the 18 ppm from Monday...);* BPMs noise got better too, though 4eX still has larger diff width (10 um).
+3421,4,Production,OUT,FLIP-RIGHT,Good,0,Still has noisy BCMs and has seemingly better BCMs DD and BPMs
+3422,4,Production,OUT,FLIP-RIGHT,Good,0,BCM DD got worse in this run;Cameron: The BPM 4eY signal got really noisy at the end of this run... strange, and probably the first time this happened
+3424,5,Calibration,OUT,FLIP-RIGHT,NeedCut,0,Current scan run, up to 70 uA;Scans are production, when bcm cuts are applied
+3425,5,Production,OUT,FLIP-RIGHT,Good,0,First 70 uA production run;Maindets DS saturating?;Noisy current during this run, and BCMs at 150 ppm
+3426,5,Production,OUT,FLIP-RIGHT,Good,0,Second 70 uA production run;Maindets DS saturating?
+3427,5,Production,OUT,FLIP-RIGHT,Good,0,70 uA running, the BCM DD gets better, though BCMs themselves are still noisy.
+3428,5,Production,OUT,FLIP-RIGHT,Good,0,BCM Double Differencehas gone back to ideal it appears, though BCMs are 150 ppm widths
+3429,5,Calibration,OUT,FLIP-RIGHT,NeedCut,0,coda crashed;;Has first 10k good 70 uA events, needs cut I guess -> bcm cut will be applied to make this safe
+3430,5,Pedestal,OUT,FLIP-RIGHT,NeedCut,0,Current ramp, event cuts aren't killing anything other than beam instabilities (i.e. the ramp discontinuities);;Suspicious: and apparently has no Aq feedback (7ppm), possibly due to fast ramping
+3431,5,Parityscan,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3432,5,Parityscan,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3433,5,Production,OUT,FLIP-RIGHT,Suspicious,0,charge feedback wasnt working properly;10 ppm charge asym;Killed by Compton IOC->Fastlogger->Blinder
+3434,6,Production,OUT,FLIP-RIGHT,Good,0,Insufficient GoodEvents (too many trips) -> 38k or so good multiplets.;0.6 ppm charge asymmetry as a result (a bit high);Compton IOC problem doesn't afflict this run.
+3435,6,Production,OUT,FLIP-RIGHT,Good,0,Data looks good
+3436,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good!
+3437,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good
+3438,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good
+3439,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good.;;Right and Left main detectors see non-trivially different widths in main detectors
+3440,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good;;Main dets still not matching in widths
+3441,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good;Main dets still not matching widths;Funny tail in BCM distributions, but regresses out I think, not an issue (though it may be why BCM DD looks 20 ppm instead of 17 or so from prior runs)
+3442,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good;Main dets still not matching RMSs between arms;BCM DD looks a bit worse (22ppm)
+3443,6,Production,OUT,FLIP-RIGHT,Good,0,Looks good;Main dets still don't match between Arms (RMSs);BCM DD still ~21 ppm (was 18 earlier in morning)
+3444,7,Production,IN,FLIP-RIGHT,Good,0,Looks good;Main dets RMSs don't match between arms still;DD BCM still ~22 ppm
+3445,7,Production,IN,FLIP-RIGHT,Good,0,Looks good;Main dets still don't match R vs L RMS;BCM DD now at 25 ppm level
+3446,7,Production,IN,FLIP-RIGHT,Good,0,BCM DD level now at 45 ppm level and clearly double peaked!;Main dets still don't match RMS between arms, otherwise its fine.
+3447,6,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3448,6,Calibration,OUT,FLIP-RIGHT,Bad,0,This is a very short amount of 50 uA data (lots of low current) and so only 16k events make it in.... the regression works, but BCM DD is quite noticable (45 ppm)
+3449,6,Calibration,OUT,FLIP-RIGHT,NoFlag,0,JAPAN analysis claims it is a no beam run....
+3450,6,Production,OUT,FLIP-RIGHT,Good,0,BPM cut was done and width got much better - salvaged. The injector people were doing unspeakable things to the BPMs
+3451,6,Production,OUT,FLIP-RIGHT,Good,0,Needs BPM cuts, otherwise OK;BPM cut was done and width got much better - salvaged
+3452,6,Production,OUT,FLIP-RIGHT,Good,0,Injector/PQB studies mess with BPMs too much in first half of the run.;;BPM cut was done and width got much better - salvaged
+3453,8,Production,IN,FLIP-RIGHT,Good,2,Begin slug 8 (IHWP IN and FLIP RIGHT);Charge feedback seems to not be working well because charge asym is 2.319, which seems odd.;;BCM DD is quite large in this ~ 53 ppm;And detector resolution seems larger than normal;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3454,8,Production,IN,FLIP-RIGHT,Good,2,Midrun RHRS Q2 lost current so that will most likely affect data for this run.;;This run is where Q2 tripped... during the last 2 miniruns - event 350k onwards;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3455,8,Production,IN,FLIP-RIGHT,Good,2,Notice that the charge asymmetry is pretty badly double peaked in this run.;;Q2 was lost the whole time for Right Arm, but Left Arm is OK;;Q2 was completely lost at ~ 103k events, so reprompting with :100k event cut place should hopefully fix regression, unless it is a charge asymmetry issue somehow (which depending of frequency could be a real problem);;The bad charge asymmetry makes we want to ditch this run entirely... question for 11 am meeting
+3477,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3478,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3479,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3480,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3481,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3482,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3483,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3484,8,Calibration,IN,FLIP-RIGHT,NoFlag,2,- No comment -
+3486,8,Production,IN,FLIP-RIGHT,NeedCut,2,FFB test;Needs cuts if we want to salvage the first 100k events. last 350 k events are probably too messy.;Otherwise the first 100k look good;Aq ~8 ppm, too large, no FB on?;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3487,8,Production,IN,FLIP-RIGHT,NeedCut,2,FFB tests some more;;Large Aq ~13 ppm, seems Aq FB wasn't on;;Otherwise good data and regression works. Needs Aq investigation to proceed;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3488,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3489,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3490,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me - But has one position excursion that may need more attention;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3491,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me - but diff_bpm4eX is actually quite noisy, maybe an issue;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3492,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me - same BPM 4eX noise as 3491, otherwise data looks good;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3493,8,Production,IN,FLIP-RIGHT,Good,2,MCC messed up the settings we requested. ffb was on for the start;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3494,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me - noisy BPM 4eX again, otherwise looks fine;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3495,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me, same noisy BPM 4eX;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3496,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me, maybe a bit noisier than the prior runs (a lot got cut by BPM 4e and 4a stability cuts);;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3497,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me, same as prior runs;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3498,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me, same as prior runs;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3499,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me, same as all night;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3500,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Good, the BPM 4eX has less noise in it now...;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3501,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Good, same as 3500 (less noisy BPM, also no trips 2 runs in a row!);;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3502,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Good;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3503,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Good, noise in BPM ~8 um width;;;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3504,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good to me, same as 3503, but needs relaxed cut to tell exactly how good it is;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3505,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3506,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good to me, but it has a 2ppm charge asymmetry;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3507,8,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good to me, mostly beam trip;;Slug 8 has RQ2 failure, will throw away all R arm data for this slug
+3523,9,Parityscan,OUT,FLIP-RIGHT,NoFlag,2,Cameron: Aq testing - huge % level Aq from time to time, probably not salvageable for production.
+3524,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: the beam definitely moved during the first few thousand events - needs BPM cuts - probably will reduce the Main det noise by ~15 % hopefully;Cuts applied, and it seems to help a bit, but there still are a few events with huge offsets. Leaving in for now. If it shows up in slug plots then we'll fix.;;Update cuts: cutting out first 15k events to avoid strange BPM behavious periods
+3525,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: large BCM width/double peaking (2x width - 250ppm);goes away next run
+3526,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: BCM looks better this run
+3527,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Looks good
+3528,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Looks good
+3529,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Looks good
+3530,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: there is a non-trivial beam excursion at the beginning of the run. Bosses say its ok
+3531,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good
+3532,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: There is a beam movement that isn't cut away in BPM 12 X and it may need special attention - Bosses say its ok
+3533,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Very trippy, some uncut beam movements, but otherwise regression works and its stable
+3534,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Beautiful beam
+3535,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good to me
+3536,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good
+3537,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good
+3538,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: good
+3539,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: The beam moved around, but it looks ok
+3540,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Beam excursions around 3540 - bosses say its ok
+3541,9,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good
+3543,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: Good
+3544,10,Production,IN,FLIP-RIGHT,Bad,2,Cameron: no data passes cuts - BPM saturation
+3545,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: cut out on first 50 k events to go away, recovering from FFB problems
+3546,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good
+3547,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good
+3548,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good. Post trip, at end of run, beam changed spots.. probably ok.;;Update: cutting out end of run trip with BPM yield cut all > 1.25 4eY
+3549,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good, but there is a big beam movement that appears to be slow enough to not affect the position differences;;Update: Out of fear of hitting copper we are cutting everything > 0.5 mm away from nomical. That means first 160k events are killed now -> new bad cuts applied
+3550,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good
+3551,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: good, has a long trip + beam excursion, but its fine (according to the bosses)
+3552,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good to me
+3553,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: only a few thousand Muls survive....
+3554,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: Looks good to me (a bit unstable beam, but ok after cuts)
+3555,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: First run in "always on" FFB mode;BCM widths are even wider now (180 ppm instead of 130 as earlier in morning);FFB on means the BPMs have more noise. Noisier in Y especially, but Regression works, and the FFB system locks the positions nicely.
+3556,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: FFB on phase, looks good
+3557,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: The BPMs look noisier as FFB is on now, but now the Current has a double peaking (250 ppm width or so, and 0.4 ppm mean). Looks ok
+3558,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: broad BCM noise again, 280 ppm widths Aq, looks good
+3559,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good, but BCM is still wide (not double peaked now...)
+3560,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: wide BCM widths still, 0.4 ppm Aq, and there is a BCM spike not killed by stability cut...
+3561,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good
+3562,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: looks good
+3563,10,Production,IN,FLIP-RIGHT,Good,2,Cameron: Everything looks pretty good
+3564,11,Production,OUT,FLIP-RIGHT,Bad,2,Cameron: main det HV off the whole run, all gets cut
+3565,11,Production,OUT,FLIP-RIGHT,Bad,2,Cameron: main det hv off the whole run, all gets cut
+3566,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good, but wider BCM Aq and Main Dets than normal
+3567,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks better. The BCM and detector widths went down nicely. We are investigating whether the injector has clipping issues or something like that.
+3568,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: the BPM 4aY is broader than I remember, but it had a bit of movement and FFB is now on always.. so its ok. Main det regressed widths and BCM noise look better too
+3569,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: Everything looks normal to me for FFB on status
+3570,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good to me
+3571,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: There is a regression defying tail in the main detectors. The only thing I see that looks bad is the BPM 12X FFB off times where the signal jumps by 50 um - it looks like there is bimodal fitting on BPM 4eX - needs cuts;;Its actually due to blinder failing! ;Devi: Glitch is fixed, though the blinder is still 0'd out.
+3572,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good
+3573,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: needs cut - has 1.4 ppm Aq mean due to 33k mul to 42k mul Aq feedback failure.;Devi: applied cut CodaEventNumber>132000&&CodaEventNumber<172000 .... Aq is now ~0.2ppm
+3574,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: clearly has energy slippage during beam mod. This is now a feature of FFB on/off running mode. Looks good
+3575,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks fine
+3576,11,Production,OUT,FLIP-RIGHT,Good,2,Cameron: looks good
+3591,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3592,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3593,12,Production,IN,FLIP-RIGHT,Bad,0,Devi: This is a short test run @50uA. Aq mean is large
+3594,12,Calibration,IN,FLIP-RIGHT,Bad,0,Devi: HV callibration @70uA
+3595,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3596,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3597,12,Calibration,IN,FLIP-RIGHT,Bad,0,Devi:   RMS (after regression) is fluctuating between miniruns. Looks like current scan run!. It is a current scan, bad Aq. The BPM4ac is saturating the whole time. The BPM 4eX is very wide (12 um widths)
+3598,12,Parityscan,IN,FLIP-RIGHT,Bad,0,Devi: rcdb says current scan but BCM yields are ~70uA, RMS on detectors look OK!. ;    128 ppm charge asymmetry in BCMs, no Aq running ? -> There are 3 periods of different avg Aq, so maybe a cut will cut out the very large bad Aq stuff;    BPM 4ac still saturating and 4eX still 12 um widths
+3599,12,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3600,12,Calibration,IN,FLIP-RIGHT,Bad,0,Devi: Aq feedback off, very short run with elevated det widths and too big Aq mean.
+3601,12,Production,IN,FLIP-RIGHT,Bad,0,Devi: ~4X RMS (det reg_asym). Note: Aq feedback off, RHWP rotated back to nominal value;    There is large BPM noise (20 um widths in the online plots, though it may be some strange outliers)
+3602,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3603,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3604,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3605,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3606,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3607,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3608,12,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3614,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3615,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3616,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3617,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3618,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3619,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3620,12,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3621,13,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+3622,13,Production,OUT,FLIP-RIGHT,Good,0,Cameron: first good production run of slug 13 (IHWP out flip right)
+3623,13,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3624,13,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3625,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Mini-run 0 had too large detector widths ->"Fixed after bad_event_cut"
+3626,13,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3628,13,Production,OUT,FLIP-RIGHT,Bad,0,Devi: Very short run (~5.5k events) with big Aq mean
+3629,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Aq mean is large-> seems like Aq feedback was messed up;;Cameron: Cut out the large Aq portion of this run, then proceed.;Devi: Cut out first two miniruns then good
+3630,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Detector widths are fluctuating between mini-runs. First run with detector width started increasing.;;Cameron: Good - we know this is target related and its OK
+3631,13,Production,OUT,FLIP-RIGHT,Good,0,Detector widths become worse. Beam current fluctuating. Normalized detector yield is decreasing over time.;;Cameron: Good - we know this is target related and its OK
+3632,13,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Good - we know this is target related and its OK
+3633,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Normalized detector yield is increasing over tie (oppsite to run 3632). Regressed detectors are correlate. Regressed detector widths are larger.;;Cameron: Good - we know this is target related and its OK
+3634,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Normalized detector yield is increasing over time (opposite to run3632). Regressed detectors are correlated. regressed detector widths are larger.;;Cameron: Good - we know this is target related and its OK
+3635,13,Production,OUT,FLIP-RIGHT,Good,0,Normalized detector yield is increasing over time (opposite to run3632). Regressed detectors are correlated. Regressed etector widths are larger.;;Cameron: Good - we know this is target related and its OK
+3636,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: Long beam trip during the run. Normalized detector yield is decreasing again. Regressed detector widths are larger.;;Cameron: Good - we know this is target related and its OK
+3638,13,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3639,13,Test,OUT,FLIP-RIGHT,Bad,0,Devi: Beam current is ~3.4uA
+3640,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: This run was taken for various tests after the collimator temperature increased. So bad event cuts have been applied in the required event reanges.
+3641,13,Production,OUT,FLIP-RIGHT,Good,0,Devi: This run was taken for various tests after the collimator temperature increased. So bad event cuts have been applied in the required event reanges.
+3642,13,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3643,13,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3644,14,Test,IN,FLIP-RIGHT,Bad,0,Devi: Target Troubleshooting.
+3645,14,Calibration,IN,FLIP-RIGHT,Bad,0,Devi: Current Callibration Scan
+3646,14,Parityscan,IN,FLIP-RIGHT,Bad,0,Devi: PITA Scan
+3647,14,Production,IN,FLIP-RIGHT,Bad,0,Devi: Beam current ~20uA. No event passed event_cuts. Attempting production but having some FFB issues
+3648,14,Production,IN,FLIP-RIGHT,Bad,0,Devi: Attempting production but having some FFB issues. Too short events. Big Aq mean.
+3649,14,Production,IN,FLIP-RIGHT,Good,0,Devi: Short run with many beam trips. Caryn says "Attempting production but having some FFB issues"
+3650,14,Production,IN,FLIP-RIGHT,Good,0,Devi: BPM11 has saturated for a long time. Rest of the data looks gook.
+3651,14,Production,IN,FLIP-RIGHT,Good,0,Devi: BPM11 has saturated couble of times. Rest of the data looks good.
+3652,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3653,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3654,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3655,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3656,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3657,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3658,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3659,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3660,14,Production,IN,FLIP-RIGHT,Good,0,Devi: DAQ problem. No Event recorded. From WAC meeting on 10/30/2019 added this to Good run.
+3661,14,Production,IN,FLIP-RIGHT,Good,0,Devi: Very short run. Large Aq.  From WAC meeting on 10/30/2019 added this to Good run.
+3663,14,Production,IN,FLIP-RIGHT,Good,0,Devi: DAQ problem. Large Aq.  From WAC meeting on 10/30/2019 added this to Good run.
+3664,14,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3666,14,Production,IN,FLIP-RIGHT,Good,0,Devi: Quad problem towards the end of the run. Applied bad_event_cut. Now good
+3667,14,Test,IN,FLIP-RIGHT,Bad,0,- No comment -
+3668,14,Test,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3669,15,Production,OUT,FLIP-RIGHT,Bad,0,Devi: Very short run. BPM11 saturated for the whole run.
+3670,15,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3671,15,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3672,15,Production,OUT,FLIP-RIGHT,Good,0,Devi: Aq width increased
+3673,15,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3674,15,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3675,15,Production,OUT,FLIP-RIGHT,Good,0,Devi: Aq tripped, bad_evt_cut appalied ->now good
+3676,15,Production,OUT,FLIP-RIGHT,Good,0,Devi: Mini-run 1 has big RMS for regressed detectors. Can see a spike in bpm plots. NeedCut in that region
+3677,15,Test,OUT,FLIP-RIGHT,Bad,0,Devi: It was a short run for Aq test
+3678,16,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3679,16,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3680,16,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3681,16,Production,IN,FLIP-RIGHT,Good,0,Devi: MCC fighting to get beam in hall B. Big fluctuation (noise) in BPMs' in the second half of the run. MCC called to inform that they are going to turn off hall A FFB temporarily
+3682,16,Production,IN,FLIP-RIGHT,Good,0,Devi: MCC was trying to fix the problem in hall B
+3683,16,Production,IN,FLIP-RIGHT,Good,0,AJZ: This run has been checked for issues, it looks fine, except for problems when the BPM receives tripping signal that should be cut.;;AJZ: also, mini-run six has wide asyms.
+3684,16,Production,IN,FLIP-RIGHT,Good,0,AJZ: No issues I can see, main det widths are ideal.
+3685,16,Production,IN,FLIP-RIGHT,Good,0,AJZ: No obvious differences compared to previous runs.
+3686,17,Production,OUT,FLIP-RIGHT,Good,0,AJZ: First run after IHWP change. No unusual behavior detected (aside from known mechnical faults).;;Run is likely good.
+3687,17,Production,OUT,FLIP-RIGHT,Good,0,AJZ: No errors noticed on prompt plots or postpan widths.;Devi: asym_bcm double peaks?
+3688,17,Production,OUT,FLIP-RIGHT,Good,0,AJZ: Could see no errors.
+3689,17,Production,OUT,FLIP-RIGHT,Good,0,AJZ: Left Q1 tripped during run, widths high. Unsre about stats, not flagging this one as good until further review.;;Looks like the left detector current monitor plots shows the trip happening. Msybe the data preceding this is;still salvageable.
+3690,17,Production,OUT,FLIP-RIGHT,Good,0,AJZ: no issues seen, looks like runs have successfully recovered from the Left Q1 trip.
+3691,17,Production,OUT,FLIP-RIGHT,Good,0,AJZ: BCM double difference widths are slightly high (61.5 ppm), would be worth reviewing.;;Confirmed that charge feedback is still running.
+3692,18,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3693,18,Production,IN,FLIP-RIGHT,Good,0,Devi: LQ1 tripped during the mini-run 0 and mini-run1. Applied "bad_evt_cut"->Good
+3694,18,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3695,18,Parityscan,IN,FLIP-RIGHT,Bad,0,- No comment -
+3696,18,Parityscan,IN,FLIP-RIGHT,Bad,0,- No comment -
+3697,18,Parityscan,IN,FLIP-RIGHT,Bad,0,RHWP=500, RTP cell OFF
+3698,18,Production,IN,FLIP-RIGHT,Good,0,Devi: User had marked it as parity scan. It is a good production run.
+3699,18,Production,IN,FLIP-RIGHT,Good,0,Devi: had large Aq mean and RMS. Applied bad_evt_cuts, Aq mean gets better but RMS is still big. I marked it as a good run but suggestions are accepted.
+3700,18,Test,IN,FLIP-RIGHT,Bad,0,Devi: Double peak test. Aq mean is too large. Aq feedback off, very short run with elevated det widths.
+3701,18,Parityscan,IN,FLIP-RIGHT,Bad,0,- No comment -
+3702,18,Production,IN,FLIP-RIGHT,Good,0,LQ1 tripped during 0th and 1st mini-runs. "bad_evt_cut" fixed it.
+3703,18,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3704,18,Test,IN,FLIP-RIGHT,Bad,0,- No comment -
+3705,18,Production,IN,FLIP-RIGHT,Bad,0,Devi: Big Aq mean for every minirun. Tried bad_evt_cut in various times but did not work.
+3706,18,Production,IN,FLIP-RIGHT,Good,0,Devi: Right after this run MOLLER Quad problem->changed raster size
+3707,18,Production,IN,FLIP-RIGHT,Bad,0,Devi: MOLLER Quad problem, changed raster size
+3708,18,Production,IN,FLIP-RIGHT,Bad,0,Devi: Moller Quad problem->raster changed. Logentry 3711664;;Cameron: Per RC discussion we may have to throw these strange quad setting runs out entirely.
+3709,18,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3710,18,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3711,18,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3712,19,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3713,19,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3714,19,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3715,19,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3716,19,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3717,19,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3718,20,Production,OUT,FLIP-RIGHT,Good,1,- No comment -
+3719,20,Production,OUT,FLIP-RIGHT,Good,1,- No comment -
+3720,20,Production,OUT,FLIP-RIGHT,Good,1,- No comment -
+3721,20,Production,OUT,FLIP-RIGHT,Good,1,- No comment -
+3722,20,Production,OUT,FLIP-RIGHT,Good,1,Cameron: right arm only slug
+3726,20,Calibration,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3727,20,Calibration,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3728,20,Calibration,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3729,20,Calibration,OUT,FLIP-RIGHT,Bad,0,- No comment -
+3734,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3735,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3736,21,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3737,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3738,21,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3739,21,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3740,21,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3746,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3747,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3748,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3749,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3750,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3751,21,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3752,21,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+3754,21,Production,IN,FLIP-RIGHT,Good,0,Cameron: Cut applied to only keep the later section of good looking data. when FFB was under control.
+3755,21,Production,IN,FLIP-RIGHT,Good,0,FFB off and Ops trying to fix it. Stable beam current. Cutting out erratic beam motion and leaving good periods of beam stability
+3756,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3757,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3758,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3759,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3760,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3761,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3762,21,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3763,21,Production,IN,FLIP-RIGHT,Good,0,Cameron: there was a beam trip late that still gets beam motion in... probably doesn't need any cut
+3764,22,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3765,22,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3766,22,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3767,22,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3768,22,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3769,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3770,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3771,23,Production,IN,FLIP-RIGHT,Good,0,Devi: CODA crashed ~190k events. Not a normal end.
+3772,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3773,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3774,23,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3775,24,Production,OUT,FLIP-RIGHT,Bad,0,Devi: CODA crashed after ~26k events;Victoria: Charge Feeback off
+3776,24,Production,OUT,FLIP-RIGHT,Good,0,Devi: Normalized detector yield has double peaks. Beam energy has changed. FFB was paused in the middle of the run. ;Victoria: Bpm slow drifts for first half of run.
+3777,24,Production,OUT,FLIP-RIGHT,Good,0,Devi: normalized detector yields have double peaks. Beam energy has changed in the middle of the run.
+3778,24,Production,OUT,FLIP-RIGHT,Good,0,Devi: IOC was not working properly (anlyzer was complaining about IHWP state is not well defined)
+3779,24,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3780,24,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3781,24,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3782,24,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3783,24,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3784,24,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+3785,24,Production,OUT,FLIP-RIGHT,Good,0,some strangeness happening with the bpm widths near the end of the run.
+3786,24,Production,OUT,FLIP-RIGHT,Good,0,Victoria: Beam  current 5uA droop and recovery. Beam noise improvement after 70uA current restoration.
+3787,25,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3788,25,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3791,25,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+3792,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3793,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3794,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3795,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3796,25,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+3798,25,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3799,25,Test,IN,FLIP-LEFT,Good,0,- No comment -
+3801,25,Harp,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3802,26,Harp,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+3803,26,Production,OUT,FLIP-LEFT,Good,0,erratic beam current and positions for before long beam down.
+3804,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3805,26,Production,OUT,FLIP-LEFT,Good,0,Devi: Widths are jumping around minirun to minirun, need cuts;Victoria: FFB was turned OFF for ~1 minute by ops. This will be gut
+3806,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3807,26,Production,OUT,FLIP-LEFT,Good,0,Devi: CODA crashed
+3808,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3809,26,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3810,26,Production,OUT,FLIP-LEFT,Good,0,Devi: They stopped this run ~34K events to put in IHWP
+3811,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3812,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3813,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3814,27,Production,IN,FLIP-LEFT,Good,0,Lowered beam current to 68 mid run.
+3815,27,Production,IN,FLIP-LEFT,Good,0,lowered beam current to 66 mid run.
+3816,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3817,27,Production,IN,FLIP-LEFT,Good,0,Lowered current to 65 mid run
+3818,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3819,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3820,27,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3821,27,Production,IN,FLIP-LEFT,Good,0,VO: Last run with target D9-208Pb-D10. Lower current: higher widths
+3822,27,Production,IN,FLIP-LEFT,Good,0,VO: First run with new target:  D7-208Pb-D8
+3823,27,Production,IN,FLIP-LEFT,Good,0,VO: 2nd run with new target D7-208Pb-D8, raster size increased (back to normal)
+3824,28,Production,OUT,FLIP-LEFT,Good,0,VO: FFB paused and BeamModulation ON during beam trip and recovery. shows up as small .1-.2mm glitch in in bpms. around Entry265k
+3825,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3826,28,Production,OUT,FLIP-LEFT,Good,0,VO:CodaEventNumber<929, beam excursion ~1mm. FFB is ON during this time. likely due to beam trip recovery
+3827,28,Production,OUT,FLIP-LEFT,Good,0,VO: StabilityCut doesn't pick up 1mm beam excursion during trippy beam time CodaEventNumber:290k-310k
+3828,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3829,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3830,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3831,28,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3832,28,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3833,28,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3834,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3835,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3836,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3837,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3838,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3839,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3840,28,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3841,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3842,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3843,29,Production,IN,FLIP-LEFT,Bad,0,VO: only 200 events. beam turned off for moller
+3844,29,Pedestal,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3853,29,Production,IN,FLIP-LEFT,Good,0,Devi: There was FFB issue during this run. Energy BPMs were saturating. MCC had problems in setting low gain for those BPMs.
+3854,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3855,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3856,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3857,29,Production,IN,FLIP-LEFT,Good,0,BPMs 12 and 11 were saturating during this run. We ended the run early and had MCC gain search.
+3858,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3859,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3860,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3861,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3862,29,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3863,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3864,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3865,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3866,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3867,30,Calibration,OUT,FLIP-LEFT,NeedCut,0,PITA scan
+3868,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3869,30,Test,OUT,FLIP-LEFT,Bad,0,- No comment -
+3870,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3871,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3872,30,Test,OUT,FLIP-LEFT,Bad,0,Devi: Started as a test run. Went through different phases of tests: raster, spot++, current ramp, tuning, etc
+3873,30,Test,OUT,FLIP-LEFT,Bad,0,- No comment -
+3874,30,Production,OUT,FLIP-LEFT,Good,0,Devi: Too much beam excursion. BMW off.;;Cameron: The first 200k events have been cut with a bad_events map update
+3875,30,Production,OUT,FLIP-LEFT,Good,0,Devi: 0th minirun has some events to  cut out. Test of the run looks good.
+3877,30,Production,OUT,FLIP-LEFT,Good,0,Cameron: good beam at last, first 240 Hz run, looks good
+3878,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3879,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3880,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3881,30,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+3882,30,Production,OUT,FLIP-LEFT,Bad,2,- No comment -
+3883,30,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+3884,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3885,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3886,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3887,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3888,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3889,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3890,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3891,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3892,31,Production,OUT,FLIP-LEFT,Good,2,- No comment -
+3893,31,Production,OUT,FLIP-LEFT,Good,2,Cameron: LHRS only slug
+3894,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
+3895,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
+3896,32,Test,IN,FLIP-LEFT,Bad,2,- No comment -
+3897,32,Production,IN,FLIP-LEFT,Good,0,AJZ: Very brief 12X excursion at start of good events. Consider a tiny cut?;;AJZ: Also, only 1 minirun;;Cameron: looks good to me regardless
+3898,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3899,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3900,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3901,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3902,32,Production,IN,FLIP-LEFT,Good,0,AJZ: Only 1 minirun
+3903,32,Production,IN,FLIP-LEFT,Good,0,AJZ: Only 1 minirun
+3905,32,Production,IN,FLIP-LEFT,Good,0,AJZ: Only 1 minirun
+3906,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3907,32,Production,IN,FLIP-LEFT,Good,0,AJZ: Only 1 minirun
+3909,32,Production,IN,FLIP-LEFT,Good,0,AJZ: Only 1 minirun
+3910,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3911,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3912,32,Parityscan,IN,FLIP-LEFT,Good,0,- No comment -
+3913,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3914,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3915,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3916,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3918,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3919,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3920,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3921,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3922,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3923,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3924,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3925,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3926,32,Production,IN,FLIP-LEFT,Good,0,- No comment -
+3927,32,Production,IN,FLIP-LEFT,Good,0,Cameron: LHRS only slug
+3928,32,Calibration,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3931,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good. Slightly large bcm DD, regressed maindet widths, and charge asymetry, but its a fresh ramp back to production, so its normal. The left maindet has larger RMS than desirable.
+3932,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: back to good production, even though the beam quality is spotty and lots of trips
+3933,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3934,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3935,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3936,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3937,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3938,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3939,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3940,33,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3941,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3942,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3943,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good. Detector widths creeping up, and BCM DD is getting larger too (67 ppm?)
+3944,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good again
+3945,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3946,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3947,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3948,34,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3949,34,Production,IN,FLIP-LEFT,Good,0,AJZ: looks good
+3950,34,Production,IN,FLIP-LEFT,Good,0,AJZ: looks good
+3951,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3952,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good. Double peaked Aq though
+3953,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3954,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3955,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3956,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks fine
+3957,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+3958,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3959,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+3960,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3961,35,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3962,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3963,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3964,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+3965,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3966,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3967,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3968,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3969,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3970,36,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3971,36,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3972,36,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3973,36,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3974,36,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+3975,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, some small beam excursions, but fine.
+3976,36,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3977,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3978,37,Test,OUT,FLIP-LEFT,Bad,0,Cameron: compton run, no target but beam on
+3979,37,Test,OUT,FLIP-LEFT,Bad,0,Compton run: no target but beam on
+3980,37,Test,OUT,FLIP-LEFT,NoFlag,0,Cameron: no beam
+3981,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: This run started with no beam. Has good data in it with Pb 9 target and all things are turned on nicely;Looks good
+3982,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3983,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3984,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3985,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3986,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3987,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3988,37,Test,OUT,FLIP-LEFT,NoFlag,0,No Target - Compton
+3989,37,Test,OUT,FLIP-LEFT,NoFlag,0,No Target - Compton
+3990,37,Test,OUT,FLIP-LEFT,NoFlag,0,No Target - Compton
+3991,37,Test,OUT,FLIP-LEFT,NoFlag,0,No Target - Compton
+3992,37,Test,OUT,FLIP-LEFT,NoFlag,0,No Target - Compton
+3993,37,Test,OUT,FLIP-LEFT,Bad,0,- No comment -
+3994,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good;Back to production
+3995,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3996,37,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+3997,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+3998,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good;Clear double peaking of Aq and large DD again...
+3999,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4000,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4001,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4002,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good;Analog bcm DD looks a bit wild... too much double peaking
+4003,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good;Very short run
+4004,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4005,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good;Very short run
+4007,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good;;Huge double peaking in BCMs though....
+4008,38,Production,IN,FLIP-LEFT,Good,0,Cameron:;;looks good, but main det widths are a bit larger (98 ppm instead of 96)
+4009,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good. Widths keep creeping up
+4010,38,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, widths OK again
+4011,39,Production,OUT,FLIP-LEFT,Good,0,Devi: The startup run auto log has IHWP=IN, but it should be OUT.;Cameron: looks good
+4012,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4013,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: widths got worse (115) and it looks like its due to beam motion in the Arc. Nothing really cuttable, but there are some movements that maybe are at fault for 1 minirun.;;Cuts don't seem to help other than throwing out all of the data.;;Considering this as good as possible for now.
+4014,39,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: much larger det widths (150 ppm) and it looks like significant beam jitter is at at fault;;Considering this as needs cuts for now.
+4015,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: more beam jitter, in just one minirun this time. Beam motion in the arc. Main det widths suffer again;;Considering as good... needs cuts on minirun 0 maybe... but its just noisy beam really
+4016,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: jitter at the very beginning. There is a huge beam excursion around the target, and a jump in BPM 11X. Applying cuts needed;;Manually killing beginning and 350000-375000 excursions fixes;;Looks good
+4017,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: back to smooth production
+4018,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4019,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4020,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4021,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4022,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4023,39,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4024,40,Production,IN,FLIP-LEFT,Good,0,Cameron: excursion at the end gets cut. Looks good.
+4025,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4026,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4027,40,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4028,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4029,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4030,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4031,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4032,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good
+4033,40,Production,IN,FLIP-LEFT,Good,0,Type Run Number and hit OK, Add your comment
+4034,40,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4035,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4036,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4037,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4038,41,Production,OUT,FLIP-LEFT,NeedCut,0,Cameron: 10 ppm width on short run
+4039,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4040,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok. A bit wider widths
+4041,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4042,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok. Widths continue to increase
+4043,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4044,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok, widths a bit big
+4045,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4046,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4047,41,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok. Widths are now definitely larger. (110 ppm or so)
+4048,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, still has larger widths
+4049,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4050,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4051,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok. Broader width again
+4052,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok. Broader widths, and BPM 4ecY has some strange noise that is only sort of seen in 4eY
+4053,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4054,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4055,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok. Lost control of beam motion and had bad trips, but widths back under control
+4056,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4057,42,Parityscan,IN,FLIP-LEFT,NoFlag,0,Run 4057 is a PITA scan.  Maybe also useful for production (?).
+4058,42,Production,IN,FLIP-LEFT,Good,0,FFB not working due to "Calibration Invalid".  MCC experts working to repair it.  They asked for BMW off.;;Cameron: looks ok anyway
+4059,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4060,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4061,42,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4062,42,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4063,42,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4064,42,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4066,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: trash run... awful trips
+4067,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4068,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4069,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4070,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4071,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4072,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4073,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good.;;RQ1 tripped at event 280000, so just bad event cuts those out of existence. Apply RHRS mask cuts to 4074.
+4074,43,Production,OUT,FLIP-LEFT,Good,2,Cameron: RQ1 tripped, ignoring RHRS data;Looks ok
+4075,43,Production,OUT,FLIP-LEFT,Good,2,Cameron: RQ1 tripped, ignoring RHRS data;Looks ok
+4076,43,Production,OUT,FLIP-LEFT,Good,2,Cameron: RQ1 tripped, ignoring RHRS data;Looks ok
+4077,43,Production,OUT,FLIP-LEFT,Good,2,Cameron: RQ1 tripped, ignoring RHRS data;Looks ok;;LHRS only slug
+4078,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok, RHRS back online
+4079,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4080,43,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4081,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4082,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4083,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4084,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4085,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok. Large Aq double peak
+4086,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4087,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4088,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4089,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4090,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4091,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4092,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4093,44,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok. Main det widths increasing a bit
+4094,44,Cosmics,IN,Vertical(DOWN),NoFlag,0,Cameron: empty run
+4095,44,Cosmics,OUT,Vertical(DOWN),NoFlag,0,Cameron: No beam run
+4096,44,Cosmics,IN,Vertical(DOWN),NoFlag,0,- No comment -
+4097,44,Test,IN,Vertical(DOWN),NoFlag,0,Cameron: daq test run
+4098,44,Cosmics,IN,Vertical(DOWN),NoFlag,0,- No comment -
+4100,44,Junk,IN,Vertical(DOWN),NoFlag,0,Cameron: this run is beam on, no target, recommissioning
+4101,44,A_T,IN,Vertical(DOWN),NoFlag,0,- No comment -
+4137,45,Cosmics,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4138,45,Cosmics,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4139,45,Cosmics,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4140,45,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4141,45,Parityscan,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4142,45,Parityscan,IN,FLIP-RIGHT,NoFlag,0,Cameron: looks OK
+4143,45,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4144,45,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but the detector widths are large (105 ppm instead of 95)
+4145,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: Large double-peaking BCM asyms, also large asym width;;Cameron: ok for counting in slugs, but the widths keep growing (target problems) and the beam is largely double peaked
+4146,45,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok. End of target Pb 9 and so its good, but has residual correlations for sure
+4147,45,Production,IN,FLIP-RIGHT,Good,0,Cameron: super short, but its OK
+4148,45,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good, but has huge charge assymetry double peak (fixed soon)
+4149,45,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good, but has a small BCM Aq spike at the beginning
+4150,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: Looks alright
+4151,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM double peaking creeping back in again as widths smear outward. ;Consider doing something 'bout this?;;Also, there is one bad position excursion on 4A and 4E. Consider cutting?;;Cameron: Looks good
+4152,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM double peaking creeping back in again as widths smear outward. ;Consider doing something 'bout this?;;Also, there is one bad position excursion on 4A and 4E. Consider cutting?;Cameron: no, its fine
+4153,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM double peaking getting worse
+4154,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM double-peaking persists
+4155,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM widths getting worse, and I have no clue what to do here
+4156,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: One thing I notice about the BCM double-peaking is that it's getting progressively worse;from run to run.
+4157,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM asym double-peaking getting worse
+4158,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM asym widths and peaks bad, also large downtime when we asked MCC to try and fix it
+4159,45,Production,IN,FLIP-RIGHT,Good,0,AJZ: BCM double-peaking bad, MCC has experts on-site to look
+4160,46,Production,OUT,FLIP-RIGHT,Good,0,AJZ: BCM widths getting repaired during this run. Maybe cut? Not sure if injector crew was working.
+4161,46,Junk,OUT,FLIP-RIGHT,Bad,0,no beam
+4162,46,Junk,OUT,FLIP-RIGHT,Bad,0,no beam
+4163,46,Production,OUT,FLIP-RIGHT,Good,0,no beam start of run. looks good otherwise
+4164,46,Production,OUT,FLIP-RIGHT,Good,0,AJZ: Looks okay
+4165,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: noise at beginning of run for a few events in 4a and 4e Y, but not signficant
+4166,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: some strange beam jitter for a few events a few times and coming back from trips, needs cuts.;;Looks OK post cuts
+4167,46,Junk,OUT,FLIP-RIGHT,Bad,0,CiG: no beam. improper end.
+4168,46,Test,OUT,FLIP-RIGHT,NoFlag,0,No beam
+4169,46,Production,OUT,FLIP-RIGHT,Good,0,CiG: there seems to be some steering in the beginning of the run. Strange BPM jumps again, needs cuts;Cameron: large Aq ~ 1ppm;Looks OK after cuts - special 4eX < 0.5 mm cut applied and it works
+4170,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok
+4171,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks good
+4172,46,Junk,OUT,FLIP-RIGHT,NoFlag,0,No beam
+4173,46,Junk,OUT,FLIP-RIGHT,Bad,0,No beam
+4174,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: large BPM movements, cuts wouldn't really help other than to clean up regression;;(i.e. the movements are <0.5 mm and the diff plots don't see problems)
+4175,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: large > 0.5 mm movements of the beam, after cut looks mostly OK
+4176,46,Junk,OUT,FLIP-RIGHT,Bad,0,no beam.
+4177,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: ~ 1 mm move, needs cuts (potentially it needs cuts for the later half, but I'm applying on the first bit ...);;After cuts looks good!
+4178,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: there are a few events in BPMs that clearly need to be cut out (but its just a tiny jitter mostly);;Cuts worked, looks OK
+4179,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: some strange beam motion right before Beam Mod turns on. Sets 4eY 1.4 mm away. Needs cuts;;After cuts it looks OK
+4180,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks fine
+4181,46,Production,OUT,FLIP-RIGHT,Good,0,Cameron: has another BPM blip that should probably get cut out;;After cuts it looks good
+4182,47,Test,IN,FLIP-RIGHT,Bad,0,No target
+4183,47,Test,IN,FLIP-RIGHT,Bad,0,No good beam
+4184,47,Test,IN,FLIP-RIGHT,Bad,0,No good beam
+4185,47,Test,IN,FLIP-RIGHT,Bad,0,Super short, target out run
+4186,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: there is a beam tune change at event ~30k, cut out all before 50k, Looks OK
+4187,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but there is some beam trip motion in 4eX to worry about
+4188,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4189,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4190,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: 0.5 mm level position jumps that may need worrying, needs cuts before 20k events;;Looks OK after cuts
+4191,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4192,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4193,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4194,47,Junk,IN,FLIP-RIGHT,Good,0,Cameron: very short but looks OK
+4195,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: short but looks OK
+4196,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4197,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4198,47,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4199,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK
+4200,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK. One small 0.5 mm jump in X
+4201,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK
+4202,48,Production,OUT,FLIP-RIGHT,Suspicious,0,Cameron: very short. Otherwise could be considered production if chained together with anothe run, marked as suspcious
+4203,48,Production,OUT,FLIP-RIGHT,Suspicious,0,Cameron: very short. Otherwise could be considered production if chained together with anothe run, marked as suspcious
+4204,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK
+4205,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK
+4206,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK
+4207,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks OK
+4208,48,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4209,48,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4210,48,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4211,48,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4212,48,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4213,48,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4214,48,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4215,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok. Slightly large main det widths. First beam back from long down. Large Aq double peaking
+4216,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok. Short run (DAQ crash), almost entirely comprised of BMW. Regression still has residual correlations in there.
+4217,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok. 60 uA was to repair double peaked Aq. Feedback didn't perform ideally.
+4218,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok, large maindet widths though.
+4219,48,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok. Large maindet widths persist somewhat
+4220,48,Junk,OUT,FLIP-RIGHT,NoFlag,0,Cameron: DAQ recovery, no beam.
+4221,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok. Beam motion, but regression is ok (still large det widths)
+4222,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: Compton people ask for beam tuning in the chicane half way through. Otherwise looks good. Probably fine
+4223,49,Production,IN,FLIP-RIGHT,Good,0,Chandan: Begining of run there are BPM excursions. Aq feedback seems to not have worked.
+4224,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: more compton beam tuning... needs to be cut out for sure;;After cuts it looks OK
+4225,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4226,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: Looks ok
+4227,49,Test,IN,FLIP-RIGHT,NoFlag,0,Cameron: compton check with target at home
+4228,49,Parityscan,IN,FLIP-RIGHT,Good,0,- No comment -
+4229,49,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4230,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4231,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4232,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK. 4eC BPM has some weird noise
+4233,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK. more weird noise in 4ecX
+4234,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4235,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK. Potentially concerning yield drops in 4eX and Y that seem to be faster than normal beam motion
+4236,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4237,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4238,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4239,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4240,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK, but some slightly larger Aq width than normal
+4241,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK
+4242,49,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4243,49,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks OK. 4ec BPM looks a bit weird again.
+4244,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4245,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4246,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4247,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4248,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4249,50,Production,OUT,FLIP-RIGHT,Good,0,Chandan: The mini-run1 has large 'dd' and 'mean'. Nothing obvious from the BPM and BCM. Needs more deep look.
+4250,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4251,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4252,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4253,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4254,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4255,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4256,50,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4257,50,Production,OUT,FLIP-RIGHT,Good,0,Chandan: There is issue with the normalizing BCM (bcm_an_us) in the mini-run 1.
+4258,51,Production,IN,FLIP-RIGHT,NeedCut,0,Chandan: There is some cut probblem with the BCM in mini run 2;;Cameron: BCM Aq feedback is not on, this run is " needs cuts"
+4259,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4260,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4261,51,Junk,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4262,51,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4263,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4264,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4265,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4266,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4267,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4268,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4269,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4270,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4271,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4272,51,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4273,52,Production,OUT,FLIP-RIGHT,Good,0,Siyu: The last several event have beam trips and BPM excursion
+4274,52,Production,OUT,FLIP-RIGHT,Good,0,very short run
+4275,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4276,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4277,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4278,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4279,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4280,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4281,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4282,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4283,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4284,52,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4285,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4286,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4287,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4288,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4289,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4290,53,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4291,53,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok. One beam excursion, but probably doesn't need attention.;;Regression is struggling these days due to large noise in the beam (as a result of Wien flip a few days ago).
+4292,53,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4293,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4294,53,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4295,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4296,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4297,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4298,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4299,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Last run with good FFB on, but the detector widths suffer from it. Looks ok
+4300,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks ok. FFB is off and the detector widths are better as a result
+4301,54,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks ok... FFB is off and the beam moves around some... probably fine though (makes Main Det widths better)
+4302,54,Production,OUT,FLIP-RIGHT,NeedCut,0,Cameron: looks messy, but not awful. Two beam trip recoveries have bad spikes and need better cuts
+4303,54,Production,OUT,FLIP-RIGHT,Suspicious,0,- No comment -
+4304,54,Junk,OUT,FLIP-RIGHT,NoFlag,0,Cameron: this run ended early, it has NO beam at all, junk
+4305,54,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4306,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4307,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4308,54,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4309,54,Calibration,OUT,FLIP-RIGHT,Suspicious,0,was mislabled as production
+4310,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4311,55,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4312,55,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4313,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4314,55,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4315,55,Calibration,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4316,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4317,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4318,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4319,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4320,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4321,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4322,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4323,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4324,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4325,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4326,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4327,55,Test,IN,FLIP-RIGHT,Good,0,- No comment -
+4328,55,Junk,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4329,55,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4330,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok
+4331,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: a bit of Aq double peaking, looks ok
+4332,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok
+4333,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok
+4334,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks good
+4335,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks good
+4336,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks good
+4337,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks good
+4338,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks good. Some BCM noise appears at the end of the run
+4339,56,Production,OUT,FLIP-RIGHT,Good,0,VO: Beam excursion in bpm4eX (3mm). Requested beam off.;Cameron: looks good
+4340,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: looks ok
+4341,56,Production,OUT,FLIP-RIGHT,Good,0,Cameron: Looks good
+4342,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4343,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4344,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4345,57,Production,IN,FLIP-RIGHT,Good,0,VO: FFB is actually ON for the entire run, this time with Arc 2 Energy lock as well
+4346,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4347,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4348,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4349,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4350,57,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4351,57,Production,IN,FLIP-RIGHT,Good,0,Cameron: short run. OK. Compton access happened.
+4352,57,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good. Back from compton access
+4353,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4354,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4355,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4356,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4357,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4358,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4359,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4360,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4361,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4362,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4363,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4364,58,Production,OUT,FLIP-RIGHT,Good,0,- No comment -
+4365,58,Production,OUT,FLIP-RIGHT,Good,0,Cameron: beginning of target death for Pb 8, looks ok
+4366,58,Production,OUT,FLIP-RIGHT,Good,0,Cameron: target is dying, looks ok
+4367,58,Production,OUT,FLIP-RIGHT,Good,0,Cameron: final run of slug 58, target is dying, looks ok
+4368,59,Production,IN,FLIP-RIGHT,Suspicious,0,Cameron: the R main detector was moved during this run, on accident (instead of the AT). Therefor this run is marked as supicious and needs to be dealt with more carefully to obtain left arm data directly.;;Events before 185000 deemed "bad" in bad event cuts and reprompting (needs full slug 59 reprompt)
+4369,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: target is dying, looks ok otherwise
+4370,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: target is on its last leg, looks fine
+4371,59,Junk,IN,FLIP-RIGHT,Bad,0,Cameron: empty data
+4372,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: target changed to Pb 5, looks good
+4373,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
+4374,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
+4375,59,Junk,IN,FLIP-RIGHT,Bad,0,- No comment -
+4376,59,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4377,59,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4378,59,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4379,59,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4380,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4381,59,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4382,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4383,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4384,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4385,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4386,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4387,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4388,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4389,59,Test,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4390,59,Test,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4391,59,Junk,IN,FLIP-RIGHT,NoFlag,0,- No comment -
+4392,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4393,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4394,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok. One beam trip spike ~ 0.5 mm
+4395,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, a bit wide widths
+4396,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but it has some beam motion from compton tuning, and the regression gives 101 ppm combined width;;After applying BCM > 60 uA cut, there is very little improvement;;Suggest to put either a bad_events cut or do a yield cut at ~ -0.05 mm in 4eX
+4397,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
+4398,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks good
+4399,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but has weird beam motion that messed up compliment E bpm
+4400,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok, but the regressed widths are ~100ppm...
+4401,59,Production,IN,FLIP-RIGHT,Good,0,Good run. Beam moved which was reflected in epics and the data. The BPMs and the complements were seeing different things.
+4402,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4403,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4404,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4405,59,Production,IN,FLIP-RIGHT,Good,0,Cameron: looks ok
+4406,59,Production,IN,FLIP-RIGHT,Good,0,- No comment -
+4407,59,Junk,OUT,FLIP-RIGHT,NoFlag,0,- No comment -
+4408,60,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4409,60,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4410,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4411,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4412,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4413,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4414,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4415,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4416,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4417,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4418,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4419,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4420,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4421,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4422,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4423,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4424,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4425,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4426,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4427,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4428,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4429,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4430,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4431,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4432,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4433,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4434,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4435,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4436,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4437,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4438,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4439,60,Production,IN,FLIP-LEFT,Good,0,Cameron: Looks ok, had to cut out the initial beam steering for restoration of beam;;Restoring beam after 24 hour down (due to machine non-reproducibility) - bad target lock for first 120k events, gets cut;The burp cut gets raised from 0.2mm to 0.35mm to recover 10k multiplets from erroneous cutting
+4440,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks fine, but BCM has some clipping symptoms that aren't being cut out (probably OK);;machine reproducibility problems gives larger BPM widths, increase burp cut from 0.2mm to 0.35 mm to recover data
+4441,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok, other than trips and wider BPMs;;very trippy beam, machine reproducibility problems gives larger BPM widths, increase burp cut from 0.2mm to 0.35 mm to recover data
+4442,60,Production,IN,FLIP-LEFT,Good,0,Cameron: Super trippy beam, but looks ok otherwise;;very trippy beam, machine reproducibility problems gives larger BPM widths, increase burp cut from 0.2mm to 0.35 mm to recover data
+4443,60,Junk,IN,FLIP-LEFT,Bad,0,Cameron: junk no beam
+4444,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4445,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4446,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4447,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4448,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4449,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4450,60,Production,IN,FLIP-LEFT,Good,0,Cameron: test production run, looks good!
+4451,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4452,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4453,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4454,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4455,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4456,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4457,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4458,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4459,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4460,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4461,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4462,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4463,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4464,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4465,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4466,60,Junk,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4467,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok, had some Compton beam tuning and one thing in 4eX gets event cuts applied;;Looks Good
+4468,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok... does current ramp rate or beam trip holdoff need to lengthen?
+4469,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok, but the beam got really zig-zagging and went pretty far at 4aY, needs cuts?
+4470,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok, but more beam tuning and large Y jumps
+4471,60,Production,IN,FLIP-LEFT,Good,0,Cameron: regression is OK, but the BCM and bpms are both having noisy motion
+4472,60,Production,IN,FLIP-LEFT,Good,0,Cameron: more beam motion, regression is fine. Applying tighter (0.2mm) burp cut to BPMs for this run as a test case and to see how the smaller burp cut changes things -> has no noticeable effect (need stability cut?)
+4473,60,Production,IN,FLIP-LEFT,Good,0,Cameron: awful trips, but cuts work, regression is OK
+4474,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks fine, BPM motion still
+4475,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, but some noise in BPMs on a few events
+4476,60,Production,IN,FLIP-LEFT,Good,0,Cameron: looks good, but a bit of diff noise in some BPMs
+4477,61,Production,OUT,FLIP-LEFT,Suspicious,0,Cameron: beam looks better, looks OK;;Aq was off, needs cuts but relabeled as suspicious
+4478,61,Production,OUT,FLIP-LEFT,Suspicious,0,Cameron & Ryan: looks ok, but some beam trips have restoration motion after them still;;Aq was off, needs cuts later - relabeled as suspicious
+4479,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4480,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4481,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: X axis has excessive diff noise. Needs cuts? Regression looks OK.;;Ryan: Yes, needs position cut - 1 mm drift - tighter burp cuts not sufficient;;Cameron: adding 0.35 stability cut as well as a test;;Can't quite clear it out, but the BPM post-trip drift is not totally bad, and the diffs hairyness is going to stick around
+4482,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: diff noise in X is still here, but fades away. Probably OK, doesn't affect regression;;Ryan: needs cut on positions - tighter burp cuts - works;;Cameron: adding 0.35 stability cut to these two runs as well as a test - also works
+4483,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK, a bit of beam motion
+4484,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4485,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4486,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4487,61,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4488,62,Production,IN,FLIP-LEFT,Good,0,Cameron: gets cuts past event 325000 due to excessive large beam motion, looks OK
+4489,62,Production,IN,FLIP-LEFT,Good,0,Cameron: finishing 4488's large beam motion, events before 35k get cut;;Looks OK
+4490,62,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4491,62,Production,IN,FLIP-LEFT,Good,0,Cameron: needs cuts on middle of run - trying wide burp cut with 0.5 mm stability cut on for size - not enough, trying also tighter (0.3mm) and longer burp and ring lengths;;Looks good after cuts
+4492,62,Production,IN,FLIP-LEFT,Good,0,Cameron: non trivial beam motion, but < 0.5 mm, looks OK
+4493,62,Production,IN,FLIP-LEFT,Good,0,Cameron: 4eX centers around the middle of the target, so no cut needed there, but 4aY needs some cut at the beginning - cut out first 5k events;;Looks OK
+4494,62,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4495,62,Test,IN,FLIP-LEFT,NoFlag,0,- No comment -
+4496,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK, but some diff noise in 4eX and 4eY comes and goes
+4497,62,Production,IN,FLIP-LEFT,Good,0,Garrett: Aggresive compton position scan in the middle of the run.;;Cameron: cut events 100000-130000
+4498,62,Production,IN,FLIP-LEFT,Good,0,Garrett: aggressive compton tuning form event 75k to 225k;;Cameron 4eX threshold cut from -0.2< 4eX > 0.8;;Looks OK
+4499,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4500,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4501,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4502,62,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4503,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: a strange trip midway through - trying 0.2 burp and 0.3 stability cut on BPMs - not enough, trying longer burp and ring lengths, still not enough;;Needs harder cuts -> applying bad event cut flags by hand -> looks good
+4504,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4505,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4506,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4507,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4508,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4509,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4510,63,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4511,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: complement 4e BPM trips out some. An US BCM trips out some. Main det widths have been larger in the last few runs, and regression suffers (can only reach 98 ppm instead of 95)
+4512,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: Gang Phase changed half way through run in order to preserve compton rates. Makes left HRS widths and BPM widths much worse (10 um -> 15um);;Complement 4e BPM sees weird glitches still;;Reprompt with 0.35 burp and stability cut to see if beam trip issue around event 200000 can be resolved - it mostly works, but needs some work later
+4513,63,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK. Wider post-gang-phase-change Main Det widths and BPM diff widths, but not a huge deal;;LHRS main det unregressed width ~ 1000 ppm and ~2x RHRS widths
+4514,64,Production,IN,FLIP-LEFT,Good,0,Cameron: trying simple stability and burp 0.35 cut to see if it fixes the 4eY trip recovery glitches we've seen with no other cut necessary.;-> doesn't... use bad event cuts. Looks OK
+4515,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4516,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4517,64,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to remove beam trip
+4518,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks ok
+4519,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4520,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4521,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4522,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4523,64,Production,IN,FLIP-LEFT,Good,0,Cameron: looks OK
+4524,64,Production,IN,FLIP-LEFT,Good,0,Cameron: increasing trip holdoff to 3000 for this run to kill the trip blips at the end of the run better - works;;Looks OK
+4525,64,Production,IN,FLIP-LEFT,Good,0,Cameron: some noise in BPM 4eX and 11x diffs, but otherwise OK
+4526,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: finally beam trips are properly fast to recover
+4527,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks good
+4528,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: super trippy beam, but cuts work mostly, looks good
+4529,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: trips don't recover properly, needs cuts on BPM positions in Y/stability;;Burp cut didn't work, needs more:
+4530,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: new Burp and Stability cuts in tandem basically work;;Looks OK
+4531,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks ok
+4532,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: large beam movement, needs cuts - Extend 2x the trip length
+4533,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4534,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4535,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4536,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: extending cut after trip to rescue data, looks
+4537,65,Production,OUT,FLIP-LEFT,Good,0,Cameron: looks OK
+4538,66,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to beam recovery issue
+4539,66,Production,IN,FLIP-LEFT,Good,0,Ryan: Adding event cuts to remove beam trip
+4540,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4541,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4542,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4543,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4544,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4545,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4546,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4547,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4548,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4549,66,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4550,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4551,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4552,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4553,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4554,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4555,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4556,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4557,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4558,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4559,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4560,67,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4561,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4562,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4563,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4564,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4565,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4566,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4567,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4568,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4569,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4570,68,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4571,69,Production,OUT,FLIP-LEFT,Good,0,Cameron: Parity Feedback died for a few minutes (all terminals crashed);;AJZ: Will need a cut on position drifts
+4572,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4573,69,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4574,69,Junk,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4575,69,Production,OUT,FLIP-LEFT,Good,0,AJZ: Run junked due to lack of parity feedback
+4576,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4577,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4578,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4579,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4580,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4581,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4582,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4583,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4584,69,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4585,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4586,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4587,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4588,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4589,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4590,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4591,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4592,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4593,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4594,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4595,70,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4596,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4597,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4598,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4599,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4600,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4601,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4602,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4603,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4604,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4605,71,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4606,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Commented on: 2019-11-11
+4607,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4608,71,Junk,OUT,FLIP-LEFT,Suspicious,0,weibin: a few seconds run, change the run type to Junk;;AJZ: Runs taken with giant raster size and bad optics tune
+4609,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster and bad optics tune;;Comment left on: 2019-11-11
+4610,71,Calibration,OUT,FLIP-LEFT,Good,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4611,71,Parityscan,OUT,FLIP-LEFT,Good,0,- No comment -
+4612,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Strange BPM behavior:;-Large excursion on bpm4aY and bpm4eY;-I have no idea WTF the 4e complement is doing;;AJZ: Runs taken with giant raster size and bad optics tune
+4613,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4614,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4615,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4616,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4617,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Runs taken with giant raster size and bad optics tune;;Comment left on: 2019-11-11
+4618,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Trouble with FFB and new optics tune;;Comment left on 2019-11-11
+4619,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Trouble with FFB and new optics tune;;Comment left on: 2019-11-11
+4620,71,Production,OUT,FLIP-LEFT,Suspicious,0,AJZ: Trouble with FFB and new optics tune;;Comment left on: 2019-11-11
+4621,71,Production,OUT,FLIP-LEFT,Good,0,AJZ: Okay, back to normal;;Comment left on: 2019-11-11
+4622,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4623,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4624,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4625,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4626,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4627,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4628,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4629,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4630,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4631,71,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4632,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4633,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4634,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4635,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4636,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4637,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4638,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4639,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4640,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4641,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4642,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4643,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4644,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4645,72,Test,IN,FLIP-LEFT,Good,0,- No comment -
+4646,72,Test,IN,FLIP-LEFT,Good,0,- No comment -
+4647,72,Test,IN,FLIP-LEFT,Good,0,- No comment -
+4648,72,Test,IN,FLIP-LEFT,Good,0,- No comment -
+4649,72,Junk,IN,FLIP-LEFT,Bad,0,- No comment -
+4650,72,Calibration,IN,FLIP-LEFT,Good,0,- No comment -
+4651,72,Pedestal,IN,FLIP-LEFT,Good,0,- No comment -
+4652,72,Calibration,IN,FLIP-LEFT,Good,0,- No comment -
+4653,72,Pedestal,IN,FLIP-LEFT,Good,0,- No comment -
+4654,72,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4655,72,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
+4656,72,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
+4657,72,Production,IN,FLIP-LEFT,Suspicious,0,- No comment -
+4658,72,Production,IN,FLIP-LEFT,Bad,0,- No comment -
+4659,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4660,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4661,72,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4662,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4663,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4664,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4665,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4666,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4667,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4668,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4669,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4670,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4671,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4672,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4673,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4674,73,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4675,73,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4676,73,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4677,74,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4678,74,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4679,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4680,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4681,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4682,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4683,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4684,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4685,74,Test,IN,FLIP-LEFT,Bad,2,- No comment -
+4687,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4688,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4689,74,Production,IN,FLIP-LEFT,Good,2,- No comment -
+4690,74,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4691,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4692,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4693,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4694,74,Production,IN,FLIP-LEFT,Suspicious,0,AJZ: RHRS Restoration, beam optics bad;;Comment left on: 2019-11-11
+4695,74,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4696,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4697,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4698,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4699,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4700,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4701,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4702,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4703,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4704,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4705,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4706,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4707,75,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4708,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4709,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4710,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4711,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4712,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4713,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4714,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4715,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4716,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4717,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4718,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4719,75,Test,OUT,FLIP-LEFT,NoFlag,0,- No comment -
+4720,75,Junk,OUT,FLIP-LEFT,Bad,0,- No comment -
+4721,75,Production,OUT,FLIP-LEFT,Bad,0,weibin: somehow, this run is not included in slug75, I don't know why?
+4722,76,Production,IN,FLIP-LEFT,Good,0,AJZ: Starting with this run we see large fluctuations in 4aY and 4eY. Very seldom does it;require cutting, but it's worth monitoring.
+4723,76,Production,IN,FLIP-LEFT,Good,0,AJZ: Position drifts on 4aY, 4eY, consider minor eventcuts?
+4724,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4725,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4726,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4727,76,Production,IN,FLIP-LEFT,Good,0,Devi: Shoulders in BCM double differences
+4728,76,Production,IN,FLIP-LEFT,Good,0,Devi: First half of the run, BPM x differences are noisier
+4729,76,Production,IN,FLIP-LEFT,Good,0,Devi: Shoulders in BCM double differences
+4730,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4731,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4732,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4733,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4734,76,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4735,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4736,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4737,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4738,77,Production,OUT,FLIP-LEFT,Good,0,Devi: Long beam trip in the beginning resulting large fluctuation in y position. May need to consider event cut in the zeroth minirun
+4739,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4740,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4741,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4742,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4743,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4744,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4745,77,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4746,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4747,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4748,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4749,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4750,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4751,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4752,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4753,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4754,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4755,78,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4756,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4757,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4758,79,Production,OUT,FLIP-LEFT,Bad,0,- No comment -
+4759,79,Production,OUT,FLIP-LEFT,Bad,0,- No comment -
+4760,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4761,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4762,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4763,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4764,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4765,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4766,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4767,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4768,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4769,79,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4770,80,Production,IN,FLIP-LEFT,Good,0,double peaking for bcm asymmetries
+4771,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4772,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4773,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4774,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4775,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4776,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4777,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4778,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4779,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4780,80,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4781,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4782,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4783,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4784,81,Production,OUT,FLIP-LEFT,Good,0,first 15 minutes, only A beam is on in the injector.
+4785,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4786,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4787,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4788,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4789,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4790,81,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4791,82,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4792,82,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4793,82,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4794,82,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4795,82,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4796,82,Production,IN,FLIP-LEFT,Good,0,weibin: applying event cut: prex_bad_events.4796.map, change run flag from NeedCut to Good.
+4797,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4798,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4799,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4800,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4801,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4802,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4803,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4804,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4805,82,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4806,82,Calibration,IN,FLIP-LEFT,Good,0,- No comment -
+4807,82,Calibration,IN,FLIP-LEFT,Good,0,- No comment -
+4808,82,Parityscan,IN,FLIP-LEFT,Good,0,- No comment -
+4809,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4810,83,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4811,83,Junk,OUT,FLIP-LEFT,Good,0,- No comment -
+4812,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4813,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4814,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4815,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4816,83,Production,OUT,FLIP-LEFT,Good,0,weibin: large bpm excursion, apply cut prex_bad_events.4816.map. change run flag from NeedCut to Good
+4817,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4818,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4819,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4820,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4821,83,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4822,83,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4823,84,Test,IN,FLIP-LEFT,Good,0,- No comment -
+4824,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4825,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4826,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4827,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4828,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4829,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4830,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4831,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4832,84,Production,IN,FLIP-LEFT,Good,0,weibin: large reg_asym_us_avg.rms in minirun 4, need cut in bpm4e? ;	    apply cut prex_bad_events.4832.map. change run flag from NeedCut to Good
+4833,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4834,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4835,84,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4836,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4837,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4838,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4839,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4840,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4841,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4843,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4844,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4845,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4846,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4847,85,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4848,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4849,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4850,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4851,86,Production,IN,FLIP-LEFT,Good,0,weibin: large reg_asym_us_avg.rms (larger than 140 ppm), need cut on bpm11Y ?;	    apply cut prex_bad_events.4851.map. change run flag from NeedCut to Good
+4852,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4853,86,Production,IN,FLIP-LEFT,Good,0,weibin: apply cut prex_bad_events.4853.map. change run flag from NeedCut to Good
+4854,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4855,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4856,86,Test,IN,FLIP-LEFT,Good,0,- No comment -
+4857,86,Test,IN,FLIP-LEFT,Good,0,test
+4858,86,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4859,86,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4860,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4861,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4862,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4863,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4864,86,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4865,87,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4866,87,Test,OUT,FLIP-LEFT,Good,0,weibin: production at 3.3 uA with Compton tuning on
+4867,87,Production,OUT,FLIP-LEFT,Good,0,Chandan: 4867 low current run. I marked it as Production. Don't find run type 'Other' in the Runstart GUI.
+4868,87,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4869,87,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4870,87,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4871,88,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4872,88,Production,OUT,FLIP-LEFT,Good,0,production with ramp up in current 71->75->80->85. Current scan down in last 10min of run from 85->70->60->50->40->30->20->10;weibin: apply cut prex_bad_events.4872.map. change run flag from NeedCut to Good
+4873,88,Production,OUT,FLIP-LEFT,Good,0,First full production run at 85uA
+4874,88,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4875,88,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4876,88,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4877,88,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4878,88,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4879,89,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4880,89,Production,IN,FLIP-LEFT,Good,0,weibin: gang phase changes during the run
+4881,89,Production,IN,FLIP-LEFT,Good,0,large bcm widths. regression is doing fine though.
+4882,89,Production,IN,FLIP-LEFT,Good,0,widths still large
+4883,89,Production,IN,FLIP-LEFT,Good,0,widths still large
+4884,89,Production,IN,FLIP-LEFT,Good,0,widths still large
+4885,89,Production,IN,FLIP-LEFT,Good,0,widths still large
+4886,89,Production,IN,FLIP-LEFT,Good,0,charge asymmetry widths starting to go back down. main detector widths still look fine.
+4887,89,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4889,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4890,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4891,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4892,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4893,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4894,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4895,90,Production,OUT,FLIP-LEFT,Good,0,weibin: LHRS trip;	    apply cut prex_bad_events.4895.map. change run flag from NeedCut to Good
+4896,90,Parityscan,OUT,FLIP-LEFT,Good,0,- No comment -
+4897,90,Production,OUT,FLIP-LEFT,Good,0,Chandan: This run is labelled wrong. This is production run.
+4898,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4899,90,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4900,90,Parityscan,OUT,FLIP-LEFT,Good,0,- No comment -
+4901,90,Calibration,OUT,FLIP-LEFT,Good,0,Weibin: calibration run with charge feedback off, drop it (and run 4902)
+4902,90,Calibration,OUT,FLIP-LEFT,Good,0,Weibin: calibration run with charge feedback off, drop it (and run 4901)
+4903,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4904,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4905,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4906,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4907,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4908,91,Production,IN,FLIP-LEFT,Good,0,Devi: last minirun has 50uA current, which has caused the widths to blow up. MCC was working on Compton stuffs, there are ~0.5mm level of BPM excurstion.;weibin: apply bad event cut: prex_bad_events.4908.map; change run flag from NeedCut to Good
+4909,91,Junk,IN,FLIP-LEFT,Bad,0,weibin: run taken during compton tuning, mark it as suspecious and then drop it in grand plots
+4910,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4911,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4912,91,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4913,91,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4914,91,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4915,91,Junk,IN,FLIP-LEFT,Good,0,- No comment -
+4916,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4917,91,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4918,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4919,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4920,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4921,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4922,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4923,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4924,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4925,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4926,92,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4927,93,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4928,93,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4929,93,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4930,93,Production,IN,FLIP-LEFT,Good,0,septum trip. start of run may still be useful.;weibin: drop it
+4931,93,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4932,93,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4933,93,Production,IN,FLIP-LEFT,Good,0,- No comment -
+4934,93,Production,IN,FLIP-LEFT,Good,0,bpm weirdness. caused regression issues. will probably need cuts.
+4935,93,Production,IN,FLIP-LEFT,Good,0,wierdness happening in the bpm's. causing regression failures. will probably need cuts
+4936,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4937,94,Junk,OUT,FLIP-LEFT,Good,0,- No comment -
+4938,94,Junk,OUT,FLIP-LEFT,Good,0,- No comment -
+4939,94,Junk,OUT,FLIP-LEFT,Good,0,- No comment -
+4940,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4941,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4942,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4943,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4944,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4945,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4946,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4947,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4948,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4949,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4950,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4951,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4952,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4953,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4954,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4955,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4956,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4957,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4958,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4959,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4960,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4961,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4962,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4963,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4964,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4965,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4966,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4967,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4968,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4969,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4970,94,Test,OUT,FLIP-LEFT,Good,0,- No comment -
+4971,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4972,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4973,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4974,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4975,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4976,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4977,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4978,94,Production,OUT,FLIP-LEFT,Good,0,weibin: Left Q1 tripped off;	    apply bad event cut: prex_bad_events.4978.map; change run flag from NeedCut to Good
+4979,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
+4980,94,Production,OUT,FLIP-LEFT,Good,0,- No comment -
