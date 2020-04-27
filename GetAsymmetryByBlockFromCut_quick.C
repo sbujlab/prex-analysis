@@ -1,14 +1,14 @@
 #include "device_list.hh"
 
-void GetAsymmetryByBlockFromCut_new2(Int_t slug);
-void GetAsymmetryByBlockFromCut_new2();
+void GetAsymmetryByBlockFromCut_quick2(Int_t slug);
+void GetAsymmetryByBlockFromCut_quick2();
 
-void GetAsymmetryByBlockFromCut_new2(){
+void GetAsymmetryByBlockFromCut_quick2(){
   for(int i=1;i<=94;i++)
-    GetAsymmetryByBlockFromCut_new2(i);
+    GetAsymmetryByBlockFromCut_quick2(i);
 }
 
-void GetAsymmetryByBlockFromCut_new2(Int_t slug){
+void GetAsymmetryByBlockFromCut_quick2(Int_t slug){
   TString qwrootfile_path = "$QW_ROOTFILES/";
   TString postpan_path = "/lustre/expphy/volatile/halla/parity/LagrangeOutput/rootfiles/";
 
@@ -17,7 +17,7 @@ void GetAsymmetryByBlockFromCut_new2(Int_t slug){
   if(prex_runlist==NULL)
     return;
 
-  TString output_filename = Form("./rootfiles/slug%d_by_block_by_polarity_new.root",slug);
+  TString output_filename = Form("./rootfiles/slug%d_by_block_by_polarity_quick2.root",slug);
   TFile *output = TFile::Open(output_filename,"RECREATE");
   TTree *mini_tree = new TTree("normal","");
   TTree *pos_tree = new TTree("pos","");
@@ -25,7 +25,7 @@ void GetAsymmetryByBlockFromCut_new2(Int_t slug){
   TTree *neutral_tree = new TTree("neutral","");
   vector<TTree*> fTreeArray={mini_tree,pos_tree,neg_tree,neutral_tree};
 
-  Int_t ndev = device_list.size(); // >> "device_list.hh"
+  Int_t ndev = device_list_simple.size(); // >> "device_list.hh"
   Int_t run_number = 0;  
   Int_t mini_id = 0;
   for(int i=0;i<4;i++){
@@ -44,13 +44,13 @@ void GetAsymmetryByBlockFromCut_new2(Int_t slug){
   fStat_zero.rms=0.0;
   for(int i=0;i<ndev;i++){
     for(int iblock=0;iblock<4;iblock++){
-      mini_tree->Branch(device_list[i]+block_format[iblock],
+      mini_tree->Branch(device_list_simple[i]+block_format[iblock],
 			&fStat_mini[4*i+iblock],"mean/D:err:rms");
-      pos_tree->Branch(device_list[i]+block_format[iblock],
+      pos_tree->Branch(device_list_simple[i]+block_format[iblock],
 		       &fStat_pos[4*i+iblock],"mean/D:err:rms");
-      neg_tree->Branch(device_list[i]+block_format[iblock],
+      neg_tree->Branch(device_list_simple[i]+block_format[iblock],
 		       &fStat_neg[4*i+iblock],"mean/D:err:rms");
-      neutral_tree->Branch(device_list[i]+block_format[iblock],
+      neutral_tree->Branch(device_list_simple[i]+block_format[iblock],
 			   &fStat_neutral[4*i+iblock],"mean/D:err:rms");
     }
   }
@@ -284,7 +284,7 @@ void GetAsymmetryByBlockFromCut_new2(Int_t slug){
       // mini_cut = Form("&& minirun==%d",imini);
       mini_cut = Form("&& mini==%d",imini);
       for(int idev=0;idev<ndev;idev++){
-	device_name = device_list[idev];
+	device_name = device_list_simple[idev];
 
 	if(mul_tree->GetBranch(device_name)==NULL
 	  && mul_tree->GetAlias(device_name)==NULL
