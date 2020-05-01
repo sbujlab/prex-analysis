@@ -1,0 +1,8 @@
+4035:((pattern_number>=22472 && pattern_number<=22508 ))
+4039:((pattern_number>=45553 && pattern_number<=45746 ))
+4040:((pattern_number>=47456 && pattern_number<=48302 ))
+4041:((pattern_number>=9967 && pattern_number<=10288 )|| (pattern_number>=10892 && pattern_number<=11390 )|| (pattern_number>=33973 && pattern_number<=34436 ))
+4043:((pattern_number>=683 && pattern_number<=822 )|| (pattern_number>=6357 && pattern_number<=6879 )|| (pattern_number>=35192 && pattern_number<=35473 )|| (pattern_number>=39001 && pattern_number<=39116 ))
+4044:((pattern_number>=11205 && pattern_number<=11417 )|| (pattern_number>=11808 && pattern_number<=11809 )|| (pattern_number>=12390 && pattern_number<=14290 )|| (pattern_number>=15205 && pattern_number<=15394 ))
+4045:((pattern_number>=9576 && pattern_number<=9766 )|| (pattern_number>=46167 && pattern_number<=46536 ))
+4047:((pattern_number>=33676 && pattern_number<=33794 ))

@@ -1,0 +1,7 @@
+3941:((pattern_number>=6365 && pattern_number<=6842 ))
+3942:((pattern_number>=177 && pattern_number<=486 )|| (pattern_number>=19891 && pattern_number<=20208 )|| (pattern_number>=39727 && pattern_number<=40061 ))
+3943:((pattern_number>=10287 && pattern_number<=11091 )|| (pattern_number>=11598 && pattern_number<=12173 )|| (pattern_number>=27325 && pattern_number<=46733 )|| (pattern_number>=51796 && pattern_number<=52369 ))
+3945:((pattern_number>=5162 && pattern_number<=5870 )|| (pattern_number>=26323 && pattern_number<=26455 )|| (pattern_number>=38095 && pattern_number<=38397 )|| (pattern_number>=60432 && pattern_number<=60500 ))
+3946:((pattern_number>=32688 && pattern_number<=32835 )|| (pattern_number>=34577 && pattern_number<=35281 )|| (pattern_number>=35845 && pattern_number<=36418 )|| (pattern_number>=39341 && pattern_number<=39888 )|| (pattern_number>=43688 && pattern_number<=44017 ))
+3948:((pattern_number>=22858 && pattern_number<=23128 )|| (pattern_number>=23458 && pattern_number<=24527 )|| (pattern_number>=26901 && pattern_number<=27303 )|| (pattern_number>=44419 && pattern_number<=44709 ))
+3950:((pattern_number>=38529 && pattern_number<=39474 )|| (pattern_number>=52105 && pattern_number<=52291 )|| (pattern_number>=53151 && pattern_number<=55760 ))

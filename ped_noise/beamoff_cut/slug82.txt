@@ -1,0 +1,8 @@
+4796:((pattern_number>=947 && pattern_number<=1304 ))
+4797:((pattern_number>=32681 && pattern_number<=33122 )|| (pattern_number>=35807 && pattern_number<=36038 ))
+4798:((pattern_number>=10672 && pattern_number<=10890 )|| (pattern_number>=29390 && pattern_number<=29500 ))
+4800:((pattern_number>=18959 && pattern_number<=19266 ))
+4801:((pattern_number>=52214 && pattern_number<=52336 ))
+4803:((pattern_number>=48458 && pattern_number<=49542 ))
+4804:((pattern_number>=18636 && pattern_number<=18890 )|| (pattern_number>=19220 && pattern_number<=19499 ))
+4805:((pattern_number>=2334 && pattern_number<=10411 ))

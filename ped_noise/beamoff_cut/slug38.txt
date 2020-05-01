@@ -1,0 +1,7 @@
+3998:((pattern_number>=26422 && pattern_number<=26574 )|| (pattern_number>=32963 && pattern_number<=33333 ))
+3999:((pattern_number>=17947 && pattern_number<=18106 )|| (pattern_number>=20459 && pattern_number<=20626 )|| (pattern_number>=20957 && pattern_number<=21229 )|| (pattern_number>=28971 && pattern_number<=29105 )|| (pattern_number>=32565 && pattern_number<=33117 )|| (pattern_number>=35088 && pattern_number<=35288 )|| (pattern_number>=36479 && pattern_number<=37069 )|| (pattern_number>=50319 && pattern_number<=50542 ))
+4000:((pattern_number>=6999 && pattern_number<=55142 ))
+4001:((pattern_number>=193 && pattern_number<=539 )|| (pattern_number>=8753 && pattern_number<=8834 )|| (pattern_number>=26119 && pattern_number<=26351 ))
+4004:((pattern_number>=40136 && pattern_number<=40272 ))
+4007:((pattern_number>=568 && pattern_number<=672 )|| (pattern_number>=10048 && pattern_number<=10451 )|| (pattern_number>=10952 && pattern_number<=12733 ))
+4009:((pattern_number>=3180 && pattern_number<=3874 )|| (pattern_number>=4460 && pattern_number<=5103 )|| (pattern_number>=30035 && pattern_number<=30413 ))

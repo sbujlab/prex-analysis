@@ -1,0 +1,6 @@
+3769:((pattern_number>=1464 && pattern_number<=1597 )|| (pattern_number>=10036 && pattern_number<=10279 )|| (pattern_number>=24096 && pattern_number<=24338 )|| (pattern_number>=63737 && pattern_number<=67817 ))
+3770:((pattern_number>=14254 && pattern_number<=14739 )|| (pattern_number>=38023 && pattern_number<=38301 )|| (pattern_number>=55924 && pattern_number<=57627 ))
+3771:((pattern_number>=26760 && pattern_number<=26916 )|| (pattern_number>=39825 && pattern_number<=40005 )|| (pattern_number>=47335 && pattern_number<=47695 ))
+3772:((pattern_number>=17849 && pattern_number<=18010 )|| (pattern_number>=53856 && pattern_number<=54220 ))
+3773:((pattern_number>=6984 && pattern_number<=7134 )|| (pattern_number>=23428 && pattern_number<=23640 )|| (pattern_number>=47268 && pattern_number<=47686 )|| (pattern_number>=56609 && pattern_number<=56964 )|| (pattern_number>=57718 && pattern_number<=57946 )|| (pattern_number>=59837 && pattern_number<=60288 ))
+3774:((pattern_number>=3987 && pattern_number<=4185 )|| (pattern_number>=50519 && pattern_number<=59364 )|| (pattern_number>=61293 && pattern_number<=61758 )|| (pattern_number>=94270 && pattern_number<=94420 )|| (pattern_number>=97018 && pattern_number<=97458 ))

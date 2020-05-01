@@ -1,0 +1,5 @@
+3764:((pattern_number>=15183 && pattern_number<=15521 )|| (pattern_number>=22043 && pattern_number<=22159 )|| (pattern_number>=27401 && pattern_number<=27685 )|| (pattern_number>=111592 && pattern_number<=112058 ))
+3765:((pattern_number>=9911 && pattern_number<=10228 )|| (pattern_number>=10558 && pattern_number<=10969 )|| (pattern_number>=11319 && pattern_number<=12183 ))
+3766:((pattern_number>=26096 && pattern_number<=26220 ))
+3767:((pattern_number>=24502 && pattern_number<=24857 )|| (pattern_number>=36270 && pattern_number<=36451 )|| (pattern_number>=58653 && pattern_number<=58881 ))
+3768:((pattern_number>=29595 && pattern_number<=30015 )|| (pattern_number>=30795 && pattern_number<=31013 )|| (pattern_number>=54087 && pattern_number<=54278 )|| (pattern_number>=69366 && pattern_number<=69496 )|| (pattern_number>=81113 && pattern_number<=81256 )|| (pattern_number>=81557 && pattern_number<=81862 )|| (pattern_number>=82191 && pattern_number<=82865 )|| (pattern_number>=87683 && pattern_number<=87783 )|| (pattern_number>=98993 && pattern_number<=99101 ))

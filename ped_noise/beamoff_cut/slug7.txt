@@ -1,0 +1,3 @@
+3444:((pattern_number>=195 && pattern_number<=4208 ))
+3445:((pattern_number>=6425 && pattern_number<=7194 )|| (pattern_number>=13010 && pattern_number<=13177 )|| (pattern_number>=27166 && pattern_number<=27320 ))
+3446:((pattern_number>=184 && pattern_number<=8810 )|| (pattern_number>=11521 && pattern_number<=11779 ))

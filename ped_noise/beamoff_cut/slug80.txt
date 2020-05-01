@@ -1,0 +1,8 @@
+4770:((pattern_number>=6619 && pattern_number<=6803 )|| (pattern_number>=9454 && pattern_number<=9778 )|| (pattern_number>=20006 && pattern_number<=20291 ))
+4771:((pattern_number>=31967 && pattern_number<=32156 )|| (pattern_number>=34182 && pattern_number<=35597 )|| (pattern_number>=48604 && pattern_number<=49000 ))
+4772:((pattern_number>=13928 && pattern_number<=15090 )|| (pattern_number>=33097 && pattern_number<=33313 )|| (pattern_number>=43370 && pattern_number<=43414 )|| (pattern_number>=48633 && pattern_number<=48706 ))
+4773:((pattern_number>=1556 && pattern_number<=1716 )|| (pattern_number>=15462 && pattern_number<=15615 )|| (pattern_number>=23897 && pattern_number<=24010 )|| (pattern_number>=27880 && pattern_number<=27911 )|| (pattern_number>=30932 && pattern_number<=30934 )|| (pattern_number>=47654 && pattern_number<=47776 ))
+4774:((pattern_number>=6853 && pattern_number<=6937 )|| (pattern_number>=8548 && pattern_number<=14135 )|| (pattern_number>=23711 && pattern_number<=23802 )|| (pattern_number>=30485 && pattern_number<=30664 )|| (pattern_number>=37468 && pattern_number<=37573 )|| (pattern_number>=40594 && pattern_number<=42556 ))
+4775:((pattern_number>=15827 && pattern_number<=15956 ))
+4777:((pattern_number>=13598 && pattern_number<=14135 ))
+4780:((pattern_number>=2925 && pattern_number<=4500 )|| (pattern_number>=10956 && pattern_number<=17629 )|| (pattern_number>=39892 && pattern_number<=40035 ))
