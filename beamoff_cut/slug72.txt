@@ -1,0 +1,7 @@
+4632:((pattern_number>=33187 && pattern_number<=33815 ))
+4634:((pattern_number>=7200 && pattern_number<=7971 )|| (pattern_number>=8271 && pattern_number<=8547 )|| (pattern_number>=8895 && pattern_number<=8923 )|| (pattern_number>=9645 && pattern_number<=9680 )|| (pattern_number>=10390 && pattern_number<=10799 )|| (pattern_number>=11288 && pattern_number<=11590 )|| (pattern_number>=17994 && pattern_number<=18095 )|| (pattern_number>=29659 && pattern_number<=29695 )|| (pattern_number>=36597 && pattern_number<=36641 ))
+4635:((pattern_number>=20127 && pattern_number<=20423 )|| (pattern_number>=31720 && pattern_number<=31922 )|| (pattern_number>=33149 && pattern_number<=33208 ))
+4636:((pattern_number>=1389 && pattern_number<=1621 )|| (pattern_number>=8292 && pattern_number<=8359 )|| (pattern_number>=35476 && pattern_number<=35495 )|| (pattern_number>=39870 && pattern_number<=40793 )|| (pattern_number>=44677 && pattern_number<=44740 ))
+4637:((pattern_number>=20631 && pattern_number<=20787 )|| (pattern_number>=59398 && pattern_number<=59636 ))
+4659:((pattern_number>=16411 && pattern_number<=17945 )|| (pattern_number>=20788 && pattern_number<=20983 ))
+4660:((pattern_number>=11130 && pattern_number<=11311 )|| (pattern_number>=15506 && pattern_number<=15609 )|| (pattern_number>=22388 && pattern_number<=22767 )|| (pattern_number>=36182 && pattern_number<=36295 ))

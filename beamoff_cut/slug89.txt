@@ -1,0 +1,8 @@
+4879:((pattern_number>=22411 && pattern_number<=24186 )|| (pattern_number>=44666 && pattern_number<=44733 ))
+4880:((pattern_number>=35575 && pattern_number<=35631 )|| (pattern_number>=36150 && pattern_number<=38981 )|| (pattern_number>=50809 && pattern_number<=50825 ))
+4881:((pattern_number>=32471 && pattern_number<=32537 ))
+4882:((pattern_number>=7602 && pattern_number<=7897 )|| (pattern_number>=45189 && pattern_number<=47343 )|| (pattern_number>=48061 && pattern_number<=48621 ))
+4883:((pattern_number>=15222 && pattern_number<=15339 )|| (pattern_number>=31681 && pattern_number<=32167 )|| (pattern_number>=41872 && pattern_number<=41931 ))
+4884:((pattern_number>=17831 && pattern_number<=18073 )|| (pattern_number>=28359 && pattern_number<=28711 )|| (pattern_number>=33983 && pattern_number<=34213 )|| (pattern_number>=49590 && pattern_number<=49717 ))
+4885:((pattern_number>=11312 && pattern_number<=11526 ))
+4886:((pattern_number>=5141 && pattern_number<=5556 )|| (pattern_number>=15518 && pattern_number<=15641 )|| (pattern_number>=22443 && pattern_number<=22545 ))

@@ -1,0 +1,1 @@
+4865:((pattern_number>=38922 && pattern_number<=39050 )|| (pattern_number>=55158 && pattern_number<=55179 ))

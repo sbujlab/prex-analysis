@@ -1,0 +1,7 @@
+3566:((pattern_number>=28863 && pattern_number<=29067 ))
+3567:((pattern_number>=26288 && pattern_number<=27939 )|| (pattern_number>=28239 && pattern_number<=28708 )|| (pattern_number>=29008 && pattern_number<=54535 ))
+3568:((pattern_number>=2295 && pattern_number<=2490 )|| (pattern_number>=31520 && pattern_number<=31794 )|| (pattern_number>=48144 && pattern_number<=48251 ))
+3569:((pattern_number>=9009 && pattern_number<=9399 )|| (pattern_number>=20276 && pattern_number<=20552 ))
+3571:((pattern_number>=50222 && pattern_number<=50491 ))
+3573:((pattern_number>=57807 && pattern_number<=58295 )|| (pattern_number>=58625 && pattern_number<=58996 ))
+3575:((pattern_number>=20903 && pattern_number<=21093 ))

@@ -1,0 +1,7 @@
+4342:((pattern_number>=57597 && pattern_number<=58398 ))
+4343:((pattern_number>=4506 && pattern_number<=4518 )|| (pattern_number>=32227 && pattern_number<=32356 ))
+4346:((pattern_number>=1530 && pattern_number<=2472 ))
+4347:((pattern_number>=28014 && pattern_number<=28052 ))
+4348:((pattern_number>=27697 && pattern_number<=27723 )|| (pattern_number>=31274 && pattern_number<=31687 )|| (pattern_number>=37735 && pattern_number<=37893 )|| (pattern_number>=43173 && pattern_number<=43178 ))
+4349:((pattern_number>=13355 && pattern_number<=13407 )|| (pattern_number>=54228 && pattern_number<=54241 ))
+4351:((pattern_number>=4367 && pattern_number<=4382 )|| (pattern_number>=5346 && pattern_number<=5347 )|| (pattern_number>=12459 && pattern_number<=12523 )|| (pattern_number>=13389 && pattern_number<=13391 )|| (pattern_number>=17794 && pattern_number<=18159 )|| (pattern_number>=18628 && pattern_number<=18637 ))

@@ -1,0 +1,5 @@
+4872:((pattern_number>=17476 && pattern_number<=17700 )|| (pattern_number>=18355 && pattern_number<=18399 )|| (pattern_number>=56683 && pattern_number<=57130 ))
+4875:((pattern_number>=2484 && pattern_number<=2594 )|| (pattern_number>=33300 && pattern_number<=33784 ))
+4876:((pattern_number>=28360 && pattern_number<=28492 ))
+4877:((pattern_number>=12267 && pattern_number<=12358 )|| (pattern_number>=68702 && pattern_number<=73478 ))
+4878:((pattern_number>=14532 && pattern_number<=14542 )|| (pattern_number>=29700 && pattern_number<=30022 )|| (pattern_number>=47251 && pattern_number<=47326 ))

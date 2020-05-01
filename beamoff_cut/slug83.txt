@@ -1,0 +1,7 @@
+4813:((pattern_number>=4695 && pattern_number<=4739 ))
+4815:((pattern_number>=42418 && pattern_number<=42710 )|| (pattern_number>=44529 && pattern_number<=44585 ))
+4816:((pattern_number>=19203 && pattern_number<=19318 )|| (pattern_number>=20020 && pattern_number<=23216 )|| (pattern_number>=23516 && pattern_number<=24757 )|| (pattern_number>=25057 && pattern_number<=26081 )|| (pattern_number>=26381 && pattern_number<=26388 )|| (pattern_number>=27121 && pattern_number<=27977 )|| (pattern_number>=42365 && pattern_number<=42933 ))
+4817:((pattern_number>=37526 && pattern_number<=37745 )|| (pattern_number>=39315 && pattern_number<=39668 )|| (pattern_number>=43258 && pattern_number<=43606 )|| (pattern_number>=44473 && pattern_number<=44512 ))
+4818:((pattern_number>=36621 && pattern_number<=36941 ))
+4819:((pattern_number>=1829 && pattern_number<=1941 )|| (pattern_number>=30244 && pattern_number<=30295 )|| (pattern_number>=30903 && pattern_number<=31060 )|| (pattern_number>=32715 && pattern_number<=32944 )|| (pattern_number>=37530 && pattern_number<=37619 )|| (pattern_number>=38347 && pattern_number<=38475 )|| (pattern_number>=38903 && pattern_number<=38960 )|| (pattern_number>=39260 && pattern_number<=40325 )|| (pattern_number>=43705 && pattern_number<=43916 ))
+4821:((pattern_number>=11353 && pattern_number<=12696 )|| (pattern_number>=14187 && pattern_number<=14314 )|| (pattern_number>=47263 && pattern_number<=47512 ))

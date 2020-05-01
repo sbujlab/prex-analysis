@@ -1,0 +1,8 @@
+4919:((pattern_number>=9603 && pattern_number<=15646 ))
+4920:((pattern_number>=10422 && pattern_number<=10865 ))
+4921:((pattern_number>=3917 && pattern_number<=4009 )|| (pattern_number>=33511 && pattern_number<=33541 )|| (pattern_number>=45597 && pattern_number<=45744 ))
+4922:((pattern_number>=2792 && pattern_number<=2840 )|| (pattern_number>=41724 && pattern_number<=41944 )|| (pattern_number>=44841 && pattern_number<=45138 ))
+4923:((pattern_number>=12564 && pattern_number<=12638 )|| (pattern_number>=16875 && pattern_number<=16984 ))
+4924:((pattern_number>=25705 && pattern_number<=25883 )|| (pattern_number>=52002 && pattern_number<=52163 ))
+4925:((pattern_number>=3988 && pattern_number<=4180 )|| (pattern_number>=16540 && pattern_number<=17023 )|| (pattern_number>=49961 && pattern_number<=50093 ))
+4926:((pattern_number>=48254 && pattern_number<=48326 ))

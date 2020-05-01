@@ -1,0 +1,4 @@
+3425:((pattern_number>=618 && pattern_number<=1041 )|| (pattern_number>=2902 && pattern_number<=2933 )|| (pattern_number>=20629 && pattern_number<=20749 ))
+3426:((pattern_number>=16239 && pattern_number<=16454 )|| (pattern_number>=17178 && pattern_number<=17675 ))
+3427:((pattern_number>=4714 && pattern_number<=4842 )|| (pattern_number>=33329 && pattern_number<=33702 )|| (pattern_number>=35079 && pattern_number<=35544 ))
+3428:((pattern_number>=9153 && pattern_number<=12467 )|| (pattern_number>=14951 && pattern_number<=15642 )|| (pattern_number>=16937 && pattern_number<=17604 )|| (pattern_number>=22475 && pattern_number<=23139 )|| (pattern_number>=30754 && pattern_number<=31680 )|| (pattern_number>=42354 && pattern_number<=42575 ))
