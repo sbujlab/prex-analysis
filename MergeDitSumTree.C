@@ -1,23 +1,35 @@
-#include "TaSumStat.cc"
-void MergeSumTree(Int_t slug);
+/**********
+README: 
+At this point, for Dithering burst summary tree, 
+the last burst is shorter than it is expected. Therefore, 
+the last burst is merged with the previous burst, if a
+ run has more than one burst. In this way, burst length
+ definition is consistent with postpan minirun lenght. 
 
-void MergeSumTree(){
+-- Tao Ye
+************/
+
+#include "TaSumStat.cc"
+void MergeDitSumTree(Int_t slug);
+
+void MergeDitSumTree(){
   for(int i=1;i<=94;i++)
-    MergeSumTree(i);
+    MergeDitSumTree(i);
 }
 
-void MergeSumTree(Int_t slug){
+void MergeDitSumTree(Int_t slug){
   TString label = Form("slug%d",slug);
   TString filename  = label+".list";
   TString path = "./prex-runlist/simple_list/";
-  FILE *runlist ;
+  FILE *runlist;
 
   if(slug==9999){
     filename = "all.list";
     label = "all_slugs";
   }
+
   runlist = fopen((path+filename).Data(),"r");
-  
+
   if(runlist==NULL){
     cout << " -- Error: runlist " 
 	 << filename
@@ -25,14 +37,10 @@ void MergeSumTree(Int_t slug){
     return;
   }
 
-  TFile *output = TFile::Open("./rootfiles/MergedSum_"+label+".root","RECREATE");
+  TFile *output = TFile::Open("./rootfiles/DitMerged_"+label+"_newTest.root","RECREATE");
   TaSumStat fSumStatBuilder;
   TString fTreeNameArray[] = {"muls","burst","burst_mulc",
-			      "burst_mulc_dit","burst_mulc_dit_combo",
-			      "burst_mulc_lrb_burst","burst_mulc_lrb_alldet_burst",
-			      "burst_mulc_lrb_all_burst",
-			      "burst_mulc_lrb","burst_mulc_lrb_alldet",
-			      "burst_mulc_lrb_all"};
+			      "burst_mulc_dit","burst_mulc_dit_combo"};
   Int_t nTree = sizeof(fTreeNameArray)/sizeof(*fTreeNameArray);
   vector<Int_t> fRunNumberArray;
   // ===== First-Pass
@@ -86,6 +94,7 @@ void MergeSumTree(Int_t slug){
       cout << this_file->GetName() << endl;
       for(int it=0;it<nTree;it++){
 	TTree *aTree = (TTree*)this_file->Get(fTreeNameArray[it]);
+
 	if(aTree==NULL){  // just in case a tree output is missing
 	  fSumStatBuilder.load_null_stat_by_name(fTreeNameArray[it]);
 	  cout << " ** TTree " 
@@ -103,6 +112,14 @@ void MergeSumTree(Int_t slug){
 	  burst_counter = ievt;
 	  fSumStatBuilder.set_burst_counter(burst_counter);
 	  fSumStatBuilder.set_minirun_counter(burst_counter);
+
+	  // Decide whether it will be merged to previous burst
+	  if(ievt==nEntries-2){
+	    fSumStatBuilder.cache_japan_stat(fTreeNameArray[it]);
+	    ievt++;
+	    aTree->GetEntry(ievt);
+	    fSumStatBuilder.merge_japan_stat(fTreeNameArray[it]);
+	  }
 	  fSumStatBuilder.write_sum_stat_by_name(fTreeNameArray[it]);
 	  fSumStatBuilder.fill_tree_by_name( fTreeNameArray[it]);
 	}

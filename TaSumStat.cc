@@ -18,6 +18,13 @@ JAPAN_STAT TaSumStat::init_japan_stat(){
 }
 void TaSumStat::merge_japan_stat(JAPAN_STAT &dest_stat,JAPAN_STAT in_stat){
   // for merging short minirun to previous one
+
+  if(in_stat.num_samples==0){ // to avoid div-0 problem
+    cout << " **  "
+	 << __PRETTY_FUNCTION__
+	 << " number of samples is zero, will be skipped " << endl;
+    return;
+  }
   double mean_1 = dest_stat.hw_sum;
   double m2_1  = dest_stat.hw_sum_m2;
   double nsamp_1 = dest_stat.num_samples;
@@ -39,7 +46,7 @@ void TaSumStat::merge_japan_stat(JAPAN_STAT &dest_stat,JAPAN_STAT in_stat){
 void TaSumStat::write_sum_stat(SUM_STAT &dest_stat,JAPAN_STAT in_stat){
   dest_stat.mean = in_stat.hw_sum;
 
-  if(in_stat.num_samples==0){
+  if(in_stat.num_samples==0){// to avoid div-0 problem
     dest_stat.err = -1;
     dest_stat.rms = -1;
   }else{
@@ -142,4 +149,20 @@ void TaSumStat::load_japan_stat_ptr(TTree* input_tree){
     }
   }
 
+}
+
+void TaSumStat::load_null_stat_by_name(TString treename){
+  Int_t nch = fJStatMap[treename].size();
+  for(int ich=0;ich<nch;ich++)
+    fJStatMap[treename][ich] = init_japan_stat();
+}
+void TaSumStat::cache_japan_stat(TString treename){
+  fJStatBuffer = fJStatMap[treename];  
+}
+
+void TaSumStat::merge_japan_stat(TString treename){
+  Int_t nch = fJStatBuffer.size();
+  for(int ich=0;ich<nch;ich++){
+    merge_japan_stat(fJStatMap[treename][ich],fJStatBuffer[ich]);
+  }
 }
