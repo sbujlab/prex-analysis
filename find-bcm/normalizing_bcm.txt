@@ -9,6 +9,7 @@
 3305,2,bcm_an_ds3
 3308,2,bcm_an_ds3
 3310,2,bcm_an_ds3
+3311,2,bcm_an_ds3
 3314,2,bcm_an_ds3
 3316,2,bcm_an_ds3
 3318,2,bcm_an_ds3
@@ -758,6 +759,14 @@
 4498,5,bcm_dg_ds
 4499,5,bcm_dg_ds
 4500,5,bcm_dg_ds
+4501,5,bcm_dg_ds
+4502,5,bcm_dg_ds
+4503,5,bcm_dg_ds
+4504,5,bcm_dg_ds
+4505,5,bcm_dg_ds
+4506,5,bcm_dg_ds
+4507,5,bcm_dg_ds
+4508,5,bcm_dg_ds
 4509,5,bcm_dg_ds
 4510,5,bcm_dg_ds
 4511,5,bcm_dg_ds
@@ -906,6 +915,7 @@
 4691,5,bcm_dg_ds
 4692,5,bcm_dg_ds
 4693,5,bcm_dg_ds
+4694,5,bcm_dg_ds
 4695,5,bcm_dg_ds
 4696,5,bcm_dg_ds
 4697,5,bcm_dg_ds
