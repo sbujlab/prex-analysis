@@ -51,9 +51,9 @@ void CheckBmodAmplitude(Int_t run_number){
   vector<TString> fChannelArray={"usl","usr","dsl","dsr",
 				 "atl1","atl2","atr1","atr2",
 				 "bpm4aX","bpm4eX","bpm4aY","bpm4eY",
-				 "bpm11X","bpm12X",
-				 "bmod_trim1","bmod_trim2","bmod_trim3","bmod_trim4",
-				 "bmod_trim5","bmod_trim6","bmod_trim7"};
+				 "bpm11X","bpm12X"};
+				 // "bmod_trim1","bmod_trim2","bmod_trim3","bmod_trim4",
+				 // "bmod_trim5","bmod_trim6","bmod_trim7"};
   Int_t nch = fChannelArray.size();
   typedef struct {Double_t amplitude, phase, offset, period, chisq,ndf,ndata;} BMODSTAT;
   TString leaflist = "amplitdue/D:phase:offset:period:chisq:ndf:ndata";
@@ -68,7 +68,7 @@ void CheckBmodAmplitude(Int_t run_number){
   fsin->SetParName(1,"Period");
   fsin->SetParName(2,"Phase");
   fsin->SetParName(3,"Offset");
-  fsin->SetParLimits(0,0.0,1e5);
+  fsin->SetParLimits(0,0.0,10);
   fsin->SetParLimits(2,0.0,2*TMath::Pi());
 
   TCanvas *c1 = new TCanvas("c1","c1",800,800);
@@ -156,7 +156,7 @@ void CheckBmodAmplitude(Int_t run_number){
 	fsin->SetParameter(3,(ymax+ymin)*0.5);
 	double phase_init = TMath::Pi()/2.0 - peak_phase/period*2*TMath::Pi();
 	if(phase_init<0)
-	  phase_init = 2*TMath::Pi()+phase_init;
+	  phase_init += 2*TMath::Pi();
 	fsin->SetParameter(2,phase_init);
 	fsin->FixParameter(1,period);
 	fsin->SetParameter(0,(ymax-ymin)*0.5);
