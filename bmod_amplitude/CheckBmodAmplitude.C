@@ -68,7 +68,7 @@ void CheckBmodAmplitude(Int_t run_number){
   fsin->SetParName(1,"Period");
   fsin->SetParName(2,"Phase");
   fsin->SetParName(3,"Offset");
-  fsin->SetParLimits(0,0.0,10);
+  fsin->SetParLimits(0,0.0,1e5);
   fsin->SetParLimits(2,0.0,2*TMath::Pi());
 
   TCanvas *c1 = new TCanvas("c1","c1",800,800);
