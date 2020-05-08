@@ -51,23 +51,25 @@ void CheckBmodAmplitude(Int_t run_number){
   vector<TString> fChannelArray={"usl","usr","dsl","dsr",
 				 "atl1","atl2","atr1","atr2",
 				 "bpm4aX","bpm4eX","bpm4aY","bpm4eY",
-				 "bpm11X","bpm12X"};
+				 "bpm11X","bpm12X",
+				 "bmod_trim1","bmod_trim2","bmod_trim3","bmod_trim4",
+				 "bmod_trim5","bmod_trim6","bmod_trim7"};
   Int_t nch = fChannelArray.size();
-  typedef struct {Double_t amplitude, phase, offset, frequency, chisq,ndf,ndata;} BMODSTAT;
-  TString leaflist = "amplitdue/D:phase:offset:frequency:chisq:ndf:ndata";
+  typedef struct {Double_t amplitude, phase, offset, period, chisq,ndf,ndata;} BMODSTAT;
+  TString leaflist = "amplitdue/D:phase:offset:period:chisq:ndf:ndata";
   vector<BMODSTAT> fBmodStatArray(nch);
   for(int ich = 0; ich<nch;ich++)
     bmod->Branch(fChannelArray[ich],&(fBmodStatArray[ich]),leaflist);
 
   TF1 *fsin = new TF1("fsin","[0]*TMath::Sin(2*TMath::Pi()*x/[1] +[2])+[3]",-1e5,1e5);
-  Double_t par_init[] =  {0.01,1200,0,0};
+  Double_t par_init[] =  {0.01,1200,0.1,0};
   fsin->SetParameters(par_init);
   fsin->SetParName(0,"Amplitude");
   fsin->SetParName(1,"Period");
   fsin->SetParName(2,"Phase");
   fsin->SetParName(3,"Offset");
   fsin->SetParLimits(0,0.0,10);
-  // fsin->SetParLimits(2,-TMath::Pi(),TMath::Pi());
+  fsin->SetParLimits(2,0.0,2*TMath::Pi());
 
   TCanvas *c1 = new TCanvas("c1","c1",800,800);
   Int_t plot_counts=0;
@@ -99,9 +101,11 @@ void CheckBmodAmplitude(Int_t run_number){
 	   hramp.GetBinContent(ibin)>hramp.GetBinContent(ibin+1) )
 	  fRampSteps.push_back( hramp.GetBinCenter(ibin));
       }
+      Int_t nSteps = fRampSteps.size();
+      if(nSteps==0)
+	continue;
       
       period = *(fRampSteps.end()-1);
-      Int_t nSteps = fRampSteps.size();
       Double_t* fRamp_ptr = new Double_t[nSteps];
       for(int is=0;is<nSteps;is++)
 	fRamp_ptr[is] = fRampSteps[is];
@@ -109,7 +113,7 @@ void CheckBmodAmplitude(Int_t run_number){
       for(int ich=0;ich<nch;ich++){
 	if(evt_tree->GetBranch(fChannelArray[ich])==NULL){
 	  fBmodStatArray[ich].amplitude = 0;
-	  fBmodStatArray[ich].frequency = 0;
+	  fBmodStatArray[ich].period = 0;
 	  fBmodStatArray[ich].phase = 0;
 	  fBmodStatArray[ich].offset = 0;
 	  fBmodStatArray[ich].chisq =0;
@@ -150,7 +154,10 @@ void CheckBmodAmplitude(Int_t run_number){
 
 	// h1dptr = (TH1D*)gDirectory->FindObject("htemp");
 	fsin->SetParameter(3,(ymax+ymin)*0.5);
-	fsin->SetParameter(2,TMath::Pi()/2.0 - peak_phase/period*2*TMath::Pi());
+	double phase_init = TMath::Pi()/2.0 - peak_phase/period*2*TMath::Pi();
+	if(phase_init<0)
+	  phase_init = 2*TMath::Pi()+phase_init;
+	fsin->SetParameter(2,phase_init);
 	fsin->FixParameter(1,period);
 	fsin->SetParameter(0,(ymax-ymin)*0.5);
 	Double_t* fMean_ptr = new Double_t[nSteps];
@@ -172,7 +179,7 @@ void CheckBmodAmplitude(Int_t run_number){
 	mger.Fit("fsin","Q");
 	// fsin->Draw("same");
 	fBmodStatArray[ich].amplitude = fsin->GetParameter(0);
-	fBmodStatArray[ich].frequency = fsin->GetParameter(1);
+	fBmodStatArray[ich].period = fsin->GetParameter(1);
 	fBmodStatArray[ich].phase = fsin->GetParameter(2);
 	fBmodStatArray[ich].offset =fsin->GetParameter(3);
 	fBmodStatArray[ich].chisq =fsin->GetChisquare();
