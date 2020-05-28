@@ -1,3 +1,8 @@
+void BurpCounter(Int_t slug);
+void BurpCounter(){
+  for(int i=1;i<=94;i++)
+    BurpCounter(i);
+}
 void BurpCounter(Int_t slug){
   TFile *output = TFile::Open(Form("slug%d.root",slug),"RECREATE");
   TTree *cnt_tree = new TTree("T","event counter tree");
@@ -6,7 +11,7 @@ void BurpCounter(Int_t slug){
   cnt_tree->Branch("run",&run_number);
   cnt_tree->Branch("ngood",&nGood);
   cnt_tree->Branch("ngood_wo_bpm",&nGoodIgnoringBPM);
-  cnt_tree->Branch("nBPM_burp",nGoodButFailedByBPM);
+  cnt_tree->Branch("nBPM_burp",&nGoodButFailedByBPM);
 
   TString runlist_filename = Form("./prex-runlist/simple_list/slug%d.list",slug);
   FILE *runlist = fopen(runlist_filename.Data(),"r");
@@ -18,8 +23,8 @@ void BurpCounter(Int_t slug){
     TTree *evt_tree = (TTree*)rootfile->Get("evt");
 
     nGood = evt_tree->GetEntries("ErrorFlag==0");
-    nGoodIgnoringBPM = evt_tree->GetEntries("(ErrorFlag&0xdbfffbff)==0") ;
-    nGoodButFailedByBPM = evt_tree->GetEntries("(ErrorFlag&0xdbfffbff)==0 && (ErrorFlag&0x20000400)==0x20000400");
+    nGoodIgnoringBPM = evt_tree->GetEntries("(ErrorFlag&0xdafffbff)==0") ;
+    nGoodButFailedByBPM = evt_tree->GetEntries("(ErrorFlag&0xdafffbff)==0 && (ErrorFlag&0x20000400)==0x20000400");
     
     cout << " Total Good Events : "<<  nGood << endl;
     cout << " Good Events ignoring BPM: "<< nGoodIgnoringBPM << endl;
