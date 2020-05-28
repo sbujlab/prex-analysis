@@ -23,8 +23,8 @@ void BurpCounter(Int_t slug){
     TTree *evt_tree = (TTree*)rootfile->Get("evt");
 
     nGood = evt_tree->GetEntries("ErrorFlag==0");
-    nGoodIgnoringBPM = evt_tree->GetEntries("(ErrorFlag&0xdafffbff)==0") ;
-    nGoodButFailedByBPM = evt_tree->GetEntries("(ErrorFlag&0xdafffbff)==0 && (ErrorFlag&0x20000400)==0x20000400");
+    nGoodIgnoringBPM = evt_tree->GetEntries("(ErrorFlag&0xdafefbff)==0") ;
+    nGoodButFailedByBPM = evt_tree->GetEntries("(ErrorFlag&0xdafefbff)==0 && (ErrorFlag&0x20000400)==0x20000400");
     
     cout << " Total Good Events : "<<  nGood << endl;
     cout << " Good Events ignoring BPM: "<< nGoodIgnoringBPM << endl;
