@@ -20,7 +20,7 @@ void MergeDitSumTree(){
 void MergeDitSumTree(Int_t slug){
   TString label = Form("slug%d",slug);
   TString filename  = label+".list";
-  TString path = "./prex-runlist/simple_list/";
+  TString path = "./prex-runlist/good_list/";
   FILE *runlist;
 
   if(slug==9999){
@@ -96,7 +96,7 @@ void MergeDitSumTree(Int_t slug){
 	TTree *aTree = (TTree*)this_file->Get(fTreeNameArray[it]);
 
 	if(aTree==NULL){  // just in case a tree output is missing
-	  fSumStatBuilder.load_null_stat_by_name(fTreeNameArray[it]);
+	  fSumStatBuilder.load_invalid_stat_by_name(fTreeNameArray[it]);
 	  cout << " ** TTree " 
 	       << fTreeNameArray[it] 
 	       << " is not found and stat is filled with zeros " << endl;

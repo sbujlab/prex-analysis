@@ -16,6 +16,14 @@ JAPAN_STAT TaSumStat::init_japan_stat(){
   this_stat.num_samples=0.0;
   return this_stat;
 }
+JAPAN_STAT TaSumStat::invalid_japan_stat(){
+  JAPAN_STAT this_stat;
+  this_stat.hw_sum=0.0;
+  this_stat.hw_sum_m2=-1;
+  this_stat.hw_sum_err=-1;
+  this_stat.num_samples=0.0;
+  return this_stat;
+}
 void TaSumStat::merge_japan_stat(JAPAN_STAT &dest_stat,JAPAN_STAT in_stat){
   // for merging short minirun to previous one
 
@@ -155,6 +163,12 @@ void TaSumStat::load_null_stat_by_name(TString treename){
   Int_t nch = fJStatMap[treename].size();
   for(int ich=0;ich<nch;ich++)
     fJStatMap[treename][ich] = init_japan_stat();
+}
+
+void TaSumStat::load_invalid_stat_by_name(TString treename){
+  Int_t nch = fJStatMap[treename].size();
+  for(int ich=0;ich<nch;ich++)
+    fJStatMap[treename][ich] = invalid_japan_stat();
 }
 void TaSumStat::cache_japan_stat(TString treename){
   fJStatBuffer = fJStatMap[treename];  

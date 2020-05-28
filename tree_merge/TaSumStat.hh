@@ -11,6 +11,7 @@ public:
   TaSumStat();
   ~TaSumStat(){};
   JAPAN_STAT init_japan_stat();
+  JAPAN_STAT invalid_japan_stat();
   void merge_japan_stat(JAPAN_STAT&, JAPAN_STAT);
   void write_sum_stat(SUM_STAT&,JAPAN_STAT);
   void write_sum_stat_by_name(TString);
@@ -22,6 +23,7 @@ public:
   void write_trees_to_output(TFile*);
 
   void load_null_stat_by_name(TString);
+  void load_invalid_stat_by_name(TString);
   void load_japan_stat_ptr(TTree* );
   void fill_tree_by_name(TString);
   void cache_japan_stat(TString);
