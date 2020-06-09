@@ -21,7 +21,7 @@ void EigenDitSlope(Int_t slug=94){
   TTree *slope_tree = new TTree("slope","lagrange slopes in eigenvectors basis");
   vector<Double_t> fEigenSlopes(nDV*nIV);
   vector<Double_t> fSign(nIV);
-  vector<Double_t> fSignLocker(nIV*nIV);
+  vector<Double_t> fSignLocker(nIV*nIV,0);
   for(int j=0;j<nIV;j++)
     slope_tree->Branch(Form("sign%d",j),&fSign[j]);
     
@@ -50,12 +50,6 @@ void EigenDitSlope(Int_t slug=94){
   Int_t nEntries = eig_tree->GetEntries();
   for(int ievt=0;ievt<nEntries;ievt++){
     eig_tree->GetEntry(ievt);
-
-    if(ievt==0){
-      for(int i=0;i<nIV;i++)
-	for(int j=0;j<nIV;j++)
-	 fSignLocker[i*nIV+j] = fEigenVector[i*nIV+j];
-    }
     
     TMatrixD raw_slope_matrix(nIV,nDV);
     for(int i=0;i<nDV;i++)
@@ -67,9 +61,13 @@ void EigenDitSlope(Int_t slug=94){
       for(int jrow=0;jrow<nIV;jrow++){
 	prod_sum += (fSignLocker[jrow*nIV+icol] * fEigenVector[jrow*nIV+icol]);
       }
-      if(prod_sum>0)
+      if(fabs(prod_sum)<0.1){
+	fSign[icol]=1.0;
+	  for(int j=0;j<nIV;j++)
+	    fSignLocker[j*nIV+icol] = fEigenVector[j*nIV+icol];
+      } else if(prod_sum>0)
 	fSign[icol] =1.0;
-      else
+      else if (prod_sum<0)
 	fSign[icol] =-1.0;
     }
     
