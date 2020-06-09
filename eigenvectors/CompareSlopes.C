@@ -111,10 +111,10 @@ void CompareSlopes(Int_t slug=94){
 			     det_name.Data(),i));
       legslope->Draw("same");
       pad2->cd();
-      mini_tree->Draw(Form("dit.%s_evMon%d/mini_eig.%s_evMon%d",
+      mini_tree->Draw(Form("(dit.%s_evMon%d-mini_eig.%s_evMon%d)/(ppm/um)",
 			   det_name.Data(),i,det_name.Data(),i),"","");
       TH1D *h1d = (TH1D*)gPad->FindObject("htemp");
-      h1d->SetTitle("ratio (dit_slope /reg_slope) in eigen-basis");
+      h1d->SetTitle("difference (dit_slope - reg_slope) (ppm/um) ");
 
       c1->Print(Form("plots/slug%d_%s_compare.pdf",slug,DVlist[idv].Data())); 
     }
