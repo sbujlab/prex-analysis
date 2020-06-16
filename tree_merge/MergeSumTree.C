@@ -44,7 +44,7 @@ void MergeSumTree(Int_t slug){
       continue;
     fRunNumberArray.push_back(run_number);
     TString qw_path = TString(gSystem->Getenv("QW_ROOTFILES") );
-    TString rootfile_name = Form("prexPrompt_pass1_%d.%03d.root",
+    TString rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 				 run_number,seg_number);
     TFile *this_file;
     while(gSystem->AccessPathName(qw_path+rootfile_name)==0){
@@ -65,7 +65,7 @@ void MergeSumTree(Int_t slug){
       this_file->Close();
       
       seg_number++;
-      rootfile_name = Form("prexPrompt_pass1_%d.%03d.root",
+      rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 			   run_number,seg_number);
     } // end of file split search
   } // end of runlist loop
@@ -77,7 +77,7 @@ void MergeSumTree(Int_t slug){
     Int_t run_number = *iter_run;
     Int_t seg_number=0;
     TString qw_path = TString(gSystem->Getenv("QW_ROOTFILES") );
-    TString rootfile_name = Form("prexPrompt_pass1_%d.%03d.root",
+    TString rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 				 run_number,seg_number);
     TFile *this_file;
     while(gSystem->AccessPathName(qw_path+rootfile_name)==0){
@@ -109,7 +109,7 @@ void MergeSumTree(Int_t slug){
       } // end of tree loop;
       this_file->Close();
       seg_number++;
-      rootfile_name = Form("prexPrompt_pass1_%d.%03d.root",
+      rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 			   run_number,seg_number);
     } // end of file split search
     iter_run++;

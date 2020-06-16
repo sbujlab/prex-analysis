@@ -20,7 +20,7 @@ void MergePostpan(TString label){
     list_map[tree_name_array[i]]= new TList();
     output_tree_array.push_back( new TTree() );
   }
-  TString postpan_path="/volatile/halla/parity/postpan_respin/";
+  TString postpan_path="/volatile/halla/parity/prex-respin2/postpan_respin/";
   if(runlist!=NULL){
     TFile *output = TFile::Open("./rootfiles/PostpanMerged_"+label+".root","RECREATE");
     while(!feof(runlist)){
