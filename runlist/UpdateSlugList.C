@@ -111,7 +111,7 @@ void GetProductionRunList(){
     for(int j=0; j< nFields; j++){
       cout << "\t" << row->GetField(j) ;
       TString row_ret = TString(row->GetField(j));
-      row_ret.ReplaceAll("\n",";");
+      row_ret.ReplaceAll("\n","");
       fprintf(runlist,"%s",row_ret.Data());
       if(j!=nFields-1)
 	fprintf(runlist,",");
