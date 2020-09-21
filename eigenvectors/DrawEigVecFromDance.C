@@ -1,36 +1,82 @@
-void DrawEigVecFromDance(Int_t slug=94){
+void DrawEigVecFromDance(Int_t kSwitch, Int_t slug=94){
   gStyle->SetOptStat(0);
   gStyle->SetPaintTextFormat("1.1f");
-  
+  vector<TString> IVlist;  
+  TString filename_tag;
+  TString slug_title = Form("Slug%d",slug);
+  if(kSwitch==0){  // 5 bpm
+    vector< TString > IVlist1 =  {"bpm4aX","bpm4eX","bpm12X",
+				  "bpm4aY","bpm4eY"};
+    vector< TString > IVlist2 =  {"bpm4aX","bpm4eX","bpm11X12X",
+				  "bpm4aY","bpm4eY"};
+    if(slug>=3)
+      IVlist = IVlist2;
+    else
+      IVlist = IVlist1;
+    filename_tag = "5bpm";
+  }else if(kSwitch==1){  // 6bpm
+    vector< TString > IVlist1 =  {"bpm4aX","bpm4eX",
+				  "bpm1X","bpm12X",
+				  "bpm4aY","bpm4eY"};
+    vector< TString > IVlist2 =  {"bpm4aX","bpm4eX",
+				  "bpm11X","bpm12X",
+				  "bpm4aY","bpm4eY"};
+
+    if(slug>=3)
+      IVlist = IVlist2;
+    else
+      IVlist = IVlist1;
+    filename_tag = "6bpm";
+  }else if(kSwitch==2){  // all bpm
+    vector< TString > IVlist1 =  {"bpm4aX","bpm4eX","bpm1X",
+				  "bpm8X","bpm12X",
+				  "bpm4aY","bpm4eY","bpm1Y",
+				  "bpm8Y","bpm12Y"};
+    vector< TString > IVlist2 =  {"bpm4aX","bpm4eX","bpm1X",
+				  "bpm11X","bpm12X","bpm16X",
+				  "bpm4aY","bpm4eY","bpm1Y",
+				  "bpm11Y","bpm12Y","bpm16Y"};
+    if(slug>=3)
+      IVlist = IVlist2;
+    else
+      IVlist = IVlist1;
+    filename_tag = "allbpm";
+  }
+
   TFile *input = TFile::Open(Form("./rootfiles/MergedLagrange_slug%d.root",slug));
-  TTree *eig_tree = (TTree*)input->Get("mini_eig");
+  TTree *eig_tree;
+  if(kSwitch==0){
+    eig_tree = (TTree*)input->Get("mini_eig"); 
+  }else if(kSwitch==1){
+    eig_tree = (TTree*)input->Get("mini_eig6bpm"); 
+  }else if(kSwitch==2){
+    eig_tree = (TTree*)input->Get("mini_eigall"); 
+  }
+
   eig_tree->AddFriend("mini");
-  eig_tree->AddFriend("slope",Form("./rootfiles/dit_eigslopes_slug%d.root",slug));
+  eig_tree->AddFriend("slope",Form("./rootfiles/dit_eigslopes_%s_slug%d.root",
+				   filename_tag.Data(),slug));
   TString  leaflist =  eig_tree->GetBranch("eigvec")->GetTitle() ;
 
-  vector< TString > IVlist1 =  {"bpm4aX","bpm4eX","bpm1X",
-				"bpm8X","bpm12X",
-				"bpm4aY","bpm4eY","bpm1Y",
-				"bpm8Y","bpm12Y"};
-  
-  vector< TString > IVlist2 =  {"bpm4aX","bpm4eX","bpm1X",
-				"bpm11X","bpm12X","bpm16X",
-				"bpm4aY","bpm4eY","bpm1Y",
-				"bpm11Y","bpm12Y","bpm16Y"};
-  vector<TString> fBPMList;
-  if(slug>=3)
-    fBPMList = IVlist2;
-  else
-    fBPMList = IVlist1;
-
-  Int_t nBPM = fBPMList.size();
+  Int_t nBPM = IVlist.size();
   
   TCanvas *c2 = new TCanvas("c2","c2",1200,600);
-  c2->Print(Form("plots/slug%d_vector.pdf[",slug));
+  c2->Print(Form("plots/slug%d_vector_%s.pdf[",slug,filename_tag.Data()));
   // Eigen Values
   TMultiGraph *mgval = new TMultiGraph();
-  TLegend *legval = new TLegend(0.9,0.6,0.95,0.9);
+  TLegend *legval = new TLegend(0.9,0.6,0.99,0.9);
   Int_t color_offset=0;
+  vector<Int_t> fRun;
+  vector<Int_t> fMini;
+  eig_tree->Draw("run:mini","","goff");
+  Double_t *yval = eig_tree->GetV1();
+  Double_t *xval = eig_tree->GetV2();
+  Int_t nmini = eig_tree->GetSelectedRows();
+  for(int i =0;i<nmini;i++){
+    fRun.push_back(yval[i]);
+    fMini.push_back(xval[i]);
+  }
+
   for(int j=0;j<nBPM;j++){
     Int_t npt =  eig_tree->Draw(Form("diff_evMon%d.rms/um:Entry$",j),
 				"","goff");
@@ -47,17 +93,35 @@ void DrawEigVecFromDance(Int_t slug=94){
   } // component loop
   c2->cd();
   mgval->Draw("ALP");
-  mgval->SetTitle("#sqrt{Eigenvalues} (um);minirun ; um");
+  TH1D *hmgval = (TH1D*)mgval->GetHistogram();
+  hmgval->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+  Int_t last_run_label=0;
+  double ymax = hmgval->GetYaxis()->GetXmax();
+  double ymin = hmgval->GetYaxis()->GetXmin();
+  for(int i=0;i<nmini;i++){
+    if(fRun[i]!=last_run_label){
+      last_run_label = fRun[i];
+      hmgval->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+      TLine *line_buff = new TLine(i,ymin,i,ymax);
+      line_buff->SetLineWidth(1);
+      line_buff->SetLineStyle(4);
+      line_buff->SetLineColor(14);
+      line_buff->Draw("same");
+    }else
+      hmgval->GetXaxis()->SetBinLabel(i+1,"");
+  }
+  hmgval->SetTitle(slug_title+": #sqrt{Eigenvalues} (um); Run Number; um");
+  hmgval->GetXaxis()->SetTitleOffset(1.25);
   legval->Draw("same");
-  c2->Print(Form("plots/slug%d_vector.pdf",slug));
+  c2->Print(Form("plots/slug%d_vector_%s.pdf",slug,filename_tag.Data()));
   c2->Clear("D");
   //Eigen vectors
   for(int i=0;i<nBPM;i++){
     TMultiGraph *mg = new TMultiGraph();
-    TLegend *leg = new TLegend(0.9,0.6,0.95,0.9);
+    TLegend *leg = new TLegend(0.9,0.6,0.99,0.9);
     Int_t color_offset=0;
     for(int j=0;j<nBPM;j++){
-      Int_t npt =  eig_tree->Draw(Form("sign%d*evMon%d_%s:Entry$",i,i,fBPMList[j].Data()),
+      Int_t npt =  eig_tree->Draw(Form("sign%d*evMon%d_%s:Entry$",i,i,IVlist[j].Data()),
 				  "","goff");
       Double_t *y_val = eig_tree->GetV1();
       Double_t *fEntries = eig_tree->GetV2();
@@ -67,18 +131,33 @@ void DrawEigVecFromDance(Int_t slug=94){
       g1->SetLineColor(j+1+color_offset);
       g1->SetMarkerColor(j+1+color_offset);
       g1->SetMarkerStyle(20);
-      leg->AddEntry(g1,fBPMList[j],"lp");
+      leg->AddEntry(g1,IVlist[j],"lp");
       mg->Add(g1,"lp");
     } // component loop
     c2->cd();
     mg->Draw("ALP");
-    mg->SetTitle(Form("EigenVector #%d;minirun ;Magnitude",i));
+    TH1D *hmg = (TH1D*)mg->GetHistogram();
+    hmg->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+    last_run_label = 0;
+    ymax  = hmg->GetYaxis()->GetXmax();
+    ymin  = hmg->GetYaxis()->GetXmin();
+    for(int i=0;i<nmini;i++){
+      if(fRun[i]!=last_run_label){
+	last_run_label = fRun[i];
+	hmg->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	TLine *line_buff= new TLine(i,ymin,i,ymax);
+	line_buff->SetLineWidth(1);
+	line_buff->SetLineStyle(4);
+	line_buff->SetLineColor(14);
+	line_buff->Draw("same");
+      }else
+	hmg->GetXaxis()->SetBinLabel(i+1,"");
+    }
+    hmg->SetTitle(slug_title+Form(": EigenVector #%d;Run Number ;Magnitude",i));
+    hmg->GetXaxis()->SetTitleOffset(1.25);
     leg->Draw("same");
-    c2->Print(Form("plots/slug%d_vector.pdf",slug));
+    c2->Print(Form("plots/slug%d_vector_%s.pdf",slug,filename_tag.Data()));
   } // eigenvalue loop
-
-  c2->Print(Form("plots/slug%d_vector.pdf]",slug));
-  
+  c2->Print(Form("plots/slug%d_vector_%s.pdf]",slug,filename_tag.Data()));
   input->Close();
-  
 }

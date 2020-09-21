@@ -1,6 +1,6 @@
 void EigenDitSlope6bpm(Int_t slug=94){
   
-  vector< TString > IVlist1 = {"bpm4aX","bpm4eX","bpm1X","bpm12X","bpm4aY","bpm4eY"};
+  vector< TString > IVlist1 = {"bpm4aX","bpm4eX","bpm8X","bpm12X","bpm4aY","bpm4eY"};
   vector< TString > IVlist2 = {"bpm4aX","bpm4eX","bpm11X","bpm12X","bpm4aY","bpm4eY"};
   vector<TString> IVlist;
   if(slug>=3)
@@ -8,7 +8,7 @@ void EigenDitSlope6bpm(Int_t slug=94){
   else
     IVlist = IVlist1;
   
-  vector<TString> DVlist ={"us_avg","usl","usr"};
+  vector<TString> DVlist ={"us_avg","usl","usr","us_dd"};
   Int_t nDV = DVlist.size();
   Int_t nIV = IVlist.size();
   TFile* output = TFile::Open(Form("rootfiles/dit_eigslopes_6bpm_slug%d.root",slug),"RECREATE");

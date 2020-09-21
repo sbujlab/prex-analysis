@@ -1,19 +1,19 @@
-void CompareSlopes6bpm(Int_t slug=94){
+void CompareSlopes5bpm(Int_t slug=94){
   gStyle->SetOptFit(1);
   TFile *input = TFile::Open(Form("rootfiles/MergedLagrange_slug%d.root",slug));
-  TTree *mini_tree = (TTree*)input->Get("mini_eig6bpm");
-  mini_tree->AddFriend("mini_lagr6bpm");
+  TTree *mini_tree = (TTree*)input->Get("mini_eig");
+  mini_tree->AddFriend("mini_dit");
   mini_tree->AddFriend("mini");
   mini_tree->AddFriend("dit=slope",
-		       Form("rootfiles/dit_eigslopes_6bpm_slug%d.root",slug));
-  Int_t nBPM=6;
+		       Form("rootfiles/dit_eigslopes_5bpm_slug%d.root",slug));
+  Int_t nBPM=5;
   
   vector<TString> DVlist={"asym_us_avg","asym_usl","asym_usr","asym_us_dd"};
   Int_t nDV = DVlist.size();
 
   for(int idv=0;idv<nDV;idv++){
     TCanvas *c1 = new TCanvas("c1","c1",1200,600);
-    c1->Print(Form("plots/slug%d_%s_compare_6bpm.pdf[",slug,DVlist[idv].Data()));
+    c1->Print(Form("plots/slug%d_%s_compare_5bpm.pdf[",slug,DVlist[idv].Data()));
     // mini_tree->Draw(Form("%s.rms/ppm:Entry$",DVlist[idv].Data()),"","goff");
     // double *raw_val = mini_tree->GetV1();
     // double *rawx_val = mini_tree->GetV2();
@@ -22,7 +22,7 @@ void CompareSlopes6bpm(Int_t slug=94){
     // g1_raw_rms->SetMarkerStyle(20);
     // g1_raw_rms->Draw("ALP");
     // g1_raw_rms->SetTitle("Raw RMS (ppm); Minirun# ; RMS(ppm)");
-    // c1->Print(Form("plots/compare_6bpm_slug%d.pdf",slug));
+    // c1->Print(Form("plots/compare_5bpm_slug%d.pdf",slug));
     
     TMultiGraph *mgrms = new TMultiGraph(); // rms
     TLegend *legrms = new TLegend(0.9,0.7,1.0,0.9);
@@ -35,7 +35,7 @@ void CompareSlopes6bpm(Int_t slug=94){
     g1_reg_rms->SetMarkerColor(kRed);
     g1_reg_rms->SetLineColor(kRed);
 
-    mini_tree->Draw(Form("lagr_%s.rms/ppm:Entry$",DVlist[idv].Data()),"","goff");
+    mini_tree->Draw(Form("dit_%s.rms/ppm:Entry$",DVlist[idv].Data()),"","goff");
     double *y_val2 = mini_tree->GetV1();
     double *x_val2 = mini_tree->GetV2();
     TGraph *g1_lag_rms = new TGraph(mini_tree->GetSelectedRows(),
@@ -46,21 +46,21 @@ void CompareSlopes6bpm(Int_t slug=94){
     mgrms->Add(g1_reg_rms,"lp");
     mgrms->Add(g1_lag_rms,"lp");
     legrms->AddEntry(g1_reg_rms,"Eig-Reg");
-    legrms->AddEntry(g1_lag_rms,"Lagrange");
+    legrms->AddEntry(g1_lag_rms,"Dither");
     mgrms->Draw("A");
     mgrms->SetTitle("Corrected RMS (ppm): " + DVlist[idv] +";Minirun# ; RMS(ppm)");
     legrms->Draw("same");
-    c1->Print(Form("plots/slug%d_%s_compare_6bpm.pdf",slug,DVlist[idv].Data()));
+    c1->Print(Form("plots/slug%d_%s_compare_5bpm.pdf",slug,DVlist[idv].Data()));
 
-    mini_tree->Draw(Form("sqrt(lagr_%s.rms**2 - eig_%s.rms**2)/ppm:Entry$",DVlist[idv].Data(),DVlist[idv].Data()),"","goff");
+    mini_tree->Draw(Form("sqrt(dit_%s.rms**2 - eig_%s.rms**2)/ppm:Entry$",DVlist[idv].Data(),DVlist[idv].Data()),"","goff");
     double *diff_y = mini_tree->GetV1();
     double *diff_x = mini_tree->GetV2();
     TGraph *g1_diff_rms = new TGraph(mini_tree->GetSelectedRows(),
 				     diff_x,diff_y);
     g1_diff_rms->SetMarkerStyle(20);
     g1_diff_rms->Draw("ALP");
-    g1_diff_rms->SetTitle(DVlist[idv] + ": #sqrt{#sigma^{2}_{lagr} -#sigma^{2}_{reg}} (ppm); Minirun# ; RMS(ppm)");
-    c1->Print(Form("plots/slug%d_%s_compare_6bpm.pdf",slug,DVlist[idv].Data()));
+    g1_diff_rms->SetTitle(DVlist[idv] + ": #sqrt{#sigma^{2}_{dit} -#sigma^{2}_{reg}} (ppm); Minirun# ; RMS(ppm)");
+    c1->Print(Form("plots/slug%d_%s_compare_5bpm.pdf",slug,DVlist[idv].Data()));
 
     c1->cd();
     c1->Clear();
@@ -76,7 +76,7 @@ void CompareSlopes6bpm(Int_t slug=94){
       gStyle->SetStatW(0.3);
       c1->Clear("D");
       pad1->cd();
-      mini_tree->Draw(Form("sign%d*mini_eig6bpm.%s_evMon%d/(ppm/um):Entry$",i,det_name.Data(),i),
+      mini_tree->Draw(Form("sign%d*mini_eig.%s_evMon%d/(ppm/um):Entry$",i,det_name.Data(),i),
 		      "","goff");
       double *y_val = mini_tree->GetV1();
       double *x_val = mini_tree->GetV2();
@@ -102,20 +102,20 @@ void CompareSlopes6bpm(Int_t slug=94){
       mgslope->Add(g1_reg_slope,"lp");
       mgslope->Add(g1_lag_slope,"lp");
       legslope->AddEntry(g1_reg_slope,"Eig-Reg");
-      legslope->AddEntry(g1_lag_slope,"Lagrange");
+      legslope->AddEntry(g1_lag_slope,"Dither");
       mgslope->Draw("A");
       mgslope->SetTitle(Form("Slope : %s_vs_evMon%d (ppm/um) ; minirun # ; Slope (ppm/um)",
 			     det_name.Data(),i));
       legslope->Draw("same");
       pad2->cd();
-      mini_tree->Draw(Form("dit.%s_evMon%d/mini_eig6bpm.%s_evMon%d",
+      mini_tree->Draw(Form("dit.%s_evMon%d/mini_eig.%s_evMon%d",
 			   det_name.Data(),i,det_name.Data(),i),"","");
       TH1D *h1d = (TH1D*)gPad->FindObject("htemp");
       h1d->SetTitle("ratio (dit_slope /reg_slope) in eigen-basis");
 
-      c1->Print(Form("plots/slug%d_%s_compare_6bpm.pdf",slug,DVlist[idv].Data())); 
+      c1->Print(Form("plots/slug%d_%s_compare_5bpm.pdf",slug,DVlist[idv].Data())); 
     }
-    c1->Print(Form("plots/slug%d_%s_compare_6bpm.pdf]",slug,DVlist[idv].Data())); 
+    c1->Print(Form("plots/slug%d_%s_compare_5bpm.pdf]",slug,DVlist[idv].Data())); 
   }
 
  
@@ -132,7 +132,7 @@ void CompareSlopes6bpm(Int_t slug=94){
   // g1_reg_avg->SetMarkerStyle(20);
   // g1_reg_avg->SetMarkerColor(kRed);
   // g1_reg_avg->SetLineColor(kRed);
-  // mini_tree->Draw("lagr_asym_us_avg/ppb:lagr_asym_us_avg.err/ppb:Entry$+0.4","","goff");
+  // mini_tree->Draw("dit_asym_us_avg/ppb:dit_asym_us_avg.err/ppb:Entry$+0.4","","goff");
   // double *y_mean2 = mini_tree->GetV1();
   // double *y_err2 = mini_tree->GetV2();
   // double *x_mean2 = mini_tree->GetV3();
@@ -145,7 +145,7 @@ void CompareSlopes6bpm(Int_t slug=94){
   // mgavg->Add(g1_reg_avg,"p");
   // mgavg->Add(g1_lag_avg,"p");
   // legavg->AddEntry(g1_reg_avg,"Eig-Reg");
-  // legavg->AddEntry(g1_lag_avg,"Lagrange");
+  // legavg->AddEntry(g1_lag_avg,"Ditange");
   // mgavg->Draw("A");
   // double ymax = mgavg->GetYaxis()->GetXmax();
   // double ymin = mgavg->GetYaxis()->GetXmin();
@@ -174,11 +174,11 @@ void CompareSlopes6bpm(Int_t slug=94){
   // ps2->SetY1NDC(0.8);
   // ps2->SetY2NDC(0.7);
 
-  // c1->Print(Form("plots/compare_6bpm_slug%d.pdf",slug));
+  // c1->Print(Form("plots/compare_5bpm_slug%d.pdf",slug));
 
   
   TCanvas *c2 = new TCanvas("c2","c2",1200,600);
-  c2->Print(Form("plots/slug%d_diff_evMon_6bpm.pdf[",slug));
+  c2->Print(Form("plots/slug%d_diff_evMon_5bpm.pdf[",slug));
   c2->cd();
   for(int i=0;i<nBPM;i++){
     TString channel = Form("diff_evMon%d",i);
@@ -194,7 +194,7 @@ void CompareSlopes6bpm(Int_t slug=94){
     g1_avg->Draw("AP");
     g1_avg->SetTitle(channel+" Mean (nm) ; minirun# ; diff (nm)");
     g1_avg->Fit("pol0","Q");
-    c2->Print(Form("plots/slug%d_diff_evMon_6bpm.pdf",slug));
+    c2->Print(Form("plots/slug%d_diff_evMon_5bpm.pdf",slug));
 
     mini_tree->Draw(Form("%s.rms/um:Entry$",channel.Data())
 		    ,"","goff");
@@ -207,10 +207,10 @@ void CompareSlopes6bpm(Int_t slug=94){
     g1_rms->Draw("AP");
     g1_rms->SetTitle(channel+" RMS (um) ; minirun# ; RMS (um)");
     g1_rms->Fit("pol0","Q");
-    c2->Print(Form("plots/slug%d_diff_evMon_6bpm.pdf",slug));
+    c2->Print(Form("plots/slug%d_diff_evMon_5bpm.pdf",slug));
 
   }
-  c2->Print(Form("plots/slug%d_diff_evMon_6bpm.pdf]",slug));
+  c2->Print(Form("plots/slug%d_diff_evMon_5bpm.pdf]",slug));
 
   // for(int i=0;i<nBPM;i++){
   //   gStyle->SetStatH(0.2);
@@ -241,15 +241,15 @@ void CompareSlopes6bpm(Int_t slug=94){
   //   mgslope->Add(g1_reg_slope,"lp");
   //   mgslope->Add(g1_lag_slope,"lp");
   //   legslope->AddEntry(g1_reg_slope,"Eig-Reg");
-  //   legslope->AddEntry(g1_lag_slope,"Lagrange");
+  //   legslope->AddEntry(g1_lag_slope,"Ditange");
   //   mgslope->Draw("A");
   //   mgslope->SetTitle(Form("Correction on us_avg by evMon%d (ppb) ; minirun # ; Correction (ppb)",i));
   //   legslope->Draw("same");
   //   pad2->cd();
   //   mini_tree->Draw(Form("(dit.us_avg_evMon%d-mini_eig.us_avg_evMon%d)*diff_evMon%d/ppb",i,i,i),"","");
   //   TH1D *h1d = (TH1D*)gPad->FindObject("htemp");
-  //   h1d->SetTitle("Correction Difference (lagr - eigReg) (ppb) ");
-  //   c1->Print(Form("plots/compare_6bpm_slug%d.pdf",slug));
+  //   h1d->SetTitle("Correction Difference (dit - eigReg) (ppb) ");
+  //   c1->Print(Form("plots/compare_5bpm_slug%d.pdf",slug));
   // }
 
 }

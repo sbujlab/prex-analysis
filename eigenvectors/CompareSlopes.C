@@ -1,70 +1,239 @@
-void CompareSlopes(Int_t slug=94){
+#include "utilities.cc"
+void CompareSlopes(Int_t kSwitch, Int_t slug=94){
   gStyle->SetOptFit(1);
   TFile *input = TFile::Open(Form("rootfiles/MergedLagrange_slug%d.root",slug));
-  TTree *mini_tree = (TTree*)input->Get("mini_eig");
-  mini_tree->AddFriend("mini_lagr");
+  TTree *mini_tree;
+  Int_t nBPM=0;
+  TString slug_title=Form("Slug%d: ",slug);
+  TString filename_tag="";
+  TString eig_treename="";
+  TString lagr_treename="";
+  TString dit_prefix = "lagr";
+  map<Int_t,Int_t> fArmMap = LoadArmMapBySlug(slug);
+  if(kSwitch==0){
+    nBPM = 5;
+    filename_tag="5bpm";
+    eig_treename ="mini_eig";
+    lagr_treename ="mini_dit";
+    dit_prefix = "dit";
+  }else if (kSwitch==1){
+    nBPM = 6;
+    filename_tag="6bpm";
+    eig_treename ="mini_eig6bpm";
+    lagr_treename ="mini_lagr6bpm";
+  }else if(kSwitch==2){
+    if(slug>=3)
+      nBPM = 12;
+    else
+      nBPM = 10;
+    filename_tag="allbpm";
+    eig_treename ="mini_eigall";
+    lagr_treename ="mini_lagrall";
+  }
+  mini_tree = (TTree*)input->Get(eig_treename);
+  mini_tree->AddFriend(lagr_treename);
   mini_tree->AddFriend("mini");
   mini_tree->AddFriend("dit=slope",
-		       Form("rootfiles/dit_eigslopes_slug%d.root",slug));
-  Int_t nBPM=0;
-  if(slug>=3)
-    nBPM = 12;
-  else
-    nBPM = 10;
-  vector<TString> DVlist={"asym_us_avg","asym_usl","asym_usr"};
-  Int_t nDV = DVlist.size();
+		       Form("rootfiles/dit_eigslopes_%s_slug%d.root",filename_tag.Data(),slug));
 
+  vector<TString> DVlist={"asym_us_avg","asym_usl","asym_usr","asym_us_dd"};
+  vector<TString> det_name={"us_avg","usl","usr","us_dd"};
+  Int_t nDV = DVlist.size();
   for(int idv=0;idv<nDV;idv++){
     TCanvas *c1 = new TCanvas("c1","c1",1200,600);
-    c1->Print(Form("plots/slug%d_%s_compare.pdf[",slug,DVlist[idv].Data()));
-    // mini_tree->Draw(Form("%s.rms/ppm:Entry$",DVlist[idv].Data()),"","goff");
-    // double *raw_val = mini_tree->GetV1();
-    // double *rawx_val = mini_tree->GetV2();
-    // TGraph *g1_raw_rms = new TGraph(mini_tree->GetSelectedRows(),
-    // 				    rawx_val,raw_val);
-    // g1_raw_rms->SetMarkerStyle(20);
-    // g1_raw_rms->Draw("ALP");
-    // g1_raw_rms->SetTitle("Raw RMS (ppm); Minirun# ; RMS(ppm)");
-    // c1->Print(Form("plots/compare_slug%d.pdf",slug));
-    
+    c1->Print(Form("plots/slug%d_%s_compare_%s.pdf[",slug,
+		   DVlist[idv].Data(),filename_tag.Data()));
+    TString arm_cut = "";
+    if(DVlist[idv].Contains("l")){
+      auto iter = fArmMap.begin();
+      while(iter!=fArmMap.end()){
+	Int_t arm_flag = (*iter).second;
+	Int_t run = (*iter).first;
+	if(arm_flag==1){
+	  if(arm_cut!="")
+	    arm_cut += "&&";
+	  arm_cut += Form("(run!=%d)",run);
+	}
+	iter++;
+      }
+    }
+    if(DVlist[idv].Contains("r")){
+      auto iter = fArmMap.begin();
+      while(iter!=fArmMap.end()){
+	Int_t arm_flag = (*iter).second;
+	Int_t run = (*iter).first;
+	if(arm_flag==2){
+	  if(arm_cut!="")
+	    arm_cut += "&&";
+	  arm_cut += Form("(run!=%d)",run);
+	}
+	iter++;
+      }
+    }
+    if(DVlist[idv].Contains("avg") || DVlist[idv].Contains("dd")){
+      auto iter = fArmMap.begin();
+      while(iter!=fArmMap.end()){
+	Int_t arm_flag = (*iter).second;
+	Int_t run = (*iter).first;
+	if(arm_flag==1 || arm_flag==2){
+	  if(arm_cut!="")
+	    arm_cut += "&&";
+	  arm_cut += Form("(run!=%d)",run);
+	}
+	iter++;
+      }
+    }
     TMultiGraph *mgrms = new TMultiGraph(); // rms
     TLegend *legrms = new TLegend(0.9,0.7,1.0,0.9);
-    mini_tree->Draw(Form("reg_%s.rms/ppm:Entry$",DVlist[idv].Data()),"","goff");
+    mini_tree->Draw(Form("eig_%s.rms/ppm:Entry$:run:mini",DVlist[idv].Data()),arm_cut,"goff");
+    Int_t nmini = mini_tree->GetSelectedRows();
     double *y_val = mini_tree->GetV1();
-    double *x_val = mini_tree->GetV2();
+    double *x_val = new double[nmini];
+    
+    vector<Int_t> fRun;
+    vector<Int_t> fMini;
+    Double_t *yval = mini_tree->GetV3();
+    Double_t *xval = mini_tree->GetV4();
+
+    for(int i =0;i<nmini;i++){
+      x_val[i] = i;
+      fRun.push_back(yval[i]);
+      fMini.push_back(xval[i]);
+    }
+
     TGraph *g1_reg_rms = new TGraph(mini_tree->GetSelectedRows(),
 				    x_val,y_val);
     g1_reg_rms->SetMarkerStyle(20);
     g1_reg_rms->SetMarkerColor(kRed);
     g1_reg_rms->SetLineColor(kRed);
 
-    mini_tree->Draw(Form("lagr_%s.rms/ppm:Entry$",DVlist[idv].Data()),"","goff");
+    mini_tree->Draw(Form("%s_%s.rms/ppm:Entry$",
+			 dit_prefix.Data(),DVlist[idv].Data()),arm_cut,"goff");
     double *y_val2 = mini_tree->GetV1();
-    double *x_val2 = mini_tree->GetV2();
     TGraph *g1_lag_rms = new TGraph(mini_tree->GetSelectedRows(),
-				    x_val2,y_val2);
+				    x_val,y_val2);
     g1_lag_rms->SetMarkerStyle(20);
     g1_lag_rms->SetMarkerColor(kBlue);
     g1_lag_rms->SetLineColor(kBlue);
     mgrms->Add(g1_reg_rms,"lp");
     mgrms->Add(g1_lag_rms,"lp");
-    legrms->AddEntry(g1_reg_rms,"Eig-Reg");
-    legrms->AddEntry(g1_lag_rms,"Lagrange");
+    legrms->AddEntry(g1_reg_rms,"Regression");
+    if(kSwitch==0)
+      legrms->AddEntry(g1_lag_rms,"Dithering");
+    else
+      legrms->AddEntry(g1_lag_rms,"Lagrange");
     mgrms->Draw("A");
-    mgrms->SetTitle("Corrected RMS (ppm): " + DVlist[idv] +";Minirun# ; RMS(ppm)");
+    // Labeling run numbers; 
+    TH1D *hmgrms = (TH1D*)mgrms->GetHistogram();
+    hmgrms->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+    Int_t last_run_label=0;
+    double ymax  = hmgrms->GetYaxis()->GetXmax();
+    double ymin  = hmgrms->GetYaxis()->GetXmin();
+    for(int i=0;i<nmini;i++){
+      if(fRun[i]!=last_run_label){
+	last_run_label = fRun[i];
+	hmgrms->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	TLine *line_buff= new TLine(i,ymin,i,ymax);
+	line_buff->SetLineWidth(1);
+	line_buff->SetLineStyle(4);
+	line_buff->SetLineColor(14);
+	line_buff->Draw("same");
+      }else
+	hmgrms->GetXaxis()->SetBinLabel(i+1,"");
+    }
+    hmgrms->SetTitle(slug_title+"Corrected RMS (ppm): " + DVlist[idv] +";Run Number; RMS(ppm)");
+    hmgrms->GetXaxis()->SetTitleOffset(1.25);
     legrms->Draw("same");
-    c1->Print(Form("plots/slug%d_%s_compare.pdf",slug,DVlist[idv].Data()));
-
-    mini_tree->Draw(Form("sqrt(lagr_%s.rms**2 - reg_%s.rms**2)/ppm:Entry$",DVlist[idv].Data(),DVlist[idv].Data()),"","goff");
+    c1->Print(Form("plots/slug%d_%s_compare_%s.pdf[",slug,
+		   DVlist[idv].Data(),filename_tag.Data()));
+    /// 
+    /// 
+    /// Quadrature diff 
+    ///
+    /// 
+    mini_tree->Draw(Form("sqrt(%s_%s.rms**2 - eig_%s.rms**2)/ppm:Entry$",
+			 dit_prefix.Data(),DVlist[idv].Data(),DVlist[idv].Data()),arm_cut,"goff");
     double *diff_y = mini_tree->GetV1();
-    double *diff_x = mini_tree->GetV2();
     TGraph *g1_diff_rms = new TGraph(mini_tree->GetSelectedRows(),
-				     diff_x,diff_y);
+				     x_val,diff_y);
     g1_diff_rms->SetMarkerStyle(20);
     g1_diff_rms->Draw("ALP");
-    g1_diff_rms->SetTitle(DVlist[idv] + ": #sqrt{#sigma^{2}_{lagr} -#sigma^{2}_{reg}} (ppm); Minirun# ; RMS(ppm)");
-    c1->Print(Form("plots/slug%d_%s_compare.pdf",slug,DVlist[idv].Data()));
+    TH1D *hg1_diff_rms = (TH1D*)g1_diff_rms->GetHistogram();
+    hg1_diff_rms->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+    last_run_label=0;
+    ymax = hg1_diff_rms->GetYaxis()->GetXmax();
+    ymin = hg1_diff_rms->GetYaxis()->GetXmin();
+    for(int i=0;i<nmini;i++){
+      if(fRun[i]!=last_run_label){
+	last_run_label = fRun[i];
+	hg1_diff_rms->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	TLine *line_buff = new TLine(i,ymin,i,ymax);
+	line_buff->SetLineWidth(1);
+	line_buff->SetLineStyle(4);
+	line_buff->SetLineColor(14);
+	line_buff->Draw("same");
+      }else
+	hg1_diff_rms->GetXaxis()->SetBinLabel(i+1,"");
+    }
+    hg1_diff_rms->SetTitle(slug_title+DVlist[idv] + Form(": #sqrt{#sigma^{2}_{%s} -#sigma^{2}_{reg}} (ppm);Run Number; RMS(ppm)",dit_prefix.Data()));
+    hg1_diff_rms->GetXaxis()->SetTitleOffset(1.25);
+    c1->Print(Form("plots/slug%d_%s_compare_%s.pdf",slug,
+		   DVlist[idv].Data(),filename_tag.Data()));
+    
+    //
+    // Eigenvector Corrections
+    //
 
+    TMultiGraph *mg_corr = new TMultiGraph();
+    TLegend *leg_corr = new TLegend(0.9,0.6,0.99,0.9);
+    Int_t color_offset=0;
+    for(int iiv=0;iiv<nBPM;iiv++){
+      mini_tree->Draw(Form("fabs( dit.%s_evMon%d * diff_evMon%d.rms )/ppm:Entry$",
+			   det_name[idv].Data(),iiv,iiv),arm_cut,"goff");
+      double *y_corr = mini_tree->GetV1();
+      double *x_corr = mini_tree->GetV2();
+      TGraph *g_ev_corr = new TGraph(mini_tree->GetSelectedRows(),
+				     x_corr,y_corr);
+      g_ev_corr->SetMarkerStyle(20);
+      if(iiv+1==5 || iiv+1==9)
+	color_offset ++;
+      g_ev_corr->SetMarkerColor(iiv+1+color_offset);
+      g_ev_corr->SetLineColor(iiv+1+color_offset);
+      mg_corr->Add(g_ev_corr,"lp");
+      leg_corr->AddEntry(g_ev_corr,Form("Eigenvector %d",iiv),"lp");
+    }
+    mg_corr->Draw("A");
+
+    TH1D *hmg_corr = (TH1D*) mg_corr->GetHistogram();
+    hmg_corr->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+    Int_t last_run_corr = 0;
+    double ymax_corr = hmg_corr->GetYaxis()->GetXmax();
+    double ymin_corr = hmg_corr->GetYaxis()->GetXmin();
+    for(int i=0;i<nmini;i++){
+      if(fRun[i]!=last_run_corr){
+	last_run_corr = fRun[i];
+	hmg_corr->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	TLine *line_buff= new TLine(i,ymin_corr,i,ymax_corr);
+	line_buff->SetLineWidth(1);
+	line_buff->SetLineStyle(4);
+	line_buff->SetLineColor(14);
+	line_buff->Draw("same");
+      }else
+	hmg_corr->GetXaxis()->SetBinLabel(i+1,"");
+    }
+    if(kSwitch==0)
+      hmg_corr->SetTitle("Dithering Corrections Width (ppm) by Eigenvectors; Run Number ; (PPM)");
+    else
+      hmg_corr->SetTitle("Lagrange Corrections Width (ppm) by Eigenvectors; Run Number ; (PPM)");
+
+    leg_corr->Draw("same");
+    c1->Print(Form("plots/slug%d_%s_compare_%s.pdf",slug,
+		   DVlist[idv].Data(),filename_tag.Data()));
+    
+    
+    /// 
+    /// Slopes Comparisons
+    ///  
     c1->cd();
     c1->Clear();
     TPad *pad1  = new TPad("pad1","pad1",0.0,0.0,0.7,1.0);
@@ -79,22 +248,22 @@ void CompareSlopes(Int_t slug=94){
       gStyle->SetStatW(0.3);
       c1->Clear("D");
       pad1->cd();
-      mini_tree->Draw(Form("sign%d*mini_eig.%s_evMon%d/(ppm/um):Entry$",i,det_name.Data(),i),
-		      "","goff");
+      mini_tree->Draw(Form("sign%d*%s.%s_evMon%d/(ppm/um):Entry$",
+			   i,eig_treename.Data(),det_name.Data(),i),
+		      arm_cut,"goff");
       double *y_val = mini_tree->GetV1();
-      double *x_val = mini_tree->GetV2();
       TGraph *g1_reg_slope = new TGraph(mini_tree->GetSelectedRows(),
 					x_val,y_val);
       g1_reg_slope->SetMarkerStyle(20);
       g1_reg_slope->SetMarkerColor(kRed);
       g1_reg_slope->SetLineColor(kRed);
     
-      mini_tree->Draw(Form("sign%d*dit.%s_evMon%d/(ppm/um):Entry$",i,det_name.Data(),i),
-		      "","goff");
+      mini_tree->Draw(Form("sign%d*dit.%s_evMon%d/(ppm/um):Entry$",
+			   i,det_name.Data(),i),
+		      arm_cut,"goff");
       double *y_val2 = mini_tree->GetV1();
-      double *x_val2 = mini_tree->GetV2();
       TGraph *g1_lag_slope = new TGraph(mini_tree->GetSelectedRows(),
-					x_val2,y_val2);
+					x_val,y_val2);
       g1_lag_slope->SetMarkerStyle(20);
       g1_lag_slope->SetMarkerColor(kBlue);
       g1_lag_slope->SetLineColor(kBlue);
@@ -104,85 +273,66 @@ void CompareSlopes(Int_t slug=94){
     
       mgslope->Add(g1_reg_slope,"lp");
       mgslope->Add(g1_lag_slope,"lp");
-      legslope->AddEntry(g1_reg_slope,"Eig-Reg");
-      legslope->AddEntry(g1_lag_slope,"Lagrange");
+      legslope->AddEntry(g1_reg_slope,"Regression");
+      if(kSwitch==0)
+	legslope->AddEntry(g1_lag_slope,"Dithering");
+      else
+	legslope->AddEntry(g1_lag_slope,"Lagrange");
       mgslope->Draw("A");
-      mgslope->SetTitle(Form("Slope : %s_vs_evMon%d (ppm/um) ; minirun # ; Slope (ppm/um)",
-			     det_name.Data(),i));
+      TH1D *hmgslope = (TH1D*)mgslope->GetHistogram();
+      hmgslope->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+      Int_t last_run_label = 0;
+      double ymax = hmgslope->GetYaxis()->GetXmax();
+      double ymin = hmgslope->GetYaxis()->GetXmin();
+      for(int i=0;i<nmini;i++){
+	if(fRun[i]!=last_run_label){
+	  last_run_label = fRun[i];
+	  hmgslope->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	  TLine *line_buff = new TLine(i,ymin,i,ymax);
+	  line_buff->SetLineWidth(1);
+	  line_buff->SetLineStyle(4);
+	  line_buff->SetLineColor(14);
+	  line_buff->Draw("same");
+	}else
+	  hmgslope->GetXaxis()->SetBinLabel(i+1,"");
+      }
+      hmgslope->SetTitle(slug_title+Form("Slope : %s_vs_evMon%d (ppm/um);Run Number; Slope (ppm/um)",
+					 det_name.Data(),i));
+      hmgslope->GetXaxis()->SetTitleOffset(1.25);
       legslope->Draw("same");
       pad2->cd();
-      mini_tree->Draw(Form("(dit.%s_evMon%d-mini_eig.%s_evMon%d)/(ppm/um)",
-			   det_name.Data(),i,det_name.Data(),i),"","");
+      mini_tree->Draw(Form("( fabs(dit.%s_evMon%d)-fabs(%s.%s_evMon%d) ) /(ppm/um)",
+			   det_name.Data(),i,
+			   eig_treename.Data(),det_name.Data(),i),arm_cut,"");
       TH1D *h1d = (TH1D*)gPad->FindObject("htemp");
-      h1d->SetTitle("difference (dit_slope - reg_slope) (ppm/um) ");
-
-      c1->Print(Form("plots/slug%d_%s_compare.pdf",slug,DVlist[idv].Data())); 
+      if(h1d!=NULL){
+	h1d->SetTitle("|dit_slope| - |reg_slope| (ppm/um) ");
+	h1d->SetTitleSize(0.05);
+      }
+      c1->Print(Form("plots/slug%d_%s_compare_%s.pdf",slug,
+		     DVlist[idv].Data(),filename_tag.Data()));
     }
-    c1->Print(Form("plots/slug%d_%s_compare.pdf]",slug,DVlist[idv].Data())); 
+    c1->Print(Form("plots/slug%d_%s_compare_%s.pdf]",slug,
+		   DVlist[idv].Data(),filename_tag.Data()));
   }
 
- 
-
-  // TMultiGraph *mgavg = new TMultiGraph(); // avg
-  // TLegend *legavg = new TLegend(0.9,0.7,1.0,0.9);
-  // mini_tree->Draw("reg_asym_us_avg/ppb:reg_asym_us_avg.err/ppb:Entry$","","goff");
-  // double *y_mean = mini_tree->GetV1();
-  // double *y_err = mini_tree->GetV2();
-  // double *x_mean = mini_tree->GetV3();
-  // TGraphErrors *g1_reg_avg = new TGraphErrors(mini_tree->GetSelectedRows(),
-  // 					      x_mean,y_mean,0,y_err);
-  
-  // g1_reg_avg->SetMarkerStyle(20);
-  // g1_reg_avg->SetMarkerColor(kRed);
-  // g1_reg_avg->SetLineColor(kRed);
-  // mini_tree->Draw("lagr_asym_us_avg/ppb:lagr_asym_us_avg.err/ppb:Entry$+0.4","","goff");
-  // double *y_mean2 = mini_tree->GetV1();
-  // double *y_err2 = mini_tree->GetV2();
-  // double *x_mean2 = mini_tree->GetV3();
-  // TGraphErrors *g1_lag_avg = new TGraphErrors(mini_tree->GetSelectedRows(),
-  // 					      x_mean2,y_mean2,0,y_err2);
-
-  // g1_lag_avg->SetMarkerStyle(20);
-  // g1_lag_avg->SetMarkerColor(kBlue);
-  // g1_lag_avg->SetLineColor(kBlue);
-  // mgavg->Add(g1_reg_avg,"p");
-  // mgavg->Add(g1_lag_avg,"p");
-  // legavg->AddEntry(g1_reg_avg,"Eig-Reg");
-  // legavg->AddEntry(g1_lag_avg,"Lagrange");
-  // mgavg->Draw("A");
-  // double ymax = mgavg->GetYaxis()->GetXmax();
-  // double ymin = mgavg->GetYaxis()->GetXmin();
-  // mgavg->GetYaxis()->SetRangeUser(ymin,ymax+0.5*(ymax-ymin));
-  // mgavg->SetTitle("Corrected Mean (ppb); Minirun# ; Mean(ppb)");
-  // legavg->Draw("same");
-
-  // g1_reg_avg->Fit("pol0");
-  // gPad->Update();
-  // TPaveStats *ps1  =(TPaveStats*)g1_reg_avg->FindObject("stats");
-  // ps1->SetName("reg");
-  // ps1->SetTextColor(kRed);
-  // ps1->SetX1NDC(0.1);
-  // ps1->SetX2NDC(0.3);
-  // ps1->SetY1NDC(0.8);
-  // ps1->SetY2NDC(0.9);
-  // g1_lag_avg->Fit("pol0");
-  // g1_lag_avg->GetFunction("pol0")->SetLineColor(kBlue);
-  // g1_lag_avg->GetFunction("pol0")->SetLineStyle(9);
-  // gPad->Update();
-  // TPaveStats *ps2  =(TPaveStats*)g1_lag_avg->FindObject("stats");
-  // ps2->SetName("lag");
-  // ps2->SetTextColor(kBlue);
-  // ps2->SetX1NDC(0.1);
-  // ps2->SetX2NDC(0.3);
-  // ps2->SetY1NDC(0.8);
-  // ps2->SetY2NDC(0.7);
-
-  // c1->Print(Form("plots/compare_slug%d.pdf",slug));
-
-  
+  ///////////////////////////////
+  /////////////////////////////// diff_evMon
+  ///////////////////////////////
   TCanvas *c2 = new TCanvas("c2","c2",1200,600);
-  c2->Print(Form("plots/slug%d_diff_evMon.pdf[",slug));
+  c2->Print(Form("plots/slug%d_diff_evMon_%s.pdf[",slug,filename_tag.Data()));
   c2->cd();
+  mini_tree->Draw("run:mini","","goff");
+  vector<Int_t> fRun;
+  vector<Int_t> fMini;
+  Double_t *yval = mini_tree->GetV1();
+  Double_t *xval = mini_tree->GetV2();
+  Int_t nmini = mini_tree->GetSelectedRows();
+  for(int i =0;i<nmini;i++){
+    fRun.push_back(yval[i]);
+    fMini.push_back(xval[i]);
+  }
+
   for(int i=0;i<nBPM;i++){
     TString channel = Form("diff_evMon%d",i);
     mini_tree->Draw(Form("sign%d*%s/nm:%s.err/nm:Entry$",i,channel.Data(),channel.Data())
@@ -191,13 +341,32 @@ void CompareSlopes(Int_t slug=94){
     double *y_err = mini_tree->GetV2();
     double *x_mean = mini_tree->GetV3();
     TGraphErrors *g1_avg = new TGraphErrors(mini_tree->GetSelectedRows(),
-						x_mean,y_mean,0,y_err);
+					    x_mean,y_mean,0,y_err);
   
     g1_avg->SetMarkerStyle(20);
     g1_avg->Draw("AP");
-    g1_avg->SetTitle(channel+" Mean (nm) ; minirun# ; diff (nm)");
+    
+    TH1D *hg1_avg = (TH1D*)g1_avg->GetHistogram();
+    hg1_avg->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+    Int_t last_run_label =0;
+    double ymax = hg1_avg->GetYaxis()->GetXmax();
+    double ymin = hg1_avg->GetYaxis()->GetXmin();
+    for(int i=0;i<nmini;i++){
+      if(fRun[i]!=last_run_label){
+	last_run_label = fRun[i];
+	hg1_avg->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	TLine *line_buff = new TLine(i,ymin,i,ymax);
+	line_buff->SetLineWidth(1);
+	line_buff->SetLineStyle(4);
+	line_buff->SetLineColor(14);
+	line_buff->Draw("same");
+      }else
+	hg1_avg->GetXaxis()->SetBinLabel(i+1,"");
+    }
+    hg1_avg->SetTitle(slug_title+ channel+" Mean (nm) ;Run Number; diff (nm)");
+    hg1_avg->GetXaxis()->SetTitleOffset(1.25);
     g1_avg->Fit("pol0","Q");
-    c2->Print(Form("plots/slug%d_diff_evMon.pdf",slug));
+    c2->Print(Form("plots/slug%d_diff_evMon_%s.pdf",slug,filename_tag.Data()));
 
     mini_tree->Draw(Form("%s.rms/um:Entry$",channel.Data())
 		    ,"","goff");
@@ -207,52 +376,30 @@ void CompareSlopes(Int_t slug=94){
 				x_mean2,y_mean);
   
     g1_rms->SetMarkerStyle(20);
-    g1_rms->Draw("AP");
-    g1_rms->SetTitle(channel+" RMS (um) ; minirun# ; RMS (um)");
+    g1_rms->Draw("ALP");
+    TH1D *hg1_rms = (TH1D*)g1_rms->GetHistogram();
+    hg1_rms->GetXaxis()->Set(nmini,-0.5,nmini-0.5);
+    last_run_label=0;
+    ymax = hg1_rms->GetYaxis()->GetXmax();
+    ymin = hg1_rms->GetYaxis()->GetXmin();
+    for(int i=0;i<nmini;i++){
+      if(fRun[i]!=last_run_label){
+	last_run_label = fRun[i];
+	hg1_rms->GetXaxis()->SetBinLabel(i+1, Form("%d",fRun[i]));
+	TLine *line_buff = new TLine(i,ymin,i,ymax);
+	line_buff->SetLineWidth(1);
+	line_buff->SetLineStyle(4);
+	line_buff->SetLineColor(14);
+	line_buff->Draw("same");
+      }else
+	hg1_rms->GetXaxis()->SetBinLabel(i+1,"");
+    }
+    hg1_rms->SetTitle(slug_title+channel+" RMS (um) ;Run Number; RMS (um)");
+    hg1_rms->GetXaxis()->SetTitleOffset(1.25);
     g1_rms->Fit("pol0","Q");
-    c2->Print(Form("plots/slug%d_diff_evMon.pdf",slug));
+    c2->Print(Form("plots/slug%d_diff_evMon_%s.pdf",slug,filename_tag.Data()));
 
   }
-  c2->Print(Form("plots/slug%d_diff_evMon.pdf]",slug));
-
-  // for(int i=0;i<nBPM;i++){
-  //   gStyle->SetStatH(0.2);
-  //   gStyle->SetStatW(0.3);
-  //   c1->Clear("D");
-  //   pad1->cd();
-  //   mini_tree->Draw(Form("mini_eig.us_avg_evMon%d*diff_evMon%d/ppb:Entry$",i,i),"","goff");
-  //   double *y_val = mini_tree->GetV1();
-  //   double *x_val = mini_tree->GetV2();
-  //   TGraph *g1_reg_slope = new TGraph(mini_tree->GetSelectedRows(),
-  // 				      x_val,y_val);
-  //   g1_reg_slope->SetMarkerStyle(20);
-  //   g1_reg_slope->SetMarkerColor(kRed);
-  //   g1_reg_slope->SetLineColor(kRed);
-    
-  //   mini_tree->Draw(Form("dit.us_avg_evMon%d*diff_evMon%d/ppb:Entry$",i,i),"","goff");
-  //   double *y_val2 = mini_tree->GetV1();
-  //   double *x_val2 = mini_tree->GetV2();
-  //   TGraph *g1_lag_slope = new TGraph(mini_tree->GetSelectedRows(),
-  // 				      x_val2,y_val2);
-  //   g1_lag_slope->SetMarkerStyle(20);
-  //   g1_lag_slope->SetMarkerColor(kBlue);
-  //   g1_lag_slope->SetLineColor(kBlue);
-    
-  //   TMultiGraph *mgslope = new TMultiGraph(); // rms
-  //   TLegend *legslope = new TLegend(0.9,0.7,1.0,0.9);
-    
-  //   mgslope->Add(g1_reg_slope,"lp");
-  //   mgslope->Add(g1_lag_slope,"lp");
-  //   legslope->AddEntry(g1_reg_slope,"Eig-Reg");
-  //   legslope->AddEntry(g1_lag_slope,"Lagrange");
-  //   mgslope->Draw("A");
-  //   mgslope->SetTitle(Form("Correction on us_avg by evMon%d (ppb) ; minirun # ; Correction (ppb)",i));
-  //   legslope->Draw("same");
-  //   pad2->cd();
-  //   mini_tree->Draw(Form("(dit.us_avg_evMon%d-mini_eig.us_avg_evMon%d)*diff_evMon%d/ppb",i,i,i),"","");
-  //   TH1D *h1d = (TH1D*)gPad->FindObject("htemp");
-  //   h1d->SetTitle("Correction Difference (lagr - eigReg) (ppb) ");
-  //   c1->Print(Form("plots/compare_slug%d.pdf",slug));
-  // }
+  c2->Print(Form("plots/slug%d_diff_evMon_%s.pdf]",slug,filename_tag.Data()));
 
 }
