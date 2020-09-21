@@ -1,5 +1,5 @@
-void EigenVector(Int_t fRun=4980){
-  TString lrb_filename = Form("./LRBoutput/burst_blueR%d.000all.slope.root",fRun);
+void EigenVectorByRun(Int_t fRun=4980){
+  TString lrb_filename = Form("./LRBoutput/blueR%d.000all.slope.root",fRun);
   TFile *lrb_file = TFile::Open(lrb_filename);
   if(lrb_file==NULL)
     return;
@@ -44,7 +44,14 @@ void EigenVector(Int_t fRun=4980){
   for(int i=0;i<nBPM;i++){
     cout << i << ":" << IVlist[i] << endl;
   }
-
+  gStyle->SetOptStat(0);
+  gStyle->SetPaintTextFormat("1.1f");
+  gStyle->SetPalette(kBeach);
+  TColor::InvertPalette();
+  TCanvas *c1 = new TCanvas("c1","c1",600,600);
+  c1->SetFillStyle(4000);
+  // c1->Divide(2,1);
+  // c1->Print(Form("run%d_diagonalized_matrices.pdf[",fRun));
   TFile* output = TFile::Open(Form("./rootfiles/prex_eigenvec_%d.root",fRun),"RECREATE");
   TTree *eig_tree = new TTree("eig","Eigenvector Monitors");
   Double_t *fProto = new Double_t[nBPM];
@@ -109,20 +116,6 @@ void EigenVector(Int_t fRun=4980){
       fVectorID = i;
       fEigenValue = eigen_values[i];
 
-      // // Sign flipping check
-      // Double_t prim_comp = fabs(eigen_vector[0][i]);
-      // Int_t prim_index = 0;
-      // for(int j=1;j<nBPM;j++){
-      // 	if(fabs(eigen_vector[j][i])>prim_comp){
-      // 	  prim_comp = fabs(eigen_vector[j][i]);
-      // 	  prim_index = j; 
-      // 	}
-      // }
-      // if(eigen_vector[prim_index][i]>0)
-      // 	fSign =1;
-      // else
-      // 	fSign = -1;
-      // // done with sign flip
 	
       for(int j=0;j<nBPM;j++)
 	fProto[j] = eigen_vector[j][i];
@@ -133,8 +126,53 @@ void EigenVector(Int_t fRun=4980){
     fMini++;    
     cycle++;
     cycle_tag = Form(";%d",cycle);
+
+    c1->cd();
+    gPad->SetRightMargin(0.15);
+    gPad->SetFillStyle(4000);
+    TH2D* raw_cov = new TH2D("raw_cov","Raw Covariance (um^{2})",
+			     nBPM,-0.5,nBPM-0.5,
+			     nBPM,-0.5,nBPM-0.5); 
+    for(int i=0;i<nBPM;i++)
+      for(int j=0;j<nBPM;j++)
+	raw_cov->Fill(j,nBPM-1-i, S_IV[i][j]*1e6); // this is really a tricky
+    // raw_cov->GetXaxis()->SetNdivisions(nBPM);
+    for(int i=0;i<nBPM;i++){
+      TString label = IVlist[i];
+      label.ReplaceAll("diff_bpm","");
+      raw_cov->GetXaxis()->SetBinLabel(i+1,label);
+      raw_cov->GetYaxis()->SetBinLabel(nBPM-i,label);
+    }
+    raw_cov->GetXaxis()->SetTickLength(0.01);
+    raw_cov->GetYaxis()->SetTickLength(0.01);
+    raw_cov->Draw("COLZ TEXT");
+    c1->Print(Form("run%d_raw_matrices.pdf",fRun));
+    // c1->cd();
+    gPad->SetRightMargin(0.15);
+    gPad->SetFillStyle(4000);
+    TH2D* diag_cov = new TH2D("diag_cov","Diagonalized (um^{2} )",
+			     nBPM,-0.5,nBPM-0.5,
+			     nBPM,-0.5,nBPM-0.5); 
+
+    TMatrixD diagS_IV(S_IV);
+    diagS_IV  = eigen_vector_trans*S_IV*eigen_vector;
+    for(int i=0;i<nBPM;i++)
+      for(int j=0;j<nBPM;j++)
+	diag_cov->Fill(j,nBPM-1-i, diagS_IV[i][j]*1e6);
+
+    for(int i=0;i<nBPM;i++){
+      diag_cov->GetXaxis()->SetBinLabel(i+1,Form("%d",i));
+      diag_cov->GetYaxis()->SetBinLabel(nBPM-i,Form("%d",i));
+    }
+    diag_cov->GetXaxis()->SetTickLength(0.01);
+    diag_cov->GetYaxis()->SetTickLength(0.01);
+    gPad->SetLogz();
+    diag_cov->Draw("COLZ TEXT");
     
+    
+    c1->Print(Form("run%d_diagonalized_matrices.pdf",fRun));
   }
+  // c1->Print(Form("run%d_diagonalized_matrices.pdf]",fRun));
   lrb_file->Close();
   output->cd();
   eig_tree->Write();

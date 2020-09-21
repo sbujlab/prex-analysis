@@ -29,7 +29,7 @@ void DrawEigVecFromDance(Int_t slug=94){
   c2->Print(Form("plots/slug%d_vector.pdf[",slug));
   // Eigen Values
   TMultiGraph *mgval = new TMultiGraph();
-  TLegend *legval = new TLegend(0.9,0.6,0.95,0.9);
+  TLegend *legval = new TLegend(0.9,0.6,1,0.9);
   Int_t color_offset=0;
   for(int j=0;j<nBPM;j++){
     Int_t npt =  eig_tree->Draw(Form("diff_evMon%d.rms/um:Entry$",j),
@@ -42,14 +42,19 @@ void DrawEigVecFromDance(Int_t slug=94){
     g1->SetLineColor(j+1+color_offset);
     g1->SetMarkerColor(j+1+color_offset);
     g1->SetMarkerStyle(20);
-    legval->AddEntry(g1,Form("Eigenvector #%d",j),"lp");
+    legval->AddEntry(g1,Form("Eigenvector %d",j),"lp");
     mgval->Add(g1,"lp");
   } // component loop
   c2->cd();
+  c2->SetFillStyle(4000);
+  c2->SetFrameFillStyle(4000);
+  gPad->SetFillStyle(4000);
   mgval->Draw("ALP");
-  mgval->SetTitle("#sqrt{Eigenvalues} (um);minirun ; um");
+  mgval->SetTitle("#sqrt{Eigenvalues} (um);minirun ; um");\
+  legval->SetFillStyle(4000);
   legval->Draw("same");
-  c2->Print(Form("plots/slug%d_vector.pdf",slug));
+  c2->Print("eigen_values.pdf");
+  // c2->Print(Form("plots/slug%d_vector.pdf",slug));
   c2->Clear("D");
   //Eigen vectors
   for(int i=0;i<nBPM;i++){

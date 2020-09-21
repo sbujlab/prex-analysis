@@ -1,12 +1,20 @@
 void EigenVectorBySlug(Int_t slug=94){
 
   vector< TString > IVlist = {"diff_bpm4aX","diff_bpm4eX","diff_bpm1X",
-			      "diff_bpm11X","diff_bpm12X","diff_bpm16X",
-			      "diff_bpm4aY","diff_bpm4eY","diff_bpm1Y",
-			      "diff_bpm11Y","diff_bpm12Y","diff_bpm16Y"};
+  			      "diff_bpm11X","diff_bpm12X","diff_bpm16X",
+  			      "diff_bpm4aY","diff_bpm4eY","diff_bpm1Y",
+  			      "diff_bpm11Y","diff_bpm12Y","diff_bpm16Y"};
+  // vector< TString > IVlist = {"diff_bpm4aX","diff_bpm4eX",
+  // 			      "diff_bpm11X",
+  // 			      "diff_bpm4aY","diff_bpm4eY"};
+  
+  vector<TString> DVlist={"asym_usl","asym_usr","asym_us_avg","asym_us_dd"};
   TFile* output = TFile::Open(Form("./rootfiles/slug%d.root",slug),"RECREATE");
-  Int_t nBPM = IVlist.size();;
-  vector<Int_t> fIndex(nBPM,-1);
+  Int_t nBPM = IVlist.size();
+  vector<Int_t> fIVIndex(nBPM,-1);
+  Int_t nDet = DVlist.size();
+  vector<Int_t> fDVIndex(nDet,-1);
+
   vector<Int_t> fSignLockID(nBPM,0);
   TTree *eig_tree = new TTree("eig","Eigenvector Monitors");
   Double_t *fProto = new Double_t[nBPM];
@@ -17,6 +25,7 @@ void EigenVectorBySlug(Int_t slug=94){
   Double_t fEigenValue;
   Int_t fNdim = nBPM;
   Int_t fSign =1;
+  // Contruct Eigen-Tree
   eig_tree->Branch("MyStat",&fMyStat);
   eig_tree->Branch("eigID",&fVectorID);
   eig_tree->Branch("run",&fRun);
@@ -38,10 +47,23 @@ void EigenVectorBySlug(Int_t slug=94){
     tag.ReplaceAll("diff_bpm","");
     fBranch->GetLeaf(tag)->SetAddress(&fProto[i]);
   }
-
-  TString listname = Form("prex-runlist/simple_list/slug%d.list",94);
+  // Contruct Slope Tree
+  TTree *slope_tree = new TTree("slope","eigenvector regression slope");
+  slope_tree->Branch("MyStat",&fMyStat);
+  slope_tree->Branch("run",&fRun);
+  slope_tree->Branch("minirun",&fMini);
+  vector<Double_t> fdummy(nBPM);
+  vector< vector <Double_t> > fSlope(nDet,fdummy);
+  for(int idet=0;idet<nDet;idet++){
+    TString det_tag = DVlist[idet];
+    det_tag.ReplaceAll("asym_","");
+    for(int ibpm=0;ibpm<nBPM;ibpm++){
+      slope_tree->Branch(Form("%s_evMon%d",det_tag.Data(),ibpm), &fSlope[idet][ibpm]);
+    }
+  }
+    
+  TString listname = Form("prex-runlist/simple_list/slug%d.list",slug);
   FILE *runlist = fopen(listname.Data(),"r");
-  Bool_t kFirstRun = kTRUE; // used for vector sign lock
   while(!feof(runlist)){
     fRun=0;
     fscanf(runlist,"%d\n",&fRun);
@@ -68,12 +90,23 @@ void EigenVectorBySlug(Int_t slug=94){
       const char* char_buff = ivAxis->GetBinLabel(i+1);
       auto itf= find( IVlist.begin(),IVlist.end(),TString(char_buff));
       if(itf!=IVlist.end()){
-	fIndex[ itf - IVlist.begin() ] = i;
+	fIVIndex[ itf - IVlist.begin() ] = i;
+      }
+    }
+
+    for(int i=0;i<nIV;i++){
+      const char* char_buff = dvAxis->GetBinLabel(i+1);
+      auto itf= find( DVlist.begin(),DVlist.end(),TString(char_buff));
+      if(itf!=DVlist.end()){
+	fDVIndex[ itf - DVlist.begin() ] = i;
       }
     }
 
     for(int i=0;i<nBPM;i++){
-      cout << i << ":" << IVlist[i] << endl;
+      cout << i << ":" << IVlist[i] << "@" << fIVIndex[i] << endl;
+    }
+    for(int i=0;i<nDet;i++){
+      cout << i << ":" << DVlist[i] << "@" << fDVIndex[i] << endl;
     }
     
     fMini=0;
@@ -83,52 +116,65 @@ void EigenVectorBySlug(Int_t slug=94){
 
       TMatrixT<double> MyStat = *((TMatrixT<double>*)lrb_file->Get("MyStat"+cycle_tag));
       TMatrixT<double> IV_IV_normVar = *((TMatrixT<double>*)lrb_file->Get("IV_IV_normVariance"+cycle_tag));
+      TMatrixT<double> IV_DV_normVar = *((TMatrixT<double>*)lrb_file->Get("IV_DV_normVariance"+cycle_tag));
       fMyStat = MyStat[0][0];
     
       TMatrixDSym S_IV(nBPM);
+      TMatrixD sub_IV_DV_normVar(nBPM,nDet);
       for(int i=0;i<nBPM;i++)
 	for(int j=0;j<nBPM;j++)
-	  S_IV[i][j] = IV_IV_normVar[fIndex[i]][fIndex[j]];
+	  S_IV[i][j] = IV_IV_normVar[fIVIndex[i]][fIVIndex[j]];
+
+      for(int idet=0;idet<nDet;idet++)
+	for(int ibpm=0;ibpm<nBPM;ibpm++)
+	  sub_IV_DV_normVar[ibpm][idet] = IV_DV_normVar[fIVIndex[ibpm]][fDVIndex[idet]];
 
       TMatrixDSymEigen S_IV_eig(S_IV);
       TMatrixD eigen_vector = S_IV_eig.GetEigenVectors();
       TVectorD eigen_values = S_IV_eig.GetEigenValues();
-      // eigen_vector.Print();
-      // eigen_values.Print();
-      // TMatrixD eigen_vector_trans(eigen_vector);
-      // eigen_vector_trans.T();
-      // (eigen_vector*eigen_vector_trans).Print();
-
-      if(kFirstRun){
-	for(int i=0;i<nBPM;i++){
-	  Double_t prim_comp = fabs(eigen_vector[0][i]);
-	  Int_t prim_index = 0;
-	  for(int j=1;j<nBPM;j++){
-	    if(fabs(eigen_vector[j][i])>prim_comp){
-	      prim_comp = fabs(eigen_vector[j][i]);
-	      prim_index = j;
-	    }
-	  } // component loop
-	  fSignLockID[i] = prim_index;
-	} // eigenvector loop
-	kFirstRun = kFALSE;
-      }
+      TMatrixD lambda_matrix(nBPM,nBPM);
+      for(int i=0;i<nBPM;i++)
+	for(int j=0;j<nBPM;j++)
+	  if(i==j)
+	    lambda_matrix[i][j]=eigen_values[i];
+	  else
+	    lambda_matrix[i][j]=0.0;
       
       for(int i=0;i<nBPM;i++){
 	fVectorID = i;
 	fEigenValue = eigen_values[i];
-
-	if( eigen_vector[fSignLockID[i]][i]<0)
-	  fSign = -1;
-	else
-	  fSign = 1;
+	Double_t test_val =0;
 	
-	for(int j=0;j<nBPM;j++)
-	  fProto[j] = fSign*eigen_vector[j][i];
+	if( fabs(eigen_vector[4][i]) > fabs(eigen_vector[10][i]) )
+	  test_val = eigen_vector[4][i];
+	else
+	  test_val = eigen_vector[10][i];
+	if(test_val>0)
+	  fSign=1.0;
+	else
+	  fSign=-1.0;
+	for(int j=0;j<nBPM;j++){
+	  eigen_vector[j][i] = fSign*eigen_vector[j][i];
+	  fProto[j] = eigen_vector[j][i];
+	}
 	
 	eig_tree->Fill();      
       }
 
+      TMatrixD eigen_vector_trans (eigen_vector);
+      eigen_vector_trans.T();
+      TMatrixD eigenIV_DV = eigen_vector_trans*sub_IV_DV_normVar;
+      TMatrixD inv_lambda(lambda_matrix);
+      inv_lambda.Invert();
+      TMatrixD slope_matrix(nBPM,nDet);
+      slope_matrix =  inv_lambda * eigenIV_DV;
+      for(int idet=0;idet<nDet;idet++)
+	for(int ibpm=0;ibpm<nBPM;ibpm++)
+	  fSlope[idet][ibpm] = slope_matrix[ibpm][idet];
+      
+      slope_matrix.Print();
+
+      slope_tree->Fill();
       fMini++;    
       cycle++;
       cycle_tag = Form(";%d",cycle);
@@ -139,6 +185,7 @@ void EigenVectorBySlug(Int_t slug=94){
   } // end of run loop
 
   output->cd();
+  slope_tree->Write();
   eig_tree->Write();
   output->Close();
 }
