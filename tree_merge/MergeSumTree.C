@@ -47,7 +47,8 @@ void MergeSumTree(Int_t slug){
     TString rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 				 run_number,seg_number);
     TFile *this_file;
-    while(gSystem->AccessPathName(qw_path+rootfile_name)==0){
+
+    if(gSystem->AccessPathName(qw_path+rootfile_name)==0){
       this_file = TFile::Open(qw_path+rootfile_name);
       cout << " -- Found ROOT file ";
       cout << this_file->GetName() << endl;
@@ -63,11 +64,8 @@ void MergeSumTree(Int_t slug){
       } // end of tree loop;
 
       this_file->Close();
-      
-      seg_number++;
-      rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
-			   run_number,seg_number);
-    } // end of file split search
+
+    } // end of if file exists
   } // end of runlist loop
 
   fSumStatBuilder.construct_branches(output);
@@ -80,7 +78,7 @@ void MergeSumTree(Int_t slug){
     TString rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 				 run_number,seg_number);
     TFile *this_file;
-    while(gSystem->AccessPathName(qw_path+rootfile_name)==0){
+    if(gSystem->AccessPathName(qw_path+rootfile_name)==0){
       this_file = TFile::Open(qw_path+rootfile_name);
       cout << " -- Reading ROOT file ";
       cout << this_file->GetName() << endl;
@@ -108,10 +106,7 @@ void MergeSumTree(Int_t slug){
 	}
       } // end of tree loop;
       this_file->Close();
-      seg_number++;
-      rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
-			   run_number,seg_number);
-    } // end of file split search
+    } // end of file exists
     iter_run++;
   } // end of run number loop
 
