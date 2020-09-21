@@ -3,12 +3,14 @@ void CompareSlopesBySlug(Int_t slug=94){
   TFile *input = TFile::Open(Form("rootfiles/slug%d_sorted_eigenvector_allbpm.root",slug));
   TTree *eig_tree;
   Int_t nBPM=12;
+  if(slug<=2)
+    nBPM = 10;
   TString slug_title=Form("Slug%d: ",slug);
   TString filename_tag="allbpm";
   
   eig_tree = (TTree*)input->Get("eig");
-  eig_tree->AddFriend("reg=reg_slope");
-  eig_tree->AddFriend("lagr=lagr_slope");
+  eig_tree->AddFriend("reg");
+  eig_tree->AddFriend("lagr");
 
   eig_tree->Draw("run:mini","","goff");
   vector<Int_t> fRun;
@@ -160,7 +162,7 @@ void CompareSlopesBySlug(Int_t slug=94){
     g1_avg->Fit("pol0","Q");
     c2->Print(Form("plots/slug%d_diff_evMon_%s.pdf",slug,filename_tag.Data()));
 
-    eig_tree->Draw(Form("%s.rms*1e6:Entry$",channel.Data())
+    eig_tree->Draw(Form("%s.rms*1e3:Entry$",channel.Data())
 		    ,"","goff");
     double *y_rms = eig_tree->GetV1();
     double *x_mean2 = eig_tree->GetV2();

@@ -21,7 +21,7 @@ void SortEigenvectorsBySlug(int slug, Bool_t kForcedAvg=kFALSE){
 				"bpm8Y","bpm12Y"};
   if(slug<=2){
     IVlist=IVlist1;
-    filename_tag = "10bpm";
+    // filename_tag = "10bpm";
   }
   vector<TString> DVlist ={"us_avg","usl","usr","us_dd"};
   Int_t nDV = DVlist.size();
