@@ -47,7 +47,7 @@ void DrawMeanDistance(){
     TF1 *fp0free = new TF1("fp0free","[0]",-100,100);
     fp0fix->FixParameter(0,0);
     
-    TFile *input =  TFile::Open(Form("prex_minidiff_%s_%s.root",set1.Data(),set2.Data()));
+    TFile *input =  TFile::Open(Form("./rootfiles/prex_minidiff_%s_%s.root",set1.Data(),set2.Data()));
     TTree *slug_tree = (TTree*)input->Get("slug");
     // c2->cd(1);
     // TMultiGraph *mg_diff = new TMultiGraph();
@@ -115,7 +115,7 @@ void DrawMeanDistance(){
     mg_dist->GetYaxis()->SetTitleSize(0.07);
     mg_dist->GetYaxis()->SetTitleOffset(0.5);
     leg_dist->Draw("same");
-    c2->SaveAs(Form("prex_distance_%s_%s_by_slug.png",
+    c2->SaveAs(Form("./plots/delta_A_rms_%s_%s_by_slug.pdf",
 		    set1.Data(),set2.Data()));
 
 
@@ -197,7 +197,7 @@ void DrawMeanDistance(){
     fChiSquare_slug.push_back(fp0free->GetChisquare());
     fProb_slug.push_back(fp0free->GetProb());
     fNDF_slug.push_back(fp0free->GetNDF());
-    c1->SaveAs(Form("prex_distance_freepar_fit_%s_%s_by_slug.png",set1.Data(),set2.Data()));
+    c1->SaveAs(Form("./plots/delta_A_freepar_fit_%s_%s_by_slug.pdf",set1.Data(),set2.Data()));
     
     pad1->cd();
     ger_both->Fit("fp0fix","Q");
@@ -214,7 +214,7 @@ void DrawMeanDistance(){
     pspull_fixed->SetY1NDC(0.5);
     pspull_fixed->SetX1NDC(0.5);
 
-    c1->SaveAs(Form("prex_distance_fixpar_fit_%s_%s_by_slug.png",set1.Data(),set2.Data()));
+    c1->SaveAs(Form("./plots/delta_A_fixpar_fit_%s_%s_by_slug.pdf",set1.Data(),set2.Data()));
     
     input->Close();
     iter++;
@@ -250,5 +250,4 @@ void DrawMeanDistance(){
     iter++;
     icount++;
   }
-  
 }

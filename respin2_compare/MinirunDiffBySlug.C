@@ -39,7 +39,7 @@ void MinirunDiffBySlug(){
     TString file_stem2 = fLinks[tree_name2];
     TString output_filename = Form("prex_minidiff_%s_%s.root",
 				   set_name1.Data(),set_name2.Data());
-    TFile *output_file = TFile::Open(output_filename,"RECREATE");
+    TFile *output_file = TFile::Open("./rootfiles/"+output_filename,"RECREATE");
     TTree *output_tree = new TTree("slug","");
     TString prefix1,prefix2;
     if(set_name1.Contains("reg")){
@@ -79,7 +79,7 @@ void MinirunDiffBySlug(){
     TF1 *fgaus = new TF1("fgaus","gaus(0)",-1e6,1e6);
     TCanvas *chist= new TCanvas ("chist","chist",1200,600);
     chist->Divide(4,2);
-    chist->Print(Form("prex_minidiff_hist_%s_%s.pdf[",set_name1.Data(),set_name2.Data()));
+    chist->Print(Form("./plots/prex_minidiff_hist_%s_%s.pdf[",set_name1.Data(),set_name2.Data()));
     for(int islug=1;islug<=94;islug++){
 
       // Load Input Trees
@@ -184,7 +184,7 @@ void MinirunDiffBySlug(){
 	delta_md = delta[arm_switch];
 	distance_md = distance[arm_switch];
 	delta_md_err = delta_error[arm_switch];
-	chist->Print(Form("prex_minidiff_hist_%s_%s.pdf",set_name1.Data(),set_name2.Data()));
+	chist->Print(Form("./plots/prex_minidiff_hist_%s_%s.pdf",set_name1.Data(),set_name2.Data()));
 	output_tree->Fill();
       } // end of arm switch loop;
 
@@ -193,7 +193,7 @@ void MinirunDiffBySlug(){
       input_file2->Close();
       burst_file->Close();
     } // end of loop over slugs
-    chist->Print(Form("prex_minidiff_hist_%s_%s.pdf]",set_name1.Data(),set_name2.Data()));
+    chist->Print(Form("./plots/prex_minidiff_hist_%s_%s.pdf]",set_name1.Data(),set_name2.Data()));
     iter_set++;
 
     output_file->cd();

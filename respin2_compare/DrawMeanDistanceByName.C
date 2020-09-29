@@ -11,7 +11,7 @@ vector< pair<TString,TString> > fSets ={ {"dit","reg_5bpm"},
 					 {"lagr_all_trunc","lagr_all"}};
 
 
-void DrawMeanDistanceByName(TString det_name="us_avg"){
+void DrawMeanDistanceByName(TString det_name="us_dd"){
   vector<Double_t> fDeltaMu_slug;
   vector<Double_t> fSigmaDeltaMu_slug;
   vector<Double_t> fChiSquare_slug;
@@ -46,7 +46,7 @@ void DrawMeanDistanceByName(TString det_name="us_avg"){
     TF1 *fp0free = new TF1("fp0free","[0]",-100,100);
     fp0fix->FixParameter(0,0);
     
-    TFile *input =  TFile::Open(Form("prex_minidiff_%s_%s.root",set1.Data(),set2.Data()));
+    TFile *input =  TFile::Open(Form("./rootfiles/prex_minidiff_%s_%s.root",set1.Data(),set2.Data()));
     TTree *slug_tree = (TTree*)input->Get("slug");
     c2->cd();
     TMultiGraph *mg_dist = new TMultiGraph();
@@ -67,7 +67,7 @@ void DrawMeanDistanceByName(TString det_name="us_avg"){
     mg_dist->GetYaxis()->SetTitleSize(0.07);
     mg_dist->GetYaxis()->SetTitleOffset(0.5);
     leg_dist->Draw("same");
-    c2->SaveAs(Form("prex_distance_%s_%s_by_slug_%s.png",
+    c2->SaveAs(Form("./plots/delta_A_rms_%s_%s_by_slug_%s.pdf",
 		    set1.Data(),set2.Data(),det_name.Data()));
 
 
@@ -107,8 +107,8 @@ void DrawMeanDistanceByName(TString det_name="us_avg"){
     mg_er->Draw("A");
     // ger_both->Fit("fp0free","Q");  
     leg_er->Draw("same");
-    mg_er->SetTitle(Form(" %s vs %s :Sign Corrected  #Delta A #pm #sigma(#Delta A) (ppb) vs Slug; Slug; #Delta A (ppb) ",
-			   set1.Data(),set2.Data()));
+    mg_er->SetTitle(Form("%s -  %s vs %s :Sign Corrected  #Delta A #pm #sigma(#Delta A) (ppb) vs Slug; Slug; #Delta A (ppb) ",
+			 det_name.Data(),set1.Data(),set2.Data()));
     mg_er->GetXaxis()->SetTitleSize(0.07);
     mg_er->GetXaxis()->SetTitleOffset(0.5);
     mg_er->GetYaxis()->SetTitleSize(0.07);
@@ -131,7 +131,7 @@ void DrawMeanDistanceByName(TString det_name="us_avg"){
     fChiSquare_slug.push_back(fp0free->GetChisquare());
     fNDF_slug.push_back(fp0free->GetNDF());
     fProb_slug.push_back(fp0free->GetProb());
-    c1->SaveAs(Form("prex_distance_freepar_fit_%s_%s_by_slug_%s.png",
+    c1->SaveAs(Form("./plots/delta_A_freepar_fit_%s_%s_by_slug_%s.pdf",
 		    set1.Data(),set2.Data(),det_name.Data()));
     
     pad1->cd();
@@ -149,7 +149,7 @@ void DrawMeanDistanceByName(TString det_name="us_avg"){
     pspull_fixed->SetY1NDC(0.5);
     pspull_fixed->SetX1NDC(0.5);
 
-    c1->SaveAs(Form("prex_distance_fixpar_fit_%s_%s_by_slug_%s.png",
+    c1->SaveAs(Form("./plots/delta_A_fixpar_fit_%s_%s_by_slug_%s.pdf",
 		    set1.Data(),set2.Data(),det_name.Data()));
     
     input->Close();
