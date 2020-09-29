@@ -41,7 +41,7 @@ void DrawResidualBySlugs(){
     gPad->SetGridx();
     gPad->SetGridy();
 
-    c1->Print(Form("./plots/compare_%s_residual_all_slugs.pdf[",det_name[idet].Data()));
+    c1->Print(Form("./plots/compare_residual_%s_all_slugs.pdf[",det_name[idet].Data()));
     for(int icoil=1;icoil<=7;icoil++){
       double reg_val[94];
       double reg_val_error[94];
@@ -126,6 +126,7 @@ void DrawResidualBySlugs(){
 	  double val1=h1dptr->GetMean();
 	  reg_res->Draw(Form("%s_coil%d_res*1e6",det_name[idet].Data(),icoil),
 			cut_text,"goff");
+	  h1dptr = (TH1D*)gDirectory->FindObject("htemp");
 	  double val2=h1dptr->GetMean();
 	  abs_val_diff[abs_counts-1] = fabs(val2)- fabs(val1);
 	  slug_abs_value[abs_counts-1] = islug;
@@ -218,9 +219,9 @@ void DrawResidualBySlugs(){
       leg_rms->Draw("same");
       mg_rms->SetTitle(Form("%s vs coil %d residual Width (ppm/count);slug;Residual Width(ppm/count)",det_name[idet].Data(),icoil));
 
-      c1->Print(Form("./plots/compare_%s_residual_all_slugs.pdf",det_name[idet].Data()));
+      c1->Print(Form("./plots/compare_residual_%s_all_slugs.pdf",det_name[idet].Data()));
     } // end of coil loop
-    c1->Print(Form("./plots/compare_%s_residual_all_slugs.pdf]",det_name[idet].Data()));
+    c1->Print(Form("./plots/compare_residual_%s_all_slugs.pdf]",det_name[idet].Data()));
 
   } // end of detector loop
 }

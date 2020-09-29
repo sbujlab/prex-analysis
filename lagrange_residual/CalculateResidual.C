@@ -3,6 +3,15 @@
    Last update: Aug 2019
  */
 #include "utilities.cc"
+void CalculateResidual(Int_t slug,Int_t kSwitch);
+void CalculateResidual(){
+  for(int i=1; i<=94;i++){
+    if(i==7)
+      continue;
+    CalculateResidual(i,1);
+    CalculateResidual(i,2);
+  }
+}
 
 void CalculateResidual(Int_t slug,Int_t kSwitch){
   // kSwitch: 1-Lagrange, 2-Regression

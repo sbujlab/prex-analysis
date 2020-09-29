@@ -25,8 +25,10 @@ void DrawAllResidual(Int_t kSwitch){
   }
   FILE *table = fopen(Form("table_%s.txt",tag.Data()),"w");
   FILE *table_red = fopen(Form("table_red_%s.txt",tag.Data()),"w");
-  TString det_name[]={"usl","usr","us_avg","us_dd"};
-  for(int idet =0;idet<4;idet++){
+  // TString det_name[]={"usl","usr","us_avg","us_dd"};
+  TString det_name[]={"us_avg","us_dd"};
+  Int_t ndet = sizeof(det_name)/sizeof(*det_name);
+  for(int idet =0;idet<ndet;idet++){
     TCanvas *c1 = new TCanvas("c1","c1",1600,1200);
     c1->Divide(1,3);
     c1->cd(2);
@@ -44,7 +46,7 @@ void DrawAllResidual(Int_t kSwitch){
     pad3r->Draw();
     pad3rr->Draw();
 
-    c1->Print(Form("./plots/%s_all_run_%s_residual.pdf[",
+    c1->Print(Form("./plots/residual_%s_all_run_%s.pdf[",
 		   full_tag.Data(),det_name[idet].Data()));
     
     TString arm_cut ="";
@@ -124,6 +126,12 @@ void DrawAllResidual(Int_t kSwitch){
       hres->SetTitle("Residual Sensitivity (ppm/count)");
       hres->SetName("Dit");
 
+      TH1D *hsens_dit;
+      res->Draw(Form("%s_coil%d_sens*1e6",det_name[idet].Data(),icoil),
+		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&& !"+redundant_cut[icoil-1],"");
+      hsens_dit = (TH1D*)gDirectory->FindObject("htemp");
+      hsens_dit->SetName("hsens_dit");
+      
       pad2rr->cd();
       TH1D *hred = new TH1D("hred","",100,ymin,ymax+0.3*(ymax-ymin));
       res->Draw(Form("%s_coil%d_res*1e6>>hred",det_name[idet].Data(),icoil),
@@ -132,6 +140,12 @@ void DrawAllResidual(Int_t kSwitch){
       hred->SetName("Redundant");
       hred->SetLineColor(kRed);
 
+      TH1D *hsens_rd;
+      res->Draw(Form("%s_coil%d_sens*1e6",det_name[idet].Data(),icoil),
+		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&"+redundant_cut[icoil-1],"");
+      hsens_rd = (TH1D*)gDirectory->FindObject("htemp");
+      if(hsens_rd!=NULL)
+	hsens_rd->SetName("hsens_rd");
 
       pad3l->cd();
       TMultiGraph *mgfrac = new TMultiGraph();
@@ -186,43 +200,35 @@ void DrawAllResidual(Int_t kSwitch){
       my_title.ReplaceAll("_"," ");
       fprintf(table," %s vs coil %d & ",my_title.Data(), icoil);
       fprintf(table_red," %s vs coil %d & ",my_title.Data(), icoil);
-      TH1D* harray[]={hres, hfrac, hred, hfrac_red};
-      for(int ih=0;ih<2;ih++){
-	if(harray[ih]->GetEntries()>0){
-	  if(fabs(harray[ih]->GetMean())<0.01)
-	    fprintf(table," %4.1e & %.2f", harray[ih]->GetMean(),harray[ih]->GetRMS());
-	  else
-	    fprintf(table," %4.1g & %.2f", harray[ih]->GetMean(),harray[ih]->GetRMS());
-	}else{
-	  fprintf(table," & ");
-	}
-
-	if(ih==1)
-	  fprintf(table," \\\\ \n");
+      TH1D* harray[]={hres, hsens_dit, hred, hsens_rd};
+      // dithering coils
+      if(hres->GetEntries()>0){
+	if(fabs(hres->GetMean())<0.01)
+	  fprintf(table,"%.2f & %4.1e & %.2f \\\\ \n",
+		  hsens_dit->GetMean(),hres->GetMean(),hres->GetRMS());
 	else
-	  fprintf(table,"&");
+	  fprintf(table,"%.2f & %.2f & %.2f \\\\ \n",
+		  hsens_dit->GetMean(),hres->GetMean(),hres->GetRMS());
+      }else{
+	fprintf(table," &  \\\\ \n");
       }
 
-      for(int ih=2;ih<4;ih++){
-	if(harray[ih]->GetEntries()>0){
-	  if(fabs(harray[ih]->GetMean())<0.01)
-	    fprintf(table_red," %4.1e & %.2f", harray[ih]->GetMean(),harray[ih]->GetRMS());
-	  else
-	    fprintf(table_red," %4.1g & %.2f", harray[ih]->GetMean(),harray[ih]->GetRMS());
-	}else{
-	  fprintf(table_red," & ");
-	}
-
-	if(ih==3)
-	  fprintf(table_red," \\\\ \n");
+      // redandunt coils
+      if(hred->GetEntries()>0){
+	if(fabs(hred->GetMean())<0.01)
+	  fprintf(table_red,"%.2f & %4.1e & %.2f \\\\ \n",
+		  hsens_rd->GetMean(),hred->GetMean(),hred->GetRMS());
 	else
-	  fprintf(table_red,"&");
+	  fprintf(table_red,"%.2f & %.2f & %.2f \\\\ \n",
+		  hsens_rd->GetMean(),hred->GetMean(),hred->GetRMS());
+      }else{
+	fprintf(table_red," &  \\\\ \n");
       }
 
-      c1->Print(Form("./plots/%s_all_run_%s_residual.pdf",
+      c1->Print(Form("./plots/residual_%s_all_run_%s.pdf",
 		     full_tag.Data(),det_name[idet].Data()));
     }
-    c1->Print(Form("./plots/%s_all_run_%s_residual.pdf]",
+    c1->Print(Form("./plots/residual_%s_all_run_%s.pdf]",
 		   full_tag.Data(),det_name[idet].Data()));
   }
   fclose(table);
