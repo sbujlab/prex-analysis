@@ -56,8 +56,11 @@ map<Int_t, vector<Int_t> > LoadRunInfo(){
     TString run_flag = ((TObjString*)(token->At(3)))->GetString();
     if(run_flag=="Good")
       myInfo.push_back(1);
+    else if(run_flag=="TargetDegradation")
+      myInfo.push_back(2);
     else
       myInfo.push_back(0);
+    
     Int_t arm_flag = (((TObjString*)(token->At(6)))->GetString()).Atoi();
     myInfo.push_back(arm_flag);
     TString ihwp = ((TObjString*)(token->At(4)))->GetString();
