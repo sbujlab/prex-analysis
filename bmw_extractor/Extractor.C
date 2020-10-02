@@ -48,7 +48,12 @@ void Extractor(Int_t run_number){
   TTree *mini_tree = new TTree("mini","Normal");
   TTree *mini_plus_tree = new TTree("mini_plus","Normal + BMW");
   TTree *mini_bmw_tree =  new TTree("mini_bmw","BMW only");
-  
+  Int_t nCoil = 7;
+  vector<TTree*> mini_bmw_tree_by_coil(nCoil);
+  for(int icoil=0;icoil<nCoil;icoil++){
+    mini_bmw_tree_by_coil[icoil] = new TTree(Form("mini_bmw_%d",icoil+1),
+					     "BMW Only By Coil");
+  }
   Int_t mini_counter=0;
   
   mini_tree->Branch("run",&run_number);
@@ -67,11 +72,17 @@ void Extractor(Int_t run_number){
   vector<STAT> fStat_mini(nDev);
   vector<STAT> fStat_plus(nDev);
   vector<STAT> fStat_bmw(nDev);
+  vector<STAT> fStat_bmw_by_coil(nDev*nCoil);
 
   for(int i=0;i<nDev;i++){
     mini_tree->Branch(device_list[i], &fStat_mini[i],"mean/D:err:rms:num_samples");
     mini_plus_tree->Branch(device_list[i], &fStat_plus[i],"mean/D:err:rms:num_samples");
     mini_bmw_tree->Branch(device_list[i], &fStat_bmw[i],"mean/D:err:rms:num_samples");
+    for(int icoil=0;icoil<nCoil;icoil++){
+      mini_bmw_tree_by_coil[icoil]->Branch(device_list[i], 
+					   &fStat_bmw_by_coil[i*nCoil+icoil],
+					   "mean/D:err:rms:num_samples");
+    }
   }
   cout << " -- Run " << run_number << endl;
   while( mul_tree->GetEntries(combine_cut + Form("&& BurstCounter==%d",mini_counter)) !=0){
@@ -120,10 +131,29 @@ void Extractor(Int_t run_number){
 	cout << " ** Empty channel " << device_list[idev] << " with bmw-only cut. "  << endl;
 	fStat_bmw[idev] = fStat_zero;
       }
+      
+      for(int icoil=0;icoil<nCoil;icoil++){
+	TString bmwobj_cut = Form("&&yield_bmwobj==%d",icoil+1);
+	npt = mul_tree->Draw(device_list[idev],bmw_only_cut+burst_cut+bmwobj_cut,"goff");
+	if(npt!=0){
+	  h1dptr= (TH1D*)gDirectory->FindObject("htemp");
+	  fStat_bmw_by_coil[idev*nCoil+icoil].mean = h1dptr->GetMean();
+	  fStat_bmw_by_coil[idev*nCoil+icoil].error = h1dptr->GetMeanError();
+	  fStat_bmw_by_coil[idev*nCoil+icoil].rms = h1dptr->GetRMS();
+	  fStat_bmw_by_coil[idev*nCoil+icoil].num_samples = h1dptr->GetEntries();
+	}else{
+	  cout << " ** Empty channel " << device_list[idev] << " with bmw-only cut. "  << endl;
+	  fStat_bmw_by_coil[idev*nCoil+icoil] = fStat_zero;
+	}
+	
+      } // end of coil loop
+
     } // end of idev loop
     mini_tree->Fill();
     mini_plus_tree->Fill();
     mini_bmw_tree->Fill();
+    for(int icoil=0;icoil<nCoil;icoil++)
+      mini_bmw_tree_by_coil[icoil]->Fill();
     mini_counter++;
   } // end of Burst loop
     
@@ -132,5 +162,8 @@ void Extractor(Int_t run_number){
   mini_tree->Write();
   mini_plus_tree->Write();
   mini_bmw_tree->Write();
+  for(int icoil=0;icoil<nCoil;icoil++)
+    mini_bmw_tree_by_coil[icoil]->Write();
+
   output->Close();
 }
