@@ -22,6 +22,7 @@ void Extractor(Int_t run_number){
 			       "diff_bpm12X","diff_bpm12Y",
 			       "diff_bpm16X","diff_bpm16Y",
 			       "asym_us_avg","asym_us_dd","asym_usl","asym_usr",
+			       "yield_usl","yield_usr",
 			       "lagr_asym_us_avg","lagr_asym_us_dd",
 			       "lagr_asym_usl","lagr_asym_usr",
 			       "reg_asym_us_avg","reg_asym_us_dd",
@@ -57,19 +58,20 @@ void Extractor(Int_t run_number){
   mini_bmw_tree->Branch("run",&run_number);
   mini_bmw_tree->Branch("minirun",&mini_counter);
   
-  typedef struct {Double_t mean, error,rms;} STAT;
+  typedef struct {Double_t mean, error,rms,num_samples;} STAT;
   STAT fStat_zero;
   fStat_zero.mean=0.0;
   fStat_zero.error=-1;
   fStat_zero.rms=0.0;
+  fStat_zero.num_samples=0.0;
   vector<STAT> fStat_mini(nDev);
   vector<STAT> fStat_plus(nDev);
   vector<STAT> fStat_bmw(nDev);
 
   for(int i=0;i<nDev;i++){
-    mini_tree->Branch(device_list[i], &fStat_mini[i],"mean/D:err:rms");
-    mini_plus_tree->Branch(device_list[i], &fStat_plus[i],"mean/D:err:rms");
-    mini_bmw_tree->Branch(device_list[i], &fStat_bmw[i],"mean/D:err:rms");
+    mini_tree->Branch(device_list[i], &fStat_mini[i],"mean/D:err:rms:num_samples");
+    mini_plus_tree->Branch(device_list[i], &fStat_plus[i],"mean/D:err:rms:num_samples");
+    mini_bmw_tree->Branch(device_list[i], &fStat_bmw[i],"mean/D:err:rms:num_samples");
   }
   cout << " -- Run " << run_number << endl;
   while( mul_tree->GetEntries(combine_cut + Form("&& BurstCounter==%d",mini_counter)) !=0){
@@ -90,6 +92,7 @@ void Extractor(Int_t run_number){
 	fStat_mini[idev].mean = h1dptr->GetMean();
 	fStat_mini[idev].error = h1dptr->GetMeanError();
 	fStat_mini[idev].rms = h1dptr->GetRMS();
+	fStat_mini[idev].num_samples = h1dptr->GetEntries();
       }else{
 	cout << " ** Empty channel " << device_list[idev] << " with normal cut. "  << endl;
 	fStat_mini[idev] = fStat_zero;
@@ -101,6 +104,7 @@ void Extractor(Int_t run_number){
 	fStat_plus[idev].mean = h1dptr->GetMean();
 	fStat_plus[idev].error = h1dptr->GetMeanError();
 	fStat_plus[idev].rms = h1dptr->GetRMS();
+	fStat_plus[idev].num_samples = h1dptr->GetEntries();
       }else{
 	cout << " ** Empty channel " << device_list[idev] << " with combined cut. "  << endl;
 	fStat_plus[idev] = fStat_zero;
@@ -111,6 +115,7 @@ void Extractor(Int_t run_number){
 	fStat_bmw[idev].mean = h1dptr->GetMean();
 	fStat_bmw[idev].error = h1dptr->GetMeanError();
 	fStat_bmw[idev].rms = h1dptr->GetRMS();
+	fStat_bmw[idev].num_samples = h1dptr->GetEntries();
       }else{
 	cout << " ** Empty channel " << device_list[idev] << " with bmw-only cut. "  << endl;
 	fStat_bmw[idev] = fStat_zero;
