@@ -1,9 +1,9 @@
 void DrawSlopes(TString det_name,TString cut_text, Int_t slug_start, Int_t slug_end);
 void DrawSlopes(){
-  DrawSlopes("us_avg","arm_flag==0",3,94);   
-  DrawSlopes("us_dd","arm_flag==0",3,94);
-  DrawSlopes("us_avg","arm_flag==0",1,2);   
-  DrawSlopes("us_dd","arm_flag==0",1,2);
+  DrawSlopes("us_avg","arm_flag==0 &&kGood==1",3,94);   
+  DrawSlopes("us_dd","arm_flag==0 && kGood==1",3,94);
+  // DrawSlopes("us_avg","arm_flag==0",1,2);   
+  // DrawSlopes("us_dd","arm_flag==0",1,2);
 }
 
 void DrawSlopes(TString det_name,TString cut_text, Int_t slug_start, Int_t slug_end){
@@ -27,7 +27,7 @@ void DrawSlopes(TString det_name,TString cut_text, Int_t slug_start, Int_t slug_
     nIV=12;
   if( slug_end<=2)
     nIV=10;
-
+  TChain *info_tree = new TChain("mini_info");
   TChain *eig_tree = new TChain("eig");
   TChain *reg_tree = new TChain("reg");
   TChain *lagr_tree = new TChain("lagr");
@@ -35,9 +35,11 @@ void DrawSlopes(TString det_name,TString cut_text, Int_t slug_start, Int_t slug_
     eig_tree->AddFile(Form("./rootfiles/slug%d_sorted_eigenvector_allbpm.root",islug));
     reg_tree->AddFile(Form("./rootfiles/slug%d_sorted_eigenvector_allbpm.root",islug));
     lagr_tree->AddFile(Form("./rootfiles/slug%d_sorted_eigenvector_allbpm.root",islug));
+    info_tree->AddFile(Form("./rootfiles/slug%d_runinfo.root",islug));
   }
   eig_tree->AddFriend(reg_tree);
   eig_tree->AddFriend(lagr_tree);
+  eig_tree->AddFriend(info_tree);
   int npt  = eig_tree->Draw("slug", cut_text,"goff");
   double *slug_ptr = eig_tree->GetV1();
   double *fCounter  = new double[npt];
