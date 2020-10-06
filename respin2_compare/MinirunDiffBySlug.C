@@ -97,6 +97,9 @@ void MinirunDiffBySlug(){
 	TTree * dit_combo_tree = (TTree*)burst_file->Get("burst_mulc_dit_combo");
 	burst_tree->AddFriend(dit_combo_tree,"dit");
       }
+      TFile *info_file = TFile::Open(Form("./treeMergeOutput/slug%d_runinfo.root",islug));
+      TTree *info_tree = (TTree*)info_file->Get("mini_info");
+      burst_tree->AddFriend(info_tree);
       for(int arm_switch=0;arm_switch<3;arm_switch++){
 	map< Int_t, TaRunInfo > fRunInfoMap = LoadRunInfoMapBySlug(islug,arm_switch);
 	if(fRunInfoMap.size()==0)
@@ -104,6 +107,7 @@ void MinirunDiffBySlug(){
 	for(int idet=0;idet<nDet;idet++){
 	  // Load Run cuts
 	  TString myCut =  LoadArmFlagCuts(fRunInfoMap,det_array[idet]);
+	  myCut += " && kGood==1";
 	  TH1D *hbuff;
 	  Int_t npt = 0;
 	  npt = burst_tree->Draw(Form("(%s.%s_asym_%s  - %s.%s_asym_%s)/ppb",
