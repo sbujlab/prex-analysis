@@ -26,7 +26,11 @@ void Extractor(Int_t run_number){
 			       "lagr_asym_us_avg","lagr_asym_us_dd",
 			       "lagr_asym_usl","lagr_asym_usr",
 			       "reg_asym_us_avg","reg_asym_us_dd",
-			       "reg_asym_usl","reg_asym_usr"};
+			       "reg_asym_usl","reg_asym_usr",
+			       "lagr_asym_us_avg","lagr_asym_us_dd",
+			       "lagr_asym_usl","lagr_asym_usr",
+			       "dit_asym_us_avg","dit_asym_us_dd",
+			       "dit_asym_usl","dit_asym_usr" };
   for(int i=0;i<12;i++)
     device_list.push_back(Form("diff_evMon%d",i) );
   
@@ -35,7 +39,9 @@ void Extractor(Int_t run_number){
   TFile *japan_file = TFile::Open(Form("japanOutput/prexPrompt_pass2_%d.000.root",run_number));
   TTree *mul_tree = (TTree*)japan_file->Get("mul");
   mul_tree->AddFriend( (TTree*)japan_file->Get("mulc") );
-  
+  mul_tree->AddFriend( (TTree*)japan_file->Get("mulc_dit") );
+  mul_tree->AddFriend( (TTree*)japan_file->Get("mulc_dit_combo") );
+
   TFile *lagr_file = TFile::Open(Form("LagrangeOutput/prexRespin2_lagrange_eigen_%d.000.root",run_number));
   TTree *lagr_tree = (TTree*)lagr_file->Get("lagrall");
   TTree *reg_tree = (TTree*)lagr_file->Get("regall");
