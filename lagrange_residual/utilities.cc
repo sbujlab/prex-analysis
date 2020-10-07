@@ -3,6 +3,7 @@
    Last update: July 2019
  */
 map<Int_t, Int_t> LoadArmFlag(Int_t slug); // return <run, arm_flag>
+map<Int_t, Int_t> LoadRunFlag(Int_t slug); // return <run, run_flag> : (1)Good (2)Tgt (-1) others
 map< pair<Int_t,Int_t> , vector<Double_t> >GetLagrangeSlope(Int_t slug); // return <run,burst> => slope
 map< pair<Int_t,Int_t> , vector<Double_t> >GetRegressionSlope(Int_t slug); // return <run,burst> => slope
 map< pair<Int_t,Int_t> , Int_t > LoadCyc2BurstMap(Int_t slug, Int_t run); // return <cyc,coil> =>BurstCounter
@@ -19,9 +20,29 @@ map<Int_t, Int_t> LoadArmFlag(Int_t slug){ // return <run, arm_flag>
     TObjArray *token = sline.Tokenize(',');
     Int_t run_number = (((TObjString*)(token->At(0)))->GetString()).Atoi();
     Int_t arm_flag = (((TObjString*)(token->At(6)))->GetString()).Atoi();
+    fret[run_number]=arm_flag;
+  }
+  slug_info.close();
+  return fret;
+
+}
+
+map<Int_t, Int_t> LoadRunFlag(Int_t slug){ // return <run, run_flag> : (1)Good (2)Tgt (-1) others
+  map<Int_t,Int_t> fret;
+  TString info_filename =Form("prex-runlist/slug%d_info.list",slug);
+  ifstream slug_info;
+  slug_info.open(info_filename.Data());
+  TString sline;
+  while(sline.ReadLine(slug_info)){
+    TObjArray *token = sline.Tokenize(',');
+    Int_t run_number = (((TObjString*)(token->At(0)))->GetString()).Atoi();
     TString run_flag = ((TObjString*)(token->At(3)))->GetString();
     if(run_flag=="Good")
-      fret[run_number]=arm_flag;
+      fret[run_number]=1;
+    else if(run_flag=="TargetDegradation")
+      fret[run_number]=2;
+    else
+      fret[run_number]=-1;
   }
   slug_info.close();
   return fret;

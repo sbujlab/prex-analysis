@@ -48,9 +48,11 @@ void CalculateResidual(Int_t slug,Int_t kSwitch){
   vector<Double_t > fDet_sens(nDet*nCoil,0); // raw sensitivities
   vector<Int_t > fDet_flag(nDet*nCoil,0);
   Int_t arm_flag;
+  Int_t run_flag;
   Int_t kCycle, kRun, kBurstCounter,kSlug;
   kSlug = slug;
   res_tree->Branch("arm_flag",&arm_flag);
+  res_tree->Branch("kGood",&run_flag);
   res_tree->Branch("bmwcycnum",&kCycle);
   res_tree->Branch("run",&kRun);
   res_tree->Branch("slug",&kSlug);
@@ -96,6 +98,7 @@ void CalculateResidual(Int_t slug,Int_t kSwitch){
   }
 
   map<Int_t, Int_t> fArmFlagMap = LoadArmFlag(slug);
+  map<Int_t, Int_t> fRunFlagMap = LoadRunFlag(slug);
   map< pair<Int_t,Int_t>, vector<Double_t> > fSlopeMap;
   if(kSwitch==1)
     fSlopeMap= GetLagrangeSlope(slug);
@@ -118,6 +121,7 @@ void CalculateResidual(Int_t slug,Int_t kSwitch){
       kBurstCounter = 0; // for weird slug 2
     }
     arm_flag = fArmFlagMap[kRun];
+    run_flag = fRunFlagMap[kRun];
     for(int icoil=0;icoil<nCoil;icoil++){
       // 2. Check if it is in bad cycle list 
       Bool_t kBadCyceList = InBadCycleList(fBadCycleMap,kCycle,icoil+1);

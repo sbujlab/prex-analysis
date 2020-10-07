@@ -31,6 +31,14 @@ void DrawAllResidual(Int_t kSwitch){
   for(int idet =0;idet<ndet;idet++){
     TCanvas *c1 = new TCanvas("c1","c1",1600,1200);
     c1->Divide(1,3);
+    c1->cd(1);
+    TPad *pad1l = new TPad("p1l","",0,0,0.5,1.0);
+    TPad *pad1r = new TPad("p1r","",0.5,0,0.75,1.0);
+    TPad *pad1rr = new TPad("p1rr","",0.75,0,1.0,1.0);
+    pad1l->Draw();
+    pad1r->Draw();
+    pad1rr->Draw();
+
     c1->cd(2);
     TPad *pad2l = new TPad("p2l","",0,0,0.5,1.0);
     TPad *pad2r = new TPad("p2r","",0.5,0,0.75,1.0);
@@ -56,6 +64,9 @@ void DrawAllResidual(Int_t kSwitch){
       arm_cut = "arm_flag != 2";
     if(det_name[idet].Contains("avg") || det_name[idet].Contains("dd"))
       arm_cut = "arm_flag==0";
+    
+    // Piggy-back runflag filter here
+    arm_cut += "&&kGood==1";
     TVirtualPad *vpad;
     int npt, nptred;
 
@@ -65,7 +76,7 @@ void DrawAllResidual(Int_t kSwitch){
 			       "(0)"};
     for(int icoil=1;icoil<=7;icoil++){
       
-      vpad=c1->cd(1);
+      pad1l->cd();
       TMultiGraph *mgsens = new TMultiGraph();
       TLegend *leg = new TLegend(0.85,0.8,1.0,0.95);
       npt = res->Draw(Form("%s_coil%d_sens*1e6:bmwcycnum",det_name[idet].Data(),icoil),
@@ -91,7 +102,9 @@ void DrawAllResidual(Int_t kSwitch){
       leg->Draw("same");
       mgsens->SetTitle( Form("%s_coil%d Sensitivity (ppm/count); Supercycle # ; (ppm/count)",
 			 det_name[idet].Data(),icoil));
+      
 
+      // Residual Sensitivity
       pad2l->cd();
       TMultiGraph *mgres = new TMultiGraph();
       npt = res->Draw(Form("%s_coil%d_res*1e6:bmwcycnum",det_name[idet].Data(),icoil),
@@ -117,6 +130,30 @@ void DrawAllResidual(Int_t kSwitch){
       mgres->SetTitle( Form("%s_coil%d Residual (ppm/count); Supercycle # ; (ppm/count)",
 			    det_name[idet].Data(),icoil));
 
+      // Drawing histograms
+
+      pad1r->cd();
+
+      double y_sens_max= mgsens->GetYaxis()->GetXmax();
+      double y_sens_min= mgsens->GetYaxis()->GetXmin();
+      TH1D *hsens_dit = new TH1D("hsens_dit","",100,y_sens_min, y_sens_max+0.3*(y_sens_max-y_sens_min));
+      res->Draw(Form("%s_coil%d_sens*1e6>>hsens_dit",det_name[idet].Data(),icoil),
+		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&!"+redundant_cut[icoil-1],"");
+      if(hsens_dit!=NULL){
+	hsens_dit->SetName("Dit Raw");
+	hsens_dit->SetTitle("Raw Sensitivity (ppm/count)");
+      }
+
+      pad1rr->cd();
+      TH1D *hsens_rd = new TH1D("hsens_rd","",100,y_sens_min, y_sens_max+0.3*(y_sens_max-y_sens_min));;
+      res->Draw(Form("%s_coil%d_sens*1e6>>hsens_rd",det_name[idet].Data(),icoil),
+		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&"+redundant_cut[icoil-1],"");
+      if(hsens_rd!=NULL){
+	hsens_rd->SetName("Redundant Raw");
+	hsens_rd->SetTitle("Raw Sensitivity (ppm/count)");
+	hsens_rd->SetLineColor(kRed);
+      }
+
       pad2r->cd();
       double ymax= mgres->GetYaxis()->GetXmax();
       double ymin= mgres->GetYaxis()->GetXmin();
@@ -126,12 +163,6 @@ void DrawAllResidual(Int_t kSwitch){
       hres->SetTitle("Residual Sensitivity (ppm/count)");
       hres->SetName("Dit");
 
-      TH1D *hsens_dit;
-      res->Draw(Form("%s_coil%d_sens*1e6",det_name[idet].Data(),icoil),
-		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&& !"+redundant_cut[icoil-1],"");
-      hsens_dit = (TH1D*)gDirectory->FindObject("htemp");
-      hsens_dit->SetName("hsens_dit");
-      
       pad2rr->cd();
       TH1D *hred = new TH1D("hred","",100,ymin,ymax+0.3*(ymax-ymin));
       res->Draw(Form("%s_coil%d_res*1e6>>hred",det_name[idet].Data(),icoil),
@@ -140,13 +171,7 @@ void DrawAllResidual(Int_t kSwitch){
       hred->SetName("Redundant");
       hred->SetLineColor(kRed);
 
-      TH1D *hsens_rd;
-      res->Draw(Form("%s_coil%d_sens*1e6",det_name[idet].Data(),icoil),
-		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&"+redundant_cut[icoil-1],"");
-      hsens_rd = (TH1D*)gDirectory->FindObject("htemp");
-      if(hsens_rd!=NULL)
-	hsens_rd->SetName("hsens_rd");
-
+      // Fractional Sensitivity
       pad3l->cd();
       TMultiGraph *mgfrac = new TMultiGraph();
       npt=res->Draw(Form("%s_coil%d_res/%s_coil%d_sens:bmwcycnum",
