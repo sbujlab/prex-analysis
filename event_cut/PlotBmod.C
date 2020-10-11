@@ -8,7 +8,7 @@ void PlotBmod(){
   c1->SetGridy();
   vector<Int_t> coilH= { 1,3,5,7};
   vector<Int_t> coilV= { 2,4,6};
-  vector<Int_t> coilID=coilH;;
+  vector<Int_t> coilID=coilH;
 
   vector<TString> fChannelArray={"bpm4aX","bpm4eX","bpm4aY","bpm4eY","bpm11X","bpm12X","usl","usr"};
   Int_t nch = fChannelArray.size();
@@ -34,12 +34,16 @@ void PlotBmod(){
       det_cut = "&&" +device_name+".offset>0.02";
       yaxis_title = "   Modulation Amplitude (fraction yield)";
     }
-  
+    // TString chisq_cut =Form("  %s>sqrt(%s.chisq/%s.ndf)/%s.ndata && %s.chisq<10e3 && %s.chisq>140",
+    // 			    device_name.Data(),device_name.Data(),
+    // 			    device_name.Data(),device_name.Data(),
+    // 			    device_name.Data(),device_name.Data());
+    TString chisq_cut =Form("%s.chisq>10 ",device_name.Data());;
     TMultiGraph* mg =new TMultiGraph();
     TLegend *leg = new TLegend(1.0,0.9,0.9,0.7);
     for(int i=0;i<coilID.size();i++){
       bmod_tree->Draw(Form("%s/%s:run",device_name.Data(),unit.Data()),
-		      Form("%s.ndata>200  && coil==%d && %s.amplitude>1100",device_name.Data(),coilID[i],device_name.Data())+det_cut,"*");
+		      Form("%s.ndata>200  && coil==%d && %s",device_name.Data(),coilID[i],chisq_cut.Data())+det_cut,"*");
       TGraph* g3 = new TGraph(bmod_tree->GetSelectedRows(),bmod_tree->GetV2(),bmod_tree->GetV1());
       g3->SetMarkerStyle(7);
       g3->SetMarkerColor(kBlack+i);
@@ -53,7 +57,37 @@ void PlotBmod(){
     c1->Print("bmod_amplitude_all_run.pdf");
 
   } // end of ich loop
+  // for detector y coil response
+  for(int ich=nch-2;ich<nch;ich++){
+    TString device_name = fChannelArray[ich];
+    coilID= coilV;
+    TString unit="1";
+    TString yaxis_title="";
+    TString det_cut = "";
+    unit = device_name+".offset";
+    if(device_name.Contains("s")){
+      det_cut = "&&" +device_name+".offset>0.02";
+      yaxis_title = "   Modulation Amplitude (fraction yield)";
+    }
   
+    TMultiGraph* mg =new TMultiGraph();
+    TLegend *leg = new TLegend(1.0,0.9,0.9,0.7);
+    for(int i=0;i<coilID.size();i++){
+      bmod_tree->Draw(Form("%s/%s:run",device_name.Data(),unit.Data()),
+		      Form("%s.ndata>200  && coil==%d && %s.chisq>10",device_name.Data(),coilID[i],device_name.Data())+det_cut,"*");
+      TGraph* g3 = new TGraph(bmod_tree->GetSelectedRows(),bmod_tree->GetV2(),bmod_tree->GetV1());
+      g3->SetMarkerStyle(7);
+      g3->SetMarkerColor(kBlack+i);
+      g3->SetLineColor(kBlack+i);
+      mg->Add(g3,"P");
+      leg->AddEntry(g3,Form("coil %d",coilID[i]));
+    }// end of coil loop
+    mg->Draw("AP");
+    mg->SetTitle(device_name+yaxis_title+";run number;"+yaxis_title);
+    leg->Draw("same");
+    c1->Print("bmod_amplitude_all_run.pdf");
+  } // end of ich loop
+
   c1->Print("bmod_amplitude_all_run.pdf]");
 
 }
