@@ -79,7 +79,7 @@ void DrawAllResidual(Int_t kSwitch){
       pad1l->cd();
       TMultiGraph *mgsens = new TMultiGraph();
       TLegend *leg = new TLegend(0.85,0.8,1.0,0.95);
-      npt = res->Draw(Form("%s_coil%d_sens*1e6:bmwcycnum",det_name[idet].Data(),icoil),
+      npt = res->Draw(Form("%s_coil%d_sens*1e6:run",det_name[idet].Data(),icoil),
 		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&!"+redundant_cut[icoil-1],"*");
       double *y2 = res->GetV1();
       double *x2 = res->GetV2();
@@ -87,7 +87,7 @@ void DrawAllResidual(Int_t kSwitch){
       g2->SetMarkerStyle(20);
       mgsens->Add(g2,"p");
 
-      nptred = res->Draw(Form("%s_coil%d_sens*1e6:bmwcycnum",det_name[idet].Data(),icoil),
+      nptred = res->Draw(Form("%s_coil%d_sens*1e6:run",det_name[idet].Data(),icoil),
 			 arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&"+redundant_cut[icoil-1],"*");
       double *y2red = res->GetV1();
       double *x2red = res->GetV2();
@@ -107,7 +107,7 @@ void DrawAllResidual(Int_t kSwitch){
       // Residual Sensitivity
       pad2l->cd();
       TMultiGraph *mgres = new TMultiGraph();
-      npt = res->Draw(Form("%s_coil%d_res*1e6:bmwcycnum",det_name[idet].Data(),icoil),
+      npt = res->Draw(Form("%s_coil%d_res*1e6:run",det_name[idet].Data(),icoil),
 		      arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&!"+redundant_cut[icoil-1],"goff");
       double *y1 = res->GetV1();
       double *x1 = res->GetV2();
@@ -116,7 +116,7 @@ void DrawAllResidual(Int_t kSwitch){
       mgres->Add(g1,"p");
 
       // redundant coil
-      nptred = res->Draw(Form("%s_coil%d_res*1e6:bmwcycnum",det_name[idet].Data(),icoil),
+      nptred = res->Draw(Form("%s_coil%d_res*1e6:run",det_name[idet].Data(),icoil),
 		      arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&"+redundant_cut[icoil-1],"goff");
       double *y1red = res->GetV1();
       double *x1red = res->GetV2();
@@ -174,7 +174,7 @@ void DrawAllResidual(Int_t kSwitch){
       // Fractional Sensitivity
       pad3l->cd();
       TMultiGraph *mgfrac = new TMultiGraph();
-      npt=res->Draw(Form("%s_coil%d_res/%s_coil%d_sens:bmwcycnum",
+      npt=res->Draw(Form("%s_coil%d_res/%s_coil%d_sens:run",
 		     det_name[idet].Data(),icoil,det_name[idet].Data(),icoil),
 		arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&!"+redundant_cut[icoil-1],"*");
       double *y3 = res->GetV1();
@@ -183,7 +183,7 @@ void DrawAllResidual(Int_t kSwitch){
       g3->SetMarkerStyle(20);
       mgfrac->Add(g3,"p");
 
-      nptred=res->Draw(Form("%s_coil%d_res/%s_coil%d_sens:bmwcycnum",
+      nptred=res->Draw(Form("%s_coil%d_res/%s_coil%d_sens:run",
 			    det_name[idet].Data(),icoil,det_name[idet].Data(),icoil),
 		       arm_cut+Form("&& %s_coil%d_flag",det_name[idet].Data(),icoil)+"&&"+redundant_cut[icoil-1],"*");
       double *y3red = res->GetV1();
