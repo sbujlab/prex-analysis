@@ -13,7 +13,7 @@ void MergeSumTree(Int_t slug){
   FILE *runlist ;
 
   if(slug==9999){
-    filename = "all.list";
+    filename = "slug1-94.list";
     label = "all_slugs";
   }
   runlist = fopen((path+filename).Data(),"r");
@@ -43,7 +43,7 @@ void MergeSumTree(Int_t slug){
     if(run_number==0)
       continue;
     fRunNumberArray.push_back(run_number);
-    TString qw_path = TString(gSystem->Getenv("QW_ROOTFILES") );
+    TString qw_path ="/lustre19/expphy/volatile/halla/parity/prex-respin2/japanOutput/";
     TString rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 				 run_number,seg_number);
     TFile *this_file;
@@ -74,7 +74,7 @@ void MergeSumTree(Int_t slug){
   while(iter_run!=fRunNumberArray.end()){
     Int_t run_number = *iter_run;
     Int_t seg_number=0;
-    TString qw_path = TString(gSystem->Getenv("QW_ROOTFILES") );
+    TString qw_path ="/lustre19/expphy/volatile/halla/parity/prex-respin2/japanOutput/";
     TString rootfile_name = Form("prexPrompt_pass2_%d.%03d.root",
 				 run_number,seg_number);
     TFile *this_file;
