@@ -68,7 +68,12 @@ void Extractor(Int_t run_number){
   mini_plus_tree->Branch("minirun",&mini_counter);
   mini_bmw_tree->Branch("run",&run_number);
   mini_bmw_tree->Branch("minirun",&mini_counter);
-  
+  for(int icoil=0;icoil<nCoil;icoil++){
+    mini_bmw_tree_by_coil[icoil]->Branch("run",&run_number);
+    mini_bmw_tree_by_coil[icoil]->Branch("minirun",&mini_counter);
+  }
+
+
   typedef struct {Double_t mean, error,rms,num_samples;} STAT;
   STAT fStat_zero;
   fStat_zero.mean=0.0;
