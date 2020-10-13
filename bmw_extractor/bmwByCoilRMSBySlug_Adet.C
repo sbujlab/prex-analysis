@@ -3,7 +3,10 @@ void bmwByCoilRMSBySlug_Adet(){
   TTree *reg_tree = (TTree*)reg_input->Get("slug");
   TFile* lagr_input = TFile::Open("lagrall_prod_only_grand_average_signed_weighted.root");
   TTree *lagr_tree = (TTree*)lagr_input->Get("slug");
-  
+
+  TFile* dit_input = TFile::Open("dit_prod_only_grand_average_signed_weighted.root");
+  TTree *dit_tree = (TTree*)dit_input->Get("slug");
+
   int coil_array[]={7,1,3,5,2,4,6};
   int ncoil = sizeof(coil_array)/sizeof(*coil_array);
   
@@ -11,9 +14,14 @@ void bmwByCoilRMSBySlug_Adet(){
     TFile* reg_bmw_input = TFile::Open(Form("regall_bmw_coil%d_grand_average_signed_weighted.root",coil_array[icoil]));
     TTree *reg_bmw_tree = (TTree*)reg_bmw_input->Get("slug");
     reg_tree->AddFriend(reg_bmw_tree,Form("c%d",coil_array[icoil]));
+    
     TFile* lagr_bmw_input = TFile::Open(Form("lagrall_bmw_coil%d_grand_average_signed_weighted.root",coil_array[icoil]));
     TTree *lagr_bmw_tree = (TTree*)lagr_bmw_input->Get("slug");
     lagr_tree->AddFriend(lagr_bmw_tree,Form("c%d",coil_array[icoil]));
+    
+    TFile* dit_bmw_input = TFile::Open(Form("dit_bmw_coil%d_grand_average_signed_weighted.root",coil_array[icoil]));
+    TTree *dit_bmw_tree = (TTree*)dit_bmw_input->Get("slug");
+    dit_tree->AddFriend(dit_bmw_tree,Form("c%d",coil_array[icoil]));
   }
 
   TCanvas *c1 = new TCanvas("c1","c1",1200,800);
@@ -61,6 +69,15 @@ void bmwByCoilRMSBySlug_Adet(){
     mg_lagr_bmw->SetMarkerStyle(7);
     mg->Add(mg_lagr_bmw,"lp");
     leg->AddEntry(mg_lagr_bmw,Form("Lagrange: coil%d",coil_array[ic]));
+
+    dit_tree->Draw(Form("c%d.Adet.rms*1e6 : slug",coil_array[ic]),
+		    Form("c%d.Adet.error>0",coil_array[ic]),"goff");
+    TGraph *mg_dit_bmw = new TGraph(dit_tree->GetSelectedRows(),dit_tree->GetV2(),dit_tree->GetV1());
+    mg_dit_bmw->SetMarkerColor(kOrange);
+    mg_dit_bmw->SetLineColor(kOrange);
+    mg_dit_bmw->SetMarkerStyle(7);
+    mg->Add(mg_dit_bmw,"lp");
+    leg->AddEntry(mg_dit_bmw,Form("Dither: coil%d",coil_array[ic]));
 
     mg->Add(mg_single,"p");
     leg->AddEntry(mg_single,"Single Arm Marker","p");
