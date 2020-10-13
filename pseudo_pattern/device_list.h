@@ -9,7 +9,10 @@ TString detector_channel[]={"sam1","sam3","sam5",  	 // index; 0-2
 
 TString monitor_channel[]={"bpm4aX","bpm4aY",
 			   "bpm4eX","bpm4eY",
-			   "bpm12X"};
+			   "bpm1X","bpm1Y",
+			   "bpm11X","bpm11Y",
+			   "bpm12X","bpm12Y",
+			   "bpm16X","bpm16Y"};
 
 TString combiner_channel[]={"asym_us_avg","asym_us_dd",
 			    "asym_ds_avg","asym_ds_dd",

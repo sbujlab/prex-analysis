@@ -1,12 +1,14 @@
 #include "device_list.h"
 // For 120 Hz raw data
-// over-integrating block0 and block1 to get equivalent 240 Hz Data
+// Adding block0 and block1 together to get equivalent 240 Hz Data
 
 // FIXME : though I may have a better idea to do this, 
 // Now I just pick up a way that is easy and simple
 
-void GetPseudo240Hz(TString filename){
-  TFile *japanOutput = TFile::Open(filename);
+void GetPseudo240Hz(Int_t run_number){
+  TString qw_path = getenv("QW_ROOTFILES");
+  TString filename = Form("prexPrompt_pass2_%d.000.root",run_number);
+  TFile *japanOutput = TFile::Open(qw_path+filename);
   TTree* evt_tree = (TTree*)japanOutput->Get("evt");
 
   Int_t nPattern = 4; // Needs 4 evt to build octet
@@ -39,9 +41,10 @@ void GetPseudo240Hz(TString filename){
   TLeaf *leaf_ErrorFlag = evt_tree->GetLeaf("ErrorFlag");
   
   TString outputName;
+  TString output_path = "/lustre/expphy/volatile/halla/parity/tao/pseudo_pattern/";
   outputName = filename.ReplaceAll("prex","pseudo240Hz");
-    
-  TFile *peusdoOutput = TFile::Open(filename,"RECREATE");
+  
+  TFile *peusdoOutput = TFile::Open(output_path+filename,"RECREATE");
   
   TTree *mul_tree = new TTree("mul","pseudo Helicity Tree");
   TTree *mulc_tree = new TTree("mulc","pseudo Helicity Combiner");
@@ -64,7 +67,7 @@ void GetPseudo240Hz(TString filename){
 
   for(int icom=0;icom<ncombo;icom++)
     mulc_tree->Branch(combiner_channel[icom],
-		     &(combo_value[icom]),"hw_sum/D");
+		      &(combo_value[icom]),"hw_sum/D");
   
   Int_t nEntries = evt_tree->GetEntries();
   nEntries = nEntries - (nEntries%nPattern);
@@ -99,6 +102,12 @@ void GetPseudo240Hz(TString filename){
 	for(int imon=0;imon<nmon;imon++){
 	  double pair_sum = (leaf_mon[imon][ipair*2])->GetValue();
 	  pair_sum += (leaf_mon[imon][ipair*2+1])->GetValue();
+	  pair_sum = pair_sum/2.0;
+	  /* About this factor of 2 here
+	     I didn't average the block pair sum a year before, and this is not a problem for regression.
+	     Meanwhile, it is problem for dithering correction and depends on how you normalize dithering fractional yield.
+	     The point is we need to take care of the normalization factor for HC differences in JAPAN.
+	     -- Tao Ye, Oct 13, 2020 	  */
 	  diff_value[imon]+= (polarity*pair_sum);
 	} // end of monitor loop
       } // end of block-pair loop
