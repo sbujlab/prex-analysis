@@ -10,7 +10,13 @@ void GetPseudo240Hz(Int_t run_number){
   TString filename = Form("prexPrompt_pass2_%d.000.root",run_number);
   TFile *japanOutput = TFile::Open(qw_path+filename);
   TTree* evt_tree = (TTree*)japanOutput->Get("evt");
-
+  TTree* mul_japan = (TTree*)japanOutput->Get("mul");
+  Int_t npat_japan = mul_japan->Draw("pattern_number","","goff");
+  vector<Int_t> fPatternNumberArray(npat_japan);
+  double* fPatterNumber_ptr = mul_japan->GetV1();
+  for(int ipat=0;ipat<npat_japan;ipat++){
+    fPatternNumberArray[ipat] = (int)fPatterNumber_ptr[ipat];
+  }
   Int_t nPattern = 4; // Needs 4 evt to build octet
   Int_t helicity[8] = { 1, -1, -1, 1,
 			-1,  1,  1,-1}; // pseudo helicity, to cancel 60 Hz
@@ -39,7 +45,8 @@ void GetPseudo240Hz(Int_t run_number){
     leaf_mon.push_back(vec_buff);
   }
   TLeaf *leaf_ErrorFlag = evt_tree->GetLeaf("ErrorFlag");
-  
+  TLeaf *leaf_pattern_number = evt_tree->GetLeaf("pattern_number");
+
   TString outputName;
   TString output_path = "/lustre/expphy/volatile/halla/parity/tao/pseudo_pattern/";
   outputName = filename.ReplaceAll("prex","pseudo240Hz");
@@ -70,8 +77,9 @@ void GetPseudo240Hz(Int_t run_number){
 		      &(combo_value[icom]),"hw_sum/D");
   
   Int_t nEntries = evt_tree->GetEntries();
-  nEntries = nEntries - (nEntries%nPattern);
+  // nEntries = nEntries - (nEntries%nPattern);
   Int_t pattern_counter=0;
+  auto iter_japan_pattern_counter = fPatternNumberArray.begin();
   for(int ievt=0; ievt<nEntries; ){
     // Zero Initialization
     kErrorFlag = 0;
@@ -86,9 +94,18 @@ void GetPseudo240Hz(Int_t run_number){
       combo_value[icom] =0.0;
 
     Int_t index_hel = 0;
+
     // Filling Pattern
+    evt_tree->GetEntry(ievt);
+    Int_t current_pattern_number = (Int_t)leaf_pattern_number->GetValue();
+    if(current_pattern_number==(*iter_japan_pattern_counter)){
+      iter_japan_pattern_counter++;
+    }else{
+      ievt++;
+      continue;
+    }
     for(int ipattern=0;ipattern<nPattern;ipattern++){
-      evt_tree->GetEntry(ievt++); // Not sure if it starts with 1 or zero
+      evt_tree->GetEntry(ievt++);
       kErrorFlag = (UInt_t)(kErrorFlag)|(UInt_t)(leaf_ErrorFlag->GetValue());
       for(int ipair=0;ipair<2;ipair++){
 	Int_t polarity = helicity[index_hel];
@@ -105,7 +122,7 @@ void GetPseudo240Hz(Int_t run_number){
 	  pair_sum = pair_sum/2.0;
 	  /* About this factor of 2 here
 	     I didn't average the block pair sum a year before, and this is not a problem for regression.
-	     Meanwhile, it is problem for dithering correction and depends on how you normalize dithering fractional yield.
+	     Meanwhile, it could be a problem for dithering correction and depends on how you normalize dithering fractional yield.
 	     The point is we need to take care of the normalization factor for HC differences in JAPAN.
 	     -- Tao Ye, Oct 13, 2020 	  */
 	  diff_value[imon]+= (polarity*pair_sum);
