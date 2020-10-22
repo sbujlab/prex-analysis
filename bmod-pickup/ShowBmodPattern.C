@@ -10,7 +10,8 @@ void ShowBmodPattern(Int_t run_number=3664,
   						   run_number));
   TTree *mul = (TTree*)japan->Get("mul");
   TTree *mulc = (TTree*)japan->Get("mulc");
-  TTree *reg = (TTree*)postpan->Get("reg");
+  // TTree *reg = (TTree*)postpan->Get("reg");
+  TTree *reg = (TTree*)lagrange->Get("regall");
   TTree *lagr = (TTree*)lagrange->Get("lagrall");
   mul->AddFriend(mulc);
   mul->AddFriend(reg);

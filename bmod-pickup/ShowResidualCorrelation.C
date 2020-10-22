@@ -11,7 +11,7 @@ void ShowResidualCorrelation(Int_t run_number=3426,
   
   TTree *mul = (TTree*)japan->Get("mul");
   TTree *mulc = (TTree*)japan->Get("mulc");
-  TTree *reg = (TTree*)postpan->Get("reg");
+  TTree *reg = (TTree*)lagrange->Get("regall");
   TTree *lagr = (TTree*)lagrange->Get("lagrall");
   mul->AddFriend(mulc);
   mul->AddFriend(reg);
@@ -21,7 +21,7 @@ void ShowResidualCorrelation(Int_t run_number=3426,
 
   TCanvas *c3 = new TCanvas("c3","c3",800,600);
   c3->cd();
-  mul->Draw("lagr_asym_us_avg/ppm:Entry$","ErrorFlag==0x4019000 && BurstCounter==0","*");
+  mul->Draw("reg_asym_us_dd/ppm:Entry$","ErrorFlag==0x4019000 && BurstCounter==0","*");
   TH2D *h2d_lagr_cycles  = (TH2D*)gPad->FindObject("htemp");
   h2d_lagr_cycles->SetTitle("Corrected Asymmetry(ppm) in BMW data");
   TGraph *g_lagr_cycles = (TGraph*)gPad->FindObject("Graph");
@@ -29,13 +29,13 @@ void ShowResidualCorrelation(Int_t run_number=3426,
   g_lagr_cycles->SetMarkerColor(kWhite);
   g_lagr_cycles->SetMarkerStyle(7);
 
-  mul->Draw("lagr_asym_us_avg/ppm:Entry$","ErrorFlag==0x4019000 && BurstCounter==0 && actual_pattern_polarity==1","*same");
+  mul->Draw("reg_asym_us_dd/ppm:Entry$","ErrorFlag==0x4019000 && BurstCounter==0 && actual_pattern_polarity==1","*same");
   TGraph *g_lagr_cycles_pos = (TGraph*)gPad->FindObject("Graph");
   g_lagr_cycles_pos->SetName("all_cycles_pos");
   g_lagr_cycles_pos->SetMarkerColor(kBlue);
   g_lagr_cycles_pos->SetMarkerStyle(7);
 
-  mul->Draw("lagr_asym_us_avg/ppm:Entry$","ErrorFlag==0x4019000 && BurstCounter==0 && actual_pattern_polarity==0","*same");
+  mul->Draw("reg_asym_us_dd/ppm:Entry$","ErrorFlag==0x4019000 && BurstCounter==0 && actual_pattern_polarity==0","*same");
   TGraph *g_lagr_cycles_neg = (TGraph*)gPad->FindObject("Graph");
   g_lagr_cycles_neg->SetName("all_cycles_neg");
   g_lagr_cycles_neg->SetMarkerColor(kRed);
