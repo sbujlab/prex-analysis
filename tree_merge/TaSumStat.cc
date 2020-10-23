@@ -138,7 +138,10 @@ void TaSumStat::construct_branches(TFile* output){
     fJStatMap[fTreeName] = fJStat;
     fPStatMap[fTreeName] = fPStat;
     for(int ich=0;ich<nch;ich++){
-      aTree->Branch(channel_list[ich],&(fSumStatMap[fTreeName][ich]),leaflist);
+      if(fBranchLeafListMap[fTreeName][ich].Contains("mean/D:"))
+	 aTree->Branch(channel_list[ich],&(fSumStatMap[fTreeName][ich]),leaflist);
+      else if(! fBranchLeafListMap[fTreeName][ich].Contains("["))
+	aTree->Branch(channel_list[ich],&(fSumStatMap[fTreeName][ich].mean),"value/D");
     }// end of branch loop
   } // end of tree loop
 } 
@@ -179,12 +182,12 @@ void TaSumStat::collect_branchlist_from_postpan(TTree* input_tree){
   Int_t nbr = fBranchList->GetEntries();
   for(int ibr =0; ibr<nbr;ibr++){
     TBranch* fbranch = dynamic_cast<TBranch*> (fBranchList->At(ibr));
-    if(fbranch->GetLeaf("mean")==NULL)
-      continue;
     TString branch_name = fbranch->GetName();
+    TString leaf_list = fbranch->GetTitle();
     vector<TString> current_list = fBranchNameListMap[fTreeName];
     if(find(current_list.begin(),current_list.end(),branch_name)==current_list.end()){
       fBranchNameListMap[fTreeName].push_back(branch_name);
+      fBranchLeafListMap[fTreeName].push_back(leaf_list);
       if(!isNewTree)
 	cout << " ++ Append new TBranch "
 	     << branch_name 
@@ -226,9 +229,13 @@ void TaSumStat::load_postpan_stat_ptr(TTree* input_tree){
     if(branch_ptr==NULL){
       fJStatMap[fTreeName][ibr] = init_japan_stat();
     }else{
-      branch_ptr->GetLeaf("mean")->SetAddress(&(fPStatMap[fTreeName][ibr].mean));
-      branch_ptr->GetLeaf("err")->SetAddress(&(fPStatMap[fTreeName][ibr].err));
-      branch_ptr->GetLeaf("rms")->SetAddress(&(fPStatMap[fTreeName][ibr].rms));
+      if(TString(branch_ptr->GetTitle()).Contains("mean/D:")){
+	branch_ptr->GetLeaf("mean")->SetAddress(&(fPStatMap[fTreeName][ibr].mean));
+	branch_ptr->GetLeaf("err")->SetAddress(&(fPStatMap[fTreeName][ibr].err));
+	branch_ptr->GetLeaf("rms")->SetAddress(&(fPStatMap[fTreeName][ibr].rms));
+      }else if (! TString(branch_ptr->GetTitle()).Contains("[") ){
+	branch_ptr->SetAddress(&(fPStatMap[fTreeName][ibr].mean));
+      }
     }
   }
 }

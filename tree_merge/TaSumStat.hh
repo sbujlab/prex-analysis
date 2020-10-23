@@ -36,7 +36,8 @@ public:
   void cache_japan_stat(TString);
   void merge_japan_stat(TString);
 private:
-  map<TString,vector<TString> > fBranchNameListMap;
+  map<TString,vector<TString> > fBranchNameListMap; // [fTreeName][BranchName]
+  map<TString,vector<TString> > fBranchLeafListMap; // [fTreeName][LeafList]
   vector<TString> fTreeNameList;
   map<TString, TTree*> fTreeMap;
   vector<TTree*> fTreeArray;
