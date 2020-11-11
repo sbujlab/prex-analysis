@@ -115,7 +115,7 @@ void DrawMeanDistance(){
     mg_dist->GetYaxis()->SetTitleSize(0.07);
     mg_dist->GetYaxis()->SetTitleOffset(0.5);
     leg_dist->Draw("same");
-    c2->SaveAs(Form("./plots/delta_A_rms_%s_%s_by_slug.pdf",
+    c2->SaveAs(Form("./plots/delta_A_rms_%s_%s_by_slug.png",
 		    set1.Data(),set2.Data()));
 
 
@@ -186,18 +186,41 @@ void DrawMeanDistance(){
     TPaveStats *ps = (TPaveStats*)ger_both->FindObject("stats");
     ps->SetX2NDC(0.9);
     pad2->cd();
+
+    gStyle->SetOptFit(0);
+    gStyle->SetOptStat(0);
     hpull_free->Draw();
-    pad2->Update();
-    TPaveStats *pspull_free = (TPaveStats*)hpull_free->FindObject("stats");
-    pspull_free->SetOptStat(111111);
-    pspull_free->SetY1NDC(0.5);
-    pspull_free->SetX1NDC(0.5);
+    // pad2->Update();
+    // TPaveStats *pspull_free = (TPaveStats*)hpull_free->FindObject("stats");
+    // pspull_free->SetOptStat(111111);
+    // pspull_free->SetY1NDC(0.5);
+    // pspull_free->SetX1NDC(0.5);
     fDeltaMu_slug.push_back(fp0free->GetParameter(0));
     fSigmaDeltaMu_slug.push_back(fp0free->GetParError(0));
     fChiSquare_slug.push_back(fp0free->GetChisquare());
     fProb_slug.push_back(fp0free->GetProb());
     fNDF_slug.push_back(fp0free->GetNDF());
-    c1->SaveAs(Form("./plots/delta_A_freepar_fit_%s_%s_by_slug.pdf",set1.Data(),set2.Data()));
+
+    TLatex *text_mean = new TLatex(2,11,Form("mean=%.2f #pm %.2f",
+					      hpull_free->GetFunction("gaus")->GetParameter(1),
+					      hpull_free->GetFunction("gaus")->GetParError(1)));
+
+    TLatex *text_sigma = new TLatex(3,10,Form("#sigma=%.2f #pm %.2f",
+					      hpull_free->GetFunction("gaus")->GetParameter(2),
+					      hpull_free->GetFunction("gaus")->GetParError(2)));
+    TLatex *text_chi = new TLatex(3,9,Form("#chi^{2}=%.2f/%d",
+					    hpull_free->GetFunction("gaus")->GetChisquare(),
+					    hpull_free->GetFunction("gaus")->GetNDF()));
+
+    TLatex *text_entries = new TLatex(3,12,Form("Entries:  %.0f",
+						hpull_free->GetEntries()));
+    text_mean->Draw("same");
+    text_chi->Draw("same");
+    text_entries->Draw("same");
+    text_sigma->Draw("same");
+    c1->SaveAs(Form("./plots/delta_A_freepar_fit_%s_%s_by_slug.png",set1.Data(),set2.Data()));
+    gStyle->SetOptFit(1);
+    gStyle->SetOptStat(1);
     
     pad1->cd();
     ger_both->Fit("fp0fix","Q");
@@ -213,8 +236,7 @@ void DrawMeanDistance(){
     pspull_fixed->SetOptStat(111111);
     pspull_fixed->SetY1NDC(0.5);
     pspull_fixed->SetX1NDC(0.5);
-
-    c1->SaveAs(Form("./plots/delta_A_fixpar_fit_%s_%s_by_slug.pdf",set1.Data(),set2.Data()));
+    c1->SaveAs(Form("./plots/delta_A_fixpar_fit_%s_%s_by_slug.png",set1.Data(),set2.Data()));
     
     input->Close();
     iter++;

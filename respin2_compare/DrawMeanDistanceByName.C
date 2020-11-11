@@ -1,17 +1,21 @@
   
-vector< pair<TString,TString> > fSets ={ {"dit","reg_5bpm"},
-					 {"dit","lagr_6bpm"},
-					 {"dit","lagr_all"},
-					 {"dit","reg_all"},
-					 {"reg_5bpm","reg_6bpm"},
+// vector< pair<TString,TString> > fSets ={ {"dit","reg_5bpm"},
+// 					 {"dit","lagr_6bpm"},
+// 					 {"dit","lagr_all"},
+// 					 {"dit","reg_all"},
+// 					 {"reg_5bpm","reg_6bpm"},
+// 					 {"reg_5bpm","reg_all"},
+// 					 {"lagr_6bpm","reg_6bpm"},
+// 					 {"lagr_all","reg_all"},
+// 					 {"lagr_6bpm","lagr_all"},
+// 					 {"lagr_all_trunc","lagr_all"}};
+vector< pair<TString,TString> > fSets ={ {"dit","lagr_all"},
 					 {"reg_5bpm","reg_all"},
-					 {"lagr_6bpm","reg_6bpm"},
-					 {"lagr_all","reg_all"},
-					 {"lagr_6bpm","lagr_all"},
-					 {"lagr_all_trunc","lagr_all"}};
+					 {"lagr_all","reg_all"}};
 
 
-void DrawMeanDistanceByName(TString det_name="us_dd"){
+
+void DrawMeanDistanceByName(TString det_name="us_avg",TString user_cut="&&(slug==5 || (slug>=12 && slug<=30))"){
   vector<Double_t> fDeltaMu_slug;
   vector<Double_t> fSigmaDeltaMu_slug;
   vector<Double_t> fChiSquare_slug;
@@ -51,7 +55,7 @@ void DrawMeanDistanceByName(TString det_name="us_dd"){
     c2->cd();
     TMultiGraph *mg_dist = new TMultiGraph();
     TLegend *leg_dist = new TLegend(0.99,0.9,0.9,0.7);
-    slug_tree->Draw(Form("dist_%s:slug+arm_flag/6",det_name.Data()),"arm_flag==0","goff");
+    slug_tree->Draw(Form("dist_%s:slug+arm_flag/6",det_name.Data()),"arm_flag==0"+user_cut,"goff");
     TGraph* gdist = new TGraph(slug_tree->GetSelectedRows(),slug_tree->GetV2(),slug_tree->GetV1());
     gdist->SetLineColor(kBlack);
     gdist->SetMarkerColor(kBlack);
@@ -75,7 +79,7 @@ void DrawMeanDistanceByName(TString det_name="us_dd"){
     TMultiGraph *mg_er = new TMultiGraph();
     TLegend *leg_er = new TLegend(0.99,0.9,0.9,0.7);
     slug_tree->Draw(Form("sign*delta_%s:delta_%s_err:slug+arm_flag/6",det_name.Data(),det_name.Data()),
-		    "arm_flag==0","goff");
+		    "arm_flag==0"+user_cut,"goff");
     // pretending it is both-only...
     TGraphErrors* ger_both = new TGraphErrors(slug_tree->GetSelectedRows(),
 					      slug_tree->GetV3(),slug_tree->GetV1(),
