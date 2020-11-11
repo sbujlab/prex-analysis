@@ -29,7 +29,7 @@ void find_beamoff(Int_t slug){
     cout << "run " << run_number << endl;
     TString filename = Form("prexPrompt_pass1_%d.000.root",run_number);
     // TFile* input = TFile::Open("$QW_ROOTFILEs/"+filename);
-    TFile* input = TFile::Open("/media/yetao/prex/PREXII-respin1/"+filename);
+    // TFile* input = TFile::Open("/media/yetao/prex/PREXII-respin1/"+filename);
     if(input==NULL)
       continue;
     if(fBCMRunMap.find(run_number)==fBCMRunMap.end()){
