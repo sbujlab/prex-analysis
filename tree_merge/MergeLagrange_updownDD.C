@@ -62,7 +62,7 @@ void MergeLagrange_updownDD(Int_t slug){
     while(iter_run!=fRunNumberArray.end()){
       Int_t run_number = *iter_run;
       Int_t seg_number=0;
-      TString rootfile_name = lagrange_path+Form("prexRespin2_lagrange_eigen_%d.%03d.root",
+      TString rootfile_name = lagrange_path+Form("prexRespin2_lagrange_eigen_updownDD_%d.%03d.root",
 						run_number,seg_number);
       TFile *this_file;
       if(gSystem->AccessPathName(rootfile_name)==0){
