@@ -2,9 +2,9 @@ map<Int_t, vector<Int_t> > LoadRunInfo();
 
 void GenerateRunInfoTreeBySlug(int slug){
   map<Int_t , vector<Int_t> > fRunInfo  = LoadRunInfo();  
-  TFile* input = TFile::Open(Form("rootfiles/slug%d_sorted_eigenvector_allbpm.root",slug));
+  TFile* input = TFile::Open(Form("rootfiles/slug%d_updownDD_sorted_eigenvector_allbpm.root",slug));
   TTree* parent_tree = (TTree*)input->Get("eig");
-  TFile* output = TFile::Open(Form("rootfiles/slug%d_runinfo.root",slug),"RECREATE");
+  TFile* output = TFile::Open(Form("rootfiles/slug%d_updownDD_runinfo.root",slug),"RECREATE");
   TTree *info_tree = new TTree("mini_info"," Run Information by minirun ");
   Int_t run, burst_counter, arm_flag;
   Int_t kHelicitySign;
