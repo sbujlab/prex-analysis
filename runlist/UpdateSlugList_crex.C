@@ -65,7 +65,7 @@ void GetProductionRunList(){
   		   " FROM `a-rcdb`.conditions as t1 INNER JOIN `a-rcdb`.condition_types c1 on c1.id= t1.condition_type_id AND c1.name='ihwp' ",
   		   ", `a-rcdb`.conditions as t2 INNER JOIN `a-rcdb`.condition_types c2 on c2.id=t2.condition_type_id AND c2.name='flip_state' ",
   		   ", `a-rcdb`.conditions as t3 INNER JOIN `a-rcdb`.condition_types c3 on c3.id=t3.condition_type_id AND c3.name='slug' AND t3.int_value>99 ",
-  		   ", `a-rcdb`.conditions as t4 INNER JOIN `a-rcdb`.condition_types c4 on c4.id=t4.condition_type_id AND c4.name='run_type' AND t4.text_value='Production' ",
+  		   ", `a-rcdb`.conditions as t4 INNER JOIN `a-rcdb`.condition_types c4 on c4.id=t4.condition_type_id AND c4.name='run_type' AND (t4.text_value LIKE 'Production%') ",
   		   " LEFT JOIN ",
 		   "( SELECT run_number, text_value ",
 		   " FROM `a-rcdb`.conditions t5 INNER JOIN `a-rcdb`.condition_types c5 on c5.id=t5.condition_type_id AND c5.name='run_flag' ) AS tflag ",
@@ -88,6 +88,20 @@ void GetProductionRunList(){
   if(res==NULL){
     cout << " -- Failed to Query " << endl;
     cout << " -- Bye-bye! " << endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     delete res;
     cout << " -- Closing Connection to RCDB " << endl;
     
@@ -113,9 +127,13 @@ void GetProductionRunList(){
   for(int irow=0;irow<nRows;irow++){
     row=res->Next();
     for(int j=0; j< nFields; j++){
-      cout << "\t" << row->GetField(j) ;
       TString row_ret = TString(row->GetField(j));
-      row_ret.ReplaceAll("\n",";");
+      if(j==nFields-1)
+	row_ret.ReplaceAll("\n",";");
+      else
+	row_ret.ReplaceAll("\n","");  
+
+      cout << "\t" << row_ret;
       fprintf(runlist,"%s",row_ret.Data());
       if(j!=nFields-1)
 	fprintf(runlist,",");
