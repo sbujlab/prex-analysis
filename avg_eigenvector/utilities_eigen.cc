@@ -14,7 +14,9 @@ vector<Int_t> CheckIdentityWithSlug(vector<Double_t> fLocker,vector<Double_t> fR
 vector<Int_t> CheckSignWithRingAvg( vector<Double_t>  fRingAvg,
 				     vector<Double_t> fRaw );
 vector<Double_t> RemapVectors(vector<Double_t> fRaw, vector<Int_t> fmap);
+vector<Double_t> RemapColumns(vector<Double_t> fRaw, vector<Int_t> fmap, Int_t nIV);
 vector<Double_t> FlipVectors(vector<Double_t> fRaw, vector<Int_t> fSign);
+vector<Double_t> FlipColumns(vector<Double_t> fRaw, vector<Int_t> fSign, Int_t nIV);
 map<Int_t, pair<Int_t,Int_t> > LoadRunInfo();
 vector<Double_t> GetRingAverage( vector< vector<Double_t> > fRing) ;
 vector<vector<Int_t> > GeneratePermutations(Int_t nLength);
@@ -270,6 +272,20 @@ vector<Int_t> CheckIdentity(vector<Double_t> fLocker,
 }
 
 
+vector<Double_t> RemapColumns(vector<Double_t> fRaw, vector<Int_t> fmap, Int_t nIV){
+  Int_t nLength = fRaw.size();
+  vector< Double_t> fRet(nLength,0);
+  Int_t nDV = (Int_t)(nLength/nIV);
+  Printf("Remapping %d x %d matrix's %d columns",nDV,nIV,nIV);
+  //Int_t nIV  = (Int_t)sqrt((Double_t)nLength);
+  // remap by columns 
+  for(int icol=0;icol<nIV;icol++)
+    for(int irow=0;irow<nDV;irow++)
+      fRet[ irow*nIV + fmap[icol] ] = fRaw[ irow*nIV + icol ];
+
+  return fRet;
+}
+
 vector<Double_t> RemapVectors(vector<Double_t> fRaw, vector<Int_t> fmap){
   Int_t nLength = fRaw.size();
   vector< Double_t> fRet(nLength,0);
@@ -278,6 +294,18 @@ vector<Double_t> RemapVectors(vector<Double_t> fRaw, vector<Int_t> fmap){
   for(int icol=0;icol<nIV;icol++)
     for(int irow=0;irow<nIV;irow++)
       fRet[ irow*nIV + fmap[icol] ] = fRaw[ irow*nIV+ icol ];
+
+  return fRet;
+}
+
+vector<Double_t> FlipColumns(vector<Double_t> fRaw, vector<Int_t> fSign, Int_t nIV){
+  Int_t nLength = fRaw.size();
+  vector< Double_t> fRet(nLength,0);
+  Int_t nDV = (Int_t)(nLength/nIV);
+  //Int_t nIV  = (Int_t)sqrt((Double_t)nLength);
+  for(int icol=0;icol<nIV;icol++)
+    for(int irow=0;irow<nDV;irow++)
+      fRet[ irow*nIV + icol ] = fSign[icol]* fRaw[ irow*nIV+ icol ];
 
   return fRet;
 }
@@ -450,6 +478,7 @@ vector<Double_t> GetRingAverage( vector< vector<Double_t> > fRing) {
   }
   cout << "--fRingAvg";
   PrintVector(fRingAvg);
+  Printf("A Return");
   return fRingAvg;
 }
 
