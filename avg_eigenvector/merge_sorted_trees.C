@@ -27,12 +27,12 @@ void merge_sorted_trees(TString type = "", TString suffix = "") { // Type holds 
     TChain* mini_eigen_reg_5bpms = new TChain("mini_eigen_reg_5bpms");
     mini_eigen_reg_5bpms->Add(Form("rootfiles/rcdb_eigenvectors.root"));
     ofile->cd();
-    mini_eigen_reg_allbpms_tr->CloneTree()->Write();
-    mini_eigen_reg_allbpms->CloneTree()->Write();
-    mini_eigen_reg_allbpms_sorted->CloneTree()->Write();
-    mini_eigen_reg_5bpms_sorted->CloneTree()->Write();
-    mini_eigen_reg_5bpms->CloneTree()->Write();
-    mini->CloneTree()->Write();
+    mini_eigen_reg_allbpms_tr->CloneTree()->Write("",TObject::kOverwrite);
+    mini_eigen_reg_allbpms->CloneTree()->Write("",TObject::kOverwrite);
+    mini_eigen_reg_allbpms_sorted->CloneTree()->Write("",TObject::kOverwrite);
+    mini_eigen_reg_5bpms_sorted->CloneTree()->Write("",TObject::kOverwrite);
+    mini_eigen_reg_5bpms->CloneTree()->Write("",TObject::kOverwrite);
+    mini->CloneTree()->Write("",TObject::kOverwrite);
     ofile->Close();
   }
   else {
@@ -54,10 +54,10 @@ void merge_sorted_trees(TString type = "", TString suffix = "") { // Type holds 
 
     ofile->cd();
 
-    mini->CloneTree()->Write();
-    mini_eigen_reg_5bpms_part_avg->CloneTree()->Write();
-    mini_reference_eigen_reg_5bpms->CloneTree()->Write();
-    mini_reference_eigen_reg_5bpms_sorted->CloneTree()->Write();
+    mini->CloneTree()->Write("",TObject::kOverwrite);
+    mini_eigen_reg_5bpms_part_avg->CloneTree()->Write("",TObject::kOverwrite);
+    mini_reference_eigen_reg_5bpms->CloneTree()->Write("",TObject::kOverwrite);
+    mini_reference_eigen_reg_5bpms_sorted->CloneTree()->Write("",TObject::kOverwrite);
 
     ofile->Close();
   }

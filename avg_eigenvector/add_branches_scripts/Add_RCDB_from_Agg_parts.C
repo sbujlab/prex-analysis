@@ -64,7 +64,7 @@ void Add_RCDB_from_Agg_parts(){ //(int start, int end)
   
   while (auto *var= var_iter.Next()){
     TString name(var->GetName());
-    if (name.Contains("rcdb_")) {
+    if (name.Contains("rcdb_") || name.Contains("_main_det_")) {
       names.push_back(name);
       //double old_tmpval = 0.0;
       ////double new_tmpval = 0.0;

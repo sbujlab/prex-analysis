@@ -4,7 +4,7 @@ Obtained these outputs with the following scripts:
 
 $ root -l -b -q SortEigenvectors_CREX_all.C'("mini_eigen_reg_5bpms")' > & rootfiles/5bpm_sorting.out
 $ root -l -b -q SortEigenvectors_CREX_all.C'("mini_eigen_reg_allbpms")' > & rootfiles/allbpm_sorting.out
-$ root -l -b -q merge_sorted_trees.C'("","_sorted")'
+$ root -l -b -q merge_sorted_trees.C'("","")'
 
 -rw-r--r-- 1 cameronc a-parity 206M May 30 20:47 rcdb_eigenvectors.root                                           Unsorted eigenvector regression outputs
 -rw-r--r-- 1 cameronc a-parity 4.0M May 30 20:32 mini_eigen_reg_5bpms_sorted.root                                 Regular sort (no fancy cuts or anything) - 5bpm
