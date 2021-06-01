@@ -10,6 +10,7 @@ void PrintVector(vector<Double_t> input);
 void PrintVector(vector<Int_t> input);
 
 vector<Int_t> CheckIdentity(vector<Double_t> fLocker,vector<Double_t> fRaw);
+vector<Int_t> CheckStabilizeIdentity(vector<Double_t> fLocker,vector<Double_t> fRaw, Int_t nCheck);
 vector<Int_t> CheckIdentityWithSlug(vector<Double_t> fLocker,vector<Double_t> fRaw);
 vector<Int_t> CheckSignWithRingAvg( vector<Double_t>  fRingAvg,
 				     vector<Double_t> fRaw );
@@ -159,7 +160,7 @@ vector<Int_t> CheckIdentityWithSlug(vector<Double_t> fLocker,
 
 
 vector<Int_t> CheckIdentity(vector<Double_t> fLocker,
-			    vector<Double_t> fRaw){
+          vector<Double_t> fRaw){
 
   Int_t nLength = fRaw.size();
   Int_t nIV  = (Int_t)sqrt((Double_t)nLength);
@@ -172,16 +173,16 @@ vector<Int_t> CheckIdentity(vector<Double_t> fLocker,
       double col_length =0.0;
       double sign_flipper=0.0;
       for(int iele=0;iele<nIV;iele++){
-	sign_flipper+=fRaw[iele*nIV+irow]*fLocker[iele*nIV+icol];
+  sign_flipper+=fRaw[iele*nIV+irow]*fLocker[iele*nIV+icol];
       }
       double fSign = 1.0;
       if(sign_flipper>0.0)
-	fSign = 1.0;
+  fSign = 1.0;
       else
-	fSign = -1.0;
+  fSign = -1.0;
 
       for(int iele=0;iele<nIV;iele++){
-	fDistance[irow*nIV+icol]+= pow(fSign*fRaw[iele*nIV+irow] - fLocker[iele*nIV+icol],2);
+  fDistance[irow*nIV+icol]+= pow(fSign*fRaw[iele*nIV+irow] - fLocker[iele*nIV+icol],2);
       }
 
     }
@@ -199,6 +200,136 @@ vector<Int_t> CheckIdentity(vector<Double_t> fLocker,
   for(int icol=0;icol<nIV;icol++){
     double min_val=1e5;
     for(int irow=0;irow<nIV;irow++){
+      if(fDistance[irow*nIV+icol] < min_val){
+  min_val = fDistance[irow*nIV+icol];
+  idx_min_by_col[icol] = irow;
+      }
+    }
+  }
+
+  for(int idx=0;idx<nIV;idx++){
+    Bool_t kFound = kFALSE;
+    for(int jdx=0;jdx<nIV;jdx++){
+      if( jdx== idx )
+  continue;
+      if(idx_min_by_col[jdx] == idx_min_by_col[idx]){
+  kFound = kTRUE;
+  break;
+      }
+    }
+    
+    if(!kFound){
+      fMap[ idx_min_by_col[idx] ] = idx;
+      fRow.erase( find( fRow.begin(), fRow.end(), idx_min_by_col[idx] ) ) ;
+      fCol.erase( find( fCol.begin(), fCol.end(), idx) ) ;
+    }
+  }
+  
+  cout << " -- fRow:[" ;
+  auto iter_row = fRow.begin();
+  while(iter_row!=fRow.end()){
+    cout << *iter_row << ",";
+    iter_row ++;
+  }
+  cout << "]" << endl;
+
+  cout << " -- fCol:[" ;
+  auto iter_col = fCol.begin();
+  while(iter_col!=fCol.end()){
+    cout << *iter_col << ",";
+      iter_col ++;
+  }
+  cout << "]" << endl;
+
+  double min_testing = 1e5;
+  vector<Int_t> fSolution;
+  Int_t nlength = fRow.size();
+  // Loop over all possible combinations and find the optimized distance
+  vector< vector<Int_t> > fCombinations = GeneratePermutations( fRow.size());
+  auto iter_combo = fCombinations.begin();
+  while(iter_combo!= fCombinations.end()){
+    vector< Int_t> fArrayIdx = *iter_combo;
+    double my_distance_sum  = 0.0;
+    for(int iele=0; iele<nlength;iele++){
+      int my_row = fRow[ iele ] ;
+      int my_col = fCol[ fArrayIdx[iele] ];
+      my_distance_sum += fDistance[ my_row*nIV + my_col ];
+    }
+    if( my_distance_sum <min_testing ) {
+      min_testing = my_distance_sum;
+      fSolution = fArrayIdx;
+    }
+    iter_combo++;
+  }
+  
+  for(int iele=0;iele<nlength;iele++)
+    fMap[ fRow[iele] ] = fCol[ fSolution[iele] ];
+  cout << " -- Map:[" ;
+  for(int irow=0;irow<nIV;irow++){
+    cout << fMap[irow] << "," ;
+  }
+  cout << "]" << endl;
+  return fMap;
+}
+
+
+vector<Int_t> CheckStabilizeIdentity(vector<Double_t> fLocker,
+			    vector<Double_t> fRaw, Int_t nCheck = 100){
+  // Cameron: Add nCheck as a number of largest/most significant evMons to check against prior map (i.e. to promote 12X, 1X, 4eX to prominance)
+
+  Int_t nLength = fRaw.size();
+  Int_t nIV  = (Int_t)sqrt((Double_t)nLength);
+  vector<Int_t> fMap(nIV);
+  vector<Double_t> fDistance(nIV*nIV,0.0);
+
+  for(int irow=0;irow<nIV;irow++){
+    for(int icol=0;icol<nIV;icol++){
+      double row_length =0.0;
+      double col_length =0.0;
+      double sign_flipper=0.0;
+      for(int iele=0;iele<nIV;iele++){
+        if (iele < nCheck && icol<nCheck && irow < nCheck) {
+          sign_flipper+=fRaw[iele*nIV+irow]*fLocker[iele*nIV+icol];
+        }
+        else {
+          sign_flipper+=0.0;
+        }
+      }
+      double fSign = 1.0;
+      if(sign_flipper>0.0)
+	fSign = 1.0;
+      else
+	fSign = -1.0;
+
+      for(int iele=0;iele<nIV;iele++){
+        if (iele < nCheck && icol < nCheck && irow < nCheck){ 
+          //if (iele == 0) {
+            //fDistance[irow*nIV+icol]+= 1000.0*pow(fSign*fRaw[iele*nIV+irow] - fLocker[iele*nIV+icol],2);
+          //}
+          //else {
+          fDistance[irow*nIV+icol]+= pow(fSign*fRaw[iele*nIV+irow] - fLocker[iele*nIV+icol],2);
+          //}
+        }
+        else {
+          fDistance[irow*nIV+icol]+= 0.0;
+        }
+      }
+
+    }
+  }
+  // cout << "fLocker -- "; PrintVector(fLocker);  
+  // cout << "fRaw -- "; PrintVector(fRaw);  
+  // cout << "fDistance -- "; PrintVector(fDistance);  
+  vector<Int_t> fRow(nIV);
+  vector<Int_t> fCol(nIV);
+  for(int i=0; i<nIV;i++){
+    fRow[i] = i;
+    fCol[i] = i;
+  }
+  vector<Int_t> idx_min_by_col(nIV,-1);
+  for(int icol=0;icol<nIV;icol++){
+    double min_val=1e5;
+    for(int irow=0;irow<nIV ;irow++){
       if(fDistance[irow*nIV+icol] < min_val){
 	min_val = fDistance[irow*nIV+icol];
 	idx_min_by_col[icol] = irow;

@@ -5,23 +5,30 @@
  */
 #include "utilities_eigen.cc"
 
-void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TString pass = ""){ //(int start, int end)
+void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms", TString pass = "", Int_t nCheck = 5, Int_t min = 7499, Int_t max = 8559){ //(int start, int end)
   //map<Int_t , pair<Int_t, Int_t> > fRunInfo  = LoadRunInfo();
   //TString filename_tag = "allbpms";
   vector< TString > IVlist = {
-      "bpm4aX","bpm4aY",
-      "bpm4eX","bpm4eY",
-      "bpm1X" ,"bpm1Y" ,
-      "bpm11X","bpm11Y",
-      "bpm12X","bpm12Y",
-      "bpm16X","bpm16Y"
+      "bpm12X",
+      "bpm11X",
+      "bpm4eX",
+      "bpm1X" ,
+      "bpm4aX",
+      "bpm16X",
+      "bpm4aY",
+      "bpm4eY",
+      "bpm1Y" ,
+      "bpm16Y"
+      "bpm12Y",
+      "bpm11Y",
   };
   if (treename.Contains("5bpms")) {
     IVlist = {
-      "bpm4aY",
-      "bpm4eX","bpm4eY",
+      "bpm12X",
       "bpm1X" ,
-      "bpm12X"
+      "bpm4eX",
+      "bpm4aY",
+      "bpm4eY",
     };
   }
 
@@ -30,8 +37,8 @@ void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TStr
   Int_t nIV = IVlist.size();
   //// TFile* output = TFile::Open(Form("rootfiles/slug%d-%d_sorted_eigenvector_%s.root",
   //// 				   start,end,filename_tag.Data()),"RECREATE");
-  TFile* output = TFile::Open(Form("rootfiles/%s_sorted.root",
-  				   treename.Data()),"RECREATE");
+  TFile* output = TFile::Open(Form("rootfiles/%s_sorted%s.root",
+  				   treename.Data(),pass.Data()),"RECREATE");
 
   //TTree *lagr_slope_tree = new TTree("lagr","lagrange slopes in eigenvectors basis");
   //TTree *reg_slope_tree = new TTree("reg","regression slopes in eigenvectors basis");
@@ -129,6 +136,8 @@ void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TStr
     }
   }
   // [row]:bpm ; [col]:eigv
+  Int_t local_run = 0;
+  eig_all_tree->SetBranchAddress(Form("mini.run"),&local_run);
   for(int i=0;i<nDV;i++) {
     for(int j=0;j<nIV;j++) {
       eig_all_tree->SetBranchAddress(DVlist[i]+Form("_evMon%d",j),
@@ -146,12 +155,32 @@ void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TStr
   vector< vector<Double_t> > fEVRing; // [RingSize] x [nIV*nIV]
   vector< Double_t > fRingAvg(nIV*nIV,0);
 
-  eig_all_tree->GetEntry(0);
-  fEVRing.push_back(fEigenVectorRaw);
-  fRingAvg = GetRingAverage(fEVRing);
+  //eig_all_tree->GetEntry(0);
+  //eig_all_tree->GetEntry(810); // Run 6036 starting guess
+  //fEVRing.push_back(fEigenVectorRaw);
+  for (Int_t ll = 363 ; ll <= 1315 ; ll++) {
+    eig_all_tree->GetEntry(ll); // Run 6516 = entry 1514... stable point
+    fEVRing.push_back(fEigenVectorRaw);
+    fRingAvg = GetRingAverage(fEVRing);
+  }
+  //fRingAvg = GetRingAverage(fEVRing);
 
+  //for(int ievt=nEntries-1;ievt>=0;ievt--)
   for(int ievt=0;ievt<nEntries;ievt++){
     eig_all_tree->GetEntry(ievt);
+    if (local_run == 6328 || local_run == 7626) {
+      fEVRing.clear();
+      if (local_run == 6328) {
+        eig_all_tree->GetEntry(1514); // Run 6516 = entry 1514... stable point
+      }
+      if (local_run == 7626) {
+        eig_all_tree->GetEntry(6670); // Run 8003
+      }
+      fEVRing.push_back(fEigenVectorRaw);
+      fRingAvg = GetRingAverage(fEVRing);
+      eig_all_tree->GetEntry(ievt);
+    }
+    //if (local_run > min && local_run < max) {
     //////// lagr_tree->GetEntry(ievt);
     if(run!=last_run){
       last_run  = run;
@@ -174,7 +203,7 @@ void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TStr
     // Checking eigenvector identities 
     // re-allocation and sign lock-in to  fEigenVectorSorted
 
-    vector<Int_t> fMap = CheckIdentity(fRingAvg, fEigenVectorRaw);
+    vector<Int_t> fMap = CheckStabilizeIdentity(fRingAvg, fEigenVectorRaw, nCheck);
     vector<Double_t> fReMapped = RemapVectors(fEigenVectorRaw, fMap);
     // NEW: Need to do fMap realignment for Eigen Vector contents and for Eigen Vector Slopes contents
     Printf("Test 1");
@@ -211,7 +240,10 @@ void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TStr
     // Update Template and Ring averages after flipped and remapped. 
     if(ievt!=0){
       Printf("Adding onto Event Ring for further calculations");
-      fEVRing.push_back(fEigenVectorSorted);
+      // For the first chunk of crex_part1 ignore the first 363 entries.... don't add to ring
+      if (ievt > 363) {
+        fEVRing.push_back(fEigenVectorSorted);
+      }
       Printf("Averaging");
       fRingAvg = GetRingAverage(fEVRing);
       Printf("Returned");
@@ -241,11 +273,12 @@ void SortEigenvectors_CREX_all(TString treename = "mini_eigen_reg_allbpms", TStr
     //if( fRunInfo.find(run)!= fRunInfo.end()){
       //slug = (fRunInfo[run]).first;
       //arm_flag = (fRunInfo[run]).second;
-    eig_sort_tree->Fill();
       //lagr_slope_tree->Fill();
       //reg_slope_tree->Fill();
     //}
 
+    //}
+    eig_sort_tree->Fill();
   }
   vector<Double_t> eigen_width(nIV);
   vector<Int_t> fGlobalRank(nIV);
