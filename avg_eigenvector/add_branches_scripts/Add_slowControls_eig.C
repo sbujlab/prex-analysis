@@ -4,7 +4,7 @@ last update: February 2021
 
 */
 
-void Add_slowControls_eig(TString filename = "tmp.root" , TString tree = ""){ //(int start, int end)
+void Add_slowControls_eig(TString filename, TString outfilename, TString tree = "mini"){ //(int start, int end)
   // List of pitts, from neighboring results folder, hardcoded here for ease of use
   std::map<Int_t,Double_t> pitt_map = {
     {100, 0},
@@ -154,7 +154,7 @@ void Add_slowControls_eig(TString filename = "tmp.root" , TString tree = ""){ //
   };
 
   TFile input_file(filename);
-  TFile output("slowControls_added.root","recreate");
+  TFile output(outfilename,"recreate");
   //TFile output(Form("rootfiles/rcdb_AT_eigenvectors.root"),"recreate");
 
   TKey *key;

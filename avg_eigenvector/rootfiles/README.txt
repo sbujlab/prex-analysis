@@ -15,7 +15,9 @@ $ root -l -b -q merge_sorted_trees.C'("","")'
 -rw-r--r-- 1 cameronc a-parity  13M May 30 20:33 allbpm_sorting.out                                               Regular sort (no fancy cuts or anything) - allbpm output file
 
 -rw-r--r-- 1 cameronc a-parity 205M May 30 20:48 rcdb_eigenvectors_sorted.root                                    Regular sort (no fancy cuts or anything) - collection of all trees (master file here)
-                                                                                                                  Note... reg_asym_us_dd not included in the regular sort outputs...
+
+$ root -l -b -q add_branches_scripts/Add_crex_segment_eig.C
+$ cp -p rootfiles/rcdb_parts_eigenvectors_sorted.root /lustre19/expphy/volatile/halla/parity/crex-respin2/LagrangeOutput/rootfiles/rcdb_eigenvectors_sorted.root
 
 $ root -l -b -q SortEigenvectors_CREX_stabilize.C'("mini_eigen_reg_5bpms","_sorted",5)' > & rootfiles/5bpm_sorting_round3.out
 $ root -l -b -q SortEigenvectors_CREX_stabilize.C'("mini_eigen_reg_allbpms","_sorted",12)' > & rootfiles/allbpm_sorting_round3.out
@@ -33,3 +35,6 @@ $ root -l -b -q merge_sorted_trees.C'("","_sorted")'
 -rw-r--r-- 1 cameronc a-parity  12M May 31 20:13 allbpm_sorting_round3.out                                        Double sort (fancy cuts and such) - allbpm output file
 
 -rw-r--r-- 1 cameronc a-parity 204M May 31 20:26 rcdb_eigenvectors_sorted_sorted.root                             Double sort (fancy cuts and such) - collection of all trees (master file here)
+
+$ root -l -b -q add_branches_scripts/Add_crex_segment_eig.C'("_sorted")'
+$ cp -p rootfiles/rcdb_parts_eigenvectors_sorted_sorted.root /lustre19/expphy/volatile/halla/parity/crex-respin2/LagrangeOutput/rootfiles/rcdb_eigenvectors_sorted_sorted.root

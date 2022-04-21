@@ -5,7 +5,7 @@
  */
 #include "utilities_eigen.cc"
 
-void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms", TString pass = "", Int_t nCheck = 5, Int_t min = 7499, Int_t max = 8559){ //(int start, int end)
+void SortEigenvectors_CREX_superstabilize(TString treename = "mini_eigen_reg_allbpms", TString pass = "", Int_t nCheck = 5, Int_t min = 7499, Int_t max = 8559){ //(int start, int end)
   //map<Int_t , pair<Int_t, Int_t> > fRunInfo  = LoadRunInfo();
   //TString filename_tag = "allbpms";
   vector< TString > IVlist = {
@@ -37,7 +37,7 @@ void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms"
   Int_t nIV = IVlist.size();
   //// TFile* output = TFile::Open(Form("rootfiles/slug%d-%d_sorted_eigenvector_%s.root",
   //// 				   start,end,filename_tag.Data()),"RECREATE");
-  TFile* output = TFile::Open(Form("rootfiles/%s_sorted%s.root",
+  TFile* output = TFile::Open(Form("rootfiles/%s_sorted_super%s.root",
   				   treename.Data(),pass.Data()),"RECREATE");
 
   //TTree *lagr_slope_tree = new TTree("lagr","lagrange slopes in eigenvectors basis");
@@ -83,18 +83,18 @@ void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms"
   //TChain *reg_tree = new TChain("mini_regall");
   //for(int i=start;i<=end;i++){
   //agg_tree->Add(Form("dataRootfiles/CREX-All-miniruns.root"));
-  if (pass != "") {
+  //if (pass != "") {
     //mini_tree       -> Add(Form("dataRootfiles/rcdb_eigenvectors_sorted.root"));
     //eig_all_tree    -> Add(Form("dataRootfiles/rcdb_eigenvectors_sorted.root"));
-    mini_tree       -> Add(Form("rootfiles/rcdb_eigenvectors_sorted.root"));
-    eig_all_tree    -> Add(Form("rootfiles/rcdb_eigenvectors_sorted.root"));
-  }
-  else {
-    //mini_tree       -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
-    //eig_all_tree    -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
-    mini_tree       -> Add(Form("rootfiles/rcdb_eigenvectors.root"));
-    eig_all_tree    -> Add(Form("rootfiles/rcdb_eigenvectors.root"));
-  }
+    mini_tree       -> Add(Form("rootfiles/rcdb_eigenvectors%s.root",pass.Data()));
+    eig_all_tree    -> Add(Form("rootfiles/rcdb_eigenvectors%s.root",pass.Data()));
+  //}
+  //else {
+    ////mini_tree       -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
+    ////eig_all_tree    -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
+    //mini_tree       -> Add(Form("rootfiles/rcdb_eigenvectors.root"));
+    //eig_all_tree    -> Add(Form("rootfiles/rcdb_eigenvectors.root"));
+  //}
   ////eig_all_tr_tree -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
   ////eig_5_tree      -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
   ////eig_5_tr_tree   -> Add(Form("dataRootfiles/rcdb_eigenvectors.root"));
@@ -136,8 +136,10 @@ void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms"
     }
   }
   // [row]:bpm ; [col]:eigv
-  Int_t local_run = 0;
-  eig_all_tree->SetBranchAddress(Form("mini.run"),&local_run);
+  Int_t local_run  = 0;
+  Int_t local_mini = 0;
+  eig_all_tree->SetBranchAddress(Form("mini.run"), &local_run);
+  eig_all_tree->SetBranchAddress(Form("mini.mini"),&local_mini);
   for(int i=0;i<nDV;i++) {
     for(int j=0;j<nIV;j++) {
       eig_all_tree->SetBranchAddress(DVlist[i]+Form("_evMon%d",j),
@@ -158,11 +160,13 @@ void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms"
   //eig_all_tree->GetEntry(0);
   //eig_all_tree->GetEntry(810); // Run 6036 starting guess
   //fEVRing.push_back(fEigenVectorRaw);
+  /*
   for (Int_t ll = 363 ; ll <= 1315 ; ll++) {
     eig_all_tree->GetEntry(ll);
     fEVRing.push_back(fEigenVectorRaw);
     fRingAvg = GetRingAverage(fEVRing);
   }
+  */
   //fRingAvg = GetRingAverage(fEVRing);
 
   //for(int ievt=nEntries-1;ievt>=0;ievt--)
@@ -202,6 +206,31 @@ void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms"
 
     // Checking eigenvector identities 
     // re-allocation and sign lock-in to  fEigenVectorSorted
+
+    Int_t thirdevt = ievt;
+    Int_t fourthevt = ievt;
+    if (local_run < 6328) {
+      thirdevt = 1315;
+      Printf("Reset to do backwards loop");
+      fourthevt = eig_all_tree->GetEntry(thirdevt); // Reset's local_run == the 1315 event = run 6321
+      fEVRing.clear();
+      fEVRing.push_back(fEigenVectorRaw);
+      fRingAvg = GetRingAverage(fEVRing);
+    }
+    // Loop if thirdevt == ievt       -> we are in normal loop
+    // Loop if local_run != ievt  -> we are in backwards first section loop
+    while ( fourthevt != ievt || thirdevt == ievt) {
+    if (local_run < 6328 && (fourthevt!=ievt && thirdevt!=ievt)) {
+      // We are in backwards first section loop
+      Printf("Event %d",thirdevt);
+      thirdevt--;
+      fourthevt = eig_all_tree->GetEntry(thirdevt);
+    }
+    else {
+      thirdevt++;
+      fourthevt = ievt;
+    }
+      Printf("Event %d",thirdevt);
 
     vector<Int_t> fMap = CheckStabilizeIdentity(fRingAvg, fEigenVectorRaw, nCheck);
     vector<Double_t> fReMapped = RemapVectors(fEigenVectorRaw, fMap);
@@ -277,7 +306,7 @@ void SortEigenvectors_CREX_stabilize(TString treename = "mini_eigen_reg_allbpms"
       //reg_slope_tree->Fill();
     //}
 
-    //}
+    }
     eig_sort_tree->Fill();
   }
   vector<Double_t> eigen_width(nIV);

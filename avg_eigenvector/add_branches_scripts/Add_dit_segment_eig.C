@@ -1,15 +1,16 @@
 /*
 author: Cameron Clarke
-last update: June 1 2021
+last update: July 7 2021
 
 */
 
-void Add_dit_segment_eig(TString alt_ana = ""){ 
+void Add_dit_segment_eig(TString dit_inputfilename, TString input, TString outputfile, TString treename = "mini"){ 
   // FIXME replace with read-from-dit tree
   //TFile eig_input(Form("dataRootfiles/Full_mini_eigen_reg_allbpms_AT.root"));
-  TFile eig_input(Form("/lustre19/expphy/volatile/halla/parity/crex-respin1/LagrangeOutput/rootfiles%s//rcdb_eigenvectors_sorted.root",alt_ana.Data()));
-  TFile dit_input(Form("/lustre19/expphy/volatile/halla/parity/crex-respin1/bmodOutput/slopes_run_avg_1X/dithering_slopes_13746_runwise.root")); // FIXME this is just grabbing the old normal dithering data - it's just grabbing flag and segment from the tree - but be careful
-  TFile output(Form("/lustre19/expphy/volatile/halla/parity/crex-respin1/LagrangeOutput/rootfiles%s//rcdb_segment_eigenvectors_sorted.root",alt_ana.Data()),"recreate");
+  TFile eig_input(input);
+  TFile dit_input(dit_inputfilename);
+  // FIXME FIXME I need to do segment stuff first!!! FIXME TFile dit_input(Form("/lustre19/expphy/volatile/halla/parity/crex-respin2/bmodOutput/slopes_run_avg_1X/respin2_CREX_dithering_slopes_run_avg_basic.root")); // FIXME this is just grabbing the old normal dithering data - it's just grabbing flag and segment from the tree - but be careful
+  TFile output(outputfile,"recreate");
 //  // Versions of eigenvectors ouputs : double sorted here
 //  TFile eig_input(Form("/lustre19/expphy/volatile/halla/parity/crex-respin1/LagrangeOutput/rootfiles//rcdb_eigenvectors_sorted_sorted.root"));
 //  TFile output(Form("/lustre19/expphy/volatile/halla/parity/crex-respin1/LagrangeOutput/rootfiles//rcdb_segment_eigenvectors_sorted_sorted.root"),"recreate");
@@ -19,7 +20,7 @@ void Add_dit_segment_eig(TString alt_ana = ""){
   TTree *mini_tree;
   //TTree *eig_reg_tree_5_tr;
   dit_input.GetObject("dit", dit_tree);
-  eig_input.GetObject("mini", mini_tree);
+  eig_input.GetObject(treename, mini_tree);
 
   TChain* out_mini_tree             = (TChain*)mini_tree           -> CloneTree(0);
 
@@ -101,7 +102,7 @@ void Add_dit_segment_eig(TString alt_ana = ""){
     //eig_reg_tree_5_tr   -> GetEntry(ievt);
     goodRun = dit_tree->GetEntryNumberWithIndex((Double_t)run);
     while (goodRun == -1) {
-      // In this loop, if there is no corresponding entry in the tree being copied from, we run forward and grab the next available entry in the future to take its value
+      // In this loop, if there is no corresponding entry in the tree being copied from, we run forward and grab the next available entry in the future to take its value -> FIXME Note that this means that any run existing in mini tree that is at the end of a segment but that doesn't exist explicitly in the dithering tree will be placed in THE WRONG segment label! -> I can instead loop over the contiguous list segment text file...... but does it really matter? I will use slugs and pitts for any meaningful calculations in the future, except for "segment averaged slopes" that I can also check from the updated CorrecTree outputs (that now contain explicit slope values).
       //Printf("Checking run %d from entry %d",run,goodRun);
       runStepper++;
       goodRun = dit_tree->GetEntryNumberWithIndex((Double_t)(run+runStepper));
@@ -123,7 +124,7 @@ void Add_dit_segment_eig(TString alt_ana = ""){
     out_mini_tree             -> Fill();
   }
 
-  out_mini_tree             -> Write("mini",TObject::kOverwrite);
+  out_mini_tree             -> Write(treename,TObject::kOverwrite);
 
   TKey *key;
   TIter nextkey(eig_input.GetListOfKeys(),kIterBackward);
@@ -133,7 +134,7 @@ void Add_dit_segment_eig(TString alt_ana = ""){
     if (!cl) continue;
     if (cl->InheritsFrom(TTree::Class())) {
       TTree *T = (TTree*)eig_input.Get(key->GetName());
-      if ((TString)key->GetName() == "mini") {
+      if ((TString)key->GetName() == treename) {
         // Skip the tree we've been working with
         continue;
       }
